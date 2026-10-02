@@ -1,0 +1,91 @@
+[
+  {
+    "id": "personal_opening",
+    "customer_type": "personal",
+    "title": "个人开户咨询",
+    "version": "demo-v1",
+    "keywords": [
+      "开户",
+      "开卡",
+      "借记卡"
+    ],
+    "text": "演示说明：个人开户通常涉及身份核验及申请材料检查。本演示没有目标银行审核资料，具体材料、资格、办理渠道和费用须以该行正式说明为准。",
+    "status": "demo_unreviewed",
+    "valid_from": "2026-10-02",
+    "valid_until": "2027-10-02"
+  },
+  {
+    "id": "personal_deposit",
+    "customer_type": "personal",
+    "title": "个人存款流程",
+    "version": "demo-v1",
+    "keywords": [
+      "定期",
+      "存款",
+      "提前支取"
+    ],
+    "text": "演示说明：存款期限、到期处理及提前支取方式应查看目标银行的正式产品条款。本演示不提供具体利率、费用或收益承诺。",
+    "status": "demo_unreviewed",
+    "valid_from": "2026-10-02",
+    "valid_until": "2027-10-02"
+  },
+  {
+    "id": "personal_repayment",
+    "customer_type": "personal",
+    "title": "个人贷款咨询",
+    "version": "demo-v1",
+    "keywords": [
+      "还款",
+      "个人贷款",
+      "贷款材料"
+    ],
+    "text": "演示说明：个人贷款的申请条件、材料及还款安排应查阅目标银行正式说明及本人合同。本演示不能判断资格、额度、审批或放款结果。",
+    "status": "demo_unreviewed",
+    "valid_from": "2026-10-02",
+    "valid_until": "2027-10-02"
+  },
+  {
+    "id": "enterprise_opening",
+    "customer_type": "enterprise",
+    "title": "企业开户咨询",
+    "version": "demo-v1",
+    "keywords": [
+      "开户",
+      "对公账户",
+      "企业账户"
+    ],
+    "text": "演示说明：企业开户涉及企业主体与办理人员的核验。所需材料、办理方式和费用由目标银行正式说明确定；自述法人身份不能授予账户查询权限。",
+    "status": "demo_unreviewed",
+    "valid_from": "2026-10-02",
+    "valid_until": "2027-10-02"
+  },
+  {
+    "id": "enterprise_reconciliation",
+    "customer_type": "enterprise",
+    "title": "企业对账与回单",
+    "version": "demo-v1",
+    "keywords": [
+      "对账",
+      "回单"
+    ],
+    "text": "演示说明：企业对账及回单应在银行正式企业渠道中按岗位和账户权限查看。本演示没有原始回单或查询接口，不提供企业业务明细。",
+    "status": "demo_unreviewed",
+    "valid_from": "2026-10-02",
+    "valid_until": "2027-10-02"
+  },
+  {
+    "id": "enterprise_financing",
+    "customer_type": "enterprise",
+    "title": "企业融资咨询",
+    "version": "demo-v1",
+    "keywords": [
+      "融资",
+      "企业贷款",
+      "贷款材料"
+    ],
+    "text": "演示说明：企业融资可向目标银行咨询产品条件、申请材料及正式流程。本演示不承诺授信、担保豁免、审批结论或放款时间。",
+    "status": "demo_unreviewed",
+    "valid_from": "2026-10-02",
+    "valid_until": "2027-10-02"
+  }
+]

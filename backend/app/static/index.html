@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>银行客服 · 文字链路验收</title>
+  <link rel="stylesheet" href="/app.css">
+  <script src="/app.js" defer></script>
+</head>
+<body>
+  <main>
+    <header><span class="eyebrow">本机核心链路验收</span><h1>银行智能客服</h1><p>个人与企业公开咨询 · 文字演示</p></header>
+    <aside class="notice" aria-label="演示边界">
+      <strong id="mode">正在检查服务…</strong>
+      <p>仅限非敏感演示问题。知识未获目标银行审核；未接入真实账户、数字人、人工队列或投诉系统。会话本地保存 7 天。</p>
+    </aside>
+    <section class="controls" aria-label="会话管理">
+      <label>服务类型<select id="customer"><option value="">请选择公开咨询对象</option><option value="personal">个人服务</option><option value="enterprise">企业服务</option></select></label>
+      <label>本机历史<select id="history" aria-label="选择历史会话"><option>暂无会话</option></select></label>
+      <button id="new" type="button">新建会话</button>
+    </section>
+    <p id="expiry" class="muted"></p>
+    <p class="muted">服务类型仅代表公开咨询语境，不代表客户认证或账户权限。</p>
+    <aside id="safety" class="safety" aria-label="持续紧急提示" role="alert" hidden>
+      <strong>公开紧急求助提示</strong>
+      <p id="safety-text"></p>
+      <p>普通咨询、刷新或切换服务类型不会关闭此提示。关闭只停止显示，不代表风险解除或业务已办理。</p>
+      <button id="dismiss-safety" type="button">关闭此提示</button>
+    </aside>
+    <p id="safety-status" class="muted" role="status"></p>
+    <section class="examples" aria-label="示例问题">
+      <span>试一试</span>
+      <button type="button" data-question="开户需要什么材料">开户材料</button>
+      <button type="button" data-question="查余额">查余额</button>
+      <button type="button" data-question="银行卡被盗刷了">紧急问题</button>
+      <button type="button" data-question="转人工">转人工</button>
+    </section>
+    <section id="messages" class="messages" aria-label="咨询记录" aria-live="polite"><p class="empty">正在建立本机会话…</p></section>
+    <form id="form">
+      <label for="question">你的演示问题</label>
+      <textarea id="question" rows="3" maxlength="2000" placeholder="例如：企业开户需要什么材料？请勿输入姓名、账户、密码或验证码。" required></textarea>
+      <div class="form-bottom"><span id="status" role="status">正在连接…</span><button id="send" type="submit" disabled>发送咨询</button></div>
+    </form>
+    <footer>规则模式用于验证程序与业务边界。真实模型效果、银行知识和正式服务接入尚待验证。</footer>
+  </main>
+</body>
+</html>

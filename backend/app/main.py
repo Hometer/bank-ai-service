@@ -1,0 +1,258 @@
+import asyncio
+import hashlib
+import secrets
+import time
+from contextlib import asynccontextmanager, suppress
+from datetime import UTC, datetime
+from pathlib import Path
+from typing import Any, AsyncIterator, Awaitable, Callable, Literal, cast
+from uuid import uuid4
+
+from fastapi import FastAPI, Request, Response
+from fastapi.exceptions import RequestValidationError
+from fastapi.responses import FileResponse, JSONResponse
+from sqlalchemy import select, text, update
+from sqlalchemy.dialects.sqlite import insert
+from sqlalchemy.exc import SQLAlchemyError
+from sqlalchemy.orm import Session, sessionmaker
+from starlette.exceptions import HTTPException
+from starlette.middleware.trustedhost import TrustedHostMiddleware
+
+from app.config import Settings
+from app.consultation import answer_consultation
+from app.db import Conversation, Message, SafetyNotice, cleanup_expired, open_database
+from app.schemas import (
+    Answer,
+    ConsultationContext,
+    CreateSession,
+    CustomerType,
+    DismissSafety,
+    ErrorResponse,
+    Health,
+    History,
+    MessageInput,
+    MessageView,
+    SafetyState,
+    SessionInfo,
+    Turn,
+)
+from app.service import URGENT_NOTICE, load_knowledge
+
+COOKIE = "bank_demo_owner"
+RETENTION = 7 * 24 * 60 * 60
+ERRORS: dict[int | str, dict[str, Any]] = {status: {"model": ErrorResponse} for status in (401, 403, 404, 409, 422, 503)}
+
+
+def iso(timestamp: float) -> str:
+    return datetime.fromtimestamp(timestamp, UTC).isoformat()
+
+
+def session_view(item: Conversation) -> SessionInfo:
+    return SessionInfo(id=item.id, customer_type=cast(CustomerType, item.customer_type),
+                       created_at=iso(item.created_at), expires_at=iso(item.expires_at), revision=item.revision)
+
+
+def safety_view(db: Session, owner: str) -> SafetyState:
+    record = db.get(SafetyNotice, owner, populate_existing=True)
+    if record is None:
+        return SafetyState()
+    active = record.active and record.expires_at > time.time()
+    return SafetyState(active=active, revision=record.revision,
+                       updated_at=iso(record.updated_at), expires_at=iso(record.expires_at),
+                       text=URGENT_NOTICE if active else "")
+
+
+def owner_hash(request: Request) -> str:
+    token = request.cookies.get(COOKIE)
+    if not token:
+        raise HTTPException(401)
+    return hashlib.sha256(token.encode()).hexdigest()
+
+
+def owned_session(db: Session, sid: str, owner: str) -> Conversation:
+    item = db.get(Conversation, sid)
+    if item is None or item.owner_hash != owner or item.expires_at <= time.time():
+        raise HTTPException(404)
+    return item
+
+
+def create_app(settings: Settings | None = None) -> FastAPI:
+    settings = settings or Settings.from_env()
+    if settings.mode not in ("demo", "model"):
+        raise ValueError("Unsupported model mode")
+
+    @asynccontextmanager
+    async def lifespan(application: FastAPI) -> AsyncIterator[None]:
+        engine = open_database(settings.database_url)
+        application.state.engine = engine
+        application.state.sessions = sessionmaker(engine, expire_on_commit=False)
+        application.state.knowledge = load_knowledge()
+        cleanup_expired(engine)
+
+        async def cleanup_loop() -> None:
+            while True:
+                await asyncio.sleep(3600)
+                await asyncio.to_thread(cleanup_expired, engine)
+
+        worker = asyncio.create_task(cleanup_loop())
+        try:
+            yield
+        finally:
+            worker.cancel()
+            with suppress(asyncio.CancelledError):
+                await worker
+            engine.dispose()
+
+    app = FastAPI(title="银行客服 · 本机演示", lifespan=lifespan, docs_url=None, redoc_url=None)
+    app.add_middleware(TrustedHostMiddleware, allowed_hosts=["127.0.0.1", "localhost", "testserver"])
+
+    @app.middleware("http")
+    async def safe_request(request: Request, call_next: Callable[[Request], Awaitable[Response]]) -> Response:
+        origin = request.headers.get("origin")
+        if request.method not in ("GET", "HEAD", "OPTIONS") and origin and origin != str(request.base_url).rstrip("/"):
+            return JSONResponse({"error": {"code": "ORIGIN_DENIED", "message": "请求来源不允许。"}}, status_code=403)
+        try:
+            response = await call_next(request)
+        except Exception:
+            response = JSONResponse({"error": {"code": "INTERNAL_ERROR", "message": "服务暂时不可用，请稍后重试。"}}, status_code=503)
+        if response.status_code >= 400 and "application/json" not in response.headers.get("content-type", ""):
+            response = JSONResponse({"error": {"code": "REQUEST_FAILED", "message": "请求无法完成。"}}, status_code=response.status_code)
+        response.headers["Cache-Control"] = "no-store"
+        response.headers["X-Content-Type-Options"] = "nosniff"
+        response.headers["Referrer-Policy"] = "no-referrer"
+        response.headers["Content-Security-Policy"] = "default-src 'self'; script-src 'self'; style-src 'self'; connect-src 'self'; frame-ancestors 'none'"
+        return response
+
+    @app.exception_handler(RequestValidationError)
+    async def invalid_input(_: Request, __: RequestValidationError) -> JSONResponse:
+        return JSONResponse({"error": {"code": "INVALID_INPUT", "message": "请检查输入类型、长度与必填项。"}}, status_code=422)
+
+    @app.exception_handler(HTTPException)
+    async def http_error(_: Request, exc: HTTPException) -> JSONResponse:
+        messages = {401: ("AUTH_REQUIRED", "请先建立本机会话。"),
+                    404: ("NOT_FOUND", "会话不存在、已过期或无权访问。"),
+                    409: ("CONTEXT_CHANGED", "会话主题已更新，请刷新历史后重新咨询。"),
+                    405: ("METHOD_NOT_ALLOWED", "此请求方法不支持。")}
+        code, message = messages.get(exc.status_code, ("REQUEST_FAILED", "请求无法完成。"))
+        return JSONResponse({"error": {"code": code, "message": message}}, status_code=exc.status_code)
+
+    @app.exception_handler(SQLAlchemyError)
+    async def storage_error(_: Request, __: SQLAlchemyError) -> JSONResponse:
+        return JSONResponse({"error": {"code": "STORAGE_UNAVAILABLE", "message": "会话存储暂时不可用。"}}, status_code=503)
+
+    @app.get("/api/v1/health", response_model=Health, responses=ERRORS)
+    def health() -> Health:
+        with app.state.sessions() as db:
+            db.execute(text("SELECT 1"))
+        return Health.model_validate({"mode": settings.mode})
+
+    @app.post("/api/v1/sessions", response_model=SessionInfo, status_code=201, responses=ERRORS)
+    def create_session(body: CreateSession, request: Request, response: Response) -> SessionInfo:
+        token = request.cookies.get(COOKIE) or secrets.token_urlsafe(32)
+        now = time.time()
+        item = Conversation(id=str(uuid4()), owner_hash=hashlib.sha256(token.encode()).hexdigest(),
+                            customer_type=body.customer_type, created_at=now, expires_at=now + RETENTION)
+        with app.state.sessions.begin() as db:
+            db.add(item)
+        response.set_cookie(COOKIE, token, httponly=True, samesite="strict", max_age=RETENTION, path="/")
+        return session_view(item)
+
+    @app.get("/api/v1/sessions", response_model=list[SessionInfo], responses=ERRORS)
+    def list_sessions(request: Request, customer_type: CustomerType | None = None) -> list[SessionInfo]:
+        owner = owner_hash(request)
+        with app.state.sessions() as db:
+            query = select(Conversation).where(Conversation.owner_hash == owner, Conversation.expires_at > time.time())
+            if customer_type:
+                query = query.where(Conversation.customer_type == customer_type)
+            items = db.scalars(query.order_by(Conversation.created_at.desc()).limit(50))
+            return [session_view(item) for item in items]
+
+    @app.get("/api/v1/sessions/{sid}", response_model=History, responses=ERRORS)
+    def history(sid: str, request: Request) -> History:
+        owner = owner_hash(request)
+        with app.state.sessions() as db:
+            item = owned_session(db, sid, owner)
+            messages = db.scalars(select(Message).where(Message.session_id == sid).order_by(Message.id))
+            return History(session=session_view(item), messages=[MessageView(
+                role=cast("Literal['user', 'assistant']", message.role), text=message.text,
+                created_at=iso(message.created_at),
+                answer=Answer.model_validate(message.answer) if message.answer else None,
+            ) for message in messages])
+
+    @app.get("/api/v1/safety", response_model=SafetyState, responses=ERRORS)
+    def get_safety(request: Request) -> SafetyState:
+        with app.state.sessions() as db:
+            return safety_view(db, owner_hash(request))
+
+    @app.post("/api/v1/safety/dismiss", response_model=SafetyState, responses=ERRORS)
+    def dismiss_safety(body: DismissSafety, request: Request) -> SafetyState | JSONResponse:
+        owner = owner_hash(request)
+        with app.state.sessions.begin() as db:
+            state = safety_view(db, owner)
+            if state.revision != body.expected_revision:
+                return JSONResponse({"error": {"code": "SAFETY_CHANGED", "message":
+                    "出现了新的紧急提示，请核对最新提示后再决定是否关闭。"}}, status_code=409)
+            if state.revision:
+                result = db.execute(update(SafetyNotice).where(
+                    SafetyNotice.owner_hash == owner, SafetyNotice.revision == body.expected_revision,
+                ).values(active=False, revision=SafetyNotice.revision + 1, updated_at=time.time()))
+                if result.rowcount != 1:
+                    return JSONResponse({"error": {"code": "SAFETY_CHANGED", "message":
+                        "紧急提示已发生变化，请刷新后核对。"}}, status_code=409)
+            return safety_view(db, owner)
+
+    @app.post("/api/v1/sessions/{sid}/messages", response_model=Turn, responses=ERRORS)
+    def send_message(sid: str, body: MessageInput, request: Request) -> Turn:
+        owner = owner_hash(request)
+        with app.state.sessions() as db:
+            item = owned_session(db, sid, owner)
+            customer_type = cast(CustomerType, item.customer_type)
+            context = ConsultationContext.model_validate(item.context)
+            expected_revision = item.revision
+        safe_text, answer, next_context = answer_consultation(
+            body.text, customer_type, app.state.knowledge, settings, context,
+        )
+        # Re-check after model latency, then persist the whole turn in one transaction.
+        with app.state.sessions.begin() as db:
+            item = owned_session(db, sid, owner)
+            mutation = update(Conversation).where(Conversation.id == sid)
+            # Public urgent routing never depends on a prior topic. A concurrent ordinary
+            # answer must not suppress the safety event; both turns remain atomic.
+            if answer.kind != "urgent":
+                mutation = mutation.where(Conversation.revision == expected_revision)
+            result = db.execute(mutation.values(context=next_context.model_dump(),
+                                                revision=Conversation.revision + 1))
+            if result.rowcount != 1:
+                raise HTTPException(409)
+            now = time.time()
+            db.add(Message(session_id=sid, role="user", text=safe_text, created_at=now))
+            db.add(Message(session_id=sid, role="assistant", text=answer.text, created_at=now,
+                           answer=answer.model_dump()))
+            if answer.kind == "urgent":
+                notice = insert(SafetyNotice).values(owner_hash=owner, active=True, revision=1,
+                                                    updated_at=now, expires_at=item.expires_at)
+                db.execute(notice.on_conflict_do_update(index_elements=[SafetyNotice.owner_hash], set_={
+                    "active": True, "revision": SafetyNotice.revision + 1,
+                    "updated_at": now, "expires_at": item.expires_at,
+                }))
+            state = safety_view(db, owner)
+        return Turn(user_text=safe_text, answer=answer, safety=state)
+
+    static = Path(__file__).parent / "static"
+
+    @app.get("/", include_in_schema=False)
+    def index() -> FileResponse:
+        return FileResponse(static / "index.html")
+
+    @app.get("/app.js", include_in_schema=False)
+    def script() -> FileResponse:
+        return FileResponse(static / "app.js", media_type="text/javascript")
+
+    @app.get("/app.css", include_in_schema=False)
+    def stylesheet() -> FileResponse:
+        return FileResponse(static / "app.css", media_type="text/css")
+
+    return app
+
+
+app = create_app()
