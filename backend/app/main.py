@@ -485,6 +485,10 @@ def create_app(settings: Settings | None = None) -> FastAPI:
     def stylesheet() -> FileResponse:
         return FileResponse(static / "app.css", media_type="text/css")
 
+    @app.get("/advisor.png", include_in_schema=False)
+    def advisor_portrait() -> FileResponse:
+        return FileResponse(static / "assets" / "financial-advisor-v1.png", media_type="image/png")
+
     return app
 
 

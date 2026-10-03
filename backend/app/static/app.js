@@ -67,7 +67,23 @@ function updateControls() {
 }
 function setBusy(value) { waiting = value; updateControls(); }
 function emptyMessages() {
-  $("messages").replaceChildren(element("p", "输入一个非敏感问题，查看回答来源与服务状态。", "empty"));
+  const welcome = element("div", undefined, "empty welcome");
+  welcome.append(element("div", "AI", "welcome-symbol"), element("h2", "您好，今天有什么可以帮您？"),
+    element("p", "从开户准备到金融基础知识，\n为您梳理公开信息，并附上可核对的来源。"));
+  const options = element("div", undefined, "welcome-options");
+  const questions = $("customer").value === "enterprise" ? [
+    ["企业开户准备", "企业开户需要什么材料"], ["网银与电子结单", "企业对账单在哪里下载"],
+    ["企业融资说明", "企业融资有哪些用途"], ["外汇风险管理", "远期外汇是否稳赚"],
+  ] : [["个人开户准备", "开户需要什么材料"], ["定期存款知识", "普通港元定存最低金额"],
+    ["私人贷款材料", "自雇申请DreamCash需要什么材料"], ["了解存款保障", "每开一个账户都有80万元保障吗"]];
+  for (const [label, question] of questions) {
+    const button = element("button", label);
+    button.type = "button"; button.append(element("span", "↗"));
+    button.addEventListener("click", () => { $("question").value = question; $("question").focus(); });
+    options.append(button);
+  }
+  welcome.append(options, element("p", "请先选择个人或企业服务；仅输入非敏感公开问题。", "welcome-note"));
+  $("messages").replaceChildren(welcome);
 }
 function sourceText(source) {
   if (!source) return "来源缺失，此说明不可继续操作。";
@@ -78,19 +94,24 @@ function sourceText(source) {
   return value;
 }
 function sourceNode(source) {
-  const node = element("div", sourceText(source), "source");
+  const node = element("div", undefined, "source");
+  node.append(element("div", "参考来源 · 公开资料整理", "source-heading"));
+  const details = element("details");
+  details.append(element("summary", "核对日期与资料详情"), element("p", sourceText(source)));
   const officialHosts = new Set(["hk.bankcomm.com","www.hk.bankcomm.com","eb.hk.bankcomm.com","www.bankcomm.com.hk","www.ifec.org.hk","www.dps.org.hk","www.info.gov.hk","www.news.gov.hk"]);
-  for (const ref of source.references || []) {
+  for (const ref of source?.references || []) {
     try {
       const url = new URL(ref.url);
       if (url.protocol !== "https:" || !officialHosts.has(url.hostname) || url.username || url.password) continue;
       const paragraph = element("p");
-      const link = element("a", `${ref.title} · 官网来源`);
+      const link = element("a", `${ref.title} ↗`);
       link.href = url.href; link.target = "_blank"; link.rel = "noopener noreferrer";
-      paragraph.append(link, element("span", ` · ${ref.publisher} · ${ref.locator}`));
+      paragraph.append(link, element("span", ref.publisher));
       node.append(paragraph);
+      details.append(element("p", `出处定位：${ref.title} · ${ref.locator}`));
     } catch { /* Invalid historical links are never made actionable. */ }
   }
+  node.append(details);
   return node;
 }
 function cardNode(card, historical = false) {
@@ -117,7 +138,7 @@ function cardNode(card, historical = false) {
 function render(role, text, answer = null) {
   $("messages").querySelector(".empty")?.remove();
   const card = element("article", undefined, `message ${role}`);
-  card.append(element("h2", role === "user" ? "你 · 脱敏输入" : "智能客服 · 演示"), element("p", text));
+  card.append(element("h2", role === "user" ? "您 · 脱敏输入" : "AI 咨询助手"), element("p", text));
   if (answer) {
     const kind = answer.kind === "answered" && answer.processing === "knowledge" ? "公开知识回答" : (kinds[answer.kind] || answer.kind);
     card.append(element("span", `${kind} · ${answer.channel_status}`, "kind"));
@@ -126,7 +147,11 @@ function render(role, text, answer = null) {
       if ((answer.parts || []).length > 1) card.append(element("p", `${objectLabel(part.customer_type)}：${processingLabel[part.processing || "legacy"]} · ${coverageLabel[part.coverage || "legacy"]}`, "muted"));
     }
     for (const source of answer.sources) card.append(sourceNode(source));
-    for (const item of answer.cards || []) card.append(cardNode(item, true));
+    for (const item of answer.cards || []) {
+      const history = element("details", undefined, "history-details");
+      history.append(element("summary", item.valid ? "展开相关公开说明" : "查看已失效的历史说明"), cardNode(item, true));
+      card.append(history);
+    }
   }
   $("messages").append(card);
   $("messages").scrollTop = $("messages").scrollHeight;
@@ -150,8 +175,16 @@ function renderServices(next) {
   if (active) active.revision = Math.max(active.revision || 0, next.session_revision);
   $("catalog").replaceChildren();
   for (const item of next.catalog) {
-    const button = element("button", `${item.title} · 演示说明`);
+    const button = element("button");
+    const paths = {opening:"M4 20h16M6 20V8m12 12V8M3 8l9-5 9 5H3M10 20V11m4 9V11",deposit:"M4 7h16v13H4V7M8 7V4h8v3M4 11h16M9 16h6",repayment:"M4 6h16v13H4V6M4 10h16M8 15h3",financing:"M4 20V10h5v10M9 20V6h5v14M14 20V3h5v17",reconciliation:"M6 3h12v18H6V3M9 8h6M9 12h6M9 16h4",borrowing:"M4 18L18 4M7 4a3 3 0 1 0 0 6 3 3 0 0 0 0-6M17 14a3 3 0 1 0 0 6 3 3 0 0 0 0-6",protection:"M12 3l7 3v5c0 5-7 10-7 10S5 16 5 11V6l7-3zM9 12l2 2 4-4",exchange:"M4 7h15l-4-4M20 17H5l4 4M19 7l-4 4M5 17l4-4"};
+    const icon = document.createElementNS("http://www.w3.org/2000/svg", "svg");
+    icon.setAttribute("viewBox", "0 0 24 24"); icon.setAttribute("aria-hidden", "true");
+    const path = document.createElementNS("http://www.w3.org/2000/svg", "path");
+    path.setAttribute("d", paths[item.capability_id.split("_").slice(1).join("_")] || paths.opening);
+    icon.append(path);
+    button.append(icon, element("span", item.title.replace("公开知识", "咨询").replace("知识", "")));
     button.type = "button"; button.dataset.capability = item.capability_id;
+    button.dataset.selected = String(next.navigation.status === "reading" && item.capability_id === next.navigation.capability_id);
     button.addEventListener("click", () => navigate("start", item));
     $("catalog").append(button);
   }
@@ -313,7 +346,10 @@ async function sendQuestion(text, suggestion = null) {
         if (version === epoch && active?.id === sid) renderServices(next);
       } catch { if (version === epoch) clearServices("目录状态暂不可用，请刷新核对。"); }
     }
-    if (version === epoch) setStatus(`${error.message} 可刷新历史核对是否已保存，再重新输入。`);
+    if (version === epoch) {
+      if (!$("question").value) $("question").value = text;
+      setStatus(`${error.message} 输入已保留；可刷新历史核对是否已保存后再发送。`);
+    }
   } finally { if (version === epoch) setBusy(false); }
 }
 async function navigate(action, item = null) {
@@ -387,13 +423,28 @@ setInterval(() => { renderSafety(); refreshSafety(); }, 60000);
 document.querySelectorAll("[data-question]").forEach(button => button.addEventListener("click", () => {
   $("question").value = button.dataset.question; $("question").focus();
 }));
+const compactNavigation = matchMedia("(max-width: 767px)");
+const syncNavigationWidth = () => { $("catalog-drawer").open = !compactNavigation.matches; };
+syncNavigationWidth(); compactNavigation.addEventListener("change", syncNavigationWidth);
+$("advisor-portrait").addEventListener("error", () => {
+  $("advisor-portrait").hidden = true; $("portrait-fallback").hidden = false;
+});
 (async () => {
   try {
     const data = await api("/health");
+    $("connection-status").textContent = "服务可用"; $("connection-dot").dataset.state = "available";
+    $("knowledge-status").textContent = data.knowledge_base_status === "available" ? "知识库优先" : "公开咨询演示";
     const version = data.consultation_version === "1.4" ? "V1.4" : "既有版本";
     $("mode").textContent = data.mode === "demo" ? `${version} 规则演示 · 非真实模型` : `${version} 模型适配模式 · 每条答复标明实际处理方式`;
     if (data.knowledge_base_status === "available") $("mode").textContent = "交通银行（香港）知识库优先 · 本地检索，无模型调用";
-    if (data.knowledge_base_status === "unavailable") $("mode").textContent += " · 公开知识资料不可用或需复核";
+    if (data.knowledge_base_status === "unavailable") {
+      $("mode").textContent += " · 公开知识资料不可用或需复核";
+      $("knowledge-status").textContent = "知识资料待核对";
+    }
     await refresh();
-  } catch (error) { $("mode").textContent = "服务连接失败"; setStatus(error.message); }
+  } catch (error) {
+    $("mode").textContent = "服务连接失败"; $("connection-status").textContent = "连接失败";
+    $("connection-dot").dataset.state = "failed"; $("knowledge-status").textContent = "暂未核对知识资料";
+    setStatus(error.message);
+  }
 })();
