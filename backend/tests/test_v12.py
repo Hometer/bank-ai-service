@@ -293,7 +293,7 @@ def test_additive_migration_preserves_0001_history(tmp_path):
             assert old.context == {} and old.revision == 0
             assert db.get(Message, 1).text == "旧演示消息"
     with sqlite3.connect(database) as db:
-        assert db.execute("SELECT version_num FROM alembic_version").fetchone()[0] == "0002"
+        assert db.execute("SELECT version_num FROM alembic_version").fetchone()[0] == "0003"
 
 
 def test_expired_context_reference_is_never_used():

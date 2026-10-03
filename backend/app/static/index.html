@@ -28,6 +28,23 @@
       <button id="dismiss-safety" type="button">关闭此提示</button>
     </aside>
     <p id="safety-status" class="muted" role="status"></p>
+    <section class="service-section" aria-labelledby="catalog-title">
+      <h2 id="catalog-title">公开咨询目录</h2>
+      <p class="muted">演示问题，仅提供六类公开主题说明。查询、人工及正式办理尚未接入。</p>
+      <div id="catalog" class="catalog"><p class="muted">选择个人或企业后查看可用目录。</p></div>
+    </section>
+    <section id="navigation" data-state="idle" class="service-section" aria-labelledby="navigation-title">
+      <h2 id="navigation-title">当前公开说明</h2>
+      <p id="navigation-status" class="muted" role="status">尚未开始阅读。</p>
+      <div id="service-cards" aria-live="polite"></div>
+      <div class="navigation-controls">
+        <button id="nav-back" type="button" disabled>返回上一步</button>
+        <button id="nav-next" type="button" disabled>下一段说明</button>
+        <button id="nav-cancel" type="button" disabled>取消导航</button>
+      </div>
+      <div id="suggestions" class="suggestions" aria-label="相关演示问题"></div>
+    </section>
+    <p id="transition-status" class="muted" role="status"></p>
     <section class="examples" aria-label="示例问题">
       <span>试一试</span>
       <button type="button" data-question="开户需要什么材料">开户材料</button>

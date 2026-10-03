@@ -4,10 +4,20 @@ try { $("customer").value = sessionStorage.getItem("bank_demo_customer") || ""; 
 let active = null;
 let epoch = 0;
 let waiting = false;
+let services = null;
+let cancelling = false;
+const pendingCancellations = new Map();
 let safety = {active:false, revision:0};
 let dismissing = false;
 const kinds = {answered:"演示知识回答",unknown:"暂无依据",private_unavailable:"查询未接入",urgent:"紧急提示",human_unavailable:"人工/投诉未接入",sensitive_blocked:"敏感输入已屏蔽",model_unavailable:"模型未获得有效结果",clarification:"需要澄清公开主题"};
+const objectLabel = type => type === "enterprise" ? "企业" : type === "personal" ? "个人" : "历史资料";
 
+function element(tag, text, className) {
+  const node = document.createElement(tag);
+  if (text !== undefined) node.textContent = text;
+  if (className) node.className = className;
+  return node;
+}
 function renderSafety() {
   const valid = !safety.expires_at || Date.parse(safety.expires_at) > Date.now();
   $("safety").hidden = !safety.active || !valid;
@@ -25,7 +35,6 @@ async function refreshSafety() {
   try { mergeSafety(await api("/safety")); }
   catch (error) { if (error.status !== 401) $("safety-status").textContent = "紧急提示状态暂未同步，请使用已有官方渠道求助。"; }
 }
-
 async function api(path, options = {}) {
   const response = await fetch(`/api/v1${path}`, {
     ...options, headers: {"Content-Type":"application/json"}, signal: AbortSignal.timeout(35000),
@@ -38,36 +47,123 @@ async function api(path, options = {}) {
   }
   return data;
 }
-
 function setStatus(text) { $("status").textContent = text; }
-function setBusy(value) { waiting = value; $("send").disabled = value || !active; }
+function updateControls() {
+  $("send").disabled = waiting || !active;
+  const actions = new Set((services?.cards || []).filter(card => card.valid).flatMap(card => card.actions));
+  $("nav-back").disabled = waiting || !active || !actions.has("back");
+  $("nav-next").disabled = waiting || !active || !actions.has("next");
+  $("nav-cancel").disabled = !active || cancelling || (!waiting && !actions.has("cancel") && !(["reading", "invalid"].includes(services?.navigation?.status)));
+  document.querySelectorAll("#catalog button, #suggestions button").forEach(button => { button.disabled = waiting || !active; });
+}
+function setBusy(value) { waiting = value; updateControls(); }
 function emptyMessages() {
-  $("messages").replaceChildren();
-  const p = document.createElement("p"); p.className = "empty";
-  p.textContent = "输入一个非敏感问题，查看回答来源与服务状态。";
-  $("messages").append(p);
+  $("messages").replaceChildren(element("p", "输入一个非敏感问题，查看回答来源与服务状态。", "empty"));
+}
+function sourceText(source) {
+  if (!source) return "来源缺失，此说明不可继续操作。";
+  let value = `来源：${source.title} · ${objectLabel(source.customer_type)} · ${source.version} · 演示知识，未获银行审核`;
+  if (source.valid_from && source.valid_until) value += ` · 知识生效区间：${source.valid_from} 至 ${source.valid_until}`;
+  return value;
+}
+function cardNode(card, historical = false) {
+  const node = element("article", undefined, historical ? "history-card" : "service-card");
+  node.dataset.cardId = card.id;
+  node.dataset.valid = String(card.valid);
+  node.dataset.capability = card.capability_id;
+  node.append(element("h3", `${card.title} · ${objectLabel(card.customer_type)}公开咨询`));
+  node.append(element("p", card.valid ? "演示说明 · 非银行办理结果" : "说明已失效 · 不可继续操作", "card-state"));
+  if (historical || !card.valid || !card.steps?.length) {
+    node.append(element("p", card.text));
+  } else {
+    node.append(element("p", `分步阅读 ${card.step_index + 1}/${card.steps.length} · 同一演示原文`, "reading-position"));
+    node.append(element("p", card.steps[card.step_index] || card.text, "reading-text"));
+    const details = element("details");
+    details.append(element("summary", "查看完整演示说明"), element("p", card.text));
+    node.append(details);
+  }
+  node.append(element("p", sourceText(card.source), "source"));
+  if (!card.valid) node.append(element("p", card.unavailable_reason || "来源或能力已不可用，请重新选择有效目录。", "card-unavailable"));
+  if (historical) node.append(element("p", "历史说明仅供核对；继续咨询请使用当前有效目录。", "muted"));
+  return node;
 }
 function render(role, text, answer = null) {
   $("messages").querySelector(".empty")?.remove();
-  const card = document.createElement("article"); card.className = `message ${role}`;
-  const heading = document.createElement("h2"); heading.textContent = role === "user" ? "你 · 脱敏输入" : "智能客服 · 演示";
-  const content = document.createElement("p"); content.textContent = text;
-  card.append(heading, content);
+  const card = element("article", undefined, `message ${role}`);
+  card.append(element("h2", role === "user" ? "你 · 脱敏输入" : "智能客服 · 演示"), element("p", text));
   if (answer) {
-    const state = document.createElement("span"); state.className = "kind";
-    state.textContent = `${kinds[answer.kind] || answer.kind} · ${answer.channel_status}`;
-    card.append(state);
-    for (const source of answer.sources) {
-      const item = document.createElement("div"); item.className = "source";
-      item.textContent = `来源：${source.title} · ${source.customer_type === "enterprise" ? "企业" : source.customer_type === "personal" ? "个人" : "历史资料"} · ${source.version} · 演示知识，未获银行审核`;
-      card.append(item);
-    }
+    card.append(element("span", `${kinds[answer.kind] || answer.kind} · ${answer.channel_status}`, "kind"));
+    for (const source of answer.sources) card.append(element("div", sourceText(source), "source"));
+    for (const item of answer.cards || []) card.append(cardNode(item, true));
   }
   $("messages").append(card);
   $("messages").scrollTop = $("messages").scrollHeight;
 }
-
+function clearServices(message = "尚未开始阅读。") {
+  services = null;
+  $("navigation").dataset.state = "idle";
+  $("catalog").replaceChildren(element("p", active ? "正在核对可用目录…" : "选择个人或企业后查看可用目录。", "muted"));
+  $("service-cards").replaceChildren();
+  $("suggestions").replaceChildren();
+  $("navigation-status").textContent = message;
+  updateControls();
+}
+function renderServices(next) {
+  if (!next) { clearServices("目录暂不可用，仍可输入公开求助问题。"); return; }
+  if (services && next.session_revision < services.session_revision) return;
+  services = next;
+  $("navigation").dataset.state = next.navigation.status;
+  if (active) active.revision = Math.max(active.revision || 0, next.session_revision);
+  $("catalog").replaceChildren();
+  for (const item of next.catalog) {
+    const button = element("button", `${item.title} · 演示说明`);
+    button.type = "button"; button.dataset.capability = item.capability_id;
+    button.addEventListener("click", () => navigate("start", item));
+    $("catalog").append(button);
+  }
+  if (!next.catalog.length) $("catalog").append(element("p", "当前对象暂无有效演示目录。", "muted"));
+  $("service-cards").replaceChildren();
+  for (const card of next.cards) $("service-cards").append(cardNode(card));
+  const states = {idle:"尚未开始阅读。请选择目录或输入问题。",reading:"正在阅读公开演示说明；读完不代表业务已办理。",cancelled:"普通导航已取消；历史说明保留。可重新选择目录开始。",invalid:"原说明已失效，请重新选择有效目录。"};
+  $("navigation-status").textContent = states[next.navigation.status] || "请核对当前导航状态。";
+  $("suggestions").replaceChildren();
+  if (next.suggestions.length) $("suggestions").append(element("span", "相关演示问题", "muted"));
+  for (const [index, item] of next.suggestions.slice(0, 3).entries()) {
+    const button = element("button", item.question);
+    button.type = "button"; button.dataset.suggestion = String(index);
+    button.addEventListener("click", () => sendQuestion(item.question, item));
+    $("suggestions").append(button);
+  }
+  updateControls();
+}
+async function serviceSnapshot(sid) { return api(`/sessions/${sid}/services`); }
+async function syncHistory(sid, version) {
+  const data = await api(`/sessions/${sid}`);
+  if (version !== epoch || active?.id !== sid) return;
+  active = data.session;
+  emptyMessages();
+  data.messages.forEach(message => render(message.role, message.text, message.answer));
+  if (data.services) renderServices(data.services);
+  else {
+    try {
+      const next = await serviceSnapshot(sid);
+      if (version === epoch && active?.id === sid) renderServices(next);
+    } catch (error) {
+      if (version === epoch && active?.id === sid) clearServices(`${error.message} 仍可输入公开求助问题。`);
+    }
+  }
+}
 async function loadSession(id, version) {
+  // A rapid A → B → A switch must not load A before its earlier cancellation
+  // completes, otherwise its stale reading controls could be shown again.
+  const pending = pendingCancellations.get(id);
+  if (pending) {
+    try { await pending; }
+    catch (error) {
+      if (version === epoch) $("transition-status").textContent = `此会话的取消状态未同步：${error.message} 请核对恢复状态。`;
+    }
+    if (version !== epoch) return;
+  }
   const data = await api(`/sessions/${id}`);
   if (version !== epoch) return;
   active = data.session;
@@ -75,16 +171,59 @@ async function loadSession(id, version) {
   data.messages.forEach(message => render(message.role, message.text, message.answer));
   $("history").value = active.id;
   $("expiry").textContent = `本地演示会话保留至 ${new Date(active.expires_at).toLocaleString("zh-CN")}，到期后删除。`;
+  if (data.services) renderServices(data.services);
+  else {
+    try {
+      const next = await serviceSnapshot(id);
+      if (version === epoch && active?.id === id) renderServices(next);
+    } catch (error) {
+      if (version === epoch) clearServices(`${error.message} 仍可输入公开求助问题。`);
+    }
+  }
   await refreshSafety();
   if (version !== epoch) return;
   setBusy(false); setStatus("可以咨询 · 请仅使用演示数据");
 }
-
+// Retry a cancellation once after reading the newest server revision. This is
+// also used for the previous session during an object/history switch.
+async function performCancellation(session) {
+  let revision = session.revision || 0;
+  for (let attempt = 0; attempt < 2; attempt += 1) {
+    try {
+      return await api(`/sessions/${session.id}/navigation`, {method:"POST", body:JSON.stringify({action:"cancel",expected_revision:revision})});
+    } catch (error) {
+      if (error.status !== 409 || attempt === 1) throw error;
+      // History remains readable when directory configuration is broken, so
+      // cancellation can still recover a stale revision without that config.
+      revision = (await api(`/sessions/${session.id}`)).session.revision;
+    }
+  }
+}
+function cancelSnapshot(session) {
+  const existing = pendingCancellations.get(session.id);
+  if (existing) return existing;
+  const operation = performCancellation(session).finally(() => {
+    if (pendingCancellations.get(session.id) === operation) pendingCancellations.delete(session.id);
+  });
+  pendingCancellations.set(session.id, operation);
+  return operation;
+}
+async function cancelPrevious(session, version) {
+  if (!session) return;
+  try { await cancelSnapshot(session); }
+  catch (error) {
+    if (version === epoch) $("transition-status").textContent = `旧会话已停止展示，但取消状态未同步：${error.message} 请在历史会话核对。`;
+  }
+}
 async function refresh(forceNew = false) {
+  const previous = active ? {...active} : null;
   const version = ++epoch;
-  active = null; setBusy(true); emptyMessages(); setStatus("正在加载本机会话…");
+  active = null; cancelling = false; setBusy(true); emptyMessages(); clearServices(); setStatus("正在加载本机会话…");
+  $("transition-status").textContent = "";
   const type = $("customer").value;
   $("expiry").textContent = "";
+  await cancelPrevious(previous, version);
+  if (version !== epoch) return;
   if (!type) {
     $("history").replaceChildren(); setBusy(false);
     setStatus("请先选择个人或企业公开咨询对象，再发送问题。");
@@ -102,8 +241,7 @@ async function refresh(forceNew = false) {
     }
     $("history").replaceChildren();
     for (const session of sessions) {
-      const option = document.createElement("option"); option.value = session.id;
-      option.textContent = `${new Date(session.created_at).toLocaleString("zh-CN")} · ${type === "personal" ? "个人" : "企业"}`;
+      const option = element("option", `${new Date(session.created_at).toLocaleString("zh-CN")} · ${objectLabel(type)}`); option.value = session.id;
       $("history").append(option);
     }
     await loadSession(sessions[0].id, version);
@@ -112,35 +250,91 @@ async function refresh(forceNew = false) {
     setStatus(error.message); setBusy(false);
   }
 }
-
-$("form").addEventListener("submit", async event => {
-  event.preventDefault();
-  const text = $("question").value.trim();
+async function sendQuestion(text, suggestion = null) {
   if (!text || !active || waiting) return;
-  const version = epoch;
+  const version = ++epoch;
   const sid = active.id;
+  const body = {text,expected_revision:active.revision || 0};
+  if (suggestion) { body.capability_id = suggestion.capability_id; body.knowledge_version = suggestion.knowledge_version; }
   setBusy(true); setStatus("正在处理…");
   $("question").value = "";
   try {
-    const data = await api(`/sessions/${sid}/messages`, {method:"POST", body:JSON.stringify({text})});
+    const data = await api(`/sessions/${sid}/messages`, {method:"POST", body:JSON.stringify(body)});
+    // Urgent events have their own monotonic revision and must survive a page
+    // navigation even when that old conversation reply is no longer displayable.
     mergeSafety(data.safety);
     if (version !== epoch || active?.id !== sid) return;
     render("user", data.user_text);
     render("assistant", data.answer.text, data.answer);
+    active.revision = Math.max(active.revision || 0, data.session_revision || 0);
+    renderServices(data.services);
     setStatus("已保存脱敏记录 · 真实模型验证待验");
   } catch (error) {
-    if (version !== epoch) return;
-    setStatus(`${error.message} 可刷新历史核对是否已保存，再重新输入。`);
+    if (version !== epoch || active?.id !== sid) return;
+    if (error.status === 409) {
+      try {
+        const next = await serviceSnapshot(sid);
+        if (version === epoch && active?.id === sid) renderServices(next);
+      } catch { if (version === epoch) clearServices("目录状态暂不可用，请刷新核对。"); }
+    }
+    if (version === epoch) setStatus(`${error.message} 可刷新历史核对是否已保存，再重新输入。`);
   } finally { if (version === epoch) setBusy(false); }
-});
+}
+async function navigate(action, item = null) {
+  if (!active || (waiting && action !== "cancel") || cancelling) return;
+  const session = {...active};
+  const version = ++epoch;
+  cancelling = action === "cancel";
+  setBusy(true);
+  if (action === "cancel") {
+    clearServices("已停止普通导航展示，正在同步取消状态…");
+    setStatus("正在取消普通导航…");
+  } else setStatus("正在核对来源与导航状态…");
+  try {
+    let next;
+    if (action === "cancel") next = await cancelSnapshot(session);
+    else {
+      const body = {action,expected_revision:session.revision || 0};
+      if (item) { body.capability_id = item.capability_id; body.knowledge_version = item.knowledge_version; }
+      next = await api(`/sessions/${session.id}/navigation`, {method:"POST", body:JSON.stringify(body)});
+    }
+    if (version !== epoch || active?.id !== session.id) return;
+    renderServices(next);
+    if (action === "start") await syncHistory(session.id, version);
+    if (version !== epoch || active?.id !== session.id) return;
+    setStatus(action === "cancel" ? "普通导航已取消并保存 · 未关闭紧急提示" : "阅读位置已保存 · 不代表业务已办理");
+  } catch (error) {
+    if (version !== epoch || active?.id !== session.id) return;
+    if (action === "cancel") clearServices(`已停止展示，取消状态未同步：${error.message} 请刷新核对。`);
+    else {
+      try {
+        const next = await serviceSnapshot(session.id);
+        if (version === epoch && active?.id === session.id) renderServices(next);
+      } catch { if (version === epoch) clearServices("目录状态暂不可用，请刷新核对。"); }
+    }
+    if (version === epoch) setStatus(`${error.message} 请刷新历史核对。`);
+  } finally {
+    if (version === epoch) { cancelling = false; setBusy(false); }
+  }
+}
+$("form").addEventListener("submit", event => { event.preventDefault(); sendQuestion($("question").value.trim()); });
+$("nav-next").addEventListener("click", () => navigate("next"));
+$("nav-back").addEventListener("click", () => navigate("back"));
+$("nav-cancel").addEventListener("click", () => navigate("cancel"));
 $("customer").addEventListener("change", () => {
   try { sessionStorage.setItem("bank_demo_customer", $("customer").value); } catch { /* Consultation still works without browser storage. */ }
   refresh();
 });
 $("new").addEventListener("click", () => refresh(true));
 $("history").addEventListener("change", async () => {
-  const version = ++epoch; active = null; setBusy(true); emptyMessages();
-  try { await loadSession($("history").value, version); }
+  const id = $("history").value;
+  const previous = active ? {...active} : null;
+  const version = ++epoch;
+  active = null; cancelling = false; setBusy(true); emptyMessages(); clearServices();
+  $("transition-status").textContent = "";
+  await cancelPrevious(previous, version);
+  if (version !== epoch) return;
+  try { await loadSession(id, version); }
   catch (error) { if (version === epoch) { setBusy(false); setStatus(error.message); } }
 });
 $("dismiss-safety").addEventListener("click", async () => {

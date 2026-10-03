@@ -1,0 +1,62 @@
+[
+  {
+    "capability_id": "personal_opening",
+    "title": "个人开户演示咨询",
+    "customer_type": "personal",
+    "knowledge_id": "personal_opening",
+    "knowledge_version": "demo-v1",
+    "enabled": true,
+    "question": "个人开户有哪些公开说明",
+    "related_questions": ["个人开户材料以哪里为准", "个人开户资格和费用在哪里确认"]
+  },
+  {
+    "capability_id": "personal_deposit",
+    "title": "个人存款演示咨询",
+    "customer_type": "personal",
+    "knowledge_id": "personal_deposit",
+    "knowledge_version": "demo-v1",
+    "enabled": true,
+    "question": "个人存款有哪些公开说明",
+    "related_questions": ["个人存款期限在哪里确认", "个人存款提前支取以哪里为准"]
+  },
+  {
+    "capability_id": "personal_repayment",
+    "title": "个人贷款演示咨询",
+    "customer_type": "personal",
+    "knowledge_id": "personal_repayment",
+    "knowledge_version": "demo-v1",
+    "enabled": true,
+    "question": "个人贷款有哪些公开说明",
+    "related_questions": ["个人贷款材料在哪里确认", "个人贷款还款安排以哪里为准"]
+  },
+  {
+    "capability_id": "enterprise_opening",
+    "title": "企业开户演示咨询",
+    "customer_type": "enterprise",
+    "knowledge_id": "enterprise_opening",
+    "knowledge_version": "demo-v1",
+    "enabled": true,
+    "question": "企业开户有哪些公开说明",
+    "related_questions": ["企业开户材料以哪里为准", "企业开户办理方式在哪里确认"]
+  },
+  {
+    "capability_id": "enterprise_reconciliation",
+    "title": "企业对账与回单演示咨询",
+    "customer_type": "enterprise",
+    "knowledge_id": "enterprise_reconciliation",
+    "knowledge_version": "demo-v1",
+    "enabled": true,
+    "question": "企业对账回单有哪些公开说明",
+    "related_questions": ["企业对账在哪里查看", "企业回单查看需要什么权限"]
+  },
+  {
+    "capability_id": "enterprise_financing",
+    "title": "企业融资演示咨询",
+    "customer_type": "enterprise",
+    "knowledge_id": "enterprise_financing",
+    "knowledge_version": "demo-v1",
+    "enabled": true,
+    "question": "企业融资有哪些公开说明",
+    "related_questions": ["企业融资材料在哪里确认", "企业融资审批和放款时间能否确认"]
+  }
+]

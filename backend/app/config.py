@@ -16,6 +16,8 @@ class Settings:
     model_api_key: str = ""
     model_timeout: float = 8.0
     model_attempts: int = 2
+    catalog_path: Path | None = None
+    knowledge_path: Path | None = None
 
     @classmethod
     def from_env(cls) -> "Settings":
@@ -28,4 +30,6 @@ class Settings:
             model_api_key=os.getenv("MODEL_API_KEY", ""),
             model_timeout=min(15.0, max(1.0, float(os.getenv("MODEL_TIMEOUT", "8")))),
             model_attempts=min(2, max(1, int(os.getenv("MODEL_ATTEMPTS", "2")))),
+            catalog_path=Path(os.environ["DEMO_CATALOG_PATH"]) if os.getenv("DEMO_CATALOG_PATH") else None,
+            knowledge_path=Path(os.environ["DEMO_KNOWLEDGE_PATH"]) if os.getenv("DEMO_KNOWLEDGE_PATH") else None,
         )

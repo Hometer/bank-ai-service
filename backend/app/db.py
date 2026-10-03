@@ -23,6 +23,7 @@ class Conversation(Base):
     expires_at: Mapped[float] = mapped_column(Float, index=True)
     context: Mapped[dict[str, Any]] = mapped_column(JSON, default=dict)
     revision: Mapped[int] = mapped_column(Integer, default=0)
+    navigation: Mapped[dict[str, Any]] = mapped_column(JSON, default=dict)
 
 
 class SafetyNotice(Base):
