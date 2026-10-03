@@ -4,8 +4,8 @@ from pydantic import BaseModel, ConfigDict, Field, field_validator, model_valida
 
 CustomerType = Literal["personal", "enterprise"]
 Focus = Literal["general", "materials", "channel", "fees", "qualification", "timing", "download", "guarantee"]
-Processing = Literal["rule", "model", "fallback", "legacy"]
-Coverage = Literal["overview", "partial", "none", "legacy"]
+Processing = Literal["rule", "model", "fallback", "legacy", "knowledge"]
+Coverage = Literal["overview", "partial", "none", "legacy", "supported"]
 ClarificationStatus = Literal["idle", "awaiting", "exhausted", "cancelled"]
 Outcome = Literal[
     "answered", "unknown", "private_unavailable", "urgent", "human_unavailable",
@@ -31,6 +31,8 @@ class Health(StrictModel):
     mode: Literal["demo", "model"]
     real_model_verification: str = "待验"
     consultation_version: Literal["1.4"] = "1.4"
+    knowledge_base_status: Literal["disabled", "available", "unavailable"] = "disabled"
+    knowledge_base_version: str | None = None
 
 
 class CreateSession(StrictModel):
@@ -65,12 +67,37 @@ class MessageInput(StrictModel):
         return self
 
 
+class PublicReference(StrictModel):
+    id: str
+    title: str
+    url: str
+    publisher: str
+    entity: str
+    jurisdiction: Literal["HK"] = "HK"
+    retrieved_on: str
+    locator: str
+
+
+class PublicFact(StrictModel):
+    id: str
+    title: str
+    focus: Focus
+    answer: str
+    limits: str
+    review_due_on: str
+    references: list[PublicReference]
+
+
 class Source(StrictModel):
     id: str
     title: str
     version: str
-    status: Literal["demo_unreviewed"] = "demo_unreviewed"
+    status: Literal["demo_unreviewed", "public_unreviewed"] = "demo_unreviewed"
     customer_type: CustomerType | None = None
+    references: list[PublicReference] = Field(default_factory=list)
+    article_ids: list[str] = Field(default_factory=list)
+    retrieved_on: str | None = None
+    review_due_on: str | None = None
 
 
 NavigationAction = Literal["start", "next", "back", "cancel"]
@@ -172,6 +199,7 @@ class TopicRef(StrictModel):
     customer_type: CustomerType
     knowledge_version: str | None = None
     source_fingerprint: str | None = None
+    article_ids: list[str] = Field(default_factory=list)
 
 
 class ConsultationContext(StrictModel):
@@ -258,9 +286,11 @@ class Knowledge(StrictModel):
     version: str
     keywords: list[str]
     text: str
-    status: Literal["demo_unreviewed", "disabled"]
+    status: Literal["demo_unreviewed", "disabled", "public_unreviewed"]
     valid_from: str
     valid_until: str
+    public_facts: list[PublicFact] = Field(default_factory=list)
+    public_digest: str | None = None
 
 
 class ModelSelection(StrictModel):

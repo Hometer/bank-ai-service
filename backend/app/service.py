@@ -3,10 +3,11 @@ import logging
 import re
 import time
 import unicodedata
-from datetime import date
+from datetime import date, datetime
 from pathlib import Path
 from typing import Callable, Literal
 from urllib.parse import urlsplit
+from zoneinfo import ZoneInfo
 
 import httpx
 from pydantic import ValidationError
@@ -34,6 +35,17 @@ ATTACHED_VALUE = re.compile(CREDENTIAL + r"\s*[A-Za-z0-9_*@#$!.-]{2,}", re.IGNOR
 IDENTIFIER = re.compile(r"(?:卡号|银行卡|手机号|身份证|账户号|账号)\s*(?:是|为|[:=])?\s*[A-Za-z0-9][\d\s-]{3,}")
 NUMBER = re.compile(r"\d(?:[\s-]*\d){3,}(?:[xX](?!\w))?")
 PUBLIC_VALUES = {"什么", "什么意思", "如何获取", "如何发送的", "怎么获取", "怎么重置", "多少位", "几位"}
+
+
+def private_request(text: str, *, public_knowledge: bool = False) -> bool:
+    if not any(word in text for word in PRIVATE):
+        return False
+    # Public instructions for finding a statement are distinct from accessing a customer's statement.
+    if (public_knowledge and re.search(r"对账单|电子结单", text)
+            and re.search(r"在哪|哪里|如何|怎么|渠道|下载", text)
+            and not re.search(r"我的|给我|帮我|我们的|本公司|余额|流水|查出|明细", text)):
+        return False
+    return True
 
 
 def sanitize(text: str) -> str:
@@ -70,9 +82,9 @@ def load_knowledge(path: Path | None = None) -> list[Knowledge]:
 
 
 def eligible(items: list[Knowledge], customer_type: CustomerType, today: str | None = None) -> list[Knowledge]:
-    current = today or date.today().isoformat()
+    current = today or datetime.now(ZoneInfo("Asia/Shanghai")).date().isoformat()
     return [item for item in items if item.customer_type == customer_type
-            and item.status == "demo_unreviewed" and item.valid_from <= current < item.valid_until]
+            and item.status in ("demo_unreviewed", "public_unreviewed") and item.valid_from <= current < item.valid_until]
 
 
 def parse_selection(raw: str, allowed: set[str]) -> str | None:

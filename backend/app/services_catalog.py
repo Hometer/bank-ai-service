@@ -111,7 +111,10 @@ def reading_steps(knowledge: Knowledge) -> list[str]:
 
 
 def knowledge_fingerprint(knowledge: Knowledge) -> str:
-    return hashlib.sha256(knowledge.model_dump_json().encode("utf-8")).hexdigest()
+    # Keep fingerprints of unchanged legacy records stable when optional schema fields are added.
+    raw = (knowledge.model_dump_json(exclude={"public_facts", "public_digest"})
+           if knowledge.public_digest is None else knowledge.model_dump_json())
+    return hashlib.sha256(raw.encode("utf-8")).hexdigest()
 
 
 def source_bound_context(raw: dict[str, Any], navigation: dict[str, Any], items: list[Knowledge]) -> ConsultationContext:
@@ -150,6 +153,7 @@ def make_card(
     entry: CatalogConfig, knowledge: Knowledge, message_id: int | None = None,
     *, reading: bool = False, step_index: int = 0,
 ) -> ServiceCard:
+    from app.knowledge_base import knowledge_source
     steps = reading_steps(knowledge)
     actions: list[NavigationAction] = ["start"]
     if reading:
@@ -163,9 +167,9 @@ def make_card(
         id=f"{entry.capability_id}:{message_id if message_id is not None else 'pending'}",
         kind="reading_steps" if reading else "public_info", capability_id=entry.capability_id,
         message_id=message_id, customer_type=knowledge.customer_type,
-        title="演示说明分步阅读" if reading else knowledge.title, text=knowledge.text,
-        source=CardSource(id=knowledge.id, title=knowledge.title, version=knowledge.version,
-                          customer_type=knowledge.customer_type, valid_from=knowledge.valid_from,
+        title=("公开知识分步阅读" if knowledge.public_facts else "演示说明分步阅读") if reading else knowledge.title,
+        text=knowledge.text,
+        source=CardSource(**knowledge_source(knowledge).model_dump(), valid_from=knowledge.valid_from,
                           valid_until=knowledge.valid_until),
         steps=steps, step_index=step_index, actions=actions,
     )
@@ -201,12 +205,14 @@ def build_service_view(
 def validate_history_card(
     card: ServiceCard, customer_type: CustomerType, entries: list[CatalogConfig], items: list[Knowledge],
 ) -> ServiceCard:
+    from app.knowledge_base import knowledge_source
     try:
         _, knowledge = resolve_service(entries, items, customer_type, card.capability_id, card.source.version)
         if (knowledge.id != card.source.id or knowledge.customer_type != card.customer_type
                 or knowledge.text != card.text or knowledge.title != card.source.title
                 or knowledge.valid_from != card.source.valid_from
-                or knowledge.valid_until != card.source.valid_until):
+                or knowledge.valid_until != card.source.valid_until
+                or knowledge_source(knowledge).references != card.source.references):
             raise CapabilityChanged
         return card
     except CapabilityChanged:

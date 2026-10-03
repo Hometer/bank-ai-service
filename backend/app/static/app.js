@@ -55,8 +55,8 @@ function renderConsultation(next) {
   $("consultation-status").textContent = next ? `${states[next.status] || ""}${next.status === "awaiting" ? ` · 已提示 ${next.clarification_attempts}/2 次` : ""}` : "";
   updateControls();
 }
-const processingLabel = {rule:"规则演示",model:"真实模型判断",fallback:"模型未获得有效结果",legacy:"历史记录，处理方式未细分"};
-const coverageLabel = {overview:"演示概述",partial:"具体事项尚不能确认",none:"无可确认的业务依据",legacy:"历史资料范围未细分"};
+const processingLabel = {rule:"规则演示",model:"真实模型判断",fallback:"模型未获得有效结果",legacy:"历史记录，处理方式未细分",knowledge:"知识库优先 · 本地资料检索"};
+const coverageLabel = {overview:"演示概述",partial:"具体事项尚不能确认",none:"无可确认的业务依据",legacy:"历史资料范围未细分",supported:"已引用适用公开知识 · 请核对资料限制"};
 function updateControls() {
   $("send").disabled = waiting || !active;
   const actions = new Set((services?.cards || []).filter(card => card.valid).flatMap(card => card.actions));
@@ -71,9 +71,27 @@ function emptyMessages() {
 }
 function sourceText(source) {
   if (!source) return "来源缺失，此说明不可继续操作。";
-  let value = `来源：${source.title} · ${objectLabel(source.customer_type)} · ${source.version} · 演示知识，未获银行审核`;
-  if (source.valid_from && source.valid_until) value += ` · 知识生效区间：${source.valid_from} 至 ${source.valid_until}`;
+  const publicKnowledge = source.status === "public_unreviewed";
+  let value = `来源：${source.title} · ${objectLabel(source.customer_type)} · ${source.version} · ${publicKnowledge ? "公开知识整理" : "演示知识"}，未获银行审核`;
+  if (publicKnowledge) value += ` · 核对日期：${source.retrieved_on || "未标明"} · 内部复核日：${source.review_due_on || "未标明"}（非银行有效期）`;
+  else if (source.valid_from && source.valid_until) value += ` · 知识生效区间：${source.valid_from} 至 ${source.valid_until}`;
   return value;
+}
+function sourceNode(source) {
+  const node = element("div", sourceText(source), "source");
+  const officialHosts = new Set(["hk.bankcomm.com","www.hk.bankcomm.com","eb.hk.bankcomm.com","www.bankcomm.com.hk","www.ifec.org.hk","www.dps.org.hk","www.info.gov.hk","www.news.gov.hk"]);
+  for (const ref of source.references || []) {
+    try {
+      const url = new URL(ref.url);
+      if (url.protocol !== "https:" || !officialHosts.has(url.hostname) || url.username || url.password) continue;
+      const paragraph = element("p");
+      const link = element("a", `${ref.title} · 官网来源`);
+      link.href = url.href; link.target = "_blank"; link.rel = "noopener noreferrer";
+      paragraph.append(link, element("span", ` · ${ref.publisher} · ${ref.locator}`));
+      node.append(paragraph);
+    } catch { /* Invalid historical links are never made actionable. */ }
+  }
+  return node;
 }
 function cardNode(card, historical = false) {
   const node = element("article", undefined, historical ? "history-card" : "service-card");
@@ -91,7 +109,7 @@ function cardNode(card, historical = false) {
     details.append(element("summary", "查看完整演示说明"), element("p", card.text));
     node.append(details);
   }
-  node.append(element("p", sourceText(card.source), "source"));
+  node.append(sourceNode(card.source));
   if (!card.valid) node.append(element("p", card.unavailable_reason || "来源或能力已不可用，请重新选择有效目录。", "card-unavailable"));
   if (historical) node.append(element("p", "历史说明仅供核对；继续咨询请使用当前有效目录。", "muted"));
   return node;
@@ -101,12 +119,13 @@ function render(role, text, answer = null) {
   const card = element("article", undefined, `message ${role}`);
   card.append(element("h2", role === "user" ? "你 · 脱敏输入" : "智能客服 · 演示"), element("p", text));
   if (answer) {
-    card.append(element("span", `${kinds[answer.kind] || answer.kind} · ${answer.channel_status}`, "kind"));
+    const kind = answer.kind === "answered" && answer.processing === "knowledge" ? "公开知识回答" : (kinds[answer.kind] || answer.kind);
+    card.append(element("span", `${kind} · ${answer.channel_status}`, "kind"));
     card.append(element("p", `${answer.processing ? processingLabel[answer.processing] : "既有版本，处理方式未细分"} · ${coverageLabel[answer.coverage || "legacy"]}`, "muted"));
     for (const part of answer.parts || []) {
       if ((answer.parts || []).length > 1) card.append(element("p", `${objectLabel(part.customer_type)}：${processingLabel[part.processing || "legacy"]} · ${coverageLabel[part.coverage || "legacy"]}`, "muted"));
     }
-    for (const source of answer.sources) card.append(element("div", sourceText(source), "source"));
+    for (const source of answer.sources) card.append(sourceNode(source));
     for (const item of answer.cards || []) card.append(cardNode(item, true));
   }
   $("messages").append(card);
@@ -373,6 +392,8 @@ document.querySelectorAll("[data-question]").forEach(button => button.addEventLi
     const data = await api("/health");
     const version = data.consultation_version === "1.4" ? "V1.4" : "既有版本";
     $("mode").textContent = data.mode === "demo" ? `${version} 规则演示 · 非真实模型` : `${version} 模型适配模式 · 每条答复标明实际处理方式`;
+    if (data.knowledge_base_status === "available") $("mode").textContent = "交通银行（香港）知识库优先 · 本地检索，无模型调用";
+    if (data.knowledge_base_status === "unavailable") $("mode").textContent += " · 公开知识资料不可用或需复核";
     await refresh();
   } catch (error) { $("mode").textContent = "服务连接失败"; setStatus(error.message); }
 })();

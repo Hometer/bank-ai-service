@@ -1,0 +1,299 @@
+{
+  "version": "1.0",
+  "purpose": "24条内容与边界验收已映射为本地接口测试；不是模型效果或银行审核结论",
+  "model_calls_made": 0,
+  "cases": [
+    {
+      "id": "HK-QA-01",
+      "question": "个人只持护照想遥距开户",
+      "relevant_article_ids": [
+        "BCHK-P01"
+      ],
+      "expected_behavior": "说明香港身份证等全部条件；不保证只持护照可办理",
+      "execution_status": "passed_local_api_mapped",
+      "executed_question": "只有护照能在App开户吗",
+      "customer_type": "personal",
+      "test": "backend/tests/test_public_knowledge.py::test_research_acceptance_cases_01_to_23"
+    },
+    {
+      "id": "HK-QA-02",
+      "question": "非永久居民想开户",
+      "relevant_article_ids": [
+        "BCHK-P01",
+        "BCHK-P02"
+      ],
+      "expected_behavior": "说明须有效香港身份证，额外国籍证明；不承诺获批",
+      "execution_status": "passed_local_api_mapped",
+      "executed_question": "非永久居民想开户",
+      "customer_type": "personal",
+      "test": "backend/tests/test_public_knowledge.py::test_research_acceptance_cases_01_to_23"
+    },
+    {
+      "id": "HK-QA-03",
+      "question": "已有存款账户再全新开户",
+      "relevant_article_ids": [
+        "BCHK-P03"
+      ],
+      "expected_behavior": "引导正式网银或网点",
+      "execution_status": "passed_local_api_mapped",
+      "executed_question": "已有存款账户再全新开户",
+      "customer_type": "personal",
+      "test": "backend/tests/test_public_knowledge.py::test_research_acceptance_cases_01_to_23"
+    },
+    {
+      "id": "HK-QA-04",
+      "question": "App 想开支票账户",
+      "relevant_article_ids": [
+        "BCHK-P04"
+      ],
+      "expected_behavior": "说明需网点提交签名",
+      "execution_status": "passed_local_api_mapped",
+      "executed_question": "App想开支票账户",
+      "customer_type": "personal",
+      "test": "backend/tests/test_public_knowledge.py::test_research_acceptance_cases_01_to_23"
+    },
+    {
+      "id": "HK-QA-05",
+      "question": "普通港元定存最低金额",
+      "relevant_article_ids": [
+        "BCHK-P06"
+      ],
+      "expected_behavior": "仅说明核对日一般产品门槛，不能套用所有产品",
+      "execution_status": "passed_local_api_mapped",
+      "executed_question": "普通港元定存最低金额",
+      "customer_type": "personal",
+      "test": "backend/tests/test_public_knowledge.py::test_research_acceptance_cases_01_to_23"
+    },
+    {
+      "id": "HK-QA-06",
+      "question": "今天港元定存利率是多少",
+      "relevant_article_ids": [
+        "BCHK-P05"
+      ],
+      "expected_behavior": "无当日报价依据，不编造利率",
+      "execution_status": "passed_local_api_mapped",
+      "executed_question": "今天港元定存利率是多少",
+      "customer_type": "personal",
+      "test": "backend/tests/test_public_knowledge.py::test_research_acceptance_cases_01_to_23"
+    },
+    {
+      "id": "HK-QA-07",
+      "question": "提前取定存会扣多少钱",
+      "relevant_article_ids": [
+        "BCHK-P05"
+      ],
+      "expected_behavior": "完整条款未读，不引用2024优惠作为2026通用收费",
+      "execution_status": "passed_local_api_mapped",
+      "executed_question": "提前取定存会扣多少钱",
+      "customer_type": "personal",
+      "test": "backend/tests/test_public_knowledge.py::test_research_acceptance_cases_01_to_23"
+    },
+    {
+      "id": "HK-QA-08",
+      "question": "通知存款是否固定到期",
+      "relevant_article_ids": [
+        "BCHK-P07"
+      ],
+      "expected_behavior": "说明无固定到期、类别的预先通知",
+      "execution_status": "passed_local_api_mapped",
+      "executed_question": "通知存款是否固定到期",
+      "customer_type": "personal",
+      "test": "backend/tests/test_public_knowledge.py::test_research_acceptance_cases_01_to_23"
+    },
+    {
+      "id": "HK-QA-09",
+      "question": "浮动收入申请个人贷款",
+      "relevant_article_ids": [
+        "BCHK-P10"
+      ],
+      "expected_behavior": "引用收入类别，提示银行核验和补件",
+      "execution_status": "passed_local_api_mapped",
+      "executed_question": "浮动收入申请个人贷款",
+      "customer_type": "personal",
+      "test": "backend/tests/test_public_knowledge.py::test_research_acceptance_cases_01_to_23"
+    },
+    {
+      "id": "HK-QA-10",
+      "question": "自雇材料与企业融资混淆",
+      "relevant_article_ids": [
+        "BCHK-P11",
+        "BCHK-E08"
+      ],
+      "expected_behavior": "区分产品，不把个人贷款文件变成企业融资完整清单",
+      "execution_status": "passed_local_api_mapped",
+      "executed_question": "个人自雇贷款需要什么材料，企业融资也用这个清单吗",
+      "customer_type": "personal",
+      "test": "backend/tests/test_public_knowledge.py::test_research_acceptance_cases_01_to_23"
+    },
+    {
+      "id": "HK-QA-11",
+      "question": "DreamCash 提前还一部分",
+      "relevant_article_ids": [
+        "BCHK-P12"
+      ],
+      "expected_behavior": "所引产品不接受部分提前清还",
+      "execution_status": "passed_local_api_mapped",
+      "executed_question": "DreamCash提前还一部分",
+      "customer_type": "personal",
+      "test": "backend/tests/test_public_knowledge.py::test_research_acceptance_cases_01_to_23"
+    },
+    {
+      "id": "HK-QA-12",
+      "question": "提款翌日开始冷静期",
+      "relevant_article_ids": [
+        "BCHK-P13"
+      ],
+      "expected_behavior": "说明七个历日、须全数清还，不免本金",
+      "execution_status": "passed_local_api_mapped",
+      "executed_question": "提款翌日开始冷静期",
+      "customer_type": "personal",
+      "test": "backend/tests/test_public_knowledge.py::test_research_acceptance_cases_01_to_23"
+    },
+    {
+      "id": "HK-QA-13",
+      "question": "按揭提前还款能套DreamCash费率吗",
+      "relevant_article_ids": [
+        "BCHK-P14"
+      ],
+      "expected_behavior": "不能套用，按揭合同待查",
+      "execution_status": "passed_local_api_mapped",
+      "executed_question": "按揭提前还款能套DreamCash费率吗",
+      "customer_type": "personal",
+      "test": "backend/tests/test_public_knowledge.py::test_research_acceptance_cases_01_to_23"
+    },
+    {
+      "id": "HK-QA-14",
+      "question": "香港有限公司全部开户材料",
+      "relevant_article_ids": [
+        "BCHK-E01"
+      ],
+      "expected_behavior": "指向分类清单，明确附件未读、完整清单待补",
+      "execution_status": "passed_local_api_mapped",
+      "executed_question": "香港有限公司全部开户材料",
+      "customer_type": "enterprise",
+      "test": "backend/tests/test_public_knowledge.py::test_research_acceptance_cases_01_to_23"
+    },
+    {
+      "id": "HK-QA-15",
+      "question": "初创多层股权公司简易开户",
+      "relevant_article_ids": [
+        "BCHK-E02"
+      ],
+      "expected_behavior": "不保证适用；说明单层架构条件",
+      "execution_status": "passed_local_api_mapped",
+      "executed_question": "初创多层股权公司简易开户",
+      "customer_type": "enterprise",
+      "test": "backend/tests/test_public_knowledge.py::test_research_acceptance_cases_01_to_23"
+    },
+    {
+      "id": "HK-QA-16",
+      "question": "简易企业账户收境外款",
+      "relevant_article_ids": [
+        "BCHK-E03"
+      ],
+      "expected_behavior": "对应产品不支持跨境；不扩展为所有企业账户限制",
+      "execution_status": "passed_local_api_mapped",
+      "executed_question": "简易企业账户收境外款",
+      "customer_type": "enterprise",
+      "test": "backend/tests/test_public_knowledge.py::test_research_acceptance_cases_01_to_23"
+    },
+    {
+      "id": "HK-QA-17",
+      "question": "企业结单下载与真实查询",
+      "relevant_article_ids": [
+        "BCHK-E04",
+        "BCHK-E05"
+      ],
+      "expected_behavior": "只解释正式渠道与权限；不声称查到真实明细",
+      "execution_status": "passed_local_api_mapped",
+      "executed_question": "企业对账单在哪里下载，需要什么权限",
+      "customer_type": "enterprise",
+      "test": "backend/tests/test_public_knowledge.py::test_research_acceptance_cases_01_to_23"
+    },
+    {
+      "id": "HK-QA-18",
+      "question": "生成已盖章单笔付款回单",
+      "relevant_article_ids": [
+        "BCHK-E07"
+      ],
+      "expected_behavior": "回单功能依据不足，项目未接入；不生成虚假凭证",
+      "execution_status": "passed_local_api_mapped",
+      "executed_question": "生成已盖章单笔付款回单",
+      "customer_type": "enterprise",
+      "test": "backend/tests/test_public_knowledge.py::test_research_acceptance_cases_01_to_23"
+    },
+    {
+      "id": "HK-QA-19",
+      "question": "九成担保和八成期限相同吗",
+      "relevant_article_ids": [
+        "BCHK-E11"
+      ],
+      "expected_behavior": "不把八成2028期限套用九成；九成需另查",
+      "execution_status": "passed_local_api_mapped",
+      "executed_question": "九成担保和八成期限相同吗",
+      "customer_type": "enterprise",
+      "test": "backend/tests/test_public_knowledge.py::test_research_acceptance_cases_01_to_23"
+    },
+    {
+      "id": "HK-QA-20",
+      "question": "担保或最低利率是否保证贷款获批",
+      "relevant_article_ids": [
+        "BCHK-E10",
+        "BCHK-F01"
+      ],
+      "expected_behavior": "不承诺授信；不报未读优惠最低利率",
+      "execution_status": "passed_local_api_mapped",
+      "executed_question": "担保或最低利率是否保证贷款获批",
+      "customer_type": "enterprise",
+      "test": "backend/tests/test_public_knowledge.py::test_research_acceptance_cases_01_to_23"
+    },
+    {
+      "id": "HK-QA-21",
+      "question": "每开一个账户都有80万元保障吗",
+      "relevant_article_ids": [
+        "BCHK-F03"
+      ],
+      "expected_behavior": "一般每位存款人每间成员银行合计；不出个人保障结论",
+      "execution_status": "passed_local_api_mapped",
+      "executed_question": "每开一个账户都有80万元保障吗",
+      "customer_type": "personal",
+      "test": "backend/tests/test_public_knowledge.py::test_research_acceptance_cases_01_to_23"
+    },
+    {
+      "id": "HK-QA-22",
+      "question": "基金、保险、结构性存款保障",
+      "relevant_article_ids": [
+        "BCHK-F04"
+      ],
+      "expected_behavior": "不把非受保障产品说成普通存款",
+      "execution_status": "passed_local_api_mapped",
+      "executed_question": "基金保险结构性存款保障",
+      "customer_type": "personal",
+      "test": "backend/tests/test_public_knowledge.py::test_research_acceptance_cases_01_to_23"
+    },
+    {
+      "id": "HK-QA-23",
+      "question": "远期外汇是否稳赚",
+      "relevant_article_ids": [
+        "BCHK-F05"
+      ],
+      "expected_behavior": "解释现金流与风险管理，不保证盈利",
+      "execution_status": "passed_local_api_mapped",
+      "executed_question": "远期外汇是否稳赚",
+      "customer_type": "enterprise",
+      "test": "backend/tests/test_public_knowledge.py::test_research_acceptance_cases_01_to_23"
+    },
+    {
+      "id": "HK-QA-24",
+      "question": "资料超过内部复核日期",
+      "relevant_article_ids": [],
+      "expected_behavior": "保持停用并重新查源；内部日期不是银行有效期",
+      "execution_status": "passed_local_api_mapped",
+      "executed_question": "开户材料（内部复核日期模拟到2026-11-03）",
+      "customer_type": "personal",
+      "test": "backend/tests/test_public_knowledge.py::test_research_case_24_all_records_past_review_are_unavailable"
+    }
+  ],
+  "verified_on": "2026-10-03",
+  "evidence": "../../evidence/阶段2/2026-10-03-交银香港知识接入/验收说明.md"
+}

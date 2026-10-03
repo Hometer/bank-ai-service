@@ -19,6 +19,8 @@ class Settings:
     model_budget_path: Path | None = None
     catalog_path: Path | None = None
     knowledge_path: Path | None = None
+    public_knowledge_path: Path | None = None
+    public_activation_path: Path | None = None
 
     @classmethod
     def from_env(cls) -> "Settings":
@@ -34,4 +36,9 @@ class Settings:
             model_budget_path=Path(os.getenv("MODEL_BUDGET_PATH", str(ROOT / "data/model-budget.sqlite3"))),
             catalog_path=Path(os.environ["DEMO_CATALOG_PATH"]) if os.getenv("DEMO_CATALOG_PATH") else None,
             knowledge_path=Path(os.environ["DEMO_KNOWLEDGE_PATH"]) if os.getenv("DEMO_KNOWLEDGE_PATH") else None,
+            public_knowledge_path=(Path(os.getenv("PUBLIC_KNOWLEDGE_PATH", str(
+                ROOT / "docs/知识库/交通银行香港/knowledge-base.json")))
+                if os.getenv("PUBLIC_KNOWLEDGE_ENABLED", "1") == "1" else None),
+            public_activation_path=(Path(os.environ["PUBLIC_ACTIVATION_PATH"])
+                                    if os.getenv("PUBLIC_ACTIVATION_PATH") else None),
         )

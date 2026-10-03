@@ -33,7 +33,11 @@ def question_focus(text: str, suggested: Focus = "general") -> Focus:
     return suggested
 
 
-def public_part(item: Knowledge, focus: Focus, processing: Processing) -> AnswerPart:
+def public_part(item: Knowledge, focus: Focus, processing: Processing, question: str = "",
+                prior_ids: list[str] | None = None) -> AnswerPart:
+    if item.status == "public_unreviewed":
+        from app.public_retrieval import public_answer
+        return public_answer(item, question, focus, prior_ids)
     sentences = [part for part in re.split(r"(?<=[。！？])", item.text) if part.strip()]
     excerpt = sentences[0] if sentences else item.text
     coverage: Coverage = "overview" if focus == "general" else "partial"
@@ -48,13 +52,17 @@ def public_part(item: Knowledge, focus: Focus, processing: Processing) -> Answer
 
 def unknown_part(customer_type: CustomerType, processing: Processing) -> AnswerPart:
     return AnswerPart(customer_type=customer_type, kind="unknown", processing=processing, coverage="none",
-                      text="这一公开问题没有可用演示资料，无法确认具体规则；请查阅目标银行正式资料。本次未办理任何业务。")
+                      text=("知识库暂无这一公开问题的适用依据，或资料需要复核；请核对银行正式说明。本次未办理任何业务。"
+                            if processing == "knowledge" else
+                            "这一公开问题没有可用演示资料，无法确认具体规则；请查阅目标银行正式资料。本次未办理任何业务。"))
 
 
 def combine(parts: list[AnswerPart], mode: str, processing: Processing) -> Answer:
     answered = [part for part in parts if part.kind == "answered"]
-    coverage: Coverage = "partial" if answered and any(part.coverage != "overview" for part in parts) else (
+    coverage: Coverage = "supported" if parts and all(part.coverage == "supported" for part in parts) else (
+        "partial" if answered and any(part.coverage != "overview" for part in parts) else (
         "overview" if answered else "none")
+    )
     return Answer(kind="answered" if len(answered) == len(parts) else "unknown",
                   mode="model" if mode == "model" else "demo", processing=processing,
                   focus=parts[0].focus if len(parts) == 1 else "general", coverage=coverage, parts=parts,

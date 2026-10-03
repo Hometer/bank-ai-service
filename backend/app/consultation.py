@@ -20,12 +20,12 @@ from app.schemas import (
 from app.service import (
     BLOCKED_TEXT,
     HUMAN,
-    PRIVATE,
     URGENT,
     ModelInputTooLarge,
     ModelUnavailable,
     answer_question,
     eligible,
+    private_request,
     sanitize,
 )
 from app.services_catalog import knowledge_fingerprint
@@ -38,6 +38,17 @@ ALIASES = {
     "repayment": r"贷款|还款|提前还|借的钱|借款",
     "reconciliation": r"对账|回单",
     "financing": r"融资|贷款|借款|筹资",
+}
+PUBLIC_ALIASES = {
+    **ALIASES,
+    "opening": ALIASES["opening"] + r"|香港身份证|护照|非永久居民|简易账户|初创|注册|有限公司|支票账户",
+    "deposit": ALIASES["deposit"] + r"|定存|续存|起存",
+    "repayment": ALIASES["repayment"] + r"|DreamCash|私人贷款|自雇|佣金|冷静期|提款翌日",
+    "reconciliation": ALIASES["reconciliation"] + r"|网银|网上银行|手机银行|电子结单|对账单|付款凭证|指令|预约转账|法人|岗位|角色|企业交易",
+    "financing": ALIASES["financing"] + r"|八成|九成|中小企|信用证|贸易|进口|还息不还本|过渡资金",
+    "borrowing": r"APR|实际年利率|月平息|78法则|贷款后期|借贷成本|提前.*省.*利息",
+    "protection": r"存保|存款保障|结构性存款|80万.*保障|八十万.*保障|基金.*保障|保险.*保障|外币.*保障",
+    "exchange": r"外汇|远期|汇率风险",
 }
 UNSUPPORTED = re.compile(r"信用卡|积分|外汇|保险|理财")
 CORRECTION = re.compile(r"不是|并非|不问|理解错了|问错了|我问的是")
@@ -53,9 +64,10 @@ def scope_of(text: str, fallback: CustomerType) -> CustomerType:
     return ("personal" if match.group() == "个人" else "enterprise") if match else fallback
 
 
-def bind_topic(item: Knowledge) -> TopicRef:
+def bind_topic(item: Knowledge, article_ids: list[str] | None = None) -> TopicRef:
     return TopicRef(knowledge_id=item.id, customer_type=item.customer_type,
-                    knowledge_version=item.version, source_fingerprint=knowledge_fingerprint(item))
+                    knowledge_version=item.version, source_fingerprint=knowledge_fingerprint(item),
+                    article_ids=article_ids or [])
 
 
 def valid_topics(refs: list[TopicRef], items: list[Knowledge]) -> list[TopicRef]:
@@ -78,7 +90,7 @@ def fragments(text: str, fallback: CustomerType) -> list[tuple[CustomerType, str
     if len(matches) > 1:
         for i, match in enumerate(matches):
             end = matches[i+1].start() if i+1 < len(matches) else len(text)
-            fragment = text[match.start():end]
+            fragment = text[0 if i == 0 else match.start():end]
             # Shared trailing topic such as “个人和企业开户”.
             if re.fullmatch(r"(?:个人|企业|公司|对公)(?:和|与|以及|、|\s)*", fragment):
                 fragment = text[matches[-1].end():]
@@ -90,16 +102,29 @@ def fragments(text: str, fallback: CustomerType) -> list[tuple[CustomerType, str
 
 
 def matches_for(text: str, kind: CustomerType, items: list[Knowledge]) -> list[Knowledge]:
-    if UNSUPPORTED.search(text):
-        return []
-    return [item for item in eligible(items, kind)
-            if re.search(ALIASES.get(item.id.split("_", 1)[1], r"(?!)"), text)]
+    matched = []
+    for item in eligible(items, kind):
+        topic = item.id.split("_", 1)[1]
+        public = item.status == "public_unreviewed"
+        if UNSUPPORTED.search(text) and not (public and (
+                topic == "protection" or topic == "exchange"
+                or (topic == "financing" and "按证保险" in text))):
+            continue
+        aliases = PUBLIC_ALIASES if public else ALIASES
+        if re.search(aliases.get(topic, r"(?!)"), text, re.IGNORECASE):
+            matched.append(item)
+    special = [item for item in matched if item.id.endswith(("_borrowing", "_protection", "_exchange"))]
+    if (any(item.id == "personal_opening" and item.public_facts for item in matched)
+            and re.search(r"(?:已有|已经).*存款账户.*开户", text)):
+        matched = [item for item in matched if item.id != "personal_deposit"]
+    return special or matched
 
 
 def unknown_fragments(text: str, fallback: CustomerType, items: list[Knowledge]) -> list[tuple[CustomerType, str]]:
     parallel = bool(re.search(r"和|以及|还有|同时", text))
     return [(kind, fragment) for kind, fragment in fragments(text, fallback)
-            if UNSUPPORTED.search(fragment) or (parallel and not matches_for(fragment, kind, items)
+            if (UNSUPPORTED.search(fragment) and not matches_for(fragment, kind, items)) or (
+                parallel and not matches_for(fragment, kind, items)
                 and question_focus(fragment) == "general" and not VAGUE.search(fragment)
                 and not re.search(r"了解什么|看什么|看哪|核对什么|各要|都要|说明$", fragment))]
 
@@ -141,7 +166,8 @@ def clarification(context: ConsultationContext, mode: str, processing: Processin
     choices = "、".join(ref.knowledge_id.replace("personal_", "个人 ").replace("enterprise_", "企业 ")
                        for ref in refs)
     # Titles are translated before returning; identifiers are never presented as product instructions.
-    names = {"opening": "开户", "deposit": "存款", "repayment": "贷款", "financing": "融资", "reconciliation": "对账回单"}
+    names = {"opening": "开户", "deposit": "存款", "repayment": "贷款", "financing": "融资", "reconciliation": "对账回单",
+             "borrowing": "借贷成本", "protection": "存款保障", "exchange": "外汇远期"}
     for identifier, title in names.items():
         choices = choices.replace(identifier, title)
     question = f"请明确指的是{choices}中的哪一个主题。" if choices else "请说明要咨询个人还是企业，以及开户、存款、贷款、对账回单或融资中的具体主题。"
@@ -158,12 +184,12 @@ def answer_consultation(text: str, customer_type: CustomerType, items: list[Know
         safe, answer = answer_question(text, customer_type, [], settings)
         answer.processing, answer.coverage = "rule", "none"
         return safe, answer, ConsultationContext()
-    if any(word in safe for word in PRIVATE):
+    if private_request(safe, public_knowledge=settings.public_knowledge_path is not None):
         private_parts: list[AnswerPart] = []
         public_ids: set[str] = set()
         public_gaps: set[tuple[CustomerType, str]] = set()
         for kind, fragment in fragments(safe, customer_type):
-            if any(word in fragment for word in PRIVATE):
+            if private_request(fragment, public_knowledge=settings.public_knowledge_path is not None):
                 _, unavailable = answer_question(fragment, kind, [], settings)
                 private_parts.append(AnswerPart(customer_type=kind, kind="private_unavailable",
                     text=unavailable.text, processing="rule", coverage="none"))
@@ -171,7 +197,7 @@ def answer_consultation(text: str, customer_type: CustomerType, items: list[Know
                 matched = matches_for(fragment, kind, items)
                 for item in matched:
                     if item.id not in public_ids:
-                        private_parts.append(public_part(item, question_focus(fragment), "rule"))
+                        private_parts.append(public_part(item, question_focus(fragment), "rule", fragment))
                         public_ids.add(item.id)
                 if not matched and (kind, fragment) not in public_gaps:
                     private_parts.append(unknown_part(kind, "rule"))
@@ -188,7 +214,8 @@ def answer_consultation(text: str, customer_type: CustomerType, items: list[Know
                     included_limit = True
             return safe, combine(limited, mode, "rule"), ConsultationContext()
         if public_ids or public_gaps:
-            return safe, combine(private_parts, mode, "rule"), ConsultationContext()
+            mixed_processing: Processing = "knowledge" if any(part.processing == "knowledge" for part in private_parts) else "rule"
+            return safe, combine(private_parts, mode, mixed_processing), ConsultationContext()
         _, unavailable = answer_question(safe, customer_type, [], settings)
         unavailable.processing, unavailable.coverage = "rule", "none"
         return safe, unavailable, ConsultationContext()
@@ -235,7 +262,8 @@ def answer_consultation(text: str, customer_type: CustomerType, items: list[Know
     if not target_types:
         target_types = {ref.customer_type for ref in context.topics + context.pending_topics} or {customer_type}
     candidates = [item for kind in ("personal", "enterprise") if kind in target_types for item in eligible(items, kind)]
-    if settings.mode == "model" and candidates and not definite_ambiguity:
+    knowledge_mode = settings.public_knowledge_path is not None
+    if settings.mode == "model" and candidates and not definite_ambiguity and not knowledge_mode:
         try:
             route = model_route(safe, customer_type, candidates, context, settings)
             if route.action == "select" and explicit_ids and {item.id for item in route.items} != explicit_ids:
@@ -249,6 +277,8 @@ def answer_consultation(text: str, customer_type: CustomerType, items: list[Know
                 text="模型未获得有效结果，已结束等待，没有生成可确认的业务答案。已保存的有效主题与澄清状态保留，可稍后重试或选择演示目录。"), context
     else:
         route = draft
+        if knowledge_mode:
+            processing = "knowledge"
     # A selection cannot defeat explicit unknown topics or unresolved multi-topic pointers.
     if UNSUPPORTED.search(safe) and not explicit_matches:
         route = ConsultationRoute(action="unknown", items=[])
@@ -264,9 +294,16 @@ def answer_consultation(text: str, customer_type: CustomerType, items: list[Know
         item = selected[routed.id]
         related = [fragment for target, fragment in fragments(positive_text(safe), customer_type)
                    if item in matches_for(fragment, target, items)]
+        if item.public_facts and sum(selected[choice.id].customer_type == item.customer_type
+                                     for choice in route.items) == 1:
+            related += [fragment for target, fragment in fragments(positive_text(safe), customer_type)
+                        if target == item.customer_type and not matches_for(fragment, target, items)
+                        and question_focus(fragment) != "general"]
         question = "。".join(related) if related else safe
-        parts.append(public_part(item, question_focus(question, routed.focus), processing))
-        refs.append(bind_topic(item))
+        prior_ids = next((ref.article_ids for ref in context.topics if ref.knowledge_id == item.id), [])
+        part = public_part(item, question_focus(question, routed.focus), processing, question, prior_ids)
+        parts.append(part)
+        refs.append(bind_topic(item, part.sources[0].article_ids if part.sources else []))
     groups = fragments(positive_text(safe), customer_type)
     for kind, _ in unknown_groups:
         if not any(part.customer_type == kind and part.kind == "unknown" for part in parts):

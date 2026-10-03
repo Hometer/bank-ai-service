@@ -22,6 +22,7 @@ from starlette.middleware.trustedhost import TrustedHostMiddleware
 from app.config import Settings
 from app.consultation import answer_consultation, bind_topic, is_cancel, valid_topics
 from app.db import Conversation, Message, SafetyNotice, cleanup_expired, open_database
+from app.knowledge_base import public_configuration
 from app.schemas import (
     Answer,
     ConsultationContext,
@@ -41,7 +42,7 @@ from app.schemas import (
     SessionInfo,
     Turn,
 )
-from app.service import BLOCKED_TEXT, HUMAN, PRIVATE, URGENT, URGENT_NOTICE, load_knowledge, sanitize
+from app.service import BLOCKED_TEXT, HUMAN, URGENT, URGENT_NOTICE, load_knowledge, private_request, sanitize
 from app.services_catalog import (
     CapabilityChanged,
     CatalogConfig,
@@ -142,6 +143,9 @@ def create_app(settings: Settings | None = None) -> FastAPI:
                 items = load_knowledge(settings.knowledge_path)
         except (OSError, ValueError, TypeError, ValidationError):
             raise ServiceConfigUnavailable from None
+        if settings.public_knowledge_path is not None:
+            entries, items = public_configuration(settings.public_knowledge_path,
+                                                  settings.public_activation_path, entries, items)
         return entries, items
 
     def current_services(item: Conversation, *, optional: bool = False) -> ServiceView | None:
@@ -198,11 +202,21 @@ def create_app(settings: Settings | None = None) -> FastAPI:
         return JSONResponse({"error": {"code": "CAPABILITY_CHANGED",
                             "message": "演示服务或知识已更新，请刷新目录后重新选择。"}}, status_code=409)
 
-    @app.get("/api/v1/health", response_model=Health, responses=ERRORS)
+    @app.get("/api/v1/health", response_model=Health, response_model_exclude_unset=True, responses=ERRORS)
     def health() -> Health:
         with app.state.sessions() as db:
             db.execute(text("SELECT 1"))
-        return Health.model_validate({"mode": settings.mode})
+        result = Health.model_validate({"status": "ok", "mode": settings.mode,
+                                        "real_model_verification": "待验", "consultation_version": "1.4"})
+        if settings.public_knowledge_path is not None:
+            try:
+                _, items = configuration()
+                active = [item for item in items if item.status == "public_unreviewed"]
+                result.knowledge_base_status = "available" if active else "unavailable"
+                result.knowledge_base_version = active[0].version if active else None
+            except ServiceConfigUnavailable:
+                result.knowledge_base_status = "unavailable"
+        return result
 
     @app.post("/api/v1/sessions", response_model=SessionInfo, status_code=201, responses=ERRORS)
     def create_session(body: CreateSession, request: Request, response: Response) -> SessionInfo:
@@ -353,8 +367,9 @@ def create_app(settings: Settings | None = None) -> FastAPI:
         owner = owner_hash(request)
         urgent = any(word in body.text for word in URGENT)
         cancelling = is_cancel(body.text)
+        private = private_request(body.text, public_knowledge=settings.public_knowledge_path is not None)
         protected_route = (urgent or sanitize(body.text) == BLOCKED_TEXT
-                           or any(word in body.text for word in (*HUMAN, *PRIVATE)) or cancelling)
+                           or any(word in body.text for word in HUMAN) or private or cancelling)
         with app.state.sessions() as db:
             item = owned_session(db, sid, owner)
             customer_type = cast(CustomerType, item.customer_type)
@@ -365,7 +380,7 @@ def create_app(settings: Settings | None = None) -> FastAPI:
         controlled_question = body.capability_id is not None and not urgent
         entries: list[CatalogConfig]
         items: list[Knowledge]
-        mixed_private = (any(word in body.text for word in PRIVATE)
+        mixed_private = (private
                          and not (urgent or sanitize(body.text) == BLOCKED_TEXT
                                   or any(word in body.text for word in HUMAN) or cancelling))
         if protected_route and not controlled_question and not mixed_private:
@@ -374,7 +389,7 @@ def create_app(settings: Settings | None = None) -> FastAPI:
             try:
                 entries, items = configuration()
             except ServiceConfigUnavailable:
-                if controlled_question or not any(word in body.text for word in PRIVATE):
+                if controlled_question or not private:
                     raise
                 # A mixed question can retain its public answers when configuration is healthy.
                 # If unavailable, the explicit private-query limitation still remains reachable.

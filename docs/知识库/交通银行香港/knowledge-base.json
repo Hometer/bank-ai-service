@@ -1,0 +1,1185 @@
+{
+  "schema_version": "1.0",
+  "bundle_version": "bocom-hk-public-2026-10-03-r1",
+  "title": "交通银行（香港）公开金融知识候选库",
+  "retrieved_on": "2026-10-03",
+  "primary_entity": "交通银行（香港）有限公司",
+  "jurisdiction": "HK",
+  "publication_status": "staged_not_integrated",
+  "review_policy": "review_due_on 是本项目内部复核期限，不是银行产品有效期；过期候选需重新查源，不自动继续使用。null 表示来源未明确，不可补填银行有效期。",
+  "sources": [
+    {
+      "id": "S01",
+      "title": "遥距开户概览",
+      "url": "https://hk.bankcomm.com/hk/shtml/hk/en/2005575/2602047/list.shtml?channelId=2005575",
+      "entity": "bank_hk_ltd",
+      "jurisdiction": "HK",
+      "publisher": "交通银行（香港）有限公司",
+      "verification": "read_page",
+      "locator": "准备事项及流程",
+      "published_on": null,
+      "retrieved_on": "2026-10-03",
+      "document_effective_from": null,
+      "document_valid_until": null,
+      "note": "页面未明示发布日期的字段保留 null；核对日期不表示银行批准。"
+    },
+    {
+      "id": "S02",
+      "title": "遥距开户 FAQ",
+      "url": "https://hk.bankcomm.com/hk/shtml/hk/en/2005575/2602047/2626806.shtml?channelId=2005575",
+      "entity": "bank_hk_ltd",
+      "jurisdiction": "HK",
+      "publisher": "交通银行（香港）有限公司",
+      "verification": "read_browser",
+      "locator": "FAQ 第 2–7、17 项",
+      "published_on": null,
+      "retrieved_on": "2026-10-03",
+      "document_effective_from": null,
+      "document_valid_until": null,
+      "note": "页面未明示发布日期的字段保留 null；核对日期不表示银行批准。"
+    },
+    {
+      "id": "S03",
+      "title": "个人定期及通知存款",
+      "url": "https://hk.bankcomm.com/hk/shtml/hk/cn/2005276/2005277/2005284/2005286/list.shtml?channelId=2005276",
+      "entity": "bank_hk_ltd",
+      "jurisdiction": "HK",
+      "publisher": "交通银行（香港）有限公司",
+      "verification": "read_page",
+      "locator": "定期／人民币／通知存款分节",
+      "published_on": null,
+      "retrieved_on": "2026-10-03",
+      "document_effective_from": null,
+      "document_valid_until": null,
+      "note": "页面未明示发布日期的字段保留 null；核对日期不表示银行批准。"
+    },
+    {
+      "id": "S04",
+      "title": "DreamCash 所需文件",
+      "url": "https://www.hk.bankcomm.com/hk/shtml/hk/tw/2004980/2005048/2005049/2073765.shtml?channelId=2004980",
+      "entity": "bank_hk_ltd",
+      "jurisdiction": "HK",
+      "publisher": "交通银行（香港）有限公司",
+      "verification": "read_page",
+      "locator": "身份证明、住址、收入及自雇人士分节",
+      "published_on": null,
+      "retrieved_on": "2026-10-03",
+      "document_effective_from": null,
+      "document_valid_until": null,
+      "note": "页面未明示发布日期的字段保留 null；核对日期不表示银行批准。"
+    },
+    {
+      "id": "S05",
+      "title": "DreamCash 本金利息及提前清还 FAQ",
+      "url": "https://eb.hk.bankcomm.com/eb/html/zh_CN/loan_shouxufei.html",
+      "entity": "bank_hk_ltd",
+      "jurisdiction": "HK",
+      "publisher": "交通银行（香港）有限公司",
+      "verification": "read_page",
+      "locator": "第 2–5 项：提前清还、冷静期、不接受部分清还",
+      "published_on": null,
+      "retrieved_on": "2026-10-03",
+      "document_effective_from": null,
+      "document_valid_until": null,
+      "note": "页面未明示发布日期的字段保留 null；核对日期不表示银行批准。"
+    },
+    {
+      "id": "S06",
+      "title": "企业开户文件分类入口",
+      "url": "https://www.hk.bankcomm.com/hk/shtml/hk/tw/2005089/2005091/2007090/list.shtml",
+      "entity": "bank_hk_ltd",
+      "jurisdiction": "HK",
+      "publisher": "交通银行（香港）有限公司",
+      "verification": "read_page",
+      "locator": "按企业法律形态划分的文件链接",
+      "published_on": null,
+      "retrieved_on": "2026-10-03",
+      "document_effective_from": null,
+      "document_valid_until": null,
+      "note": "页面未明示发布日期的字段保留 null；核对日期不表示银行批准。"
+    },
+    {
+      "id": "S07",
+      "title": "简易银行账户",
+      "url": "https://www.bankcomm.com.hk/hk/shtml/hk/tw/2005089/5005256/list.shtml?channelId=2005089",
+      "entity": "bank_hk_ltd",
+      "jurisdiction": "HK",
+      "publisher": "交通银行（香港）有限公司",
+      "verification": "read_page",
+      "locator": "适用公司、账户种类及本地转账限制；以页脚实体为准",
+      "published_on": null,
+      "retrieved_on": "2026-10-03",
+      "document_effective_from": null,
+      "document_valid_until": null,
+      "note": "页面未明示发布日期的字段保留 null；核对日期不表示银行批准。"
+    },
+    {
+      "id": "S08",
+      "title": "企业网上银行",
+      "url": "https://www.hk.bankcomm.com/hk/shtml/hk/tw/2005089/2005090/list.shtml?channelId=2005089",
+      "entity": "bank_hk_ltd",
+      "jurisdiction": "HK",
+      "publisher": "交通银行（香港）有限公司",
+      "verification": "read_page",
+      "locator": "用户角色及账务查询／电子结单",
+      "published_on": null,
+      "retrieved_on": "2026-10-03",
+      "document_effective_from": null,
+      "document_valid_until": null,
+      "note": "页面未明示发布日期的字段保留 null；核对日期不表示银行批准。"
+    },
+    {
+      "id": "S09",
+      "title": "企业流动电话银行",
+      "url": "https://www.bankcomm.com.hk/hk/shtml/hk/tw/2005089/2602794/list.shtml",
+      "entity": "bank_hk_ltd",
+      "jurisdiction": "HK",
+      "publisher": "交通银行（香港）有限公司",
+      "verification": "read_page",
+      "locator": "账务查询、指令授权、预约交易；以页脚实体为准",
+      "published_on": null,
+      "retrieved_on": "2026-10-03",
+      "document_effective_from": null,
+      "document_valid_until": null,
+      "note": "页面未明示发布日期的字段保留 null；核对日期不表示银行批准。"
+    },
+    {
+      "id": "S10",
+      "title": "企业融资",
+      "url": "https://www.hk.bankcomm.com/hk/shtml/hk/tw/2005089/2005097/2005098/list.shtml?channelId=2005089",
+      "entity": "bank_hk_ltd",
+      "jurisdiction": "HK",
+      "publisher": "交通银行（香港）有限公司",
+      "verification": "read_page",
+      "locator": "项目及过渡融资概览",
+      "published_on": null,
+      "retrieved_on": "2026-10-03",
+      "document_effective_from": null,
+      "document_valid_until": null,
+      "note": "页面未明示发布日期的字段保留 null；核对日期不表示银行批准。"
+    },
+    {
+      "id": "S11",
+      "title": "进口服务",
+      "url": "https://www.hk.bankcomm.com/hk/shtml/hk/tw/2005089/2005104/2005105/list.shtml?channelId=2005089",
+      "entity": "bank_hk_ltd",
+      "jurisdiction": "HK",
+      "publisher": "交通银行（香港）有限公司",
+      "verification": "read_page",
+      "locator": "进口贸易融资产品名称",
+      "published_on": null,
+      "retrieved_on": "2026-10-03",
+      "document_effective_from": null,
+      "document_valid_until": null,
+      "note": "页面未明示发布日期的字段保留 null；核对日期不表示银行批准。"
+    },
+    {
+      "id": "S12",
+      "title": "交银香港：中小企融资担保计划",
+      "url": "https://www.hk.bankcomm.com/hk/shtml/hk/tw/2005089/2005109/2005111/list.shtml?channelId=2005089",
+      "entity": "bank_hk_ltd",
+      "jurisdiction": "HK",
+      "publisher": "交通银行（香港）有限公司",
+      "verification": "read_page",
+      "locator": "只采用银行参与及用途；不采用概览数字",
+      "published_on": null,
+      "retrieved_on": "2026-10-03",
+      "document_effective_from": null,
+      "document_valid_until": null,
+      "note": "页面未注明有效期，仅采用已读概念与参与信息；额度、担保比例、期限均留待最新产品文件核对。"
+    },
+    {
+      "id": "S13",
+      "title": "外汇远期合约",
+      "url": "https://www.hk.bankcomm.com/hk/shtml/hk/tw/2005089/2005115/2005116/list.shtml?channelId=2005116",
+      "entity": "bank_hk_ltd",
+      "jurisdiction": "HK",
+      "publisher": "交通银行（香港）有限公司",
+      "verification": "read_page",
+      "locator": "远期合约概念及风险",
+      "published_on": null,
+      "retrieved_on": "2026-10-03",
+      "document_effective_from": null,
+      "document_valid_until": null,
+      "note": "页面未明示发布日期的字段保留 null；核对日期不表示银行批准。"
+    },
+    {
+      "id": "S14",
+      "title": "投委会：月平息睇真啲",
+      "url": "https://www.ifec.org.hk/web/tc/moneyessentials/debts-and-borrowing/take-new-loan/Monthly-flat-rate.page",
+      "entity": "hk_financial_education",
+      "jurisdiction": "HK",
+      "publisher": "投资者及理财教育委员会",
+      "verification": "read_page",
+      "locator": "月平息与实际年利率",
+      "published_on": "2021-06-08",
+      "retrieved_on": "2026-10-03",
+      "document_effective_from": null,
+      "document_valid_until": null,
+      "note": "页面未明示发布日期的字段保留 null；核对日期不表示银行批准。"
+    },
+    {
+      "id": "S15",
+      "title": "投委会：提前还款与78法则",
+      "url": "https://www.ifec.org.hk/web/tc/moneyessentials/debts-and-borrowing/manage-exist-debt/Early-repayment.page",
+      "entity": "hk_financial_education",
+      "jurisdiction": "HK",
+      "publisher": "投资者及理财教育委员会",
+      "verification": "read_page",
+      "locator": "利息分配及提前清还成本",
+      "published_on": "2019-12-12",
+      "retrieved_on": "2026-10-03",
+      "document_effective_from": null,
+      "document_valid_until": null,
+      "note": "页面未明示发布日期的字段保留 null；核对日期不表示银行批准。"
+    },
+    {
+      "id": "S16",
+      "title": "存保委员会：存保计划特点",
+      "url": "https://www.dps.org.hk/tc/for-depositors/features-of-dps/",
+      "entity": "hk_public_rules",
+      "jurisdiction": "HK",
+      "publisher": "香港存款保障委员会",
+      "verification": "read_browser",
+      "locator": "受保障及不受保障的产品",
+      "published_on": null,
+      "retrieved_on": "2026-10-03",
+      "document_effective_from": null,
+      "document_valid_until": null,
+      "note": "页面未明示发布日期的字段保留 null；核对日期不表示银行批准。"
+    },
+    {
+      "id": "S17",
+      "title": "存保委员会：常见问题",
+      "url": "https://www.dps.org.hk/tc/for-depositors/faqs/",
+      "entity": "hk_public_rules",
+      "jurisdiction": "HK",
+      "publisher": "香港存款保障委员会",
+      "verification": "read_browser",
+      "locator": "保障水平；在浏览器展开官方FAQ后核实每位存款人每间成员银行的上限",
+      "published_on": null,
+      "retrieved_on": "2026-10-03",
+      "document_effective_from": null,
+      "document_valid_until": null,
+      "note": "浏览器已核实保障水平分节；其他FAQ分节没有据此自动视作已读。"
+    },
+    {
+      "id": "S18",
+      "title": "香港政府新闻：存款保障上限调整",
+      "url": "https://www.news.gov.hk/chi/2024/07/20240703/20240703_193656_291.html?name=finance&type=category",
+      "entity": "hk_public_rules",
+      "jurisdiction": "HK",
+      "publisher": "香港特区政府新闻处",
+      "verification": "read_page",
+      "locator": "2024-10-01 保障上限调整",
+      "published_on": "2024-07-03",
+      "retrieved_on": "2026-10-03",
+      "document_effective_from": null,
+      "document_valid_until": null,
+      "note": "2026-10-03接入前补齐核查：采用已完整读取的政府新闻正文，替代原历史页面的搜索摘录。"
+    },
+    {
+      "id": "S19",
+      "title": "香港政府：中小企融资担保新措施",
+      "url": "https://www.info.gov.hk/gia/general/202509/17/P2025091700598.htm",
+      "entity": "hk_public_rules",
+      "jurisdiction": "HK",
+      "publisher": "香港特区政府新闻公报（代香港金融管理局发出）",
+      "verification": "read_browser",
+      "locator": "代金管局发出的八成担保及还息不还本延期公告",
+      "published_on": "2025-09-17",
+      "retrieved_on": "2026-10-03",
+      "document_effective_from": null,
+      "document_valid_until": null,
+      "note": "页面未明示发布日期的字段保留 null；核对日期不表示银行批准。"
+    }
+  ],
+  "articles": [
+    {
+      "id": "BCHK-P01",
+      "title": "遥距开户资格",
+      "customer_type": "personal",
+      "entity": "bank_hk_ltd",
+      "jurisdiction": "HK",
+      "project_topic": "personal_opening",
+      "focus": "qualification",
+      "questions": [
+        "只有护照能在 App 开户吗？",
+        "线上开户有什么条件？"
+      ],
+      "answer": "官网列出的遥距开户条件包括：无该行存款账户、持有效香港身份证、从未改名及年满18岁。非永久居民还须提供国籍证明。",
+      "limits": "不能据此断言只持护照的访港人士符合遥距开户要求；网点申请另行核对。",
+      "source_ids": [
+        "S02"
+      ],
+      "claim_locator": "FAQ 第 2–4 项",
+      "retrieved_on": "2026-10-03",
+      "source_effective_from": null,
+      "source_valid_until": null,
+      "review_due_on": "2026-11-02",
+      "review_reason": "产品渠道或金融概念，内部安排30天内复核",
+      "status": "staged",
+      "enabled": false,
+      "bank_reviewed": false
+    },
+    {
+      "id": "BCHK-P02",
+      "title": "遥距开户准备与步骤",
+      "customer_type": "personal",
+      "entity": "bank_hk_ltd",
+      "jurisdiction": "HK",
+      "project_topic": "personal_opening",
+      "focus": "materials",
+      "questions": [
+        "个人在线开户需要准备什么？",
+        "开户怎么操作？"
+      ],
+      "answer": "准备官方 BOCOM(HK) Mobile Banking App、香港身份证及手机号码。流程包括填写联系信息、身份验证和填写资料并确认条款。",
+      "limits": "这是遥距渠道准备说明；不要向本项目提交身份证图片或真实个人资料。",
+      "source_ids": [
+        "S01"
+      ],
+      "claim_locator": "准备事项及开户流程",
+      "retrieved_on": "2026-10-03",
+      "source_effective_from": null,
+      "source_valid_until": null,
+      "review_due_on": "2026-11-02",
+      "review_reason": "产品渠道或金融概念，内部安排30天内复核",
+      "status": "staged",
+      "enabled": false,
+      "bank_reviewed": false
+    },
+    {
+      "id": "BCHK-P03",
+      "title": "开户渠道与现有客户",
+      "customer_type": "personal",
+      "entity": "bank_hk_ltd",
+      "jurisdiction": "HK",
+      "project_topic": "personal_opening",
+      "focus": "channel",
+      "questions": [
+        "已经有交行香港存款账户还能遥距开户吗？",
+        "有账户还要用全新开户吗？"
+      ],
+      "answer": "已有该行存款账户的客户，应通过网上银行或网点申请其他账户；遥距全新开户服务针对未持有该行存款账户的申请人。",
+      "limits": "具体账户可开立范围仍需银行核对，不代表已成功开户。",
+      "source_ids": [
+        "S02"
+      ],
+      "claim_locator": "FAQ 第 2 项",
+      "retrieved_on": "2026-10-03",
+      "source_effective_from": null,
+      "source_valid_until": null,
+      "review_due_on": "2026-11-02",
+      "review_reason": "产品渠道或金融概念，内部安排30天内复核",
+      "status": "staged",
+      "enabled": false,
+      "bank_reviewed": false
+    },
+    {
+      "id": "BCHK-P04",
+      "title": "遥距开户的账户类型",
+      "customer_type": "personal",
+      "entity": "bank_hk_ltd",
+      "jurisdiction": "HK",
+      "project_topic": "personal_opening",
+      "focus": "general",
+      "questions": [
+        "App 能开支票账户吗？",
+        "网上可以开哪些账户？"
+      ],
+      "answer": "遥距开户支持储蓄及定期存款账户；支票往来账户需到网点提交签名。",
+      "limits": "不要把遥距开立储蓄账户视作已开通全部投资及支票服务。",
+      "source_ids": [
+        "S02"
+      ],
+      "claim_locator": "FAQ 账户种类项（网页重复编号 6）",
+      "retrieved_on": "2026-10-03",
+      "source_effective_from": null,
+      "source_valid_until": null,
+      "review_due_on": "2026-11-02",
+      "review_reason": "产品渠道或金融概念，内部安排30天内复核",
+      "status": "staged",
+      "enabled": false,
+      "bank_reviewed": false
+    },
+    {
+      "id": "BCHK-P05",
+      "title": "定期存款的基本含义",
+      "customer_type": "personal",
+      "entity": "bank_hk_ltd",
+      "jurisdiction": "HK",
+      "project_topic": "personal_deposit",
+      "focus": "general",
+      "questions": [
+        "定期存款是什么？",
+        "存定期要选什么？"
+      ],
+      "answer": "定期存款约定存款金额及期限。应核对币种、期限、到期处理及产品条款；产品页有港元、人民币和外币等类别。",
+      "limits": "本条不提供当日利率；提前支取条款尚未完整读取，不能承诺随时无损取款。",
+      "source_ids": [
+        "S03"
+      ],
+      "claim_locator": "定期存款概览及币种分节",
+      "retrieved_on": "2026-10-03",
+      "source_effective_from": null,
+      "source_valid_until": null,
+      "review_due_on": "2026-11-02",
+      "review_reason": "产品渠道或金融概念，内部安排30天内复核",
+      "status": "staged",
+      "enabled": false,
+      "bank_reviewed": false
+    },
+    {
+      "id": "BCHK-P06",
+      "title": "一般港元定存起存额",
+      "customer_type": "personal",
+      "entity": "bank_hk_ltd",
+      "jurisdiction": "HK",
+      "project_topic": "personal_deposit",
+      "focus": "qualification",
+      "questions": [
+        "普通港元定存最低多少？",
+        "所有定存都只要一万港币吗？"
+      ],
+      "answer": "核对日产品页列明，一般港元定期存款最低为10,000港元。不同优惠或大额产品的起存额另有规定。",
+      "limits": "这是网页所列一般产品门槛；办理前再次核对，不能套用到所有币种、优惠及渠道。",
+      "source_ids": [
+        "S03"
+      ],
+      "claim_locator": "港元定期存款起存额",
+      "retrieved_on": "2026-10-03",
+      "source_effective_from": null,
+      "source_valid_until": null,
+      "review_due_on": "2026-10-10",
+      "review_reason": "含金额、收费、期限或申请时效，内部安排7天内复核",
+      "status": "staged",
+      "enabled": false,
+      "bank_reviewed": false
+    },
+    {
+      "id": "BCHK-P07",
+      "title": "通知存款与定存不同",
+      "customer_type": "personal",
+      "entity": "bank_hk_ltd",
+      "jurisdiction": "HK",
+      "project_topic": "personal_deposit",
+      "focus": "general",
+      "questions": [
+        "通知存款是不是定期？",
+        "通知存款怎么取？"
+      ],
+      "answer": "通知存款没有固定到期日；产品页列有一天或七天通知类别，提款须按相应类别预先通知银行。",
+      "limits": "不要套用一般定期存款到期及提前支取规则；具体通知和计息安排需核对条款。",
+      "source_ids": [
+        "S03"
+      ],
+      "claim_locator": "通知存款",
+      "retrieved_on": "2026-10-03",
+      "source_effective_from": null,
+      "source_valid_until": null,
+      "review_due_on": "2026-11-02",
+      "review_reason": "产品渠道或金融概念，内部安排30天内复核",
+      "status": "staged",
+      "enabled": false,
+      "bank_reviewed": false
+    },
+    {
+      "id": "BCHK-P08",
+      "title": "人民币定存到期续存",
+      "customer_type": "personal",
+      "entity": "bank_hk_ltd",
+      "jurisdiction": "HK",
+      "project_topic": "personal_deposit",
+      "focus": "general",
+      "questions": [
+        "人民币定存可以自动续期吗？",
+        "定存到期怎么处理？"
+      ],
+      "answer": "人民币定期存款产品页列有自动续期选择。",
+      "limits": "该信息仅对应所引产品；续期利率、指示是否已设置及其他币种规则须另行核对。",
+      "source_ids": [
+        "S03"
+      ],
+      "claim_locator": "人民币定期存款",
+      "retrieved_on": "2026-10-03",
+      "source_effective_from": null,
+      "source_valid_until": null,
+      "review_due_on": "2026-11-02",
+      "review_reason": "产品渠道或金融概念，内部安排30天内复核",
+      "status": "staged",
+      "enabled": false,
+      "bank_reviewed": false
+    },
+    {
+      "id": "BCHK-P09",
+      "title": "私人贷款基本文件及固定收入",
+      "customer_type": "personal",
+      "entity": "bank_hk_ltd",
+      "jurisdiction": "HK",
+      "project_topic": "personal_repayment",
+      "focus": "materials",
+      "questions": [
+        "DreamCash 要什么材料？",
+        "固定工资的人申请贷款要准备什么？"
+      ],
+      "answer": "官网列有身份证明、近三个月住址证明及用于放款还款的账户证明。固定收入人士可按清单提交近期工资记录等收入证明。",
+      "limits": "收入证明有不同选项；本文并非完整且排他的清单，银行可要求补件。只在银行正式渠道提交。",
+      "source_ids": [
+        "S04"
+      ],
+      "claim_locator": "基本文件及固定收入人士",
+      "retrieved_on": "2026-10-03",
+      "source_effective_from": null,
+      "source_valid_until": null,
+      "review_due_on": "2026-11-02",
+      "review_reason": "产品渠道或金融概念，内部安排30天内复核",
+      "status": "staged",
+      "enabled": false,
+      "bank_reviewed": false
+    },
+    {
+      "id": "BCHK-P10",
+      "title": "浮动收入贷款材料",
+      "customer_type": "personal",
+      "entity": "bank_hk_ltd",
+      "jurisdiction": "HK",
+      "project_topic": "personal_repayment",
+      "focus": "materials",
+      "questions": [
+        "佣金收入申请私人贷款要什么？",
+        "浮动工资需要几个月证明？"
+      ],
+      "answer": "浮动收入人士的清单列有最近三个月薪金记录，或税务通知加最近一个月薪金账户记录等选项。",
+      "limits": "只对应 DreamCash 所引清单；银行会按实际情况核对。",
+      "source_ids": [
+        "S04"
+      ],
+      "claim_locator": "非固定收入人士",
+      "retrieved_on": "2026-10-03",
+      "source_effective_from": null,
+      "source_valid_until": null,
+      "review_due_on": "2026-11-02",
+      "review_reason": "产品渠道或金融概念，内部安排30天内复核",
+      "status": "staged",
+      "enabled": false,
+      "bank_reviewed": false
+    },
+    {
+      "id": "BCHK-P11",
+      "title": "自雇人士贷款文件",
+      "customer_type": "personal",
+      "entity": "bank_hk_ltd",
+      "jurisdiction": "HK",
+      "project_topic": "personal_repayment",
+      "focus": "materials",
+      "questions": [
+        "自雇人士可以用什么证明收入？",
+        "个体经营申请私人贷款材料？"
+      ],
+      "answer": "自雇人士清单包括商业登记、近三个月个人或公司银行记录，并配合近期税务通知或经审核财务报表。",
+      "limits": "提交公司资料证明自雇收入，不代表申请企业融资或已取得公司账户操作权限。",
+      "source_ids": [
+        "S04"
+      ],
+      "claim_locator": "自雇人士",
+      "retrieved_on": "2026-10-03",
+      "source_effective_from": null,
+      "source_valid_until": null,
+      "review_due_on": "2026-11-02",
+      "review_reason": "产品渠道或金融概念，内部安排30天内复核",
+      "status": "staged",
+      "enabled": false,
+      "bank_reviewed": false
+    },
+    {
+      "id": "BCHK-P12",
+      "title": "DreamCash 提前清还流程",
+      "customer_type": "personal",
+      "entity": "bank_hk_ltd",
+      "jurisdiction": "HK",
+      "project_topic": "personal_repayment",
+      "focus": "channel",
+      "questions": [
+        "DreamCash 如何提前还清？",
+        "能先还一部分私人贷款吗？"
+      ],
+      "answer": "所引 FAQ 要求提前清还至少提前三个银行营业日申请，且不接受部分提前清还。",
+      "limits": "只适用于本条产品；须向银行索取本人结清报价，本项目不能申请或结清贷款。",
+      "source_ids": [
+        "S05"
+      ],
+      "claim_locator": "提前清还及部分还款 FAQ",
+      "retrieved_on": "2026-10-03",
+      "source_effective_from": null,
+      "source_valid_until": null,
+      "review_due_on": "2026-11-02",
+      "review_reason": "产品渠道或金融概念，内部安排30天内复核",
+      "status": "staged",
+      "enabled": false,
+      "bank_reviewed": false
+    },
+    {
+      "id": "BCHK-P13",
+      "title": "DreamCash 冷静期",
+      "customer_type": "personal",
+      "entity": "bank_hk_ltd",
+      "jurisdiction": "HK",
+      "project_topic": "personal_repayment",
+      "focus": "timing",
+      "questions": [
+        "贷款七天冷静期是什么意思？",
+        "冷静期能免费取消吗？"
+      ],
+      "answer": "FAQ 列明：提款翌日起七个历日内全数清还，可豁免提前清还手续费及首月利息。",
+      "limits": "须实际全数归还贷款，并依适用合同办理；并非收到放款后无需偿还本金。",
+      "source_ids": [
+        "S05"
+      ],
+      "claim_locator": "七天冷静期",
+      "retrieved_on": "2026-10-03",
+      "source_effective_from": null,
+      "source_valid_until": null,
+      "review_due_on": "2026-10-10",
+      "review_reason": "含金额、收费、期限或申请时效，内部安排7天内复核",
+      "status": "staged",
+      "enabled": false,
+      "bank_reviewed": false
+    },
+    {
+      "id": "BCHK-P14",
+      "title": "DreamCash 提前清还费用",
+      "customer_type": "personal",
+      "entity": "bank_hk_ltd",
+      "jurisdiction": "HK",
+      "project_topic": "personal_repayment",
+      "focus": "fees",
+      "questions": [
+        "提前还贷手续费按什么算？",
+        "提前还清一定省钱吗？"
+      ],
+      "answer": "所引 FAQ 列出的提前清还手续费为原贷款额的2%另加200港元；结清还涉及尚欠本金及按规则计算的利息等款项。",
+      "limits": "这是 DreamCash FAQ 的收费依据，不能套用到按揭或其他贷款。本人金额及合同版本须银行核对。",
+      "source_ids": [
+        "S05"
+      ],
+      "claim_locator": "提前清还款项组成",
+      "retrieved_on": "2026-10-03",
+      "source_effective_from": null,
+      "source_valid_until": null,
+      "review_due_on": "2026-10-10",
+      "review_reason": "含金额、收费、期限或申请时效，内部安排7天内复核",
+      "status": "staged",
+      "enabled": false,
+      "bank_reviewed": false
+    },
+    {
+      "id": "BCHK-E01",
+      "title": "企业开户先确定公司形态",
+      "customer_type": "enterprise",
+      "entity": "bank_hk_ltd",
+      "jurisdiction": "HK",
+      "project_topic": "enterprise_opening",
+      "focus": "materials",
+      "questions": [
+        "香港公司开户要什么材料？",
+        "内地注册公司与香港公司材料一样吗？"
+      ],
+      "answer": "官网分别列出本地／非本地有限公司、合伙、独资等开户文件清单。先确认注册地和法律形态，再选择相应清单。",
+      "limits": "本地有限公司附件未成功读取，本包不能提供该行完整董事／股东／受益人文件要求。",
+      "source_ids": [
+        "S06"
+      ],
+      "claim_locator": "开户所需文件分类",
+      "retrieved_on": "2026-10-03",
+      "source_effective_from": null,
+      "source_valid_until": null,
+      "review_due_on": "2026-11-02",
+      "review_reason": "产品渠道或金融概念，内部安排30天内复核",
+      "status": "staged",
+      "enabled": false,
+      "bank_reviewed": false
+    },
+    {
+      "id": "BCHK-E02",
+      "title": "简易银行账户适用公司",
+      "customer_type": "enterprise",
+      "entity": "bank_hk_ltd",
+      "jurisdiction": "HK",
+      "project_topic": "enterprise_opening",
+      "focus": "qualification",
+      "questions": [
+        "初创公司能申请简易账户吗？",
+        "简易账户适用于什么企业？"
+      ],
+      "answer": "简易银行账户页面面向业务经营及注册地址均在香港、架构为单层的新成立或初创公司。",
+      "limits": "应由银行核对实际架构及申请条件；简易不表示免核验或一定获批。",
+      "source_ids": [
+        "S07"
+      ],
+      "claim_locator": "目标公司",
+      "retrieved_on": "2026-10-03",
+      "source_effective_from": null,
+      "source_valid_until": null,
+      "review_due_on": "2026-11-02",
+      "review_reason": "产品渠道或金融概念，内部安排30天内复核",
+      "status": "staged",
+      "enabled": false,
+      "bank_reviewed": false
+    },
+    {
+      "id": "BCHK-E03",
+      "title": "简易账户的汇款限制",
+      "customer_type": "enterprise",
+      "entity": "bank_hk_ltd",
+      "jurisdiction": "HK",
+      "project_topic": "enterprise_opening",
+      "focus": "general",
+      "questions": [
+        "简易企业账户可以收海外款吗？",
+        "简易账户包含哪些服务？"
+      ],
+      "answer": "简易账户有储蓄、支票及定存账户服务；转账限本地，不支持跨境汇入或汇出。",
+      "limits": "限制对应简易账户，不适用于断言所有交银香港企业账户都不能跨境汇款。",
+      "source_ids": [
+        "S07"
+      ],
+      "claim_locator": "服务及转账限制",
+      "retrieved_on": "2026-10-03",
+      "source_effective_from": null,
+      "source_valid_until": null,
+      "review_due_on": "2026-11-02",
+      "review_reason": "产品渠道或金融概念，内部安排30天内复核",
+      "status": "staged",
+      "enabled": false,
+      "bank_reviewed": false
+    },
+    {
+      "id": "BCHK-E04",
+      "title": "企业电子结单公开渠道",
+      "customer_type": "enterprise",
+      "entity": "bank_hk_ltd",
+      "jurisdiction": "HK",
+      "project_topic": "enterprise_reconciliation",
+      "focus": "channel",
+      "questions": [
+        "企业对账单在哪里查？",
+        "网银可以下载结单吗？"
+      ],
+      "answer": "企业网上银行产品页列有账户余额、交易查询及电子结单下载。",
+      "limits": "实际需银行认证及相应账户权限。本项目只能提供渠道说明，不能查询或下载真实结单。",
+      "source_ids": [
+        "S08"
+      ],
+      "claim_locator": "账务查询",
+      "retrieved_on": "2026-10-03",
+      "source_effective_from": null,
+      "source_valid_until": null,
+      "review_due_on": "2026-11-02",
+      "review_reason": "产品渠道或金融概念，内部安排30天内复核",
+      "status": "staged",
+      "enabled": false,
+      "bank_reviewed": false
+    },
+    {
+      "id": "BCHK-E05",
+      "title": "企业网银岗位与授权",
+      "customer_type": "enterprise",
+      "entity": "bank_hk_ltd",
+      "jurisdiction": "HK",
+      "project_topic": "enterprise_reconciliation",
+      "focus": "qualification",
+      "questions": [
+        "我是法人就能看企业交易吗？",
+        "企业网银有什么岗位？"
+      ],
+      "answer": "企业网上银行列有企业用户、管理员、监督员等角色，并支持多级授权。",
+      "limits": "角色说明不等于本人权限已经生效；法人身份不能替代银行认证、账户授权或本系统后端权限。",
+      "source_ids": [
+        "S08"
+      ],
+      "claim_locator": "多级授权及角色",
+      "retrieved_on": "2026-10-03",
+      "source_effective_from": null,
+      "source_valid_until": null,
+      "review_due_on": "2026-11-02",
+      "review_reason": "产品渠道或金融概念，内部安排30天内复核",
+      "status": "staged",
+      "enabled": false,
+      "bank_reviewed": false
+    },
+    {
+      "id": "BCHK-E06",
+      "title": "企业移动端指令管理",
+      "customer_type": "enterprise",
+      "entity": "bank_hk_ltd",
+      "jurisdiction": "HK",
+      "project_topic": "enterprise_reconciliation",
+      "focus": "general",
+      "questions": [
+        "企业手机银行能审批指令吗？",
+        "已授权但未执行的预约转账能取消吗？"
+      ],
+      "answer": "企业手机银行页面列有待授权指令的授权／拒绝，以及已授权未执行预约交易的查询／取消。",
+      "limits": "这是银行正式渠道能力说明。本项目没有这些接口；账户权限和实际交易状态须银行核对。",
+      "source_ids": [
+        "S09"
+      ],
+      "claim_locator": "指令授权及预约交易",
+      "retrieved_on": "2026-10-03",
+      "source_effective_from": null,
+      "source_valid_until": null,
+      "review_due_on": "2026-11-02",
+      "review_reason": "产品渠道或金融概念，内部安排30天内复核",
+      "status": "staged",
+      "enabled": false,
+      "bank_reviewed": false
+    },
+    {
+      "id": "BCHK-E07",
+      "title": "电子结单不等于付款回单",
+      "customer_type": "enterprise",
+      "entity": "bank_hk_ltd",
+      "jurisdiction": "HK",
+      "project_topic": "enterprise_reconciliation",
+      "focus": "download",
+      "questions": [
+        "能帮我生成一张付款回单吗？",
+        "企业电子结单就是单笔付款回单吗？"
+      ],
+      "answer": "已读页面支持电子结单及交易记录查询，但不足以确认单笔付款回单的具体下载入口、文件格式或签章。",
+      "limits": "这是资料覆盖判断，不能由结单功能推断回单功能，更不能生成或声称已下载真实凭证。",
+      "source_ids": [
+        "S08",
+        "S09"
+      ],
+      "claim_locator": "已读账务查询功能范围；回单为资料缺口",
+      "retrieved_on": "2026-10-03",
+      "source_effective_from": null,
+      "source_valid_until": null,
+      "review_due_on": "2026-11-02",
+      "review_reason": "产品渠道或金融概念，内部安排30天内复核",
+      "status": "staged",
+      "enabled": false,
+      "bank_reviewed": false
+    },
+    {
+      "id": "BCHK-E08",
+      "title": "企业融资与过渡融资",
+      "customer_type": "enterprise",
+      "entity": "bank_hk_ltd",
+      "jurisdiction": "HK",
+      "project_topic": "enterprise_financing",
+      "focus": "general",
+      "questions": [
+        "企业融资可以做什么？",
+        "过渡融资是什么意思？"
+      ],
+      "answer": "企业融资页面涉及业务发展、经营及收购投资项目；过渡融资提供较短期的过渡资金安排。",
+      "limits": "具体期限、抵押、额度、费用和是否批核须银行审查，不作融资承诺。",
+      "source_ids": [
+        "S10"
+      ],
+      "claim_locator": "融资概览及过渡融资",
+      "retrieved_on": "2026-10-03",
+      "source_effective_from": null,
+      "source_valid_until": null,
+      "review_due_on": "2026-11-02",
+      "review_reason": "产品渠道或金融概念，内部安排30天内复核",
+      "status": "staged",
+      "enabled": false,
+      "bank_reviewed": false
+    },
+    {
+      "id": "BCHK-E09",
+      "title": "进口贸易融资有哪些类别",
+      "customer_type": "enterprise",
+      "entity": "bank_hk_ltd",
+      "jurisdiction": "HK",
+      "project_topic": "enterprise_financing",
+      "focus": "general",
+      "questions": [
+        "进口贸易有哪些融资服务？",
+        "信用证和进口融资有什么产品？"
+      ],
+      "answer": "进口服务页列有开立信用证、进口发票融资、进口托收及融资、提货担保和信托收据等服务。",
+      "limits": "这里只确认产品类别；具体担保责任、单据、法律规则、授信及费率尚无完整依据。",
+      "source_ids": [
+        "S11"
+      ],
+      "claim_locator": "服务清单",
+      "retrieved_on": "2026-10-03",
+      "source_effective_from": null,
+      "source_valid_until": null,
+      "review_due_on": "2026-11-02",
+      "review_reason": "产品渠道或金融概念，内部安排30天内复核",
+      "status": "staged",
+      "enabled": false,
+      "bank_reviewed": false
+    },
+    {
+      "id": "BCHK-E10",
+      "title": "中小企担保贷款用途",
+      "customer_type": "enterprise",
+      "entity": "bank_hk_ltd",
+      "jurisdiction": "HK",
+      "project_topic": "enterprise_financing",
+      "focus": "general",
+      "questions": [
+        "交银香港参与中小企融资担保吗？",
+        "中小企担保贷款资金用在哪？"
+      ],
+      "answer": "交银香港页面介绍其参与按证保险的中小企融资担保计划，列有营运资金及设备资产等用途。",
+      "limits": "计划担保不等于免还款、免审查或获批保证；不采用该概览中的额度及期限作为当前申请规则。",
+      "source_ids": [
+        "S12"
+      ],
+      "claim_locator": "计划参与及用途",
+      "retrieved_on": "2026-10-03",
+      "source_effective_from": null,
+      "source_valid_until": null,
+      "review_due_on": "2026-11-02",
+      "review_reason": "产品渠道或金融概念，内部安排30天内复核",
+      "status": "staged",
+      "enabled": false,
+      "bank_reviewed": false
+    },
+    {
+      "id": "BCHK-E11",
+      "title": "八成担保与还息不还本时效",
+      "customer_type": "enterprise",
+      "entity": "hk_general",
+      "jurisdiction": "HK",
+      "project_topic": "enterprise_financing",
+      "focus": "timing",
+      "questions": [
+        "八成担保到什么时候？",
+        "还息不还本申请期限一样吗？"
+      ],
+      "answer": "政府2025年9月公告把八成担保申请期延至2028年3月底；该公告的还息不还本申请期则为2026年11月17日。",
+      "limits": "二者不同；公告不代表本人合资格或银行接受申请。旧按证概览日期冲突，接入前复核最新实施文件。",
+      "source_ids": [
+        "S19"
+      ],
+      "claim_locator": "公告首两段",
+      "retrieved_on": "2026-10-03",
+      "source_effective_from": null,
+      "source_valid_until": null,
+      "review_due_on": "2026-10-10",
+      "review_reason": "含金额、收费、期限或申请时效，内部安排7天内复核",
+      "status": "staged",
+      "enabled": false,
+      "bank_reviewed": false
+    },
+    {
+      "id": "BCHK-F01",
+      "title": "实际年利率与月平息",
+      "customer_type": "both",
+      "entity": "hk_general",
+      "jurisdiction": "HK",
+      "project_topic": null,
+      "focus": "general",
+      "questions": [
+        "月平息乘以12就是实际年利率吗？",
+        "APR 是什么？"
+      ],
+      "answer": "实际年利率把利息及相关费用转换为年度借贷成本指标；月平息直接乘以12并不能得到实际年利率。",
+      "limits": "为一般金融知识；比较具体贷款还须核对适用利率、费用和总还款额，不能套用广告最低价。",
+      "source_ids": [
+        "S14"
+      ],
+      "claim_locator": "月平息与实际年利率",
+      "retrieved_on": "2026-10-03",
+      "source_effective_from": null,
+      "source_valid_until": null,
+      "review_due_on": "2026-11-02",
+      "review_reason": "产品渠道或金融概念，内部安排30天内复核",
+      "status": "staged",
+      "enabled": false,
+      "bank_reviewed": false
+    },
+    {
+      "id": "BCHK-F02",
+      "title": "78法则与提前还款",
+      "customer_type": "both",
+      "entity": "hk_general",
+      "jurisdiction": "HK",
+      "project_topic": null,
+      "focus": "general",
+      "questions": [
+        "为什么贷款后期提前还款省不了多少利息？",
+        "78法则是什么？"
+      ],
+      "answer": "78法则按剩余期数权重分配总利息，前期利息占比较大。提前清还应比较可节省利息与结清费用。",
+      "limits": "这是原理介绍；不表示所有贷款使用78法则，也不代替本人合同及银行结清报价。",
+      "source_ids": [
+        "S15"
+      ],
+      "claim_locator": "利息分配及提前清还比较",
+      "retrieved_on": "2026-10-03",
+      "source_effective_from": null,
+      "source_valid_until": null,
+      "review_due_on": "2026-11-02",
+      "review_reason": "产品渠道或金融概念，内部安排30天内复核",
+      "status": "staged",
+      "enabled": false,
+      "bank_reviewed": false
+    },
+    {
+      "id": "BCHK-F03",
+      "title": "香港存款保障上限",
+      "customer_type": "both",
+      "entity": "hk_general",
+      "jurisdiction": "HK",
+      "project_topic": null,
+      "focus": "general",
+      "questions": [
+        "存款保障是每个账户80万吗？",
+        "香港存款保障多少？"
+      ],
+      "answer": "自2024年10月1日起，一般保障上限为每位存款人在每间成员银行80万港元，并非每个账户各80万。",
+      "limits": "仅针对合资格存款；特殊合并／收购安排另有规则。本包未核实该行当前成员名录，不出具银行或个人保障结论。",
+      "source_ids": [
+        "S17",
+        "S18"
+      ],
+      "claim_locator": "保障水平及2024年上限调整",
+      "retrieved_on": "2026-10-03",
+      "source_effective_from": "2024-10-01",
+      "source_valid_until": null,
+      "review_due_on": "2026-10-10",
+      "review_reason": "含金额、收费、期限或申请时效，内部安排7天内复核",
+      "status": "staged",
+      "enabled": false,
+      "bank_reviewed": false
+    },
+    {
+      "id": "BCHK-F04",
+      "title": "受保障存款与不受保障产品",
+      "customer_type": "both",
+      "entity": "hk_general",
+      "jurisdiction": "HK",
+      "project_topic": null,
+      "focus": "general",
+      "questions": [
+        "结构性存款也受存款保障吗？",
+        "外币定存和基金保障一样吗？"
+      ],
+      "answer": "成员银行的合资格储蓄、支票及不超过五年的定存可受保障，包括外币；结构性存款、离岸存款及基金、保险等非存款产品不在保障范围。",
+      "limits": "须核对实际产品及存放办事处；银行销售产品不等于存款或本金有保障。",
+      "source_ids": [
+        "S16"
+      ],
+      "claim_locator": "受保障／不受保障产品",
+      "retrieved_on": "2026-10-03",
+      "source_effective_from": null,
+      "source_valid_until": null,
+      "review_due_on": "2026-11-02",
+      "review_reason": "产品渠道或金融概念，内部安排30天内复核",
+      "status": "staged",
+      "enabled": false,
+      "bank_reviewed": false
+    },
+    {
+      "id": "BCHK-F05",
+      "title": "外汇远期的用途",
+      "customer_type": "enterprise",
+      "entity": "bank_hk_ltd",
+      "jurisdiction": "HK",
+      "project_topic": null,
+      "focus": "general",
+      "questions": [
+        "外汇远期怎么管理汇率风险？",
+        "远期外汇是不是保证赚钱？"
+      ],
+      "answer": "外汇远期预先约定未来兑换的汇率、日期、币种及金额，可用于安排企业外币现金流及管理汇率风险。",
+      "limits": "不能据此承诺盈利；仍有汇率、履约及产品风险，交易条件需查阅银行条款。",
+      "source_ids": [
+        "S13"
+      ],
+      "claim_locator": "远期合约用途及风险",
+      "retrieved_on": "2026-10-03",
+      "source_effective_from": null,
+      "source_valid_until": null,
+      "review_due_on": "2026-11-02",
+      "review_reason": "产品渠道或金融概念，内部安排30天内复核",
+      "status": "staged",
+      "enabled": false,
+      "bank_reviewed": false
+    }
+  ],
+  "exclusions": [
+    {
+      "id": "X01",
+      "title": "DreamCash 宣传最低利率及优惠",
+      "url": "https://www.hk.bankcomm.com/hk/shtml/hk/tw/2004980/2005048/2005049/list.shtml",
+      "reason": "官网优惠期为2026-07-01至2026-12-31，但附表与完整适用条件未读取；不把宣传最低利率、回赠或最高额度编入答案。",
+      "status": "conditions_unread",
+      "retrieved_on": "2026-10-03"
+    },
+    {
+      "id": "X02",
+      "title": "2026 税贷优惠",
+      "url": "https://www.bankcomm.com.hk/hk/shtml/hk/en/2005575/2005634/2005637/2039994.shtml?channelId=2005575",
+      "reason": "所引优惠期于2026-03-31结束；核对日已过期。",
+      "status": "expired",
+      "retrieved_on": "2026-10-03"
+    },
+    {
+      "id": "X03",
+      "title": "2024 定存优惠",
+      "url": "https://www.hk.bankcomm.com/hk/uploadhk/infos/202310/17/2600167/20240425123405_Daily_Preferential_Time_Deposit_2024.4.25_pm.pdf",
+      "reason": "历史优惠利率及其提前支取规则，不当作2026年的通用存款条款。",
+      "status": "historical",
+      "retrieved_on": "2026-10-03"
+    },
+    {
+      "id": "X04",
+      "title": "本地有限公司开户附件",
+      "url": "https://www.hk.bankcomm.com/hk/hk/tw/file/getContentPath.html?fileId=2039421",
+      "reason": "入口已见，但附件正文未成功读取；不能编造该行完整开户文件清单。",
+      "status": "unread",
+      "retrieved_on": "2026-10-03"
+    },
+    {
+      "id": "X05",
+      "title": "一般条款及细则",
+      "url": "https://www.hk.bankcomm.com/hk/shtml/hk/cn/2005523/2005550/2038588.shtml?channelId=2005523",
+      "reason": "页面读取失败；定存提前支取罚息及通用账户费用仍待核实。",
+      "status": "unread",
+      "retrieved_on": "2026-10-03"
+    },
+    {
+      "id": "X06",
+      "title": "按揭证券公司计划概览旧日期",
+      "url": "https://www.hkmc.com.hk/chi/our_business/sme_financing_guarantee_scheme.html",
+      "reason": "官方搜索摘录写八成申请至2026年3月底，与S19政府后续延期公告冲突；不作为当前申请期依据。",
+      "status": "conflict",
+      "retrieved_on": "2026-10-03"
+    },
+    {
+      "id": "X07",
+      "title": "交行台湾外币利率",
+      "url": "https://www.bankcomm.com/BankCommSite/tw/zh_TW/htm/forCryIrate.html",
+      "reason": "地区为台湾，即使含港元币种也不适用于香港。",
+      "status": "wrong_jurisdiction",
+      "retrieved_on": "2026-10-03"
+    },
+    {
+      "id": "X08",
+      "title": "香港分行外汇掉期",
+      "url": "https://www.bankcomm.com.hk/hk/shtml/bhk/tw/2012907/2013075/2500751/list.shtml",
+      "reason": "属交通银行股份有限公司香港分行。本包主实体为香港有限公司，不混用业务条件。",
+      "status": "other_entity",
+      "retrieved_on": "2026-10-03"
+    },
+    {
+      "id": "X09",
+      "title": "企业网银电子账单及缴费 EBPP",
+      "url": "https://hk.bankcomm.com/hk/shtml/hk/tw/2004972/2004978/list.shtml?channelId=2004972",
+      "reason": "官网2025-04-16通知于2025-06-27终止企业EBPP，不能按旧功能页宣传仍可用。电子结单与EBPP不是同一功能。",
+      "status": "terminated",
+      "retrieved_on": "2026-10-03"
+    }
+  ]
+}

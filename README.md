@@ -109,6 +109,32 @@
 
 已经实现本机个人与企业文字咨询、演示来源、无依据处理、查询和人工未接入提示、敏感输入区分及 7 天会话保存。V1.2 修订增加公开对象分项、有限主题追问/澄清、可恢复的紧急提示与明确关闭、旧响应及后端主题版本保护。V1.3 增加个人/企业各三项演示目录、同主题建议、公开来源卡片及分步阅读/返回/取消；状态在刷新或重启后恢复，失效知识与停用能力停止动作。仅使用演示知识，不代表某银行已审核或接入。2026-10-03 已获授权完成 8/8 DeepSeek 真实知识选择样例，费用按用量保守估算约 0.004618 元；未部署或创建云资源。引导页面体验已通过，8 条真实样例全部获产品经理整体 3/3 分。V1.3 本轮约定子阶段已收口，详见 [收口证据](docs/evidence/阶段2/V1.3收口/验收说明.md)；全量正式银行功能仍后续待交付。V1.4 实施结果见下方当前交付节，完整新版程序与真实验证已交付，新版十条整体评分已确认均为 3/3（满意），真机体验待验。
 
+### 交通银行（香港）知识库已接入（2026-10-03）
+
+产品默认优先检索已整理的30条公开知识，有依据时返回知识正文和适用限制，并展示官方链接、出处、核对日与内部复核日期；没有依据的当日利率、完整附件、本人审批或真实账户查询继续说明缺口。个人5项、企业6项目录可用，支持多轮追问及来源失效保护。知识尚未获银行审核，以香港有限公司为主，不混用香港分行条件。
+
+现在可在本机打开 **http://127.0.0.1:18768**，看到“交通银行（香港）知识库优先”算对。服务关闭后，在Finder打开项目文件夹，双击 **启动知识库演示.command**，保持终端打开，再进入该地址；结束时按Control+C。使用独立 `data/knowledge-preview.sqlite3`，只输入非敏感公开问题。本入口本地检索，无模型调用或新增费用。
+
+选“个人服务”后问“开户需要什么材料”“普通港元定存最低金额”“今天港元定存利率是多少”；选“企业服务”后问“企业对账单在哪里下载，需要什么权限”。正确结果分别为公开材料、带限制的门槛、报价缺口及渠道/权限说明，附适用来源。
+
+全量 **339/339** 自动化通过（原251条保留，新增88条），mypy24个源文件、Ruff、五份JS语法和Python编译通过；保留1条测试客户端弃用警告。知识链路两次真实进程重启、旧版两套恢复脚本各三次重启、1440/390页面与来源链接检查通过。原六条演示JSON及目录文件字节不变，费用policy及全部记录不变，仍为18/20。新知识八条实际本地答复评分待反馈，真机体验待验，阶段2整体未收口。
+
+[知识手册](docs/知识库/交通银行香港/知识手册.md)、[接入说明](docs/知识库/交通银行香港/接入说明.md)、[开发文档](docs/阶段文档/阶段2-交银香港知识库接入.md)、[八条实际答复与评分](docs/阶段文档/交银香港知识库本地答复与评分.md)及[截图/步骤/闸门](docs/evidence/阶段2/2026-10-03-交银香港知识接入/验收说明.md)可直接核对。24条研究验收已映射为本地接口测试，执行输入与定位见 `evaluation-cases.json`，不冒充模型或银行验收。
+
+开发者在根目录运行：
+
+```sh
+.venv/bin/pytest -c backend/pyproject.toml backend/tests -q
+.venv/bin/mypy --config-file backend/pyproject.toml backend/app backend/alembic backend/scripts
+.venv/bin/ruff check backend docs/知识库/交通银行香港/校验资料.py
+.venv/bin/python docs/知识库/交通银行香港/校验资料.py
+.venv/bin/python backend/scripts/verify_knowledge_restart.py
+PUBLIC_KNOWLEDGE_ENABLED=0 .venv/bin/python backend/scripts/verify_restart.py
+PUBLIC_KNOWLEDGE_ENABLED=0 .venv/bin/python backend/scripts/verify_restart_v14.py
+```
+
+`PUBLIC_KNOWLEDGE_ENABLED` 默认1；0仅用于兼容旧演示/已批准的旧模型路由验证。可用 `PUBLIC_KNOWLEDGE_PATH` 和 `PUBLIC_ACTIVATION_PATH` 指向独立验收副本。研究JSON保留候选归档状态，运行启用清单在 `backend/app/public_activation.json`；不能仅修改归档的enabled字段。到内部复核日即停止引用相关条目，其他有效条目可继续回答；损坏配置返回结构化错误，不替换成旧演示事实。旧进程不因磁盘修改自动升级，18763/18764保留原体验；当前知识入口使用18768。下方V1.4及更早章节保留历史验证记录。
+
 ### V1.4 当前交付与核对（2026-10-03）
 
 已实现当前问题参与路由、有效主题追问、明确纠正、最多两个公开主题分项、部分可答、两次澄清、耗尽/取消/恢复，以及旧数据来源保护。后端只引用既有六条演示资料并说明费用/材料/渠道/资格等缺口，模型不生成金融事实或执行业务。每条回复区分规则、真实模型、失败降级和旧历史。
@@ -132,7 +158,7 @@
 node --check backend/app/static/app.js
 node --check backend/scripts/verify_browser_v14.mjs
 .venv/bin/python -m compileall -q backend/app backend/alembic backend/scripts
-.venv/bin/python backend/scripts/verify_restart_v14.py
+PUBLIC_KNOWLEDGE_ENABLED=0 .venv/bin/python backend/scripts/verify_restart_v14.py
 ```
 
 新版恢复脚本用随机临时端口/数据库验证实际重启，不操作原数据。新版浏览器脚本延续 V1.3 全部页面回归，再检查新版费用、纠正、澄清、取消、部分可答及对象来源，整个过程仅一个 ego-browser 任务空间。运行前用独立规则数据库启动 18765（不要同时运行预览占此端口）：

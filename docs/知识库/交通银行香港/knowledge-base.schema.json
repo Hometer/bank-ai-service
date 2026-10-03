@@ -1,0 +1,344 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "交银香港公开知识候选包",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version",
+    "bundle_version",
+    "title",
+    "retrieved_on",
+    "primary_entity",
+    "jurisdiction",
+    "publication_status",
+    "review_policy",
+    "sources",
+    "articles",
+    "exclusions"
+  ],
+  "properties": {
+    "schema_version": {
+      "const": "1.0"
+    },
+    "bundle_version": {
+      "type": "string",
+      "minLength": 1
+    },
+    "title": {
+      "type": "string",
+      "minLength": 1
+    },
+    "retrieved_on": {
+      "type": "string",
+      "format": "date"
+    },
+    "primary_entity": {
+      "const": "交通银行（香港）有限公司"
+    },
+    "jurisdiction": {
+      "const": "HK"
+    },
+    "publication_status": {
+      "const": "staged_not_integrated"
+    },
+    "review_policy": {
+      "type": "string",
+      "minLength": 1
+    },
+    "sources": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "$ref": "#/$defs/source"
+      }
+    },
+    "articles": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "$ref": "#/$defs/article"
+      }
+    },
+    "exclusions": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/exclusion"
+      }
+    }
+  },
+  "$defs": {
+    "article": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "id",
+        "title",
+        "customer_type",
+        "entity",
+        "jurisdiction",
+        "project_topic",
+        "focus",
+        "questions",
+        "answer",
+        "limits",
+        "source_ids",
+        "claim_locator",
+        "retrieved_on",
+        "source_effective_from",
+        "source_valid_until",
+        "review_due_on",
+        "review_reason",
+        "status",
+        "enabled",
+        "bank_reviewed"
+      ],
+      "properties": {
+        "id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "title": {
+          "type": "string",
+          "minLength": 1
+        },
+        "customer_type": {
+          "enum": [
+            "personal",
+            "enterprise",
+            "both"
+          ]
+        },
+        "entity": {
+          "enum": [
+            "bank_hk_ltd",
+            "hk_general"
+          ]
+        },
+        "jurisdiction": {
+          "const": "HK"
+        },
+        "project_topic": {
+          "enum": [
+            "personal_opening",
+            "personal_deposit",
+            "personal_repayment",
+            "enterprise_opening",
+            "enterprise_reconciliation",
+            "enterprise_financing",
+            null
+          ]
+        },
+        "focus": {
+          "enum": [
+            "general",
+            "materials",
+            "channel",
+            "qualification",
+            "fees",
+            "timing",
+            "download",
+            "guarantee"
+          ]
+        },
+        "questions": {
+          "type": "array",
+          "minItems": 1,
+          "uniqueItems": true,
+          "items": {
+            "type": "string",
+            "minLength": 1
+          }
+        },
+        "answer": {
+          "type": "string",
+          "minLength": 1
+        },
+        "limits": {
+          "type": "string",
+          "minLength": 1
+        },
+        "source_ids": {
+          "type": "array",
+          "minItems": 1,
+          "uniqueItems": true,
+          "items": {
+            "type": "string",
+            "minLength": 1
+          }
+        },
+        "claim_locator": {
+          "type": "string",
+          "minLength": 1
+        },
+        "retrieved_on": {
+          "type": "string",
+          "format": "date"
+        },
+        "source_effective_from": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "format": "date"
+        },
+        "source_valid_until": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "format": "date"
+        },
+        "review_due_on": {
+          "type": "string",
+          "format": "date"
+        },
+        "review_reason": {
+          "type": "string",
+          "minLength": 1
+        },
+        "status": {
+          "const": "staged"
+        },
+        "enabled": {
+          "const": false
+        },
+        "bank_reviewed": {
+          "const": false
+        }
+      }
+    },
+    "source": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "id",
+        "title",
+        "url",
+        "entity",
+        "jurisdiction",
+        "publisher",
+        "verification",
+        "locator",
+        "published_on",
+        "retrieved_on",
+        "document_effective_from",
+        "document_valid_until",
+        "note"
+      ],
+      "properties": {
+        "id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "title": {
+          "type": "string",
+          "minLength": 1
+        },
+        "url": {
+          "type": "string",
+          "format": "uri"
+        },
+        "entity": {
+          "enum": [
+            "bank_hk_ltd",
+            "hk_financial_education",
+            "hk_public_rules"
+          ]
+        },
+        "jurisdiction": {
+          "const": "HK"
+        },
+        "publisher": {
+          "type": "string",
+          "minLength": 1
+        },
+        "verification": {
+          "enum": [
+            "read_page",
+            "read_browser",
+            "search_excerpt"
+          ]
+        },
+        "locator": {
+          "type": "string",
+          "minLength": 1
+        },
+        "published_on": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "format": "date"
+        },
+        "retrieved_on": {
+          "type": "string",
+          "format": "date"
+        },
+        "document_effective_from": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "format": "date"
+        },
+        "document_valid_until": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "format": "date"
+        },
+        "note": {
+          "type": "string",
+          "minLength": 1
+        }
+      }
+    },
+    "exclusion": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "id",
+        "title",
+        "url",
+        "reason",
+        "status",
+        "retrieved_on"
+      ],
+      "properties": {
+        "id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "title": {
+          "type": "string",
+          "minLength": 1
+        },
+        "url": {
+          "type": "string",
+          "format": "uri"
+        },
+        "reason": {
+          "type": "string",
+          "minLength": 1
+        },
+        "status": {
+          "enum": [
+            "conditions_unread",
+            "expired",
+            "historical",
+            "unread",
+            "conflict",
+            "wrong_jurisdiction",
+            "other_entity",
+            "terminated"
+          ]
+        },
+        "retrieved_on": {
+          "type": "string",
+          "format": "date"
+        }
+      }
+    }
+  }
+}
