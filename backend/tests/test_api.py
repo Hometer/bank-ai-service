@@ -169,7 +169,7 @@ def test_history_survives_new_app_and_startup_removes_expired(settings):
 
 def test_health_and_static_headers(client):
     health = client.get("/api/v1/health")
-    assert health.json() == {"status": "ok", "mode": "demo", "real_model_verification": "待验"}
+    assert health.json() == {"status": "ok", "mode": "demo", "real_model_verification": "待验", "consultation_version": "1.4"}
     for path in ("/", "/app.js", "/app.css"):
         response = client.get(path)
         assert response.status_code == 200

@@ -12,6 +12,7 @@ import httpx
 from pydantic import ValidationError
 
 from app.config import Settings
+from app.model_budget import POLICY, BudgetLedger, BudgetUnavailable
 from app.schemas import Answer, CustomerType, Knowledge, ModelSelection, Source
 
 logger = logging.getLogger(__name__)
@@ -90,6 +91,29 @@ class ModelUnavailable(Exception):
     pass
 
 
+class ModelInputTooLarge(ModelUnavailable):
+    pass
+
+
+def approved_model_payload(payload: dict, settings: Settings) -> BudgetLedger | None:
+    """Shared approval and reservation policy for old and new contracts."""
+    address = urlsplit(settings.model_base_url)
+    if (not settings.model_api_key or not settings.model_name or address.scheme != "https"
+            or not address.hostname or address.username or address.password or address.query or address.fragment):
+        raise ModelUnavailable("Model configuration unavailable")
+    ledger = None
+    if address.hostname == "api.deepseek.com" or settings.model_budget_path is not None:
+        if (address.hostname != "api.deepseek.com" or address.port not in (None, 443)
+                or address.path not in ("", "/", "/v1", "/v1/")
+                or settings.model_name != POLICY[6] or settings.model_budget_path is None):
+            raise ModelUnavailable("Approved model configuration unavailable")
+        payload["thinking"] = {"type": "disabled"}
+        if len(json.dumps(payload, ensure_ascii=False).encode("utf-8")) + 512 > POLICY[4]:
+            raise ModelInputTooLarge("Model input exceeds approved size")
+        ledger = BudgetLedger(settings.model_budget_path)
+    return ledger
+
+
 def model_select(
     text: str,
     candidates: list[Knowledge],
@@ -103,40 +127,53 @@ def model_select(
         raise ModelUnavailable("Model configuration unavailable")
     prompt = (Path(__file__).parent / "prompts/select_knowledge.txt").read_text()
     allowed = {item.id for item in candidates}
+    payload = {
+        "model": settings.model_name,
+        "temperature": 0,
+        "max_tokens": 100,
+        "response_format": {"type": "json_object"},
+        "messages": [
+            {"role": "system", "content": prompt},
+            {"role": "user", "content": json.dumps({
+                "question": text,
+                "candidates": [{"id": item.id, "title": item.title,
+                                "keywords": item.keywords} for item in candidates],
+            }, ensure_ascii=False)},
+        ],
+    }
+    ledger = approved_model_payload(payload, settings)
     for attempt in range(min(2, max(1, settings.model_attempts))):
         started = time.monotonic()
         outcome = "failed"
+        ticket = None
+        usage = None
+        status_code = None
+        selected = None
         try:
+            if ledger is not None:
+                ticket = ledger.reserve(attempt + 1)
             with client_factory(timeout=min(15, max(1, settings.model_timeout)), trust_env=False) as client:
                 response = client.post(
                     settings.model_base_url.rstrip("/") + "/chat/completions",
                     headers={"Authorization": "Bearer " + settings.model_api_key},
-                    json={
-                        "model": settings.model_name,
-                        "temperature": 0,
-                        "max_tokens": 100,
-                        "response_format": {"type": "json_object"},
-                        "messages": [
-                            {"role": "system", "content": prompt},
-                            {"role": "user", "content": json.dumps({
-                                "question": text,
-                                "candidates": [{"id": item.id, "title": item.title,
-                                                "keywords": item.keywords} for item in candidates],
-                            }, ensure_ascii=False)},
-                        ],
-                    },
+                    json=payload,
                 )
+                status_code = response.status_code
                 if 400 <= response.status_code < 500 and response.status_code != 429:
+                    outcome = "request_rejected"
                     raise ModelUnavailable("Model request rejected")
                 response.raise_for_status()
                 data = response.json()
-                raw = data["choices"][0]["message"]["content"]
-                selected = parse_selection(raw, allowed)
                 usage = data.get("usage", {})
+                raw = data["choices"][0]["message"]["content"]
+                outcome = "invalid_output"
+                selected = parse_selection(raw, allowed)
                 tokens = usage.get("total_tokens") if isinstance(usage, dict) else None
                 logger.info("model_tokens=%s", tokens if isinstance(tokens, int) else "unknown")
                 outcome = "validated"
                 return selected
+        except BudgetUnavailable:
+            raise ModelUnavailable("Approved model budget unavailable") from None
         except ModelUnavailable:
             raise
         except (httpx.HTTPError, ValidationError, ValueError, KeyError, IndexError, TypeError, RuntimeError):
@@ -146,8 +183,14 @@ def model_select(
             # Third-party client construction can fail with an arbitrary exception.
             raise ModelUnavailable("Model initialization failed") from None
         finally:
-            logger.info("model_attempt=%d outcome=%s duration_ms=%d", attempt + 1, outcome,
-                        int((time.monotonic() - started) * 1000))
+            duration = int((time.monotonic() - started) * 1000)
+            if ledger is not None and ticket is not None:
+                try:
+                    ledger.finish(ticket, outcome, usage, status_code, selected, duration)
+                except BudgetUnavailable:
+                    raise ModelUnavailable("Model budget record unavailable") from None
+            logger.info("model_attempt=%d outcome=%s duration_ms=%d", attempt + 1, outcome, duration)
+
     raise ModelUnavailable("Model validation or transport failed")
 
 

@@ -3,6 +3,10 @@ from typing import Literal
 from pydantic import BaseModel, ConfigDict, Field, field_validator, model_validator
 
 CustomerType = Literal["personal", "enterprise"]
+Focus = Literal["general", "materials", "channel", "fees", "qualification", "timing", "download", "guarantee"]
+Processing = Literal["rule", "model", "fallback", "legacy"]
+Coverage = Literal["overview", "partial", "none", "legacy"]
+ClarificationStatus = Literal["idle", "awaiting", "exhausted", "cancelled"]
 Outcome = Literal[
     "answered", "unknown", "private_unavailable", "urgent", "human_unavailable",
     "sensitive_blocked", "model_unavailable", "clarification",
@@ -26,6 +30,7 @@ class Health(StrictModel):
     status: Literal["ok"] = "ok"
     mode: Literal["demo", "model"]
     real_model_verification: str = "待验"
+    consultation_version: Literal["1.4"] = "1.4"
 
 
 class CreateSession(StrictModel):
@@ -120,6 +125,7 @@ class ServiceView(StrictModel):
     suggestions: list[ServiceItem] = Field(default_factory=list, max_length=3)
     navigation: NavigationState = Field(default_factory=NavigationState)
     cards: list[ServiceCard] = Field(default_factory=list)
+    consultation: "ConsultationView" = Field(default_factory=lambda: ConsultationView())
 
 
 class NavigationInput(StrictModel):
@@ -143,6 +149,9 @@ class AnswerPart(StrictModel):
     kind: Outcome
     text: str
     sources: list[Source] = Field(default_factory=list)
+    processing: Processing = "legacy"
+    focus: Focus = "general"
+    coverage: Coverage = "legacy"
 
 
 class Answer(StrictModel):
@@ -153,16 +162,58 @@ class Answer(StrictModel):
     channel_status: str = "银行正式入口及人工队列尚未配置"
     parts: list[AnswerPart] = Field(default_factory=list)
     cards: list[ServiceCard] = Field(default_factory=list)
+    processing: Processing = "legacy"
+    focus: Focus = "general"
+    coverage: Coverage = "legacy"
 
 
 class TopicRef(StrictModel):
     knowledge_id: str
     customer_type: CustomerType
+    knowledge_version: str | None = None
+    source_fingerprint: str | None = None
 
 
 class ConsultationContext(StrictModel):
+    context_version: Literal[2] = 2
     topics: list[TopicRef] = Field(default_factory=list, max_length=2)
-    clarification_attempts: int = Field(default=0, ge=0, le=2)
+    pending_topics: list[TopicRef] = Field(default_factory=list, max_length=2)
+    clarification_attempts: int = Field(default=0, ge=0, le=2, strict=True)
+    clarification_status: ClarificationStatus = "idle"
+
+    @model_validator(mode="before")
+    @classmethod
+    def legacy_status(cls, value: object) -> object:
+        if isinstance(value, dict) and "clarification_status" not in value:
+            value = dict(value)
+            attempts = value.get("clarification_attempts", 0)
+            value["clarification_status"] = "exhausted" if attempts == 2 else "awaiting" if attempts == 1 else "idle"
+        return value
+
+
+class ConsultationView(StrictModel):
+    status: ClarificationStatus = "idle"
+    clarification_attempts: int = Field(default=0, ge=0, le=2, strict=True)
+    topic_ids: list[str] = Field(default_factory=list, max_length=2)
+    pending_topic_ids: list[str] = Field(default_factory=list, max_length=2)
+    can_cancel: bool = False
+    revision: int = 0
+
+
+class RouteItem(StrictModel):
+    id: str = Field(min_length=1, strict=True)
+    focus: Focus
+
+
+class ConsultationRoute(StrictModel):
+    action: Literal["select", "clarify", "unknown"]
+    items: list[RouteItem] = Field(strict=True)
+
+    @model_validator(mode="after")
+    def action_items(self) -> "ConsultationRoute":
+        if (self.action == "select") != bool(self.items):
+            raise ValueError("Action and items disagree")
+        return self
 
 
 class SafetyState(StrictModel):
@@ -188,6 +239,7 @@ class History(StrictModel):
     session: SessionInfo
     messages: list[MessageView]
     services: ServiceView | None = None
+    consultation: ConsultationView = Field(default_factory=ConsultationView)
 
 
 class Turn(StrictModel):
@@ -196,6 +248,7 @@ class Turn(StrictModel):
     safety: SafetyState = Field(default_factory=SafetyState)
     session_revision: int = 0
     services: ServiceView | None = None
+    consultation: ConsultationView = Field(default_factory=ConsultationView)
 
 
 class Knowledge(StrictModel):

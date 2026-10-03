@@ -5,6 +5,7 @@ let active = null;
 let epoch = 0;
 let waiting = false;
 let services = null;
+let consultation = null;
 let cancelling = false;
 const pendingCancellations = new Map();
 let safety = {active:false, revision:0};
@@ -48,12 +49,20 @@ async function api(path, options = {}) {
   return data;
 }
 function setStatus(text) { $("status").textContent = text; }
+function renderConsultation(next) {
+  consultation = next || null;
+  const states = {idle:"",awaiting:"等待补充公开主题",exhausted:"已结束自动澄清，请选择目录、明确新问题或取消",cancelled:"普通咨询已取消，历史保留"};
+  $("consultation-status").textContent = next ? `${states[next.status] || ""}${next.status === "awaiting" ? ` · 已提示 ${next.clarification_attempts}/2 次` : ""}` : "";
+  updateControls();
+}
+const processingLabel = {rule:"规则演示",model:"真实模型判断",fallback:"模型未获得有效结果",legacy:"历史记录，处理方式未细分"};
+const coverageLabel = {overview:"演示概述",partial:"具体事项尚不能确认",none:"无可确认的业务依据",legacy:"历史资料范围未细分"};
 function updateControls() {
   $("send").disabled = waiting || !active;
   const actions = new Set((services?.cards || []).filter(card => card.valid).flatMap(card => card.actions));
   $("nav-back").disabled = waiting || !active || !actions.has("back");
   $("nav-next").disabled = waiting || !active || !actions.has("next");
-  $("nav-cancel").disabled = !active || cancelling || (!waiting && !actions.has("cancel") && !(["reading", "invalid"].includes(services?.navigation?.status)));
+  $("nav-cancel").disabled = !active || cancelling || (!waiting && !actions.has("cancel") && !(["reading", "invalid"].includes(services?.navigation?.status)) && !consultation?.can_cancel);
   document.querySelectorAll("#catalog button, #suggestions button").forEach(button => { button.disabled = waiting || !active; });
 }
 function setBusy(value) { waiting = value; updateControls(); }
@@ -93,6 +102,10 @@ function render(role, text, answer = null) {
   card.append(element("h2", role === "user" ? "你 · 脱敏输入" : "智能客服 · 演示"), element("p", text));
   if (answer) {
     card.append(element("span", `${kinds[answer.kind] || answer.kind} · ${answer.channel_status}`, "kind"));
+    card.append(element("p", `${answer.processing ? processingLabel[answer.processing] : "既有版本，处理方式未细分"} · ${coverageLabel[answer.coverage || "legacy"]}`, "muted"));
+    for (const part of answer.parts || []) {
+      if ((answer.parts || []).length > 1) card.append(element("p", `${objectLabel(part.customer_type)}：${processingLabel[part.processing || "legacy"]} · ${coverageLabel[part.coverage || "legacy"]}`, "muted"));
+    }
     for (const source of answer.sources) card.append(element("div", sourceText(source), "source"));
     for (const item of answer.cards || []) card.append(cardNode(item, true));
   }
@@ -101,6 +114,7 @@ function render(role, text, answer = null) {
 }
 function clearServices(message = "尚未开始阅读。") {
   services = null;
+  renderConsultation(null);
   $("navigation").dataset.state = "idle";
   $("catalog").replaceChildren(element("p", active ? "正在核对可用目录…" : "选择个人或企业后查看可用目录。", "muted"));
   $("service-cards").replaceChildren();
@@ -112,6 +126,7 @@ function renderServices(next) {
   if (!next) { clearServices("目录暂不可用，仍可输入公开求助问题。"); return; }
   if (services && next.session_revision < services.session_revision) return;
   services = next;
+  renderConsultation(next.consultation);
   $("navigation").dataset.state = next.navigation.status;
   if (active) active.revision = Math.max(active.revision || 0, next.session_revision);
   $("catalog").replaceChildren();
@@ -180,6 +195,7 @@ async function loadSession(id, version) {
       if (version === epoch) clearServices(`${error.message} 仍可输入公开求助问题。`);
     }
   }
+  renderConsultation(data.consultation);
   await refreshSafety();
   if (version !== epoch) return;
   setBusy(false); setStatus("可以咨询 · 请仅使用演示数据");
@@ -268,7 +284,8 @@ async function sendQuestion(text, suggestion = null) {
     render("assistant", data.answer.text, data.answer);
     active.revision = Math.max(active.revision || 0, data.session_revision || 0);
     renderServices(data.services);
-    setStatus("已保存脱敏记录 · 真实模型验证待验");
+    renderConsultation(data.consultation);
+    setStatus(`已保存脱敏记录 · ${processingLabel[data.answer.processing || "legacy"]}`);
   } catch (error) {
     if (version !== epoch || active?.id !== sid) return;
     if (error.status === 409) {
@@ -354,7 +371,8 @@ document.querySelectorAll("[data-question]").forEach(button => button.addEventLi
 (async () => {
   try {
     const data = await api("/health");
-    $("mode").textContent = data.mode === "demo" ? "规则演示 · 非真实模型 · 模型验证待验" : "模型适配模式 · 真实效果验证待验";
+    const version = data.consultation_version === "1.4" ? "V1.4" : "既有版本";
+    $("mode").textContent = data.mode === "demo" ? `${version} 规则演示 · 非真实模型` : `${version} 模型适配模式 · 每条答复标明实际处理方式`;
     await refresh();
   } catch (error) { $("mode").textContent = "服务连接失败"; setStatus(error.message); }
 })();

@@ -20,7 +20,7 @@ from starlette.exceptions import HTTPException
 from starlette.middleware.trustedhost import TrustedHostMiddleware
 
 from app.config import Settings
-from app.consultation import CANCEL, answer_consultation
+from app.consultation import answer_consultation, bind_topic, is_cancel, valid_topics
 from app.db import Conversation, Message, SafetyNotice, cleanup_expired, open_database
 from app.schemas import (
     Answer,
@@ -39,7 +39,6 @@ from app.schemas import (
     SafetyState,
     ServiceView,
     SessionInfo,
-    TopicRef,
     Turn,
 )
 from app.service import BLOCKED_TEXT, HUMAN, PRIVATE, URGENT, URGENT_NOTICE, load_knowledge, sanitize
@@ -50,11 +49,13 @@ from app.services_catalog import (
     answer_card,
     build_service_view,
     confirm_answer_sources,
+    consultation_view,
     knowledge_fingerprint,
     load_catalog,
     make_card,
     reading_steps,
     resolve_service,
+    source_bound_context,
     usable_knowledge,
     validate_history_card,
 )
@@ -147,7 +148,7 @@ def create_app(settings: Settings | None = None) -> FastAPI:
         try:
             entries, items = configuration()
             return build_service_view(cast(CustomerType, item.customer_type), item.revision,
-                                      item.navigation, entries, items)
+                                      item.navigation, entries, items, item.context)
         except ServiceConfigUnavailable:
             if optional:
                 return None
@@ -232,7 +233,7 @@ def create_app(settings: Settings | None = None) -> FastAPI:
             try:
                 entries, items = configuration()
                 services = build_service_view(cast(CustomerType, item.customer_type), item.revision,
-                                              item.navigation, entries, items)
+                                              item.navigation, entries, items, item.context)
             except ServiceConfigUnavailable:
                 entries, items, services = [], [], None
             messages = db.scalars(select(Message).where(Message.session_id == sid).order_by(Message.id))
@@ -244,7 +245,9 @@ def create_app(settings: Settings | None = None) -> FastAPI:
                                                           entries, items) for card in answer.cards]
                 views.append(MessageView(role=cast("Literal['user', 'assistant']", message.role),
                                          text=message.text, created_at=iso(message.created_at), answer=answer))
-            return History(session=session_view(item), messages=views, services=services)
+            context = source_bound_context(item.context, item.navigation, usable_knowledge(entries, items))
+            return History(session=session_view(item), messages=views, services=services,
+                           consultation=consultation_view(context, usable_knowledge(entries, items), item.revision))
 
     @app.get("/api/v1/sessions/{sid}/services", response_model=ServiceView, responses=ERRORS)
     def get_services(sid: str, request: Request) -> ServiceView:
@@ -265,14 +268,14 @@ def create_app(settings: Settings | None = None) -> FastAPI:
             question: str | None = None
             if body.action == "cancel":
                 navigation = NavigationState(status="cancelled")
-                context = ConsultationContext()
+                context = ConsultationContext(clarification_status="cancelled")
             else:
                 entries, items = configuration()
                 if body.action == "start":
                     entry, knowledge = resolve_service(entries, items, customer_type,
                                                        body.capability_id, body.knowledge_version)
                     question = entry.question
-                    answer = Answer(kind="answered", mode="demo", text=knowledge.text,
+                    answer = Answer(kind="answered", mode="demo", processing="rule", coverage="overview", text=knowledge.text,
                                     sources=[make_card(entry, knowledge).source])
                     navigation = NavigationState(status="reading", capability_id=entry.capability_id,
                                                  knowledge_id=knowledge.id, knowledge_version=knowledge.version,
@@ -290,8 +293,8 @@ def create_app(settings: Settings | None = None) -> FastAPI:
                         return JSONResponse({"error": {"code": "NAVIGATION_UNAVAILABLE",
                             "message": "当前阅读位置没有这一步，请核对最新状态。"}}, status_code=409)
                     navigation = navigation.model_copy(update={"step_index": index})
-                context = ConsultationContext(topics=[TopicRef(knowledge_id=knowledge.id,
-                                                               customer_type=customer_type)])
+                context = (ConsultationContext(topics=[bind_topic(knowledge)]) if body.action == "start" else
+                           source_bound_context(item.context, item.navigation, usable_knowledge(entries, items)))
                 latest_entries, latest_items = configuration()
                 if resolve_service(latest_entries, latest_items, customer_type,
                                    entry.capability_id, knowledge.version) != (entry, knowledge):
@@ -319,7 +322,8 @@ def create_app(settings: Settings | None = None) -> FastAPI:
             services = current_services(item, optional=body.action == "cancel")
             if services is None:
                 services = ServiceView(session_revision=item.revision,
-                    navigation=NavigationState(status="cancelled", revision=item.revision))
+                    navigation=NavigationState(status="cancelled", revision=item.revision),
+                    consultation=consultation_view(context, [], item.revision))
             return services
 
     @app.get("/api/v1/safety", response_model=SafetyState, responses=ERRORS)
@@ -348,20 +352,23 @@ def create_app(settings: Settings | None = None) -> FastAPI:
     def send_message(sid: str, body: MessageInput, request: Request) -> Turn:
         owner = owner_hash(request)
         urgent = any(word in body.text for word in URGENT)
-        cancelling = body.text.strip("，。！？!? \n") in CANCEL
+        cancelling = is_cancel(body.text)
         protected_route = (urgent or sanitize(body.text) == BLOCKED_TEXT
-                           or any(word in body.text for word in HUMAN) or cancelling)
+                           or any(word in body.text for word in (*HUMAN, *PRIVATE)) or cancelling)
         with app.state.sessions() as db:
             item = owned_session(db, sid, owner)
             customer_type = cast(CustomerType, item.customer_type)
-            context = ConsultationContext.model_validate(item.context)
+            raw_context, raw_navigation = item.context, item.navigation
             expected_revision = item.revision
             if not urgent and body.expected_revision is not None and body.expected_revision != item.revision:
                 raise HTTPException(409)
         controlled_question = body.capability_id is not None and not urgent
         entries: list[CatalogConfig]
         items: list[Knowledge]
-        if protected_route and not controlled_question:
+        mixed_private = (any(word in body.text for word in PRIVATE)
+                         and not (urgent or sanitize(body.text) == BLOCKED_TEXT
+                                  or any(word in body.text for word in HUMAN) or cancelling))
+        if protected_route and not controlled_question and not mixed_private:
             entries, items = [], []
         else:
             try:
@@ -376,24 +383,35 @@ def create_app(settings: Settings | None = None) -> FastAPI:
             entry, _ = resolve_service(entries, items, customer_type, body.capability_id, body.knowledge_version)
             if body.text not in [entry.question, *entry.related_questions]:
                 raise CapabilityChanged
+        context = source_bound_context(raw_context, raw_navigation, usable_knowledge(entries, items))
         safe_text, answer, next_context = answer_consultation(
             body.text, customer_type, usable_knowledge(entries, items), settings, context,
         )
         # Re-check after model latency, then persist the whole turn in one transaction.
         with app.state.sessions.begin() as db:
             item = owned_session(db, sid, owner)
-            if answer.sources:
+            if answer.sources or not protected_route:
                 latest_entries, latest_items = configuration()
+                refs = next_context.topics + next_context.pending_topics
+                if len(valid_topics(refs, usable_knowledge(latest_entries, latest_items))) != len(refs):
+                    raise CapabilityChanged
+            else:
+                latest_entries, latest_items = entries, items
+            if answer.sources:
                 confirm_answer_sources(answer, entries, items, latest_entries, latest_items)
                 if body.capability_id is not None:
                     entry, _ = resolve_service(latest_entries, latest_items, customer_type,
                                                body.capability_id, body.knowledge_version)
                     if body.text not in [entry.question, *entry.related_questions]:
                         raise CapabilityChanged
-            else:
-                latest_entries, latest_items = entries, items
             card = answer_card(answer, customer_type, latest_entries, latest_items)
             navigation = NavigationState(status="cancelled" if cancelling else "idle")
+            if answer.kind == "model_unavailable":
+                retained = build_service_view(customer_type, item.revision, item.navigation,
+                                              latest_entries, latest_items, item.context).navigation
+                if (retained.status != "reading"
+                        or retained.knowledge_id in {ref.knowledge_id for ref in next_context.topics}):
+                    navigation = retained
             if card:
                 _, selected_knowledge = resolve_service(latest_entries, latest_items, customer_type,
                                                         card.capability_id, card.source.version)
@@ -435,7 +453,8 @@ def create_app(settings: Settings | None = None) -> FastAPI:
             revision = item.revision
             services = current_services(item, optional=True)
         return Turn(user_text=safe_text, answer=answer, safety=state,
-                    session_revision=revision, services=services)
+                    session_revision=revision, services=services,
+                    consultation=consultation_view(next_context, usable_knowledge(latest_entries, latest_items), revision))
 
     static = Path(__file__).parent / "static"
 

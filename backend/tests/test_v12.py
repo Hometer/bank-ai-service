@@ -109,6 +109,8 @@ def test_topic_followup_and_cancel_are_persisted(client):
     assert result["answer"]["sources"][0]["id"] == "personal_opening"
     send(client, sid, "取消")
     assert send(client, sid, "那需要什么")["answer"]["kind"] == "clarification"
+    # V1.4 emits the second clarification before exhausting on the next vague reply.
+    assert send(client, sid, "那需要什么")["answer"]["kind"] == "clarification"
     assert send(client, sid, "那需要什么")["answer"]["kind"] == "unknown"
     assert send(client, sid, "开户材料")["answer"]["kind"] == "answered"
     with client.app.state.sessions() as db:
@@ -127,7 +129,10 @@ def test_unknown_and_private_question_do_not_reuse_stale_topic(client):
 
 def test_ambiguous_topics_and_expired_knowledge_are_not_guessed(client):
     sid = new_session(client)
-    assert send(client, sid, "个人开户和存款材料")["answer"]["kind"] == "clarification"
+    # V1.4 answers two explicit topics with separate sources instead of treating them as vague.
+    mixed = send(client, sid, "个人开户和存款材料")["answer"]
+    assert mixed["kind"] == "answered"
+    assert [part["sources"][0]["id"] for part in mixed["parts"]] == ["personal_opening", "personal_deposit"]
     send(client, sid, "开户材料")
     client.app.state.knowledge = [item.model_copy(update={"status": "disabled"})
                                 for item in client.app.state.knowledge]

@@ -11,6 +11,8 @@ from pydantic import Field, ValidationError, field_validator
 from app.schemas import (
     Answer,
     CardSource,
+    ConsultationContext,
+    ConsultationView,
     CustomerType,
     Knowledge,
     NavigationAction,
@@ -19,6 +21,7 @@ from app.schemas import (
     ServiceItem,
     ServiceView,
     StrictModel,
+    TopicRef,
 )
 from app.service import eligible
 
@@ -111,6 +114,38 @@ def knowledge_fingerprint(knowledge: Knowledge) -> str:
     return hashlib.sha256(knowledge.model_dump_json().encode("utf-8")).hexdigest()
 
 
+def source_bound_context(raw: dict[str, Any], navigation: dict[str, Any], items: list[Knowledge]) -> ConsultationContext:
+    context = ConsultationContext.model_validate(raw)
+    nav = NavigationState.model_validate(navigation)
+    current = {item.id: item for item in items}
+
+    def bind(ref: TopicRef) -> TopicRef:
+        item = current.get(ref.knowledge_id)
+        if (item and ref.knowledge_version is None and ref.source_fingerprint is None
+                and nav.status == "reading" and nav.knowledge_id == item.id
+                and nav.knowledge_version == item.version and item.customer_type == ref.customer_type
+                and nav.source_fingerprint == knowledge_fingerprint(item)):
+            return ref.model_copy(update={"knowledge_version": item.version,
+                                          "source_fingerprint": knowledge_fingerprint(item)})
+        return ref
+    return context.model_copy(update={"topics": [bind(ref) for ref in context.topics],
+                                      "pending_topics": [bind(ref) for ref in context.pending_topics]})
+
+
+def consultation_view(context: ConsultationContext, items: list[Knowledge], revision: int) -> ConsultationView:
+    current = {item.id: item for item in items}
+
+    def ids(refs: list[TopicRef]) -> list[str]:
+        return [ref.knowledge_id for ref in refs if ref.knowledge_id in current
+                and ref.customer_type == current[ref.knowledge_id].customer_type
+                and ref.knowledge_version == current[ref.knowledge_id].version
+                and ref.source_fingerprint == knowledge_fingerprint(current[ref.knowledge_id])]
+    topics, pending = ids(context.topics), ids(context.pending_topics)
+    return ConsultationView(status=context.clarification_status, clarification_attempts=context.clarification_attempts,
+                            topic_ids=topics, pending_topic_ids=pending, revision=revision,
+                            can_cancel=bool(topics or pending or context.clarification_status in ("awaiting", "exhausted")))
+
+
 def make_card(
     entry: CatalogConfig, knowledge: Knowledge, message_id: int | None = None,
     *, reading: bool = False, step_index: int = 0,
@@ -138,10 +173,13 @@ def make_card(
 
 def build_service_view(
     customer_type: CustomerType, revision: int, raw_navigation: dict[str, Any],
-    entries: list[CatalogConfig], items: list[Knowledge],
+    entries: list[CatalogConfig], items: list[Knowledge], raw_context: dict[str, Any] | None = None,
 ) -> ServiceView:
     navigation = NavigationState.model_validate(raw_navigation).model_copy(update={"revision": revision})
+    usable = usable_knowledge(entries, items)
+    context = source_bound_context(raw_context or {}, raw_navigation, usable)
     result = ServiceView(session_revision=revision, navigation=navigation,
+                         consultation=consultation_view(context, usable, revision),
                          catalog=[service_item(entry) for entry, _ in available_entries(entries, items, customer_type)])
     if navigation.status != "reading":
         return result
