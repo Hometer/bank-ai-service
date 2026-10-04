@@ -1,0 +1,10 @@
+{
+  "cancelled": {
+    "tracksStopped": true,
+    "state": "idle",
+    "finishHidden": true
+  },
+  "denied": true,
+  "network": true,
+  "kind": "Mock browser errors and capture events; not physical microphone or permission test"
+}

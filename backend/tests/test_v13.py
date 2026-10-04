@@ -484,4 +484,4 @@ def test_0002_history_without_new_json_fields_remains_readable_after_additive_mi
             assert record.created_at == now and record.expires_at == expiry
             assert db.get(Message, 1).answer == old_answer
     with sqlite3.connect(database) as db:
-        assert db.execute("SELECT version_num FROM alembic_version").fetchone()[0] == "0003"
+        assert db.execute("SELECT version_num FROM alembic_version").fetchone()[0] == "0005"

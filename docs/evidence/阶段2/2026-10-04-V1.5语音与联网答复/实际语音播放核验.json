@@ -1,0 +1,10 @@
+{
+  "actual_local_tts_and_html_audio_started": true,
+  "playing": {
+    "state": "speaking",
+    "status": "正在播放本机系统语音，可点击停止当前回复。"
+  },
+  "click_to_stop": true,
+  "real_microphone_pending": true,
+  "audible_quality_pending": true
+}

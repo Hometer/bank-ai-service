@@ -1,0 +1,12 @@
+{
+  "actual_process_restart": true,
+  "all_rows_unchanged": {
+    "conversations": true,
+    "messages": true,
+    "answer_jobs": true,
+    "transcription_jobs": true
+  },
+  "local_asr_ready": true,
+  "model_requests_after_restart": 11,
+  "pending_tasks_after_restart": 0
+}

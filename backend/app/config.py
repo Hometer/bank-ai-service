@@ -23,11 +23,23 @@ class Settings:
     public_activation_path: Path | None = None
     bank_faq_path: Path | None = None
     bank_faq_activation_path: Path | None = None
+    v15_enabled: bool = False
+    v15_budget_path: Path | None = None
+    asr_enabled: bool = False
+    asr_model_path: Path = ROOT / "data/models/ggml-small.bin"
+    asr_cli_path: Path = Path("/opt/homebrew/bin/whisper-cli")
+    asr_ffmpeg_path: Path = Path("/opt/homebrew/bin/ffmpeg")
 
     @classmethod
     def from_env(cls) -> "Settings":
         load_dotenv(ROOT / ".env", override=False)
         return cls(
+            asr_enabled=os.getenv("LOCAL_ASR_ENABLED", "0") == "1",
+            asr_model_path=Path(os.getenv("LOCAL_ASR_MODEL", str(cls.asr_model_path))),
+            asr_cli_path=Path(os.getenv("LOCAL_ASR_CLI", str(cls.asr_cli_path))),
+            asr_ffmpeg_path=Path(os.getenv("LOCAL_ASR_FFMPEG", str(cls.asr_ffmpeg_path))),
+            v15_enabled=os.getenv("V15_ENABLED", "0") == "1",
+            v15_budget_path=Path(os.getenv("V15_BUDGET_PATH", str(ROOT / "data/model-budget-v15.sqlite3"))),
             database_url=os.getenv("DATABASE_URL", cls.database_url),
             mode=os.getenv("MODEL_MODE", "demo"),
             model_base_url=os.getenv("MODEL_BASE_URL", ""),

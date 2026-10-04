@@ -1,0 +1,18 @@
+{
+  "date": "2026-10-04",
+  "checks": [
+    "Real consent UI: declining does not start microphone",
+    "Simulated ASR only: listening/final transcription/edit/stop/late event rejection",
+    "Unsupported recognition keeps text composer available",
+    "Real browser -> real official webpage -> real DeepSeek: refund conditions and sources",
+    "Real DeepSeek draft: source-labelled guidance; not sent to agent",
+    "Viewport 1280: no horizontal overflow",
+    "Viewport 768: no horizontal overflow",
+    "Viewport 390: no horizontal overflow",
+    "Real legacy sensitive/urgent routes preserved; urgent silence",
+    "Actual page refresh restores history, never auto-starts audio"
+  ],
+  "asr": "Simulated event verification only; real microphone/cloud recognition pending",
+  "actual_tts": "Browser previously reported end without start; failure UI verified. Actual audible playback pending",
+  "full_duplex": false
+}

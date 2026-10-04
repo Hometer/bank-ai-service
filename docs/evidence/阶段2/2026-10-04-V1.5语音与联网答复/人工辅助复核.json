@@ -1,0 +1,121 @@
+{
+  "question": "交银香港网银密码怎样重置",
+  "elapsed_seconds": 0.87,
+  "job": {
+    "id": "7d817fba-acfd-4561-9730-c97e7eaa1d69",
+    "status": "completed",
+    "revision": 2,
+    "result": {
+      "answer": {
+        "kind": "answered",
+        "text": "【人工辅助草稿 · 未连接人工】\n客户自述问题：交银香港网银密码怎样重置\n参考答复：\n根据所附公开资料，相关说明如下：\n同业通用参考，非交银专属规定：\n建议：先通过交银香港官方渠道查看适用的密码找回方式，并在银行渠道完成身份核实；无法自行恢复时联系交银官方客服。\n所问细节仍有资料缺口，具体条件请向交银香港官方渠道核对。\n本答复由 DeepSeek 根据资料摘录整理，未获银行审核，未办理业务。\n待人工核对：资料是否适用、缺失条件及客户真实情况。此草稿没有发送给坐席。",
+        "mode": "model",
+        "sources": [
+          {
+            "id": "personal_faq_bocom",
+            "title": "交通银行（香港）有限公司客服常见问题",
+            "version": "hk-faq-20261003-3:hk-faq-local-2",
+            "status": "public_unreviewed",
+            "customer_type": "personal",
+            "references": [
+              {
+                "id": "HSBC-HELP",
+                "title": "汇丰香港帮助中心",
+                "url": "https://www.hsbc.com.hk/help/",
+                "publisher": "香港上海汇丰银行有限公司",
+                "entity": "香港上海汇丰银行有限公司",
+                "jurisdiction": "HK",
+                "retrieved_on": "2026-10-03",
+                "locator": "同业通用参考，非交银条款：通用处理建议：汇丰香港帮助中心；交银香港电子银行保安资讯"
+              },
+              {
+                "id": "BOCOM-SAFE",
+                "title": "交银香港电子银行保安资讯",
+                "url": "https://www.hk.bankcomm.com/hk/shtml/hk/tw/2005223/2005264/2040251.shtml?channelId=2005223",
+                "publisher": "交通银行（香港）有限公司",
+                "entity": "交通银行（香港）有限公司",
+                "jurisdiction": "HK",
+                "retrieved_on": "2026-10-03",
+                "locator": "同业通用参考，非交银条款：通用处理建议：汇丰香港帮助中心；交银香港电子银行保安资讯"
+              }
+            ],
+            "article_ids": [
+              "HKFAQ-BOCOM-29"
+            ],
+            "retrieved_on": "2026-10-03",
+            "review_due_on": "2026-10-10"
+          }
+        ],
+        "channel_status": "银行正式入口及人工队列尚未配置",
+        "parts": [],
+        "cards": [],
+        "processing": "model",
+        "focus": "general",
+        "coverage": "partial"
+      },
+      "evidence": [
+        {
+          "id": "HKFAQ-BOCOM-29",
+          "text": "建议：先通过交银香港官方渠道查看适用的密码找回方式，并在银行渠道完成身份核实；无法自行恢复时联系交银官方客服。\n限制：同业通用参考：以上是交银咨询场景的处理建议，未核实为交银专属流程；不移植其他银行的费率、限额、等待时间、产品条件或菜单名称。具体以交银正式指引为准。",
+          "source": {
+            "id": "personal_faq_bocom",
+            "title": "交通银行（香港）有限公司客服常见问题",
+            "version": "hk-faq-20261003-3:hk-faq-local-2",
+            "status": "public_unreviewed",
+            "customer_type": "personal",
+            "references": [
+              {
+                "id": "HSBC-HELP",
+                "title": "汇丰香港帮助中心",
+                "url": "https://www.hsbc.com.hk/help/",
+                "publisher": "香港上海汇丰银行有限公司",
+                "entity": "香港上海汇丰银行有限公司",
+                "jurisdiction": "HK",
+                "retrieved_on": "2026-10-03",
+                "locator": "同业通用参考，非交银条款：通用处理建议：汇丰香港帮助中心；交银香港电子银行保安资讯"
+              },
+              {
+                "id": "BOCOM-SAFE",
+                "title": "交银香港电子银行保安资讯",
+                "url": "https://www.hk.bankcomm.com/hk/shtml/hk/tw/2005223/2005264/2040251.shtml?channelId=2005223",
+                "publisher": "交通银行（香港）有限公司",
+                "entity": "交通银行（香港）有限公司",
+                "jurisdiction": "HK",
+                "retrieved_on": "2026-10-03",
+                "locator": "同业通用参考，非交银条款：通用处理建议：汇丰香港帮助中心；交银香港电子银行保安资讯"
+              }
+            ],
+            "article_ids": [
+              "HKFAQ-BOCOM-29"
+            ],
+            "retrieved_on": "2026-10-03",
+            "review_due_on": "2026-10-10"
+          },
+          "origin": "knowledge",
+          "fetched_at": null
+        }
+      ],
+      "processing": "deepseek",
+      "web_status": "not_needed",
+      "intent": "agent_assist",
+      "draft": true,
+      "context": {
+        "context_version": 2,
+        "topics": [
+          {
+            "knowledge_id": "personal_faq_bocom",
+            "customer_type": "personal",
+            "knowledge_version": "hk-faq-20261003-3:hk-faq-local-2",
+            "source_fingerprint": "fbc588f140ae48958635b5c5bef50e8deaba1831bed21281599c6c61ecafc5fb",
+            "article_ids": [
+              "HKFAQ-BOCOM-29"
+            ]
+          }
+        ],
+        "pending_topics": [],
+        "clarification_attempts": 0,
+        "clarification_status": "idle"
+      }
+    }
+  }
+}

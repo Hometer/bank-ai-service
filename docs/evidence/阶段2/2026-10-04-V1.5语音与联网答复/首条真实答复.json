@@ -1,0 +1,100 @@
+{
+  "question": "交银香港网银服务是否免费",
+  "job": {
+    "id": "269669c4-eff8-4925-ae35-d441d3521d82",
+    "status": "completed",
+    "revision": 2,
+    "result": {
+      "answer": {
+        "kind": "answered",
+        "text": "根据所附公开资料，相关说明如下：\n网银服务本身免费，部分在线交易可能收费；具体金额查银行收费表。\n本答复由 DeepSeek 根据资料摘录整理，未获银行审核，未办理业务。",
+        "mode": "model",
+        "sources": [
+          {
+            "id": "personal_faq_bocom",
+            "title": "交通银行（香港）有限公司客服常见问题",
+            "version": "hk-faq-20261003-3:hk-faq-local-2",
+            "status": "public_unreviewed",
+            "customer_type": "personal",
+            "references": [
+              {
+                "id": "BOCOM-NET",
+                "title": "交银香港个人网上银行常见问题",
+                "url": "https://www.hk.bankcomm.com/hk/shtml/hk/en/2005575/2005656/2005659/2500891/list.shtml",
+                "publisher": "交通银行（香港）有限公司",
+                "entity": "交通银行（香港）有限公司",
+                "jurisdiction": "HK",
+                "retrieved_on": "2026-10-03",
+                "locator": "个人网银问答9：服务及交易收费"
+              }
+            ],
+            "article_ids": [
+              "HKFAQ-BOCOM-07"
+            ],
+            "retrieved_on": "2026-10-03",
+            "review_due_on": "2026-10-10"
+          }
+        ],
+        "channel_status": "银行正式入口及人工队列尚未配置",
+        "parts": [],
+        "cards": [],
+        "processing": "model",
+        "focus": "general",
+        "coverage": "supported"
+      },
+      "evidence": [
+        {
+          "id": "HKFAQ-BOCOM-07",
+          "text": "网银服务本身免费，部分在线交易可能收费；具体金额查银行收费表。\n限制：不能将服务免费解释为所有交易免费；未提供本人费用或当日报价。",
+          "source": {
+            "id": "personal_faq_bocom",
+            "title": "交通银行（香港）有限公司客服常见问题",
+            "version": "hk-faq-20261003-3:hk-faq-local-2",
+            "status": "public_unreviewed",
+            "customer_type": "personal",
+            "references": [
+              {
+                "id": "BOCOM-NET",
+                "title": "交银香港个人网上银行常见问题",
+                "url": "https://www.hk.bankcomm.com/hk/shtml/hk/en/2005575/2005656/2005659/2500891/list.shtml",
+                "publisher": "交通银行（香港）有限公司",
+                "entity": "交通银行（香港）有限公司",
+                "jurisdiction": "HK",
+                "retrieved_on": "2026-10-03",
+                "locator": "个人网银问答9：服务及交易收费"
+              }
+            ],
+            "article_ids": [
+              "HKFAQ-BOCOM-07"
+            ],
+            "retrieved_on": "2026-10-03",
+            "review_due_on": "2026-10-10"
+          },
+          "origin": "knowledge",
+          "fetched_at": null
+        }
+      ],
+      "processing": "deepseek",
+      "web_status": "not_needed",
+      "intent": "answer",
+      "draft": false,
+      "context": {
+        "context_version": 2,
+        "topics": [
+          {
+            "knowledge_id": "personal_faq_bocom",
+            "customer_type": "personal",
+            "knowledge_version": "hk-faq-20261003-3:hk-faq-local-2",
+            "source_fingerprint": "fbc588f140ae48958635b5c5bef50e8deaba1831bed21281599c6c61ecafc5fb",
+            "article_ids": [
+              "HKFAQ-BOCOM-07"
+            ]
+          }
+        ],
+        "pending_topics": [],
+        "clarification_attempts": 0,
+        "clarification_status": "idle"
+      }
+    }
+  }
+}

@@ -1,0 +1,29 @@
+{
+  "date": "2026-10-04",
+  "microphone": "synthetic stream, not a physical microphone test",
+  "recorder": "actual browser MediaRecorder webm/opus",
+  "recognition": "actual local whisper.cpp small; no cloud ASR",
+  "recognized": {
+    "text": "交通银行香港,网上银行服务收费吗?",
+    "tracksStopped": true,
+    "noAnswerYet": true,
+    "errors": []
+  },
+  "answered": {
+    "sid": "27eb2755-94b7-4594-ab96-b06fd032359d",
+    "processing": "deepseek",
+    "answer": "根据所附公开资料，相关说明如下：\n网银服务本身免费，部分在线交易可能收费；具体金额查银行收费表。\n本答复由 DeepSeek 根据资料摘录整理，未获银行审核，未办理业务。",
+    "jobId": "de46b0ce-1908-4b15-9c10-3c8196af8a2d",
+    "transcriptionJobs": [],
+    "revision": 2
+  },
+  "refreshedReview": true,
+  "viewports": [
+    1440,
+    1280,
+    768,
+    390
+  ],
+  "physicalPhone": "pending",
+  "productAcceptance": "deferred"
+}

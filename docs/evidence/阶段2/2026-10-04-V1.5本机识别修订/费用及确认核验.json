@@ -1,0 +1,28 @@
+{
+  "new_budget": {
+    "requests": 11,
+    "max_requests": 50,
+    "cap_yuan": 1,
+    "reserved_yuan": 0.2024,
+    "estimated_yuan": 0.01393
+  },
+  "old_requests": 18,
+  "old_file_unchanged": true,
+  "confirmed_transcriptions": [
+    [
+      "completed",
+      1,
+      "交通银行香港网上银行服务收费吗？"
+    ]
+  ],
+  "counts_after": {
+    "conversations": 10,
+    "messages": 26,
+    "answer_jobs": 11
+  },
+  "counts_before": {
+    "conversations": 10,
+    "messages": 24,
+    "answer_jobs": 10
+  }
+}

@@ -47,6 +47,31 @@ class Message(Base):
     answer: Mapped[dict[str, Any] | None] = mapped_column(JSON, nullable=True)
 
 
+class AnswerJob(Base):
+    __tablename__ = "answer_jobs"
+    id: Mapped[str] = mapped_column(String, primary_key=True)
+    session_id: Mapped[str] = mapped_column(ForeignKey("conversations.id", ondelete="CASCADE"), index=True)
+    request_id: Mapped[str] = mapped_column(String)
+    question: Mapped[str] = mapped_column(String)
+    intent: Mapped[str] = mapped_column(String)
+    revision: Mapped[int] = mapped_column(Integer)
+    status: Mapped[str] = mapped_column(String)
+    created_at: Mapped[float] = mapped_column(Float)
+    result: Mapped[dict[str, Any] | None] = mapped_column(JSON, nullable=True)
+
+
+class TranscriptionJob(Base):
+    __tablename__ = "transcription_jobs"
+    id: Mapped[str] = mapped_column(String, primary_key=True)
+    session_id: Mapped[str] = mapped_column(ForeignKey("conversations.id", ondelete="CASCADE"), index=True)
+    revision: Mapped[int] = mapped_column(Integer)
+    status: Mapped[str] = mapped_column(String)
+    created_at: Mapped[float] = mapped_column(Float)
+    text: Mapped[str | None] = mapped_column(String, nullable=True)
+    error_code: Mapped[str | None] = mapped_column(String, nullable=True)
+    confirmed: Mapped[bool] = mapped_column(Boolean, default=False)
+
+
 def open_database(url: str) -> Engine:
     parsed = make_url(url)
     if parsed.get_backend_name() != "sqlite" or not parsed.database or parsed.database == ":memory:":

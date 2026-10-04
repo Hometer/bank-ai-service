@@ -30,6 +30,7 @@ function mergeSafety(next) {
   if (!next || (!expired && next.revision < safety.revision)) return;
   safety = next;
   if (next.active) $("safety-status").textContent = "";
+  if (next.active) window.v15?.silence();
   renderSafety();
 }
 async function refreshSafety() {
@@ -140,9 +141,10 @@ function render(role, text, answer = null) {
   const card = element("article", undefined, `message ${role}`);
   card.append(element("h2", role === "user" ? "您 · 脱敏输入" : "AI 咨询助手"), element("p", text));
   if (answer) {
-    const kind = answer.kind === "answered" && answer.processing === "knowledge" ? "公开知识回答" : (kinds[answer.kind] || answer.kind);
+    const modelAnswer = answer.processing === "model" && text.includes("本答复由 DeepSeek 根据资料摘录整理");
+    const kind = modelAnswer ? "DeepSeek 资料答复" : answer.kind === "answered" && answer.processing === "knowledge" ? "公开知识回答" : (kinds[answer.kind] || answer.kind);
     card.append(element("span", `${kind} · ${answer.channel_status}`, "kind"));
-    card.append(element("p", `${answer.processing ? processingLabel[answer.processing] : "既有版本，处理方式未细分"} · ${coverageLabel[answer.coverage || "legacy"]}`, "muted"));
+    card.append(element("p", `${modelAnswer ? "真实 DeepSeek · 受控资料摘录" : answer.processing ? processingLabel[answer.processing] : "既有版本，处理方式未细分"} · ${coverageLabel[answer.coverage || "legacy"]}`, "muted"));
     for (const part of answer.parts || []) {
       if ((answer.parts || []).length > 1) card.append(element("p", `${objectLabel(part.customer_type)}：${processingLabel[part.processing || "legacy"]} · ${coverageLabel[part.coverage || "legacy"]}`, "muted"));
     }
@@ -252,6 +254,7 @@ async function loadSession(id, version) {
   await refreshSafety();
   if (version !== epoch) return;
   setBusy(false); setStatus("可以咨询 · 请仅使用演示数据");
+  await window.v15?.resume(id, version);
 }
 // Retry a cancellation once after reading the newest server revision. This is
 // also used for the previous session during an object/history switch.
@@ -287,6 +290,8 @@ async function cancelPrevious(session, version) {
 async function refresh(forceNew = false) {
   const previous = active ? {...active} : null;
   const version = ++epoch;
+  await window.v15?.cancel();
+  if (version !== epoch) return;
   active = null; cancelling = false; setBusy(true); emptyMessages(); clearServices(); setStatus("正在加载本机会话…");
   $("transition-status").textContent = "";
   const type = $("customer").value;
@@ -319,8 +324,10 @@ async function refresh(forceNew = false) {
     setStatus(error.message); setBusy(false);
   }
 }
-async function sendQuestion(text, suggestion = null) {
+async function sendQuestion(text, suggestion = null, legacy = false) {
   if (!text || !active || waiting) return;
+  if (!legacy && !suggestion && window.v15?.enabled && !/(盗刷|丢卡|遗失|诈骗|被冒用|泄露|异常扣款|人工|投诉|客户经理|客服人员|余额|账单|流水|贷款进度|融资进度|账户状态|取消|停止)/.test(text)) return window.v15.send(text);
+  window.v15?.silence();
   const version = ++epoch;
   const sid = active.id;
   const body = {text,expected_revision:active.revision || 0};
@@ -354,6 +361,7 @@ async function sendQuestion(text, suggestion = null) {
   } finally { if (version === epoch) setBusy(false); }
 }
 async function navigate(action, item = null) {
+  if (action === "cancel") await window.v15?.cancel();
   if (!active || (waiting && action !== "cancel") || cancelling) return;
   const session = {...active};
   const version = ++epoch;
@@ -403,6 +411,8 @@ $("history").addEventListener("change", async () => {
   const id = $("history").value;
   const previous = active ? {...active} : null;
   const version = ++epoch;
+  await window.v15?.cancel();
+  if (version !== epoch) return;
   active = null; cancelling = false; setBusy(true); emptyMessages(); clearServices();
   $("transition-status").textContent = "";
   await cancelPrevious(previous, version);
@@ -449,6 +459,7 @@ $("advisor-portrait").addEventListener("error", () => {
       $("mode").textContent += " · 公开知识资料不可用或需复核";
       $("knowledge-status").textContent = "知识资料待核对";
     }
+    if (window.v15?.enabled) $("mode").textContent="V1.5 · 知识库优先 / 官网定向检索 / DeepSeek 资料答复";
     await refresh();
   } catch (error) {
     $("mode").textContent = "服务连接失败"; $("connection-status").textContent = "连接失败";

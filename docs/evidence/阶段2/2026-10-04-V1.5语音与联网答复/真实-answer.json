@@ -1,0 +1,78 @@
+{
+  "question": "交银香港官网转数快退款有什么期限",
+  "elapsed_seconds": 11.98,
+  "job": {
+    "id": "142b5e72-2786-42e2-a869-91a20c3c7400",
+    "status": "completed",
+    "revision": 2,
+    "result": {
+      "answer": {
+        "kind": "unknown",
+        "text": "目前的公开资料不足以回答这个问题。\n所问细节仍有资料缺口，具体条件请向交银香港官方渠道核对。\n本答复由 DeepSeek 根据资料摘录整理，未获银行审核，未办理业务。",
+        "mode": "model",
+        "sources": [],
+        "channel_status": "银行正式入口及人工队列尚未配置",
+        "parts": [],
+        "cards": [],
+        "processing": "model",
+        "focus": "general",
+        "coverage": "partial"
+      },
+      "evidence": [
+        {
+          "id": "WEB-1",
+          "text": "1.\n什麼是「轉數快」服務？\n「轉數快」是全新本地銀行轉賬服務，取代現時的本地電子轉賬交易。「轉數快」的特點是支持 7X24 交易及可實時到賬 (按收款銀行決定); 另外，亦可綁定識別碼作為賬戶綁定服務登記。\n2.\n現時企業網上銀行之本地電子轉賬交易服務會有什麼轉變？\n「轉數快」將取代企業網上銀行的本地電子轉賬交易服務，而現有客戶不受影響，並可於服務推出後即時使用轉數快-轉賬(非登記)服務。\n3.\n企業網上銀行提供「轉數快」哪些功能？\n提供以下服務:\n• 轉賬: 特快及一般轉賬（支援港幣及人民幣）\n• 查詢「轉數快」匯入紀錄\n• 賬戶綁定服務登記 • 賬戶綁定服務查詢/更改/取消\n• eDDA授權 (電子直接扣賬授權)\n• 退款\n4.\n企業網上銀行之「轉數快 – 轉賬」有什麼特色？\n特色如下：\n• 特快轉賬支援實時到賬 (最終按收款銀行決定)\n• 支援7X24小時無間斷服務 (分為日間營業時間及非營業時間)\n• 於非營業時間內進行之交易均設有限額(請閱第5點)\n什麼是非營業時間服務？\n客戶若需要于營業時間外進行轉數快轉帳，必須開通非營業時間交易限額才可辦理。轉數快營業時間為星期一至五上午9時至下午5時半(港幣交易)及星期一至五上午9時至下午4時半(人民幣交易)。前述時間外、颱風、星期六、日及公眾假期為非營業時間。\n6.\n企業網上銀行之「非營業時間」服務有什麼特色？\n非營業時間內之每天交易限額為等值1,000,000港元，不得修改(以整個企銀賬戶計算)\n7.\n企業網上銀行提供的「賬戶綁定服務」是什麼服務？\n賬戶綁定服務是指客戶可透過登記轉數快系統識別碼「FPS-IDENTIFIER」來進行賬戶綁定，成功登記後，本行及其他銀行客戶便可透過你登記的識別碼進行收款，毋須再提供銀行賬戶號碼及收款人名稱。\n8.\n如何於企業網上銀行進行賬戶綁定服務登記?\n你可於網點申請開通賬戶綁定服務。完成後登入企業網上銀行，並選擇「轉賬付款」-> 「轉數快」->「賬戶綁定服務」。你可以在此增設轉數快系統識別碼以進行賬戶綁定服務，並選擇結算賬戶。\n9.\n企業網上銀行提供「電子直接扣賬授權」什麼功能？\n你可透過「電子直接扣賬授權」服務於企業網上銀行平台確認接納或修改他行客戶提出的電子扣賬協議。\n10.\n企業網上銀行提供的「轉數快 –退款」是什麼服務？\n當收到款項後，客戶可辦理退款服務，退回至原付款人，毋須再輸入原付款人的收款資料。\n11.\n企業網上銀行之「轉數快 –退款」有什麼需要注意？\n只可於收到款項後的30天內辦理及為一次性，不可重複提交。\n12.\n企業網上銀行提供的「轉數快-上載批量交易",
+          "source": {
+            "id": "enterprise_faq_bocom",
+            "title": "交通银行（香港）有限公司客服常见问题",
+            "version": "hk-faq-20261003-3:hk-faq-local-2",
+            "status": "public_unreviewed",
+            "customer_type": "enterprise",
+            "references": [
+              {
+                "id": "BOCOM-EFPS",
+                "title": "交银香港企业转数快问答",
+                "url": "https://www.hk.bankcomm.com/hk/shtml/hk/tw/2004980/2006400/2015001/2014985/2605921.shtml",
+                "publisher": "交通银行（香港）有限公司",
+                "entity": "交通银行（香港）有限公司",
+                "jurisdiction": "HK",
+                "retrieved_on": "2026-10-04",
+                "locator": "本轮官网定向获取片段；抓取时间 2026-10-04T02:27:38.849337+00:00"
+              }
+            ],
+            "article_ids": [
+              "HKFAQ-BOCOM-10"
+            ],
+            "retrieved_on": "2026-10-04",
+            "review_due_on": "2026-10-10"
+          },
+          "origin": "official_web",
+          "fetched_at": "2026-10-04T02:27:38.849337+00:00"
+        }
+      ],
+      "processing": "deepseek",
+      "web_status": "retrieved",
+      "intent": "answer",
+      "draft": false,
+      "context": {
+        "context_version": 2,
+        "topics": [
+          {
+            "knowledge_id": "enterprise_faq_bocom",
+            "customer_type": "enterprise",
+            "knowledge_version": "hk-faq-20261003-3:hk-faq-local-2",
+            "source_fingerprint": "f236f8a0f6ea62c789ab98f6e2c18879f86c3523d8b9cb8f2cc8c144e2fef902",
+            "article_ids": [
+              "HKFAQ-BOCOM-10"
+            ]
+          }
+        ],
+        "pending_topics": [],
+        "clarification_attempts": 0,
+        "clarification_status": "idle"
+      }
+    }
+  },
+  "session_id": "41c3d72f-0a40-436c-a517-be34e38d87df",
+  "owner_token": null
+}

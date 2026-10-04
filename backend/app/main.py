@@ -109,6 +109,14 @@ def create_app(settings: Settings | None = None) -> FastAPI:
         engine = open_database(settings.database_url)
         application.state.engine = engine
         application.state.sessions = sessionmaker(engine, expire_on_commit=False)
+        from app.v15_api import recover
+        if settings.v15_enabled:
+            recover(application)
+        else:
+            application.state.v15_tasks = set()
+            application.state.v15_cancel = {}
+        from app.local_asr_api import recover as recover_asr
+        recover_asr(application, settings)
         try:
             application.state.knowledge = load_knowledge(settings.knowledge_path)
         except (OSError, ValueError, TypeError, ValidationError):
@@ -129,6 +137,15 @@ def create_app(settings: Settings | None = None) -> FastAPI:
             worker.cancel()
             with suppress(asyncio.CancelledError):
                 await worker
+            for task in list(application.state.v15_tasks):
+                task.cancel()
+            if application.state.v15_tasks:
+                await asyncio.gather(*application.state.v15_tasks, return_exceptions=True)
+            for cancelled in application.state.asr_cancel.values():
+                cancelled.set()
+            # Workers observe cancellation and clean their temporary audio before shutdown.
+            if application.state.asr_tasks:
+                await asyncio.gather(*list(application.state.asr_tasks), return_exceptions=True)
             engine.dispose()
 
     app = FastAPI(title="银行客服 · 本机演示", lifespan=lifespan, docs_url=None, redoc_url=None)
@@ -175,7 +192,7 @@ def create_app(settings: Settings | None = None) -> FastAPI:
         response.headers["Cache-Control"] = "no-store"
         response.headers["X-Content-Type-Options"] = "nosniff"
         response.headers["Referrer-Policy"] = "no-referrer"
-        response.headers["Content-Security-Policy"] = "default-src 'self'; script-src 'self'; style-src 'self'; connect-src 'self'; frame-ancestors 'none'"
+        response.headers["Content-Security-Policy"] = "default-src 'self'; script-src 'self'; style-src 'self'; connect-src 'self'; media-src 'self' blob:; frame-ancestors 'none'"
         return response
 
     @app.exception_handler(RequestValidationError)
@@ -504,6 +521,10 @@ def create_app(settings: Settings | None = None) -> FastAPI:
     def advisor_portrait() -> FileResponse:
         return FileResponse(static / "assets" / "financial-advisor-v1.png", media_type="image/png")
 
+    from app.v15_api import install
+    install(app, settings, configuration, owned_session, owner_hash)
+    from app.local_asr_api import install as install_asr
+    install_asr(app, settings, owned_session, owner_hash)
     return app
 
 
