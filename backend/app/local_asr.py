@@ -5,6 +5,7 @@ import hashlib
 import json
 import math
 import os
+import re
 import shutil
 import subprocess
 import tempfile
@@ -112,10 +113,41 @@ def parse_transcript(raw: Any) -> str:
     text = "".join(p["text"] for p in parts).strip()
     if not text or len(text) > 1000 or any(ord(c) < 32 and c not in "\n\t" for c in text):
         raise ASRError("NO_SPEECH" if not text else "ASR_OUTPUT")
+    # Collapse contradictory adjacent commas/end marks only; never touch words/numbers.
+    text = re.sub(r"[，,]+([。！？!?])", r"\1", text)
+    text = re.sub(r"[，,]{2,}", lambda match: match.group()[-1], text)
     text = sanitize(text)
     if text == BLOCKED_TEXT:
         raise ASRError("SENSITIVE_TRANSCRIPT")
     return text
+
+
+def normalize_wave(path: Path) -> None:
+    """Bounded linear gain, after silence validation; preserve every sample/word."""
+    with wave.open(str(path), "rb") as audio:
+        samples = array.array("h", audio.readframes(audio.getnframes()))
+    peak = max(abs(x) for x in samples)
+    if peak == 0:
+        return
+    gain = min(4.0, 27852 / peak)
+    if gain <= 1:
+        return
+    adjusted = array.array("h", (round(x * gain) for x in samples))
+    with wave.open(str(path), "wb") as audio:
+        audio.setnchannels(1)
+        audio.setsampwidth(2)
+        audio.setframerate(16000)
+        audio.writeframes(adjusted.tobytes())
+
+
+def decoder_args(settings: Settings) -> list[str]:
+    if not settings.asr_enhanced:
+        return []
+    # Fixed, versioned vocabulary only; never user text or a guessed answer.
+    prompt = (Path(__file__).with_name("prompts") / "asr_zh.txt").read_text().strip()
+    if not prompt or len(prompt) > 300:
+        raise ASRError("ASR_UNAVAILABLE")
+    return ["--prompt", prompt, "-tp", "0", "-nf", "-bs", "5", "-sns"]
 
 
 def transcribe(data: bytes, mime: str, settings: Settings, cancelled: Event) -> str:
@@ -134,10 +166,13 @@ def transcribe(data: bytes, mime: str, settings: Settings, cancelled: Event) -> 
                 "-ar", "16000", "-ac", "1", "-c:a", "pcm_s16le", str(audio),
             ], 8, cancelled, data)
             check_wave(audio)
+            if settings.asr_enhanced:
+                normalize_wave(audio)
             output = root / "transcript"
             run_tool([
                 str(settings.asr_cli_path), "-m", str(settings.asr_model_path), "-f", str(audio),
                 "-l", "zh", "-t", "4", "-oj", "-of", str(output),
+                *decoder_args(settings),
             ], 45, cancelled)
             result = output.with_suffix(".json")
             if not result.is_file() or result.stat().st_size > 64_000:

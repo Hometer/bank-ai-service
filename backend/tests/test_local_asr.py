@@ -16,6 +16,8 @@ from app.db import Conversation, Message, TranscriptionJob, cleanup_expired
 from app.local_asr import (
     ASRError,
     check_wave,
+    decoder_args,
+    normalize_wave,
     parse_transcript,
     run_tool,
     temp_root,
@@ -244,3 +246,43 @@ def test_disabled_and_bad_input_errors_are_structured(settings):
         response = client.post(f"/api/v1/sessions/{sid}/transcription-jobs", content=b"anything")
         assert response.status_code == 422 and "error" in response.json()
         assert not client.get("/api/v1/capabilities").json()["local_asr"]
+
+
+def test_gain_is_bounded_and_keeps_entire_utterance(tmp_path):
+    import array
+    path = tmp_path / "quiet.wav"
+    original = make_wave(1.3, 1000)
+    path.write_bytes(original)
+    with wave.open(io.BytesIO(original), "rb") as audio:
+        before = array.array("h", audio.readframes(audio.getnframes()))
+    normalize_wave(path)
+    with wave.open(str(path), "rb") as audio:
+        assert audio.getnframes() == len(before) and audio.getframerate() == 16000
+        after = array.array("h", audio.readframes(audio.getnframes()))
+    assert list(after) == [x * 4 for x in before]
+    assert max(abs(x) for x in after) < 32767
+
+
+def test_loud_or_silent_audio_is_not_amplified(tmp_path):
+    path = tmp_path / "loud.wav"
+    for amplitude in (0, 31000):
+        original = make_wave(1, amplitude)
+        path.write_bytes(original)
+        normalize_wave(path)
+        assert path.read_bytes() == original
+
+
+def test_vocabulary_is_fixed_and_enhancement_can_be_disabled(settings):
+    args = decoder_args(settings)
+    assert "名下" in args[1] and "余额" in args[1] and "转数快" in args[1]
+    assert "帮我查询" not in args[1] and "-nf" in args
+    assert "-bs" in args and args[args.index("-bs") + 1] == "5"
+    assert decoder_args(replace(settings, asr_enhanced=False)) == []
+
+
+def test_model_hint_never_rewrites_amounts_or_negation():
+    assert parse_transcript({"transcription": [{"text": "不要转账一千元，只查余额。"}]}) == "不要转账一千元，只查余额。"
+
+
+def test_punctuation_cleanup_preserves_amounts_and_negation():
+    assert parse_transcript({"transcription": [{"text": "不要转账3,000.50元，,只查余额，。"}]}) == "不要转账3,000.50元,只查余额。"

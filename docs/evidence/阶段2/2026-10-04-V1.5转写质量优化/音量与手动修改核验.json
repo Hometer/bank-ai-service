@@ -1,0 +1,8 @@
+{
+  "kind": "synthetic oscillator input; final transcript response mocked for edit-race QA only",
+  "quiet": true,
+  "clipping": true,
+  "editsPreserved": true,
+  "explicitUse": true,
+  "cleanup": true
+}

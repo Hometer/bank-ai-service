@@ -1,0 +1,21 @@
+{
+  "date": "2026-10-04",
+  "audio": "frozen synthetic Ting-Ting, not real user microphone",
+  "recorder": "actual browser MediaRecorder opus",
+  "model": "actual local large-v3-turbo-q5_0",
+  "level": 86.8282536316827,
+  "recognized": {
+    "text": "帮我查询一下我名下的卡还有多少余额。",
+    "preview": "帮我查询一下我名下的卡还有多少余额。",
+    "tracksEnded": true,
+    "errors": []
+  },
+  "privateQueryProtected": true,
+  "viewports": [
+    1440,
+    1280,
+    768,
+    390
+  ],
+  "paidCallsAdded": 0
+}

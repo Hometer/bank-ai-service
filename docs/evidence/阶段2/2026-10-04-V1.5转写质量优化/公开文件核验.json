@@ -1,0 +1,8 @@
+{
+  "public_files_scanned": 18,
+  "recognizable_secret_matches": 0,
+  "missing_local_links": [],
+  "env_git_ignored": true,
+  "new_model_git_ignored": true,
+  "env_permissions": "0o600"
+}

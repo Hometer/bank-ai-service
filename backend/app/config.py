@@ -29,12 +29,14 @@ class Settings:
     asr_model_path: Path = ROOT / "data/models/ggml-small.bin"
     asr_cli_path: Path = Path("/opt/homebrew/bin/whisper-cli")
     asr_ffmpeg_path: Path = Path("/opt/homebrew/bin/ffmpeg")
+    asr_enhanced: bool = True
 
     @classmethod
     def from_env(cls) -> "Settings":
         load_dotenv(ROOT / ".env", override=False)
         return cls(
             asr_enabled=os.getenv("LOCAL_ASR_ENABLED", "0") == "1",
+            asr_enhanced=os.getenv("LOCAL_ASR_ENHANCED", "1") == "1",
             asr_model_path=Path(os.getenv("LOCAL_ASR_MODEL", str(cls.asr_model_path))),
             asr_cli_path=Path(os.getenv("LOCAL_ASR_CLI", str(cls.asr_cli_path))),
             asr_ffmpeg_path=Path(os.getenv("LOCAL_ASR_FFMPEG", str(cls.asr_ffmpeg_path))),

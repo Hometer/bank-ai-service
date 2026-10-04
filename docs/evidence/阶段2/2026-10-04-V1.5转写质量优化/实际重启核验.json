@@ -1,0 +1,17 @@
+{
+  "actual_restart": true,
+  "previous_rows_unchanged": {
+    "conversations": true,
+    "messages": true,
+    "answer_jobs": true,
+    "transcription_jobs": true
+  },
+  "capabilities": {
+    "generation": true,
+    "web": "official_registered_pages_only",
+    "voice": "browser_mandarin_opt_in",
+    "human": "draft_assistance_only",
+    "local_asr": true,
+    "local_asr_model": "large-v3-turbo-q5_0"
+  }
+}

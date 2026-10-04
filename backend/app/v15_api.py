@@ -39,6 +39,7 @@ class Capabilities(StrictModel):
     voice: str = "browser_mandarin_opt_in"
     human: str = "draft_assistance_only"
     local_asr: bool = False
+    local_asr_model: str = ""
 
 
 def job_view(job: AnswerJob) -> JobView:
@@ -143,7 +144,10 @@ def install(
     def capabilities() -> Capabilities:
         from app.local_asr import available
 
-        return Capabilities(generation=settings.v15_enabled, local_asr=available(settings))
+        return Capabilities(
+            generation=settings.v15_enabled, local_asr=available(settings),
+            local_asr_model=settings.asr_model_path.stem.removeprefix("ggml-") if available(settings) else "",
+        )
 
     @app.post("/api/v1/sessions/{sid}/answer-jobs", response_model=JobView, status_code=202)
     async def submit(sid: str, body: JobInput, request: Request) -> JobView:

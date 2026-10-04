@@ -335,6 +335,11 @@ async function sendQuestion(text, suggestion = null, legacy = false) {
   setBusy(true); setStatus("正在处理…");
   $("question").value = "";
   try {
+    if (!/(盗刷|丢卡|遗失|诈骗|被冒用|泄露|异常扣款)/.test(text)) {
+      try { await window.localVoice?.confirm(text); }
+      catch(error) { if(error.status!==422) throw error; } // Sensitive edits still reach the blocking rule.
+      if (version!==epoch || active?.id!==sid) return;
+    }
     const data = await api(`/sessions/${sid}/messages`, {method:"POST", body:JSON.stringify(body)});
     // Urgent events have their own monotonic revision and must survive a page
     // navigation even when that old conversation reply is no longer displayable.
