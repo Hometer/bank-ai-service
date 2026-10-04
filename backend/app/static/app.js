@@ -98,7 +98,7 @@ function sourceNode(source) {
   node.append(element("div", "参考来源 · 公开资料整理", "source-heading"));
   const details = element("details");
   details.append(element("summary", "核对日期与资料详情"), element("p", sourceText(source)));
-  const officialHosts = new Set(["hk.bankcomm.com","www.hk.bankcomm.com","eb.hk.bankcomm.com","www.bankcomm.com.hk","www.ifec.org.hk","www.dps.org.hk","www.info.gov.hk","www.news.gov.hk"]);
+  const officialHosts = new Set(["hk.bankcomm.com","www.hk.bankcomm.com","eb.hk.bankcomm.com","www.bankcomm.com.hk","www.ifec.org.hk","www.dps.org.hk","www.info.gov.hk","www.news.gov.hk","www.hsbc.com.hk","www.hangseng.com","cms.hangseng.com","www.bochk.com","www.sc.com","www.hkbea.com","www.hkma.gov.hk"]);
   for (const ref of source?.references || []) {
     try {
       const url = new URL(ref.url);
@@ -175,6 +175,7 @@ function renderServices(next) {
   if (active) active.revision = Math.max(active.revision || 0, next.session_revision);
   $("catalog").replaceChildren();
   for (const item of next.catalog) {
+    if (item.capability_id.includes("_faq_") && !/(?:_bocom|_hkma)$/.test(item.capability_id)) continue;
     const button = element("button");
     const paths = {opening:"M4 20h16M6 20V8m12 12V8M3 8l9-5 9 5H3M10 20V11m4 9V11",deposit:"M4 7h16v13H4V7M8 7V4h8v3M4 11h16M9 16h6",repayment:"M4 6h16v13H4V6M4 10h16M8 15h3",financing:"M4 20V10h5v10M9 20V6h5v14M14 20V3h5v17",reconciliation:"M6 3h12v18H6V3M9 8h6M9 12h6M9 16h4",borrowing:"M4 18L18 4M7 4a3 3 0 1 0 0 6 3 3 0 0 0 0-6M17 14a3 3 0 1 0 0 6 3 3 0 0 0 0-6",protection:"M12 3l7 3v5c0 5-7 10-7 10S5 16 5 11V6l7-3zM9 12l2 2 4-4",exchange:"M4 7h15l-4-4M20 17H5l4 4M19 7l-4 4M5 17l4-4"};
     const icon = document.createElementNS("http://www.w3.org/2000/svg", "svg");
@@ -182,7 +183,7 @@ function renderServices(next) {
     const path = document.createElementNS("http://www.w3.org/2000/svg", "path");
     path.setAttribute("d", paths[item.capability_id.split("_").slice(1).join("_")] || paths.opening);
     icon.append(path);
-    button.append(icon, element("span", item.title.replace("公开知识", "咨询").replace("知识", "")));
+    button.append(icon, element("span", item.capability_id.endsWith("_faq_hkma") ? "金融基础与支付知识" : item.title.replace("公开知识", "咨询").replace("知识", "")));
     button.type = "button"; button.dataset.capability = item.capability_id;
     button.dataset.selected = String(next.navigation.status === "reading" && item.capability_id === next.navigation.capability_id);
     button.addEventListener("click", () => navigate("start", item));
@@ -436,7 +437,14 @@ $("advisor-portrait").addEventListener("error", () => {
     $("knowledge-status").textContent = data.knowledge_base_status === "available" ? "知识库优先" : "公开咨询演示";
     const version = data.consultation_version === "1.4" ? "V1.4" : "既有版本";
     $("mode").textContent = data.mode === "demo" ? `${version} 规则演示 · 非真实模型` : `${version} 模型适配模式 · 每条答复标明实际处理方式`;
-    if (data.knowledge_base_status === "available") $("mode").textContent = "交通银行（香港）知识库优先 · 本地检索，无模型调用";
+    if (data.knowledge_base_status === "available") {
+      $("mode").textContent = "交通银行（香港）知识库优先 · 本地检索，无模型调用";
+      if (Number.isInteger(data.knowledge_article_count) && Number.isInteger(data.knowledge_bank_count)) {
+        $("knowledge-status").textContent = `知识库优先 · ${data.knowledge_article_count} 条`;
+        $("mode").textContent = `交银香港客服 · ${data.knowledge_article_count} 条公开知识及参考建议 · 本地检索，无模型调用`;
+        $("bank-knowledge-hint").textContent = "以交通银行（香港）为咨询主体；同业资料仅作通用参考，具体条件以交银指引为准。";
+      }
+    }
     if (data.knowledge_base_status === "unavailable") {
       $("mode").textContent += " · 公开知识资料不可用或需复核";
       $("knowledge-status").textContent = "知识资料待核对";

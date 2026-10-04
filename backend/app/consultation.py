@@ -104,6 +104,12 @@ def fragments(text: str, fallback: CustomerType) -> list[tuple[CustomerType, str
 def matches_for(text: str, kind: CustomerType, items: list[Knowledge]) -> list[Knowledge]:
     matched = []
     for item in eligible(items, kind):
+        if item.faq_bank_id is not None:
+            from app.bank_faq import matching_facts, named_banks
+            banks = named_banks(text)
+            if (item.faq_bank_id in banks or (not banks and item.faq_bank_id in {"bocom", "hkma"})) and matching_facts(item, text):
+                matched.append(item)
+            continue
         topic = item.id.split("_", 1)[1]
         public = item.status == "public_unreviewed"
         if UNSUPPORTED.search(text) and not (public and (
@@ -223,6 +229,11 @@ def answer_consultation(text: str, customer_type: CustomerType, items: list[Know
         return safe, Answer(kind="unknown", mode=mode, processing="rule", coverage="none",
             text="已取消本次普通咨询与主题澄清。历史保留，未改变任何账户或业务状态，未关闭紧急提示。"), (
                 ConsultationContext(clarification_status="cancelled"))
+    if settings.public_knowledge_path is not None and settings.bank_faq_path is not None:
+        from app.bank_faq import faq_consultation
+        faq = faq_consultation(safe, customer_type, items, context, settings.mode)
+        if faq is not None:
+            return safe, *faq
     if any(word in safe for word in ("密码", "验证码", "口令")):
         return safe, Answer(kind="unknown", mode=mode, processing="rule", coverage="none", text=(
             "可以咨询密码重置或验证码接收的公开流程，但请勿发送凭证内容。"

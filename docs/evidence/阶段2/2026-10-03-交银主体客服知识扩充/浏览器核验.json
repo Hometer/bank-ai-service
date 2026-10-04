@@ -1,0 +1,12 @@
+{
+  "executed_on": "2026-10-03",
+  "checks": [
+    "10 actual browser questions: 9 corresponding official FAQs / 1 unsupported rate, all local knowledge",
+    "Bank switch, separate bank clauses and real refresh follow-up",
+    "New bank FAQ directory, reading step, refresh persistence and cancellation",
+    "Width 1280: no horizontal overflow",
+    "Width 768: no horizontal overflow",
+    "Width 390: no horizontal overflow",
+    "Mobile bank directory and private/credential/urgent protections"
+  ]
+}

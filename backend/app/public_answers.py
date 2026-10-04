@@ -35,6 +35,9 @@ def question_focus(text: str, suggested: Focus = "general") -> Focus:
 
 def public_part(item: Knowledge, focus: Focus, processing: Processing, question: str = "",
                 prior_ids: list[str] | None = None) -> AnswerPart:
+    if item.faq_bank_id is not None:
+        from app.bank_faq import faq_part
+        return faq_part(item, question, prior_ids)
     if item.status == "public_unreviewed":
         from app.public_retrieval import public_answer
         return public_answer(item, question, focus, prior_ids)

@@ -1,0 +1,348 @@
+{
+  "verified_on": "2026-10-03",
+  "method": "官方网页正文读取；关键金额/时限及资格按原页核对；原页文本仅存Git排除的本地研究目录",
+  "sources": [
+    {
+      "source_id": "BOCOM-NET",
+      "url": "https://www.hk.bankcomm.com/hk/shtml/hk/en/2005575/2005656/2005659/2500891/list.shtml",
+      "retrieved_on": "2026-10-03",
+      "verification": "read_official_page_body",
+      "local_text_sha256": "a99b000ea0611a4b97452d82a97a2b32f07de6e9837274f0bbb52a4eacdd4b99",
+      "local_text_bytes": 8719,
+      "locators": [
+        "个人网银问答1—2：服务概述",
+        "个人网银问答3：入口",
+        "个人网银问答4：确认交易记录",
+        "个人网银问答5：中断后核对",
+        "个人网银问答7：闲置保护",
+        "个人网银问答8：登出",
+        "个人网银问答9：服务及交易收费",
+        "个人网银问答11—12：服务时间及海外使用",
+        "个人网银问答10：申请及启用",
+        "个人网银问答11：业务服务时间",
+        "个人网银问答6：打印记录",
+        "个人网银问答4—5：结果核对及中断排查",
+        "通用处理建议：汇丰香港转数快常见问题；交银香港个人网上银行常见问题"
+      ]
+    },
+    {
+      "source_id": "BOCOM-EFPS",
+      "url": "https://www.hk.bankcomm.com/hk/shtml/hk/tw/2004980/2006400/2015001/2014985/2605921.shtml",
+      "retrieved_on": "2026-10-03",
+      "verification": "read_official_page_body",
+      "local_text_sha256": "6a0274dc896fb75ac799d8eb927b24b9df710e8d84cd1563f3b7309854363348",
+      "local_text_bytes": 3671,
+      "locators": [
+        "企业转数快问答7—8：绑定服务",
+        "企业转数快问答10—11：原路退款",
+        "企业转数快问答9：电子扣账授权",
+        "企业转数快问答12：批量文件"
+      ]
+    },
+    {
+      "source_id": "BOCOM-KEY",
+      "url": "https://hk.bankcomm.com/hk/shtml/hk/cn/2005276/2600451/list.shtml?channelId=2005276",
+      "retrieved_on": "2026-10-03",
+      "verification": "read_official_page_body",
+      "local_text_sha256": "c31fe424e3cd7daf439b25b83f31159af10640781491676269094c788b50a549",
+      "local_text_bytes": 7107,
+      "locators": [
+        "功能概述：双重认证",
+        "生物认证功能及使用条件",
+        "注意事项：两个独立应用程序",
+        "注意事项：编码获取位置"
+      ]
+    },
+    {
+      "source_id": "BOCOM-MOBILE",
+      "url": "https://www.hk.bankcomm.com/hk/shtml/hk/tw/2004980/2005070/list.shtml?channelId=2004980",
+      "retrieved_on": "2026-10-03",
+      "verification": "read_official_page_body",
+      "local_text_sha256": "19b7a491c13511df867591f33f53d05627bac896e3895a7fced077c8179858cc",
+      "local_text_bytes": 11183,
+      "locators": [
+        "主要功能：转账",
+        "主要功能：缴费",
+        "主要功能：信用卡",
+        "主要功能：电子结单及通知书",
+        "通用处理建议：渣打香港电子结单问答；交银香港手机银行功能说明"
+      ]
+    },
+    {
+      "source_id": "BOCOM-SAFE",
+      "url": "https://www.hk.bankcomm.com/hk/shtml/hk/tw/2005223/2005264/2040251.shtml?channelId=2005223",
+      "retrieved_on": "2026-10-03",
+      "verification": "read_official_page_body",
+      "local_text_sha256": "37fc2ba322e80b5f7f5a8494a3e3203f4867225505bedd42b42395a3c51c14d3",
+      "local_text_bytes": 23210,
+      "locators": [
+        "网银安全ABC：应用内认证",
+        "网银安全ABC：停用高风险功能",
+        "网银安全ABC：提高限额恢复条件",
+        "网银安全ABC：调低限额不受影响",
+        "通用处理建议：汇丰香港帮助中心；交银香港电子银行保安资讯"
+      ]
+    },
+    {
+      "source_id": "HSBC-HELP",
+      "url": "https://www.hsbc.com.hk/help/",
+      "retrieved_on": "2026-10-03",
+      "verification": "read_official_page_body",
+      "local_text_sha256": "d634080c43c3f6819c5cca8f3e4acd172b8810ccd3e9a5cf9fee9b71849b9c90",
+      "local_text_bytes": 17816,
+      "locators": [
+        "帮助中心：境外汇入资料",
+        "帮助中心：找回用户名",
+        "帮助中心：密码重置入口",
+        "帮助中心：卡片支持分类",
+        "通用处理建议：汇丰香港帮助中心；交银香港电子银行保安资讯",
+        "通用处理建议：汇丰香港帮助中心"
+      ]
+    },
+    {
+      "source_id": "HSBC-KEY",
+      "url": "https://www.hsbc.com.hk/ways-to-bank/internet/security-key/",
+      "retrieved_on": "2026-10-03",
+      "verification": "read_official_page_body",
+      "local_text_sha256": "9a033672f459ca621090dd8801f78ccd9f8ff882e68a719d708c6fc3a1d2787f",
+      "local_text_bytes": 50909,
+      "locators": [
+        "设备及认证帮助：忘记手机PIN",
+        "设备及认证帮助：凭证均遗忘",
+        "设备管理：旧设备移除及新机设置",
+        "设备管理：设备数量",
+        "通用处理建议：汇丰香港手机保安及设备管理；恒生数码银行操作问答"
+      ]
+    },
+    {
+      "source_id": "HSBC-FPS",
+      "url": "https://www.hsbc.com.hk/campaigns/fps/faq/",
+      "retrieved_on": "2026-10-03",
+      "verification": "read_official_page_body",
+      "local_text_sha256": "9605fcf0d3ab16b32b15e2cafc5113ad2e316800a3caf1d461e3f95676830342",
+      "local_text_bytes": 49158,
+      "locators": [
+        "转数快：登记资格",
+        "转数快：识别代号及账户号码收款",
+        "转数快：登记姓名不符",
+        "转数快：本地跨行收费说明",
+        "通用处理建议：汇丰香港转数快常见问题；交银香港个人网上银行常见问题"
+      ]
+    },
+    {
+      "source_id": "HSBC-CARD",
+      "url": "https://www.hsbc.com.hk/help/faq/credit-cards/",
+      "retrieved_on": "2026-10-03",
+      "verification": "read_official_page_body",
+      "local_text_sha256": "2557b09af3e9cc23822f5c0e85705e5f2f45c92379aacf710fb5d6c8d55038c2",
+      "local_text_bytes": 133164,
+      "locators": [
+        "信用卡问答：网上交易认证",
+        "信用卡问答：网上交易认证有效期",
+        "信用卡问答：认证后返回商户",
+        "信用卡问答：手机号同步",
+        "通用处理建议：汇丰香港信用卡帮助问答；中银香港电子银行保安资讯",
+        "通用处理建议：汇丰香港信用卡帮助问答"
+      ]
+    },
+    {
+      "source_id": "HASE-FPS",
+      "url": "https://www.hangseng.com/zh-hk/personal/banking/fps/",
+      "retrieved_on": "2026-10-03",
+      "verification": "read_official_page_body",
+      "local_text_sha256": "e8cd89e204a532a0b61e54c1dd06a1cbfbe8ad0913b6d9940e35ee07108656e9",
+      "local_text_bytes": 46450,
+      "locators": [
+        "转数快：收款账户类别",
+        "转数快：多机构登记",
+        "转数快：即时指示取消",
+        "转数快：每日限额设置"
+      ]
+    },
+    {
+      "source_id": "HASE-DIG",
+      "url": "https://cms.hangseng.com/cms/smartbanking/chi/faq.html",
+      "retrieved_on": "2026-10-03",
+      "verification": "read_official_page_body",
+      "local_text_sha256": "9e35aae09dc0c662b628ddf8782c915a3d0aa70e6f27c5752b3e8b32e23bbbbe",
+      "local_text_bytes": 9373,
+      "locators": [
+        "数码问答2：网银登记",
+        "数码问答6：凭证重置",
+        "数码问答5：设备转移及受限功能",
+        "数码问答4：屏幕保护",
+        "通用处理建议：汇丰香港手机保安及设备管理；恒生数码银行操作问答"
+      ]
+    },
+    {
+      "source_id": "HASE-EST",
+      "url": "https://www.hangseng.com/zh-hk/business/banking-digitally/business-ebanking/e-services-faq/e-statement-and-e-advice/",
+      "retrieved_on": "2026-10-03",
+      "verification": "read_official_page_body",
+      "local_text_sha256": "6a8b1c560676df1784609b04b8aeca4a047bd0c403768947f67251f63bdb0a36",
+      "local_text_bytes": 21601,
+      "locators": [
+        "商务电子结单：选择服务权限",
+        "商务电子结单：一般使用人权限",
+        "商务电子结单：纸本与电子选择",
+        "商务电子通知书：PDF下载及格式",
+        "通用处理建议：恒生商业务电子结单及通知书问答",
+        "通用处理建议：恒生商业务电子结单及通知书问答"
+      ]
+    },
+    {
+      "source_id": "BOC-FPS",
+      "url": "https://www.bochk.com/tc/more/ebanking/fps.html",
+      "retrieved_on": "2026-10-03",
+      "verification": "read_official_page_body",
+      "local_text_sha256": "eec6466df760c1467d6ca10b34ee3f4904ab70057bbab7b5550a41b0a763d7fa",
+      "local_text_bytes": 1920,
+      "locators": [
+        "转数快服务：本地支付币种",
+        "转数快服务：预设收款账户",
+        "转数快服务：本地费用",
+        "转数快服务：身份证识别代号"
+      ]
+    },
+    {
+      "source_id": "BOC-EST",
+      "url": "https://www.bochk.com/tc/more/ebanking/estatement.html",
+      "retrieved_on": "2026-10-03",
+      "verification": "read_official_page_body",
+      "local_text_sha256": "2dc59a72438ecac74dfa36288ff6627c6dabbd6e47ab972eecbbc5ab159ff57e",
+      "local_text_bytes": 9681,
+      "locators": [
+        "电子结单：综合月结单适用条件",
+        "电子结单备注4：按产品保留期",
+        "电子结单：个人化提示及备注7",
+        "电子结单：服务申请与设置",
+        "通用处理建议：渣打香港电子结单问答；中银香港电子结单和通知书"
+      ]
+    },
+    {
+      "source_id": "BOC-SAFE",
+      "url": "https://www.bochk.com/tc/security.common.html",
+      "retrieved_on": "2026-10-03",
+      "verification": "read_official_page_body",
+      "local_text_sha256": "0b0f47ad1d506628173b52663f76ddaba02c55093d00506b3d60cb8c7b3d1575",
+      "local_text_bytes": 69918,
+      "locators": [
+        "保安资讯：官方应用下载",
+        "保安资讯：联系方式变更",
+        "保安资讯：交易核对",
+        "保安资讯：密码选取及保管",
+        "通用处理建议：汇丰香港信用卡帮助问答；中银香港电子银行保安资讯"
+      ]
+    },
+    {
+      "source_id": "SC-FUND",
+      "url": "https://www.sc.com/hk/help/what-are-the-transfer-limits/",
+      "retrieved_on": "2026-10-03",
+      "verification": "read_official_page_body",
+      "local_text_sha256": "677bde3ca25344f7c74261e90011085e6ba67419b3c6eae580b646525d82d5f4",
+      "local_text_bytes": 20699,
+      "locators": [
+        "本地转账帮助：添加收款人",
+        "本地转账帮助：删除与关联指示",
+        "转账限额表：总体与分类限制",
+        "转账限额帮助：App及网银调整"
+      ]
+    },
+    {
+      "source_id": "SC-LOGIN",
+      "url": "https://www.sc.com/hk/help/digital/app-sc-mobile/login-password-security/",
+      "retrieved_on": "2026-10-03",
+      "verification": "read_official_page_body",
+      "local_text_sha256": "2fd7635fdaf9c0f003da574891bef9b37428a840abb23095cdd41ce68402c3ce",
+      "local_text_bytes": 25879,
+      "locators": [
+        "登录问答：账户锁定",
+        "保安问答：Mobile Key登记",
+        "保安问答：新设备及单设备绑定",
+        "保安问答：Mobile Key PIN恢复"
+      ]
+    },
+    {
+      "source_id": "SC-EST",
+      "url": "https://www.sc.com/hk/bank-with-us/e-statement/",
+      "retrieved_on": "2026-10-03",
+      "verification": "read_official_page_body",
+      "local_text_sha256": "ba4f79f05ed7beff04aefdb9be6ae81ccfc4945da60bd15f4c0f4eab7d8e061e",
+      "local_text_bytes": 32034,
+      "locators": [
+        "电子结单问答：服务费用",
+        "电子结单问答：电邮提示排查",
+        "电子结单问答：保存副本",
+        "电子结单问答：联名签署方式",
+        "通用处理建议：渣打香港电子结单问答；交银香港手机银行功能说明",
+        "通用处理建议：渣打香港电子结单问答；中银香港电子结单和通知书"
+      ]
+    },
+    {
+      "source_id": "BEA-NET",
+      "url": "https://www.hkbea.com/html/tc/bea-personal-banking-cyberbanking-faqs.html",
+      "retrieved_on": "2026-10-03",
+      "verification": "read_official_page_body",
+      "local_text_sha256": "c08b3e81357cccbd863156360e7195789455a42609ff101a205c68eb5ffd38bc",
+      "local_text_bytes": 135195,
+      "locators": [
+        "个人网银11.1：i-Token功能",
+        "个人网银11.3：启用准备",
+        "个人网银11.8：设备数量",
+        "个人网银11.9：设备转移",
+        "个人网银11.12：重装影响",
+        "个人网银11.7：SIM更换",
+        "个人网银5.36.1—2：识别代号登记",
+        "个人网银5.36.5：跨机构登记摘要"
+      ]
+    },
+    {
+      "source_id": "BEA-API",
+      "url": "https://www.hkbea.com/html/tc/bea-open-api-faq.html",
+      "retrieved_on": "2026-10-03",
+      "verification": "read_official_page_body",
+      "local_text_sha256": "453c06fa49deb76ecb7508e385e34bfabc911513876745b43cf1b732786a6f26",
+      "local_text_bytes": 31871,
+      "locators": [
+        "开放API个人问答9、企业问答8：撤回同意",
+        "开放API个人及企业问答10：过期同意",
+        "开放API个人及企业问答17：分享范围调整",
+        "开放API问答5：银行与第三方费用"
+      ]
+    },
+    {
+      "source_id": "HKMA-FPS",
+      "url": "https://www.hkma.gov.hk/chi/key-functions/international-financial-centre/financial-market-infrastructure/faster-payment-system-fps/",
+      "retrieved_on": "2026-10-03",
+      "verification": "read_official_page_body",
+      "local_text_sha256": "a2824dcf801948fcdc48ab4cae0b17734053630a7023ad3d68acff7f2e85a86d",
+      "local_text_bytes": 12220,
+      "locators": [
+        "金管局快速支付系统：机制概述",
+        "金管局快速支付系统：支持币种",
+        "金管局快速支付系统：运行时间",
+        "金管局快速支付系统：收款识别信息",
+        "通用处理建议：香港金管局转数快机制介绍",
+        "通用处理建议：香港金管局转数快机制介绍"
+      ]
+    },
+    {
+      "source_id": "HKMA-FAQ",
+      "url": "https://www.hkma.gov.hk/eng/smart-consumers/frequently-asked-questions/",
+      "retrieved_on": "2026-10-03",
+      "verification": "read_official_page_body",
+      "local_text_sha256": "6f7f16b4b95d3542f76c7d514558de3249f6331a6ebd4c9b946c46531eecb788",
+      "local_text_bytes": 142225,
+      "locators": [
+        "消费者问答：金融基础设施C1",
+        "消费者问答：金融基础设施C3",
+        "消费者问答：金融基础设施C4",
+        "消费者问答：银行A1",
+        "消费者问答：银行A13",
+        "消费者问答：银行A12",
+        "消费者问答：银行A2",
+        "消费者问答：银行A6、A9"
+      ]
+    }
+  ]
+}

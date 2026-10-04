@@ -146,6 +146,9 @@ def create_app(settings: Settings | None = None) -> FastAPI:
         if settings.public_knowledge_path is not None:
             entries, items = public_configuration(settings.public_knowledge_path,
                                                   settings.public_activation_path, entries, items)
+        if settings.public_knowledge_path is not None and settings.bank_faq_path is not None:
+            from app.bank_faq import faq_configuration
+            entries, items = faq_configuration(settings.bank_faq_path, settings.bank_faq_activation_path, entries, items)
         return entries, items
 
     def current_services(item: Conversation, *, optional: bool = False) -> ServiceView | None:
@@ -214,6 +217,9 @@ def create_app(settings: Settings | None = None) -> FastAPI:
                 active = [item for item in items if item.status == "public_unreviewed"]
                 result.knowledge_base_status = "available" if active else "unavailable"
                 result.knowledge_base_version = active[0].version if active else None
+                if settings.bank_faq_path is not None:
+                    result.knowledge_article_count = len({fact.id for item in active for fact in item.public_facts})
+                    result.knowledge_bank_count = len({item.faq_bank_id for item in active if item.faq_bank_id not in (None, "hkma")})
             except ServiceConfigUnavailable:
                 result.knowledge_base_status = "unavailable"
         return result
@@ -430,9 +436,18 @@ def create_app(settings: Settings | None = None) -> FastAPI:
             if card:
                 _, selected_knowledge = resolve_service(latest_entries, latest_items, customer_type,
                                                         card.capability_id, card.source.version)
+                step_index = 0
+                if selected_knowledge.faq_bank_id is not None:
+                    fact_ids = {article_id for source in answer.sources for article_id in source.article_ids}
+                    selected_fact = next((fact for fact in selected_knowledge.public_facts
+                                          if fact.id in fact_ids), None)
+                    if selected_fact is not None:
+                        step_index = next((index for index, step in enumerate(reading_steps(selected_knowledge))
+                                           if selected_fact.title + "：" in step), 0)
                 navigation = NavigationState(status="reading", capability_id=card.capability_id,
                                              knowledge_id=card.source.id, knowledge_version=card.source.version,
-                                             source_fingerprint=knowledge_fingerprint(selected_knowledge))
+                                             source_fingerprint=knowledge_fingerprint(selected_knowledge),
+                                             step_index=step_index)
             mutation = update(Conversation).where(Conversation.id == sid, Conversation.expires_at > time.time())
             # Public urgent routing never depends on a prior topic. A concurrent ordinary
             # answer must not suppress the safety event; both turns remain atomic.

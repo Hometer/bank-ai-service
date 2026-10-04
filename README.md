@@ -109,6 +109,29 @@
 
 已经实现本机个人与企业文字咨询、演示来源、无依据处理、查询和人工未接入提示、敏感输入区分及 7 天会话保存。V1.2 修订增加公开对象分项、有限主题追问/澄清、可恢复的紧急提示与明确关闭、旧响应及后端主题版本保护。V1.3 增加个人/企业各三项演示目录、同主题建议、公开来源卡片及分步阅读/返回/取消；状态在刷新或重启后恢复，失效知识与停用能力停止动作。仅使用演示知识，不代表某银行已审核或接入。2026-10-03 已获授权完成 8/8 DeepSeek 真实知识选择样例，费用按用量保守估算约 0.004618 元；未部署或创建云资源。引导页面体验已通过，8 条真实样例全部获产品经理整体 3/3 分。V1.3 本轮约定子阶段已收口，详见 [收口证据](docs/evidence/阶段2/V1.3收口/验收说明.md)；全量正式银行功能仍后续待交付。V1.4 实施结果见下方当前交付节，完整新版程序与真实验证已交付，新版十条整体评分已确认均为 3/3（满意），真机体验待验。
 
+### 多银行官方客服知识扩充（2026-10-03）
+
+现有知识从30条扩至**146条**：新增交银官网28条和交银场景通用建议12条、汇丰16条、恒生/中银香港/渣打/东亚各12条、金管局通用知识12条，来自22个新官方页面。补齐转数快、转账状态核对、网银/密码重置、保安认证与换手机、银行卡网购、电子结单、企业权限和开放API授权。保留原30条及全部旧测试，银行/地区/对象分别引用，未获银行审核。
+
+打开 **http://127.0.0.1:18768**，看到“知识库优先 · 146条”算对；选择个人/企业，问“交银香港网银密码怎样重置”“交银香港FPS支持美元吗”或“交银香港企业转数快退款有什么期限”。题目、目录与回答主体以交银香港为主；同业内容只作通用方法参考，真实出处保留，具体费率、限额及产品条件不移植。已保留具名同业咨询与原档案。来源可展开，右侧阅读定位当前答复；没有依据的费用、审批和真实账户状态明确说明缺口。
+
+[交银主体问答与真实出处](docs/知识库/香港银行客服/交银香港客服知识手册.md) · [结构化资料及维护方法](docs/知识库/香港银行客服/README.md) · [十条实际答复与待评分](docs/阶段文档/交银主体客服答复与评分.md) · [截图、操作与闸门](docs/evidence/阶段2/2026-10-03-交银主体客服知识扩充/验收说明.md)。649/649回归、类型/Lint/语法、两次实际重启及四种宽度通过。本轮没有模型请求；新版交银题目反馈与真机待验，阶段2整体未收口。
+
+开发者验证（根目录）：
+
+```sh
+.venv/bin/pytest -c backend/pyproject.toml backend/tests -q
+.venv/bin/mypy --config-file backend/pyproject.toml backend/app backend/alembic backend/scripts
+.venv/bin/ruff check backend docs/知识库/香港银行客服/校验资料.py
+.venv/bin/python docs/知识库/香港银行客服/校验资料.py
+PYTHONPATH=backend .venv/bin/python backend/scripts/verify_bank_faq_restart.py
+BANK_FAQ_ENABLED=0 .venv/bin/python backend/scripts/verify_knowledge_restart.py
+node --check backend/app/static/app.js
+node --check backend/scripts/verify_bank_faq_ui.mjs
+```
+
+`BANK_FAQ_ENABLED` 默认1，0只关闭新增FAQ；`BANK_FAQ_PATH` / `BANK_FAQ_ACTIVATION_PATH` 可指向独立验收副本。内部复核日到期不引用，不自动延长。原交银香港验证脚本使用 `BANK_FAQ_ENABLED=0`，保留原六项企业目录检查；多银行恢复脚本另验新目录、银行追问与来源。
+
 ### 金融风格页面优化（2026-10-03）
 
 已优化为深海军蓝、暖白及香槟金的咨询工作区：左侧服务/会话、中间知识问答、右侧原创静态AI顾问及分步阅读。官方来源直接可见，版本与历史说明可展开；手机目录可折叠，发送失败保留输入，图片加载失败有文字替代。顾问当前仅为静态形象，不表示语音/视频或真实银行员工已接入。
@@ -119,7 +142,7 @@
 
 ### 交通银行（香港）知识库已接入（2026-10-03）
 
-产品默认优先检索已整理的30条公开知识，有依据时返回知识正文和适用限制，并展示官方链接、出处、核对日与内部复核日期；没有依据的当日利率、完整附件、本人审批或真实账户查询继续说明缺口。个人5项、企业6项目录可用，支持多轮追问及来源失效保护。知识尚未获银行审核，以香港有限公司为主，不混用香港分行条件。
+首轮（历史记录）优先检索已整理的30条公开知识；当前扩充至134条，见上节。首轮有依据时返回知识正文和适用限制，并展示官方链接、出处、核对日与内部复核日期；没有依据的当日利率、完整附件、本人审批或真实账户查询继续说明缺口。个人5项、企业6项目录可用，支持多轮追问及来源失效保护。知识尚未获银行审核，以香港有限公司为主，不混用香港分行条件。
 
 现在可在本机打开 **http://127.0.0.1:18768**，看到“交通银行（香港）知识库优先”算对。服务关闭后，在Finder打开项目文件夹，双击 **启动知识库演示.command**，保持终端打开，再进入该地址；结束时按Control+C。使用独立 `data/knowledge-preview.sqlite3`，只输入非敏感公开问题。本入口本地检索，无模型调用或新增费用。
 
@@ -136,7 +159,7 @@
 .venv/bin/mypy --config-file backend/pyproject.toml backend/app backend/alembic backend/scripts
 .venv/bin/ruff check backend docs/知识库/交通银行香港/校验资料.py
 .venv/bin/python docs/知识库/交通银行香港/校验资料.py
-.venv/bin/python backend/scripts/verify_knowledge_restart.py
+BANK_FAQ_ENABLED=0 .venv/bin/python backend/scripts/verify_knowledge_restart.py
 PUBLIC_KNOWLEDGE_ENABLED=0 .venv/bin/python backend/scripts/verify_restart.py
 PUBLIC_KNOWLEDGE_ENABLED=0 .venv/bin/python backend/scripts/verify_restart_v14.py
 ```

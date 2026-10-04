@@ -1,0 +1,3274 @@
+{
+  "schema_version": "1.0",
+  "bundle_version": "hk-faq-20261003-3",
+  "jurisdiction": "HK",
+  "retrieved_on": "2026-10-03",
+  "review_policy": "仅核对日公开资料；收费、时效、安全条目7天复核，其余30天复核，到期停止引用；内部日期不是银行生效日期。",
+  "sources": [
+    {
+      "id": "BOCOM-NET",
+      "bank_id": "bocom",
+      "entity": "交通银行（香港）有限公司",
+      "title": "交银香港个人网上银行常见问题",
+      "url": "https://www.hk.bankcomm.com/hk/shtml/hk/en/2005575/2005656/2005659/2500891/list.shtml",
+      "jurisdiction": "HK",
+      "publisher": "交通银行（香港）有限公司",
+      "verification": "read_page",
+      "retrieved_on": "2026-10-03",
+      "published_on": null,
+      "valid_until": null,
+      "note": "已读取官方页面正文；只摘取本条定位的适用事实，页面其他旧技术说明不启用。"
+    },
+    {
+      "id": "BOCOM-EFPS",
+      "bank_id": "bocom",
+      "entity": "交通银行（香港）有限公司",
+      "title": "交银香港企业转数快问答",
+      "url": "https://www.hk.bankcomm.com/hk/shtml/hk/tw/2004980/2006400/2015001/2014985/2605921.shtml",
+      "jurisdiction": "HK",
+      "publisher": "交通银行（香港）有限公司",
+      "verification": "read_page",
+      "retrieved_on": "2026-10-03",
+      "published_on": null,
+      "valid_until": null,
+      "note": "已读取官方页面正文；只摘取本条定位的适用事实，页面其他旧技术说明不启用。"
+    },
+    {
+      "id": "BOCOM-KEY",
+      "bank_id": "bocom",
+      "entity": "交通银行（香港）有限公司",
+      "title": "交银香港流动保安编码及生物认证",
+      "url": "https://hk.bankcomm.com/hk/shtml/hk/cn/2005276/2600451/list.shtml?channelId=2005276",
+      "jurisdiction": "HK",
+      "publisher": "交通银行（香港）有限公司",
+      "verification": "read_page",
+      "retrieved_on": "2026-10-03",
+      "published_on": null,
+      "valid_until": null,
+      "note": "已读取官方页面正文；只摘取本条定位的适用事实，页面其他旧技术说明不启用。"
+    },
+    {
+      "id": "BOCOM-MOBILE",
+      "bank_id": "bocom",
+      "entity": "交通银行（香港）有限公司",
+      "title": "交银香港手机银行功能说明",
+      "url": "https://www.hk.bankcomm.com/hk/shtml/hk/tw/2004980/2005070/list.shtml?channelId=2004980",
+      "jurisdiction": "HK",
+      "publisher": "交通银行（香港）有限公司",
+      "verification": "read_page",
+      "retrieved_on": "2026-10-03",
+      "published_on": null,
+      "valid_until": null,
+      "note": "已读取官方页面正文；只摘取本条定位的适用事实，页面其他旧技术说明不启用。"
+    },
+    {
+      "id": "BOCOM-SAFE",
+      "bank_id": "bocom",
+      "entity": "交通银行（香港）有限公司",
+      "title": "交银香港电子银行保安资讯",
+      "url": "https://www.hk.bankcomm.com/hk/shtml/hk/tw/2005223/2005264/2040251.shtml?channelId=2005223",
+      "jurisdiction": "HK",
+      "publisher": "交通银行（香港）有限公司",
+      "verification": "read_page",
+      "retrieved_on": "2026-10-03",
+      "published_on": null,
+      "valid_until": null,
+      "note": "已读取官方页面正文；只摘取本条定位的适用事实，页面其他旧技术说明不启用。"
+    },
+    {
+      "id": "HSBC-HELP",
+      "bank_id": "hsbc",
+      "entity": "香港上海汇丰银行有限公司",
+      "title": "汇丰香港帮助中心",
+      "url": "https://www.hsbc.com.hk/help/",
+      "jurisdiction": "HK",
+      "publisher": "香港上海汇丰银行有限公司",
+      "verification": "read_page",
+      "retrieved_on": "2026-10-03",
+      "published_on": null,
+      "valid_until": null,
+      "note": "已读取官方页面正文；只摘取本条定位的适用事实，页面其他旧技术说明不启用。"
+    },
+    {
+      "id": "HSBC-KEY",
+      "bank_id": "hsbc",
+      "entity": "香港上海汇丰银行有限公司",
+      "title": "汇丰香港手机保安及设备管理",
+      "url": "https://www.hsbc.com.hk/ways-to-bank/internet/security-key/",
+      "jurisdiction": "HK",
+      "publisher": "香港上海汇丰银行有限公司",
+      "verification": "read_page",
+      "retrieved_on": "2026-10-03",
+      "published_on": null,
+      "valid_until": null,
+      "note": "已读取官方页面正文；只摘取本条定位的适用事实，页面其他旧技术说明不启用。"
+    },
+    {
+      "id": "HSBC-FPS",
+      "bank_id": "hsbc",
+      "entity": "香港上海汇丰银行有限公司",
+      "title": "汇丰香港转数快常见问题",
+      "url": "https://www.hsbc.com.hk/campaigns/fps/faq/",
+      "jurisdiction": "HK",
+      "publisher": "香港上海汇丰银行有限公司",
+      "verification": "read_page",
+      "retrieved_on": "2026-10-03",
+      "published_on": null,
+      "valid_until": null,
+      "note": "已读取官方页面正文；只摘取本条定位的适用事实，页面其他旧技术说明不启用。"
+    },
+    {
+      "id": "HSBC-CARD",
+      "bank_id": "hsbc",
+      "entity": "香港上海汇丰银行有限公司",
+      "title": "汇丰香港信用卡帮助问答",
+      "url": "https://www.hsbc.com.hk/help/faq/credit-cards/",
+      "jurisdiction": "HK",
+      "publisher": "香港上海汇丰银行有限公司",
+      "verification": "read_page",
+      "retrieved_on": "2026-10-03",
+      "published_on": null,
+      "valid_until": null,
+      "note": "已读取官方页面正文；只摘取本条定位的适用事实，页面其他旧技术说明不启用。"
+    },
+    {
+      "id": "HASE-FPS",
+      "bank_id": "hase",
+      "entity": "恒生银行有限公司",
+      "title": "恒生香港转数快及本地转账问答",
+      "url": "https://www.hangseng.com/zh-hk/personal/banking/fps/",
+      "jurisdiction": "HK",
+      "publisher": "恒生银行有限公司",
+      "verification": "read_page",
+      "retrieved_on": "2026-10-03",
+      "published_on": null,
+      "valid_until": null,
+      "note": "已读取官方页面正文；只摘取本条定位的适用事实，页面其他旧技术说明不启用。"
+    },
+    {
+      "id": "HASE-DIG",
+      "bank_id": "hase",
+      "entity": "恒生银行有限公司",
+      "title": "恒生数码银行操作问答",
+      "url": "https://cms.hangseng.com/cms/smartbanking/chi/faq.html",
+      "jurisdiction": "HK",
+      "publisher": "恒生银行有限公司",
+      "verification": "read_page",
+      "retrieved_on": "2026-10-03",
+      "published_on": null,
+      "valid_until": null,
+      "note": "已读取官方页面正文；只摘取本条定位的适用事实，页面其他旧技术说明不启用。"
+    },
+    {
+      "id": "HASE-EST",
+      "bank_id": "hase",
+      "entity": "恒生银行有限公司",
+      "title": "恒生商业务电子结单及通知书问答",
+      "url": "https://www.hangseng.com/zh-hk/business/banking-digitally/business-ebanking/e-services-faq/e-statement-and-e-advice/",
+      "jurisdiction": "HK",
+      "publisher": "恒生银行有限公司",
+      "verification": "read_page",
+      "retrieved_on": "2026-10-03",
+      "published_on": null,
+      "valid_until": null,
+      "note": "已读取官方页面正文；只摘取本条定位的适用事实，页面其他旧技术说明不启用。"
+    },
+    {
+      "id": "BOC-FPS",
+      "bank_id": "bochk",
+      "entity": "中国银行（香港）有限公司",
+      "title": "中银香港转数快说明",
+      "url": "https://www.bochk.com/tc/more/ebanking/fps.html",
+      "jurisdiction": "HK",
+      "publisher": "中国银行（香港）有限公司",
+      "verification": "read_page",
+      "retrieved_on": "2026-10-03",
+      "published_on": null,
+      "valid_until": null,
+      "note": "已读取官方页面正文；只摘取本条定位的适用事实，页面其他旧技术说明不启用。"
+    },
+    {
+      "id": "BOC-EST",
+      "bank_id": "bochk",
+      "entity": "中国银行（香港）有限公司",
+      "title": "中银香港电子结单和通知书",
+      "url": "https://www.bochk.com/tc/more/ebanking/estatement.html",
+      "jurisdiction": "HK",
+      "publisher": "中国银行（香港）有限公司",
+      "verification": "read_page",
+      "retrieved_on": "2026-10-03",
+      "published_on": null,
+      "valid_until": null,
+      "note": "已读取官方页面正文；只摘取本条定位的适用事实，页面其他旧技术说明不启用。"
+    },
+    {
+      "id": "BOC-SAFE",
+      "bank_id": "bochk",
+      "entity": "中国银行（香港）有限公司",
+      "title": "中银香港电子银行保安资讯",
+      "url": "https://www.bochk.com/tc/security.common.html",
+      "jurisdiction": "HK",
+      "publisher": "中国银行（香港）有限公司",
+      "verification": "read_page",
+      "retrieved_on": "2026-10-03",
+      "published_on": null,
+      "valid_until": null,
+      "note": "已读取官方页面正文；只摘取本条定位的适用事实，页面其他旧技术说明不启用。"
+    },
+    {
+      "id": "SC-FUND",
+      "bank_id": "sc",
+      "entity": "渣打银行（香港）有限公司",
+      "title": "渣打香港收款人及转账限额帮助",
+      "url": "https://www.sc.com/hk/help/what-are-the-transfer-limits/",
+      "jurisdiction": "HK",
+      "publisher": "渣打银行（香港）有限公司",
+      "verification": "read_page",
+      "retrieved_on": "2026-10-03",
+      "published_on": null,
+      "valid_until": null,
+      "note": "已读取官方页面正文；只摘取本条定位的适用事实，页面其他旧技术说明不启用。"
+    },
+    {
+      "id": "SC-LOGIN",
+      "bank_id": "sc",
+      "entity": "渣打银行（香港）有限公司",
+      "title": "渣打香港手机登录及保安问答",
+      "url": "https://www.sc.com/hk/help/digital/app-sc-mobile/login-password-security/",
+      "jurisdiction": "HK",
+      "publisher": "渣打银行（香港）有限公司",
+      "verification": "read_page",
+      "retrieved_on": "2026-10-03",
+      "published_on": null,
+      "valid_until": null,
+      "note": "已读取官方页面正文；只摘取本条定位的适用事实，页面其他旧技术说明不启用。"
+    },
+    {
+      "id": "SC-EST",
+      "bank_id": "sc",
+      "entity": "渣打银行（香港）有限公司",
+      "title": "渣打香港电子结单问答",
+      "url": "https://www.sc.com/hk/bank-with-us/e-statement/",
+      "jurisdiction": "HK",
+      "publisher": "渣打银行（香港）有限公司",
+      "verification": "read_page",
+      "retrieved_on": "2026-10-03",
+      "published_on": null,
+      "valid_until": null,
+      "note": "已读取官方页面正文；只摘取本条定位的适用事实，页面其他旧技术说明不启用。"
+    },
+    {
+      "id": "BEA-NET",
+      "bank_id": "bea",
+      "entity": "东亚银行有限公司（香港业务）",
+      "title": "东亚香港个人网上银行常见问题",
+      "url": "https://www.hkbea.com/html/tc/bea-personal-banking-cyberbanking-faqs.html",
+      "jurisdiction": "HK",
+      "publisher": "东亚银行有限公司（香港业务）",
+      "verification": "read_page",
+      "retrieved_on": "2026-10-03",
+      "published_on": null,
+      "valid_until": null,
+      "note": "已读取官方页面正文；只摘取本条定位的适用事实，页面其他旧技术说明不启用。"
+    },
+    {
+      "id": "BEA-API",
+      "bank_id": "bea",
+      "entity": "东亚银行有限公司（香港业务）",
+      "title": "东亚香港开放API同意管理问答",
+      "url": "https://www.hkbea.com/html/tc/bea-open-api-faq.html",
+      "jurisdiction": "HK",
+      "publisher": "东亚银行有限公司（香港业务）",
+      "verification": "read_page",
+      "retrieved_on": "2026-10-03",
+      "published_on": null,
+      "valid_until": null,
+      "note": "已读取官方页面正文；只摘取本条定位的适用事实，页面其他旧技术说明不启用。"
+    },
+    {
+      "id": "HKMA-FPS",
+      "bank_id": "hkma",
+      "entity": "香港金融管理局（地区通用）",
+      "title": "香港金管局转数快机制介绍",
+      "url": "https://www.hkma.gov.hk/chi/key-functions/international-financial-centre/financial-market-infrastructure/faster-payment-system-fps/",
+      "jurisdiction": "HK",
+      "publisher": "香港金融管理局（地区通用）",
+      "verification": "read_page",
+      "retrieved_on": "2026-10-03",
+      "published_on": null,
+      "valid_until": null,
+      "note": "已读取官方页面正文；只摘取本条定位的适用事实，页面其他旧技术说明不启用。"
+    },
+    {
+      "id": "HKMA-FAQ",
+      "bank_id": "hkma",
+      "entity": "香港金融管理局（地区通用）",
+      "title": "香港金管局消费者常见问题",
+      "url": "https://www.hkma.gov.hk/eng/smart-consumers/frequently-asked-questions/",
+      "jurisdiction": "HK",
+      "publisher": "香港金融管理局（地区通用）",
+      "verification": "read_page",
+      "retrieved_on": "2026-10-03",
+      "published_on": null,
+      "valid_until": null,
+      "note": "已读取官方页面正文；只摘取本条定位的适用事实，页面其他旧技术说明不启用。"
+    }
+  ],
+  "articles": [
+    {
+      "id": "HKFAQ-BOCOM-01",
+      "bank_id": "bocom",
+      "jurisdiction": "HK",
+      "customer_type": "personal",
+      "topic": "digital",
+      "question": "网上银行有哪些常见功能",
+      "variants": [
+        "网银能做些什么"
+      ],
+      "patterns": [
+        "(?:网银|网上银行).*(?:功能|能做|做什么|服务有哪些)"
+      ],
+      "exclude_patterns": [],
+      "answer": "可办理账户查询、转账、缴费、定期、信用卡及电子结单等公开列示功能。",
+      "limits": "该银行列示功能不代表本项目已接入；投资类功能不作为投资建议。",
+      "focus": "general",
+      "source_ids": [
+        "BOCOM-NET"
+      ],
+      "claim_locator": "个人网银问答1—2：服务概述",
+      "retrieved_on": "2026-10-03",
+      "review_due_on": "2026-11-02",
+      "bank_reviewed": false
+    },
+    {
+      "id": "HKFAQ-BOCOM-02",
+      "bank_id": "bocom",
+      "jurisdiction": "HK",
+      "customer_type": "personal",
+      "topic": "digital",
+      "question": "网上银行从哪里登录",
+      "variants": [
+        "网银登录入口在哪里"
+      ],
+      "patterns": [
+        "(?:网银|网上银行).*(?:登录|登入|入口|网址)"
+      ],
+      "exclude_patterns": [],
+      "answer": "从交银香港官方网站进入网上银行，再按正式登录页完成认证。",
+      "limits": "仅适用所列香港银行及该项官方服务；须在银行正式渠道完成认证，以实际页面及条款为准。",
+      "focus": "channel",
+      "source_ids": [
+        "BOCOM-NET"
+      ],
+      "claim_locator": "个人网银问答3：入口",
+      "retrieved_on": "2026-10-03",
+      "review_due_on": "2026-11-02",
+      "bank_reviewed": false
+    },
+    {
+      "id": "HKFAQ-BOCOM-03",
+      "bank_id": "bocom",
+      "jurisdiction": "HK",
+      "customer_type": "personal",
+      "topic": "payments",
+      "question": "如何确认网银交易是否成功",
+      "variants": [
+        "网银交易成功怎么核对"
+      ],
+      "patterns": [
+        "(?:交易|转账|付款).*(?:成功|完成).*(?:确认|核对|知道)|如何确认.*交易"
+      ],
+      "exclude_patterns": [],
+      "answer": "确认页会提供交易参考编号；可在官方网银的近期操作记录核对。",
+      "limits": "提交或参考编号不替代实际完成状态；本项目没有查询本人交易。",
+      "focus": "channel",
+      "source_ids": [
+        "BOCOM-NET"
+      ],
+      "claim_locator": "个人网银问答4：确认交易记录",
+      "retrieved_on": "2026-10-03",
+      "review_due_on": "2026-11-02",
+      "bank_reviewed": false
+    },
+    {
+      "id": "HKFAQ-BOCOM-04",
+      "bank_id": "bocom",
+      "jurisdiction": "HK",
+      "customer_type": "personal",
+      "topic": "payments",
+      "question": "转账时电脑突然关机怎么办",
+      "variants": [
+        "付款时电脑死机怎么核对"
+      ],
+      "patterns": [
+        "(?:转账|付款|交易).*(?:关机|死机|断网|卡住)"
+      ],
+      "exclude_patterns": [],
+      "answer": "重新登录官方网银并核对近期操作记录，再决定是否需要联系银行。",
+      "limits": "先核对状态，不因页面中断就重复付款；本项目不能确认交易结果。",
+      "focus": "channel",
+      "source_ids": [
+        "BOCOM-NET"
+      ],
+      "claim_locator": "个人网银问答5：中断后核对",
+      "retrieved_on": "2026-10-03",
+      "review_due_on": "2026-11-02",
+      "bank_reviewed": false
+    },
+    {
+      "id": "HKFAQ-BOCOM-05",
+      "bank_id": "bocom",
+      "jurisdiction": "HK",
+      "customer_type": "personal",
+      "topic": "digital",
+      "question": "网银长时间没操作会怎样",
+      "variants": [
+        "网银多久自动退出"
+      ],
+      "patterns": [
+        "(?:网银|网上银行).*(?:闲置|自动登出|没操作|自动退出)"
+      ],
+      "exclude_patterns": [],
+      "answer": "官网问答说明，闲置20分钟会自动登出。",
+      "limits": "属于该银行网银的闲置保护，不是本产品会话保存期限。",
+      "focus": "timing",
+      "source_ids": [
+        "BOCOM-NET"
+      ],
+      "claim_locator": "个人网银问答7：闲置保护",
+      "retrieved_on": "2026-10-03",
+      "review_due_on": "2026-10-10",
+      "bank_reviewed": false
+    },
+    {
+      "id": "HKFAQ-BOCOM-06",
+      "bank_id": "bocom",
+      "jurisdiction": "HK",
+      "customer_type": "personal",
+      "topic": "digital",
+      "question": "完成网银操作后怎样退出",
+      "variants": [
+        "网银怎样安全登出"
+      ],
+      "patterns": [
+        "(?:网银|网上银行).*(?:怎样退出|怎么退出|登出|注销登录)"
+      ],
+      "exclude_patterns": [],
+      "answer": "操作结束后使用网银的退出按钮登出。",
+      "limits": "仅适用所列香港银行及该项官方服务；须在银行正式渠道完成认证，以实际页面及条款为准。",
+      "focus": "channel",
+      "source_ids": [
+        "BOCOM-NET"
+      ],
+      "claim_locator": "个人网银问答8：登出",
+      "retrieved_on": "2026-10-03",
+      "review_due_on": "2026-11-02",
+      "bank_reviewed": false
+    },
+    {
+      "id": "HKFAQ-BOCOM-07",
+      "bank_id": "bocom",
+      "jurisdiction": "HK",
+      "customer_type": "personal",
+      "topic": "digital",
+      "question": "网银服务是否免费",
+      "variants": [
+        "网上银行收不收费"
+      ],
+      "patterns": [
+        "(?:网银|网上银行).*(?:免费|费用|收费|手续费)"
+      ],
+      "exclude_patterns": [],
+      "answer": "网银服务本身免费，部分在线交易可能收费；具体金额查银行收费表。",
+      "limits": "不能将服务免费解释为所有交易免费；未提供本人费用或当日报价。",
+      "focus": "fees",
+      "source_ids": [
+        "BOCOM-NET"
+      ],
+      "claim_locator": "个人网银问答9：服务及交易收费",
+      "retrieved_on": "2026-10-03",
+      "review_due_on": "2026-10-10",
+      "bank_reviewed": false
+    },
+    {
+      "id": "HKFAQ-BOCOM-08",
+      "bank_id": "bocom",
+      "jurisdiction": "HK",
+      "customer_type": "personal",
+      "topic": "digital",
+      "question": "海外能否使用网上银行",
+      "variants": [
+        "在国外能用网银吗"
+      ],
+      "patterns": [
+        "海外.*(?:网银|网上银行)|(?:网银|网上银行).*海外"
+      ],
+      "exclude_patterns": [],
+      "answer": "官网问答允许在海外使用网上银行。",
+      "limits": "仍须遵守当地网络、设备及银行认证要求；不保证任何时间均可用。",
+      "focus": "channel",
+      "source_ids": [
+        "BOCOM-NET"
+      ],
+      "claim_locator": "个人网银问答11—12：服务时间及海外使用",
+      "retrieved_on": "2026-10-03",
+      "review_due_on": "2026-11-02",
+      "bank_reviewed": false
+    },
+    {
+      "id": "HKFAQ-BOCOM-09",
+      "bank_id": "bocom",
+      "jurisdiction": "HK",
+      "customer_type": "enterprise",
+      "topic": "payments",
+      "question": "企业转数快怎样登记收款识别码",
+      "variants": [
+        "企业FPS如何绑定收款账户"
+      ],
+      "patterns": [
+        "(?:转数快|FPS).*(?:登记|识别码|绑定|收款)"
+      ],
+      "exclude_patterns": [],
+      "answer": "先向网点申请账户绑定服务，再在企业网银的转数快账户绑定入口增设识别码并选择结算账户。",
+      "limits": "仅适用所列香港银行及该项官方服务；须在银行正式渠道完成认证，以实际页面及条款为准。",
+      "focus": "channel",
+      "source_ids": [
+        "BOCOM-EFPS"
+      ],
+      "claim_locator": "企业转数快问答7—8：绑定服务",
+      "retrieved_on": "2026-10-03",
+      "review_due_on": "2026-11-02",
+      "bank_reviewed": false
+    },
+    {
+      "id": "HKFAQ-BOCOM-10",
+      "bank_id": "bocom",
+      "jurisdiction": "HK",
+      "customer_type": "enterprise",
+      "topic": "payments",
+      "question": "企业转数快退款有什么期限",
+      "variants": [
+        "企业转数快退款多久内能办"
+      ],
+      "patterns": [
+        "(?:转数快|FPS).*退款|退款.*(?:转数快|FPS)"
+      ],
+      "exclude_patterns": [],
+      "answer": "该退款功能限收到款项后30天内使用一次，不能重复提交。",
+      "limits": "仅说明该企业网银退款功能，不代表已退款、一定可追回或商户退款均适用。",
+      "focus": "timing",
+      "source_ids": [
+        "BOCOM-EFPS"
+      ],
+      "claim_locator": "企业转数快问答10—11：原路退款",
+      "retrieved_on": "2026-10-03",
+      "review_due_on": "2026-10-10",
+      "bank_reviewed": false
+    },
+    {
+      "id": "HKFAQ-BOCOM-11",
+      "bank_id": "bocom",
+      "jurisdiction": "HK",
+      "customer_type": "enterprise",
+      "topic": "payments",
+      "question": "企业电子直接扣账授权是什么",
+      "variants": [
+        "企业eDDA有什么作用"
+      ],
+      "patterns": [
+        "eDDA|电子直接扣[账款]|电子扣账授权"
+      ],
+      "exclude_patterns": [],
+      "answer": "企业网银可确认接受或修改其他银行客户提出的电子扣账协议。",
+      "limits": "须有实际企业账户权限；本项目没有接受、修改或取消扣账协议。",
+      "focus": "general",
+      "source_ids": [
+        "BOCOM-EFPS"
+      ],
+      "claim_locator": "企业转数快问答9：电子扣账授权",
+      "retrieved_on": "2026-10-03",
+      "review_due_on": "2026-11-02",
+      "bank_reviewed": false
+    },
+    {
+      "id": "HKFAQ-BOCOM-12",
+      "bank_id": "bocom",
+      "jurisdiction": "HK",
+      "customer_type": "enterprise",
+      "topic": "payments",
+      "question": "企业转数快支持批量交易吗",
+      "variants": [
+        "企业FPS可以批量上传吗"
+      ],
+      "patterns": [
+        "(?:转数快|FPS).*(?:批量|上传|上载)|批量.*转账"
+      ],
+      "exclude_patterns": [],
+      "answer": "官网列示模板上传功能，每个批量文件最多500笔一般转账。",
+      "limits": "适用于该企业功能及模板，仍须银行权限和交易校验；本项目未上传或付款。",
+      "focus": "general",
+      "source_ids": [
+        "BOCOM-EFPS"
+      ],
+      "claim_locator": "企业转数快问答12：批量文件",
+      "retrieved_on": "2026-10-03",
+      "review_due_on": "2026-11-02",
+      "bank_reviewed": false
+    },
+    {
+      "id": "HKFAQ-BOCOM-13",
+      "bank_id": "bocom",
+      "jurisdiction": "HK",
+      "customer_type": "personal",
+      "topic": "digital",
+      "question": "流动保安编码是什么",
+      "variants": [
+        "流动保安编码有什么用"
+      ],
+      "patterns": [
+        "流动保安编码.*(?:是什么|用途|作用)|什么是流动保安编码"
+      ],
+      "exclude_patterns": [],
+      "answer": "它是银行App内的双重认证工具，可产生保安编码验证指定网银交易。",
+      "limits": "仅适用所列香港银行及该项官方服务；须在银行正式渠道完成认证，以实际页面及条款为准。",
+      "focus": "general",
+      "source_ids": [
+        "BOCOM-KEY"
+      ],
+      "claim_locator": "功能概述：双重认证",
+      "retrieved_on": "2026-10-03",
+      "review_due_on": "2026-11-02",
+      "bank_reviewed": false
+    },
+    {
+      "id": "HKFAQ-BOCOM-14",
+      "bank_id": "bocom",
+      "jurisdiction": "HK",
+      "customer_type": "personal",
+      "topic": "digital",
+      "question": "手机银行可以用指纹或Face ID登录吗",
+      "variants": [
+        "能用Face ID登录交银App吗"
+      ],
+      "patterns": [
+        "(?:指纹|Face\\s*ID|生物认证).*(?:登录|登入|手机银行)|手机银行.*(?:指纹|Face\\s*ID)"
+      ],
+      "exclude_patterns": [],
+      "answer": "支持设备可用指纹或Face ID代替流动保安编码密码登录或取得保安编码。",
+      "limits": "须满足设备及银行认证条件；不复制页面旧系统版本作为当前兼容保证。",
+      "focus": "channel",
+      "source_ids": [
+        "BOCOM-KEY"
+      ],
+      "claim_locator": "生物认证功能及使用条件",
+      "retrieved_on": "2026-10-03",
+      "review_due_on": "2026-11-02",
+      "bank_reviewed": false
+    },
+    {
+      "id": "HKFAQ-BOCOM-15",
+      "bank_id": "bocom",
+      "jurisdiction": "HK",
+      "customer_type": "personal",
+      "topic": "digital",
+      "question": "银行App和证券App的保安密码互通吗",
+      "variants": [
+        "证券App能用银行App的保安密码吗"
+      ],
+      "patterns": [
+        "证券.*(?:密码|保安编码|互通)|(?:密码|保安编码).*证券"
+      ],
+      "exclude_patterns": [],
+      "answer": "两个App的流动保安编码密码独立设置，不能互通。",
+      "limits": "仅适用所列香港银行及该项官方服务；须在银行正式渠道完成认证，以实际页面及条款为准。",
+      "focus": "general",
+      "source_ids": [
+        "BOCOM-KEY"
+      ],
+      "claim_locator": "注意事项：两个独立应用程序",
+      "retrieved_on": "2026-10-03",
+      "review_due_on": "2026-11-02",
+      "bank_reviewed": false
+    },
+    {
+      "id": "HKFAQ-BOCOM-16",
+      "bank_id": "bocom",
+      "jurisdiction": "HK",
+      "customer_type": "personal",
+      "topic": "digital",
+      "question": "在哪个App生成网上银行保安编码",
+      "variants": [
+        "网银保安编码在哪里生成"
+      ],
+      "patterns": [
+        "(?:在哪|哪里|哪个App|哪个应用).*(?:保安编码|生成编码)"
+      ],
+      "exclude_patterns": [],
+      "answer": "获取保安编码功能位于流动电话银行App，不在证券App。",
+      "limits": "仅适用所列香港银行及该项官方服务；须在银行正式渠道完成认证，以实际页面及条款为准。",
+      "focus": "channel",
+      "source_ids": [
+        "BOCOM-KEY"
+      ],
+      "claim_locator": "注意事项：编码获取位置",
+      "retrieved_on": "2026-10-03",
+      "review_due_on": "2026-11-02",
+      "bank_reviewed": false
+    },
+    {
+      "id": "HKFAQ-BOCOM-17",
+      "bank_id": "bocom",
+      "jurisdiction": "HK",
+      "customer_type": "personal",
+      "topic": "payments",
+      "question": "手机银行可以转账到哪些银行",
+      "variants": [
+        "交银手机银行有哪些转账渠道"
+      ],
+      "patterns": [
+        "手机银行.*(?:转账|汇款).*(?:哪些|哪里|渠道)|手机.*转账渠道"
+      ],
+      "exclude_patterns": [],
+      "answer": "官网列示本行、本地银行、海外银行及已登记的内地交行账户转账功能。",
+      "limits": "这是香港发起端的功能概述，不代替内地或海外收款行条件及费用。",
+      "focus": "channel",
+      "source_ids": [
+        "BOCOM-MOBILE"
+      ],
+      "claim_locator": "主要功能：转账",
+      "retrieved_on": "2026-10-03",
+      "review_due_on": "2026-11-02",
+      "bank_reviewed": false
+    },
+    {
+      "id": "HKFAQ-BOCOM-18",
+      "bank_id": "bocom",
+      "jurisdiction": "HK",
+      "customer_type": "personal",
+      "topic": "payments",
+      "question": "手机银行缴费可以用什么扣款方式",
+      "variants": [
+        "交银App缴费能用信用卡吗"
+      ],
+      "patterns": [
+        "手机银行.*缴费|缴费.*(?:扣款方式|信用卡|账户)"
+      ],
+      "exclude_patterns": [],
+      "answer": "可按商户及功能支持，以账户或信用卡缴付商户账单。",
+      "limits": "具体商户、卡种与费用以银行实际页面为准；本项目未缴费。",
+      "focus": "general",
+      "source_ids": [
+        "BOCOM-MOBILE"
+      ],
+      "claim_locator": "主要功能：缴费",
+      "retrieved_on": "2026-10-03",
+      "review_due_on": "2026-11-02",
+      "bank_reviewed": false
+    },
+    {
+      "id": "HKFAQ-BOCOM-19",
+      "bank_id": "bocom",
+      "jurisdiction": "HK",
+      "customer_type": "personal",
+      "topic": "cards",
+      "question": "手机银行信用卡有哪些功能",
+      "variants": [
+        "交银App信用卡能做什么"
+      ],
+      "patterns": [
+        "手机银行.*信用卡.*(?:功能|能做|有哪些)|信用卡.*App.*功能"
+      ],
+      "exclude_patterns": [],
+      "answer": "可查看信用卡、还卡款、兑换积分和申请官网列示的分期等服务。",
+      "limits": "功能存在不代表获批；分期或透支的具体收费未在本条确认。",
+      "focus": "general",
+      "source_ids": [
+        "BOCOM-MOBILE"
+      ],
+      "claim_locator": "主要功能：信用卡",
+      "retrieved_on": "2026-10-03",
+      "review_due_on": "2026-11-02",
+      "bank_reviewed": false
+    },
+    {
+      "id": "HKFAQ-BOCOM-20",
+      "bank_id": "bocom",
+      "jurisdiction": "HK",
+      "customer_type": "personal",
+      "topic": "statements",
+      "question": "个人电子结单和通知书可看多久",
+      "variants": [
+        "交银电子结单保存几年"
+      ],
+      "patterns": [
+        "(?:电子结单|通知书).*(?:多久|几年|保存|保留|历史)"
+      ],
+      "exclude_patterns": [],
+      "answer": "官网列示手机银行可查过去7年的电子结单及1年的通知书。",
+      "limits": "仅对应个人手机银行列示范围，不套用企业及全部产品；项目未下载客户结单。",
+      "focus": "timing",
+      "source_ids": [
+        "BOCOM-MOBILE"
+      ],
+      "claim_locator": "主要功能：电子结单及通知书",
+      "retrieved_on": "2026-10-03",
+      "review_due_on": "2026-10-10",
+      "bank_reviewed": false
+    },
+    {
+      "id": "HKFAQ-BOCOM-21",
+      "bank_id": "bocom",
+      "jurisdiction": "HK",
+      "customer_type": "personal",
+      "topic": "security",
+      "question": "App内认证是什么",
+      "variants": [
+        "交银网银安全ABC是什么"
+      ],
+      "patterns": [
+        "App内认证|应用内认证|网银安全ABC"
+      ],
+      "exclude_patterns": [],
+      "answer": "指定高风险网银交易须在银行手机App认证，不再使用短讯一次性密码。",
+      "limits": "仅适用所列香港银行及该项官方服务；须在银行正式渠道完成认证，以实际页面及条款为准。",
+      "focus": "general",
+      "source_ids": [
+        "BOCOM-SAFE"
+      ],
+      "claim_locator": "网银安全ABC：应用内认证",
+      "retrieved_on": "2026-10-03",
+      "review_due_on": "2026-10-10",
+      "bank_reviewed": false
+    },
+    {
+      "id": "HKFAQ-BOCOM-22",
+      "bank_id": "bocom",
+      "jurisdiction": "HK",
+      "customer_type": "personal",
+      "topic": "security",
+      "question": "怎样停用网上新增收款人功能",
+      "variants": [
+        "交银能关闭网上新增收款人吗"
+      ],
+      "patterns": [
+        "停用.*(?:新增|登[记錄]).*收款人|关闭.*新增.*收款人"
+      ],
+      "exclude_patterns": [],
+      "answer": "可在个人网银或手机银行的保安设置中停用相应高风险功能。",
+      "limits": "本项目未改变设置；恢复该功能须经分行核实。",
+      "focus": "channel",
+      "source_ids": [
+        "BOCOM-SAFE"
+      ],
+      "claim_locator": "网银安全ABC：停用高风险功能",
+      "retrieved_on": "2026-10-03",
+      "review_due_on": "2026-10-10",
+      "bank_reviewed": false
+    },
+    {
+      "id": "HKFAQ-BOCOM-23",
+      "bank_id": "bocom",
+      "jurisdiction": "HK",
+      "customer_type": "personal",
+      "topic": "security",
+      "question": "停用提高限额后怎样恢复",
+      "variants": [
+        "关闭提升转账限额后能在线恢复吗"
+      ],
+      "patterns": [
+        "(?:停用|关闭).*(?:提高|提升).*限额.*(?:恢复|重启)|恢复.*(?:提高|提升).*限额"
+      ],
+      "exclude_patterns": [],
+      "answer": "停用网上提升转账限额后，须亲临分行完成核实程序才可恢复或提高限额。",
+      "limits": "不代用户重启，不能绕过银行核实。",
+      "focus": "channel",
+      "source_ids": [
+        "BOCOM-SAFE"
+      ],
+      "claim_locator": "网银安全ABC：提高限额恢复条件",
+      "retrieved_on": "2026-10-03",
+      "review_due_on": "2026-10-10",
+      "bank_reviewed": false
+    },
+    {
+      "id": "HKFAQ-BOCOM-24",
+      "bank_id": "bocom",
+      "jurisdiction": "HK",
+      "customer_type": "personal",
+      "topic": "security",
+      "question": "关闭高风险功能后还能调低转账限额吗",
+      "variants": [
+        "交银关闭提升限额后还能降低吗"
+      ],
+      "patterns": [
+        "(?:调低|降低).*限额|限额.*(?:调低|降低)"
+      ],
+      "exclude_patterns": [],
+      "answer": "停用提升限额功能不影响网上调低转账限额。",
+      "limits": "仅适用所列香港银行及该项官方服务；须在银行正式渠道完成认证，以实际页面及条款为准。",
+      "focus": "general",
+      "source_ids": [
+        "BOCOM-SAFE"
+      ],
+      "claim_locator": "网银安全ABC：调低限额不受影响",
+      "retrieved_on": "2026-10-03",
+      "review_due_on": "2026-10-10",
+      "bank_reviewed": false
+    },
+    {
+      "id": "HKFAQ-HSBC-01",
+      "bank_id": "hsbc",
+      "jurisdiction": "HK",
+      "customer_type": "personal",
+      "topic": "payments",
+      "question": "收海外汇款要提供哪个SWIFT代码",
+      "variants": [
+        "汇丰香港收款SWIFT是什么"
+      ],
+      "patterns": [
+        "SWIFT|收.*海外汇款"
+      ],
+      "exclude_patterns": [],
+      "answer": "汇丰香港帮助页列示SWIFT代码为HSBCHKHHHKH，并要求提供收款人姓名及该行账户等资料。",
+      "limits": "只适用汇丰香港，不可用作交银香港收款代码；实际汇款资料只在银行渠道填写。",
+      "focus": "materials",
+      "source_ids": [
+        "HSBC-HELP"
+      ],
+      "claim_locator": "帮助中心：境外汇入资料",
+      "retrieved_on": "2026-10-03",
+      "review_due_on": "2026-11-02",
+      "bank_reviewed": false
+    },
+    {
+      "id": "HKFAQ-HSBC-02",
+      "bank_id": "hsbc",
+      "jurisdiction": "HK",
+      "customer_type": "personal",
+      "topic": "digital",
+      "question": "忘记网上银行用户名怎么办",
+      "variants": [
+        "汇丰网银用户名忘了"
+      ],
+      "patterns": [
+        "(?:忘记|找回|恢复).*(?:用户名|用户名称)"
+      ],
+      "exclude_patterns": [],
+      "answer": "在官方网银登录页选择找回用户名/密码，再选恢复用户名并完成银行验证。",
+      "limits": "须满足银行登记资料及认证要求；不要把账号或验证码发送到本项目。",
+      "focus": "channel",
+      "source_ids": [
+        "HSBC-HELP"
+      ],
+      "claim_locator": "帮助中心：找回用户名",
+      "retrieved_on": "2026-10-03",
+      "review_due_on": "2026-11-02",
+      "bank_reviewed": false
+    },
+    {
+      "id": "HKFAQ-HSBC-03",
+      "bank_id": "hsbc",
+      "jurisdiction": "HK",
+      "customer_type": "personal",
+      "topic": "digital",
+      "question": "网上银行密码重置入口在哪里",
+      "variants": [
+        "汇丰网银密码怎样重置"
+      ],
+      "patterns": [
+        "(?:网银|网上银行).*(?:密码|重置)|密码重置入口"
+      ],
+      "exclude_patterns": [],
+      "answer": "可在HSBC HK App或官方网上银行按忘记密码流程重置。",
+      "limits": "只提供入口说明，认证在汇丰官方渠道完成，本项目未重置。",
+      "focus": "channel",
+      "source_ids": [
+        "HSBC-HELP"
+      ],
+      "claim_locator": "帮助中心：密码重置入口",
+      "retrieved_on": "2026-10-03",
+      "review_due_on": "2026-11-02",
+      "bank_reviewed": false
+    },
+    {
+      "id": "HKFAQ-HSBC-04",
+      "bank_id": "hsbc",
+      "jurisdiction": "HK",
+      "customer_type": "personal",
+      "topic": "cards",
+      "question": "官方卡片帮助有哪些入口",
+      "variants": [
+        "汇丰官方银行卡帮助在哪里"
+      ],
+      "patterns": [
+        "卡片帮助|银行卡帮助入口|信用卡支持入口"
+      ],
+      "exclude_patterns": [],
+      "answer": "帮助中心提供卡片激活、额度调整及遗失或锁卡等正式支持入口。",
+      "limits": "入口分类不表示本项目能激活、锁卡或调整额度；紧急情况先走既有保护提示。",
+      "focus": "channel",
+      "source_ids": [
+        "HSBC-HELP"
+      ],
+      "claim_locator": "帮助中心：卡片支持分类",
+      "retrieved_on": "2026-10-03",
+      "review_due_on": "2026-11-02",
+      "bank_reviewed": false
+    },
+    {
+      "id": "HKFAQ-HSBC-05",
+      "bank_id": "hsbc",
+      "jurisdiction": "HK",
+      "customer_type": "personal",
+      "topic": "digital",
+      "question": "忘记手机银行PIN怎么办",
+      "variants": [
+        "汇丰手机银行PIN忘了"
+      ],
+      "patterns": [
+        "(?:忘记|忘了|重置).*(?:手机银行PIN|Mobile\\s*Banking\\s*PIN)|手机.*PIN.*(?:忘|重置)"
+      ],
+      "exclude_patterns": [],
+      "answer": "在App的PIN登录页选忘记PIN并按提示重设。",
+      "limits": "仅适用所列香港银行及该项官方服务；须在银行正式渠道完成认证，以实际页面及条款为准。",
+      "focus": "channel",
+      "source_ids": [
+        "HSBC-KEY"
+      ],
+      "claim_locator": "设备及认证帮助：忘记手机PIN",
+      "retrieved_on": "2026-10-03",
+      "review_due_on": "2026-11-02",
+      "bank_reviewed": false
+    },
+    {
+      "id": "HKFAQ-HSBC-06",
+      "bank_id": "hsbc",
+      "jurisdiction": "HK",
+      "customer_type": "personal",
+      "topic": "digital",
+      "question": "密码和手机PIN都忘了怎么办",
+      "variants": [
+        "汇丰密码和PIN都忘记了"
+      ],
+      "patterns": [
+        "密码.*PIN.*(?:都忘|忘了|忘记)|PIN.*密码.*(?:都忘|忘了|忘记)"
+      ],
+      "exclude_patterns": [],
+      "answer": "两个都忘记时，官方指引建议先恢复登录密码。",
+      "limits": "仅适用所列香港银行及该项官方服务；须在银行正式渠道完成认证，以实际页面及条款为准。",
+      "focus": "channel",
+      "source_ids": [
+        "HSBC-KEY"
+      ],
+      "claim_locator": "设备及认证帮助：凭证均遗忘",
+      "retrieved_on": "2026-10-03",
+      "review_due_on": "2026-11-02",
+      "bank_reviewed": false
+    },
+    {
+      "id": "HKFAQ-HSBC-07",
+      "bank_id": "hsbc",
+      "jurisdiction": "HK",
+      "customer_type": "personal",
+      "topic": "digital",
+      "question": "换手机怎样迁移银行App",
+      "variants": [
+        "汇丰换新手机要怎么处理"
+      ],
+      "patterns": [
+        "(?:换|更换|新).*(?:手机|设备)|(?:手机|设备).*迁移"
+      ],
+      "exclude_patterns": [],
+      "answer": "先移除旧设备，再在新手机安装官方App并设置手机保安认证；没有旧机时可由官方网银管理设备。",
+      "limits": "仅适用所列香港银行及该项官方服务；须在银行正式渠道完成认证，以实际页面及条款为准。",
+      "focus": "channel",
+      "source_ids": [
+        "HSBC-KEY"
+      ],
+      "claim_locator": "设备管理：旧设备移除及新机设置",
+      "retrieved_on": "2026-10-03",
+      "review_due_on": "2026-11-02",
+      "bank_reviewed": false
+    },
+    {
+      "id": "HKFAQ-HSBC-08",
+      "bank_id": "hsbc",
+      "jurisdiction": "HK",
+      "customer_type": "personal",
+      "topic": "digital",
+      "question": "银行App可以绑定多部手机吗",
+      "variants": [
+        "汇丰可以两部手机同时绑定吗"
+      ],
+      "patterns": [
+        "(?:多部|几个|几部|两部).*?(?:手机|设备)|(?:手机|设备).*同时绑定"
+      ],
+      "exclude_patterns": [],
+      "answer": "为安全起见，HSBC HK App只能设置在一部设备上。",
+      "limits": "仅适用所列香港银行及该项官方服务；须在银行正式渠道完成认证，以实际页面及条款为准。",
+      "focus": "general",
+      "source_ids": [
+        "HSBC-KEY"
+      ],
+      "claim_locator": "设备管理：设备数量",
+      "retrieved_on": "2026-10-03",
+      "review_due_on": "2026-11-02",
+      "bank_reviewed": false
+    },
+    {
+      "id": "HKFAQ-HSBC-09",
+      "bank_id": "hsbc",
+      "jurisdiction": "HK",
+      "customer_type": "personal",
+      "topic": "payments",
+      "question": "登记转数快需要什么条件",
+      "variants": [
+        "汇丰FPS登记资格是什么"
+      ],
+      "patterns": [
+        "(?:转数快|FPS).*(?:条件|资格|需要什么|怎么登记|如何登记)"
+      ],
+      "exclude_patterns": [],
+      "answer": "须持有该行港元或人民币账户并已登记个人网银；香港身份证识别代号另有开户证件条件。",
+      "limits": "仅适用所列香港银行及该项官方服务；须在银行正式渠道完成认证，以实际页面及条款为准。",
+      "focus": "qualification",
+      "source_ids": [
+        "HSBC-FPS"
+      ],
+      "claim_locator": "转数快：登记资格",
+      "retrieved_on": "2026-10-03",
+      "review_due_on": "2026-11-02",
+      "bank_reviewed": false
+    },
+    {
+      "id": "HKFAQ-HSBC-10",
+      "bank_id": "hsbc",
+      "jurisdiction": "HK",
+      "customer_type": "personal",
+      "topic": "payments",
+      "question": "用手机号收款必须先登记转数快吗",
+      "variants": [
+        "汇丰手机号收款要先登记吗"
+      ],
+      "patterns": [
+        "(?:手机号|电话|电邮|识别码).*收款|收款.*(?:必须|需要|登记)"
+      ],
+      "exclude_patterns": [],
+      "answer": "用手机号、电邮或FPS识别码收款须先绑定账户；直接以账户号码收款则无需该项登记。",
+      "limits": "仅适用所列香港银行及该项官方服务；须在银行正式渠道完成认证，以实际页面及条款为准。",
+      "focus": "general",
+      "source_ids": [
+        "HSBC-FPS"
+      ],
+      "claim_locator": "转数快：识别代号及账户号码收款",
+      "retrieved_on": "2026-10-03",
+      "review_due_on": "2026-11-02",
+      "bank_reviewed": false
+    },
+    {
+      "id": "HKFAQ-HSBC-11",
+      "bank_id": "hsbc",
+      "jurisdiction": "HK",
+      "customer_type": "personal",
+      "topic": "payments",
+      "question": "收款人姓名不匹配导致转账失败怎么办",
+      "variants": [
+        "汇丰转数快因名字不符被拒怎么办"
+      ],
+      "patterns": [
+        "(?:姓名|昵称|名字).*(?:不符|匹配|失败|被拒)|转账.*姓名"
+      ],
+      "exclude_patterns": [],
+      "answer": "按账户号码转账可能因昵称与银行登记姓名不符被拒；应核对准确登记姓名并重新维护收款人。",
+      "limits": "先查原交易状态，再按银行指引处理；不能承诺重新登记后必定成功。",
+      "focus": "general",
+      "source_ids": [
+        "HSBC-FPS"
+      ],
+      "claim_locator": "转数快：登记姓名不符",
+      "retrieved_on": "2026-10-03",
+      "review_due_on": "2026-11-02",
+      "bank_reviewed": false
+    },
+    {
+      "id": "HKFAQ-HSBC-12",
+      "bank_id": "hsbc",
+      "jurisdiction": "HK",
+      "customer_type": "personal",
+      "topic": "payments",
+      "question": "转数快跨行收付款收费吗",
+      "variants": [
+        "汇丰转数快有手续费吗"
+      ],
+      "patterns": [
+        "(?:转数快|FPS).*(?:收费|费用|手续费|免费)"
+      ],
+      "exclude_patterns": [],
+      "answer": "汇丰香港不对其FPS跨行收付款收费，其他银行或支付机构可能有不同收费政策。",
+      "limits": "只说明汇丰香港政策，不适用于所有银行、外币电汇或其他跨境功能。",
+      "focus": "fees",
+      "source_ids": [
+        "HSBC-FPS"
+      ],
+      "claim_locator": "转数快：本地跨行收费说明",
+      "retrieved_on": "2026-10-03",
+      "review_due_on": "2026-10-10",
+      "bank_reviewed": false
+    },
+    {
+      "id": "HKFAQ-HSBC-13",
+      "bank_id": "hsbc",
+      "jurisdiction": "HK",
+      "customer_type": "personal",
+      "topic": "cards",
+      "question": "网购为什么需要额外认证",
+      "variants": [
+        "汇丰网购为什么要认证"
+      ],
+      "patterns": [
+        "(?:网购|网上付款|信用卡).*(?:认证|验证|3D)|为什么.*网购.*验证码"
+      ],
+      "exclude_patterns": [],
+      "answer": "采用3D Secure的商户可能要求在汇丰App或通过官方短讯验证码确认该笔网上付款。",
+      "limits": "仅解释认证机制，不在本项目输入卡号、CVV或验证码。",
+      "focus": "general",
+      "source_ids": [
+        "HSBC-CARD"
+      ],
+      "claim_locator": "信用卡问答：网上交易认证",
+      "retrieved_on": "2026-10-03",
+      "review_due_on": "2026-11-02",
+      "bank_reviewed": false
+    },
+    {
+      "id": "HKFAQ-HSBC-14",
+      "bank_id": "hsbc",
+      "jurisdiction": "HK",
+      "customer_type": "personal",
+      "topic": "cards",
+      "question": "网购验证码及App认证有效多久",
+      "variants": [
+        "汇丰网购验证码多久过期"
+      ],
+      "patterns": [
+        "(?:网购|认证|验证码).*(?:有效|到期|过期|多久)"
+      ],
+      "exclude_patterns": [],
+      "answer": "官网列示短讯验证码有效100秒，App认证请求有效3分钟；到期须按商户页面重新发起。",
+      "limits": "限此网上交易认证服务，不套用登录或其他银行验证码。",
+      "focus": "timing",
+      "source_ids": [
+        "HSBC-CARD"
+      ],
+      "claim_locator": "信用卡问答：网上交易认证有效期",
+      "retrieved_on": "2026-10-03",
+      "review_due_on": "2026-10-10",
+      "bank_reviewed": false
+    },
+    {
+      "id": "HKFAQ-HSBC-15",
+      "bank_id": "hsbc",
+      "jurisdiction": "HK",
+      "customer_type": "personal",
+      "topic": "cards",
+      "question": "App批准网购认证后还要做什么",
+      "variants": [
+        "汇丰App认证通过后怎么完成付款"
+      ],
+      "patterns": [
+        "(?:批准|通过|完成).*认证.*(?:之后|后|下一步)|认证后.*商户"
+      ],
+      "exclude_patterns": [],
+      "answer": "完成App认证后返回商户网站或App，继续按提示完成付款流程。",
+      "limits": "认证通过不等于商户订单一定成立；须核对商户及银行实际状态。",
+      "focus": "channel",
+      "source_ids": [
+        "HSBC-CARD"
+      ],
+      "claim_locator": "信用卡问答：认证后返回商户",
+      "retrieved_on": "2026-10-03",
+      "review_due_on": "2026-11-02",
+      "bank_reviewed": false
+    },
+    {
+      "id": "HKFAQ-HSBC-16",
+      "bank_id": "hsbc",
+      "jurisdiction": "HK",
+      "customer_type": "personal",
+      "topic": "cards",
+      "question": "更新手机号后卡片验证码何时可用",
+      "variants": [
+        "汇丰改手机号后信用卡验证码多久可用"
+      ],
+      "patterns": [
+        "(?:更新|更改|换).*手机号.*(?:验证码|信用卡|多久|何时)"
+      ],
+      "exclude_patterns": [],
+      "answer": "App资料可能即时更新，但信用卡等其他账户反映新号码可能需最多4个工作天。",
+      "limits": "限官网列示的资料同步，不能承诺本人已经更新或能立即收到验证码。",
+      "focus": "timing",
+      "source_ids": [
+        "HSBC-CARD"
+      ],
+      "claim_locator": "信用卡问答：手机号同步",
+      "retrieved_on": "2026-10-03",
+      "review_due_on": "2026-10-10",
+      "bank_reviewed": false
+    },
+    {
+      "id": "HKFAQ-HASE-01",
+      "bank_id": "hase",
+      "jurisdiction": "HK",
+      "customer_type": "personal",
+      "topic": "payments",
+      "question": "转数快默认收款账户可选哪种",
+      "variants": [
+        "恒生FPS能绑定联名账户吗"
+      ],
+      "patterns": [
+        "(?:转数快|FPS).*(?:默认|预设|账户类型|联名)|收款账户.*类型"
+      ],
+      "exclude_patterns": [],
+      "answer": "可绑定港元或人民币储蓄/往来账户；香港身份证识别代号不能绑定联名账户。",
+      "limits": "仅适用所列香港银行及该项官方服务；须在银行正式渠道完成认证，以实际页面及条款为准。",
+      "focus": "qualification",
+      "source_ids": [
+        "HASE-FPS"
+      ],
+      "claim_locator": "转数快：收款账户类别",
+      "retrieved_on": "2026-10-03",
+      "review_due_on": "2026-11-02",
+      "bank_reviewed": false
+    },
+    {
+      "id": "HKFAQ-HASE-02",
+      "bank_id": "hase",
+      "jurisdiction": "HK",
+      "customer_type": "personal",
+      "topic": "payments",
+      "question": "同一手机号能在多间银行登记转数快吗",
+      "variants": [
+        "恒生手机号能绑定多个银行吗"
+      ],
+      "patterns": [
+        "(?:同一|一个).*手机号.*(?:多|银行)|多.*银行.*登记.*(?:转数快|FPS)"
+      ],
+      "exclude_patterns": [],
+      "answer": "可在多间银行或支付机构登记，但须指定一个预设收款机构。",
+      "limits": "仅适用所列香港银行及该项官方服务；须在银行正式渠道完成认证，以实际页面及条款为准。",
+      "focus": "general",
+      "source_ids": [
+        "HASE-FPS"
+      ],
+      "claim_locator": "转数快：多机构登记",
+      "retrieved_on": "2026-10-03",
+      "review_due_on": "2026-11-02",
+      "bank_reviewed": false
+    },
+    {
+      "id": "HKFAQ-HASE-03",
+      "bank_id": "hase",
+      "jurisdiction": "HK",
+      "customer_type": "personal",
+      "topic": "payments",
+      "question": "即时转数快提交后还能取消吗",
+      "variants": [
+        "恒生FPS转出去能撤回吗"
+      ],
+      "patterns": [
+        "(?:转数快|FPS).*(?:取消|撤回|撤销)|取消.*转数快"
+      ],
+      "exclude_patterns": [],
+      "answer": "即时指示一经提交并处理不能撤回；错误转账应尽快联系银行协助。",
+      "limits": "取消登记与取消交易不同；银行协助不代表必定退款。",
+      "focus": "general",
+      "source_ids": [
+        "HASE-FPS"
+      ],
+      "claim_locator": "转数快：即时指示取消",
+      "retrieved_on": "2026-10-03",
+      "review_due_on": "2026-11-02",
+      "bank_reviewed": false
+    },
+    {
+      "id": "HKFAQ-HASE-04",
+      "bank_id": "hase",
+      "jurisdiction": "HK",
+      "customer_type": "personal",
+      "topic": "payments",
+      "question": "在哪里调整转数快每日限额",
+      "variants": [
+        "恒生转数快限额在哪里改"
+      ],
+      "patterns": [
+        "(?:转数快|FPS).*限额.*(?:在哪|哪里|调整|设|改)|(?:调整|设置|提高).*转账.*限额"
+      ],
+      "exclude_patterns": [],
+      "answer": "可在个人e-Banking设置限额，或恒生App的转账及付款设置入口调整，并完成所需认证。",
+      "limits": "受银行认证及设备新绑定限制；本项目没有改限额。",
+      "focus": "channel",
+      "source_ids": [
+        "HASE-FPS"
+      ],
+      "claim_locator": "转数快：每日限额设置",
+      "retrieved_on": "2026-10-03",
+      "review_due_on": "2026-11-02",
+      "bank_reviewed": false
+    },
+    {
+      "id": "HKFAQ-HASE-05",
+      "bank_id": "hase",
+      "jurisdiction": "HK",
+      "customer_type": "personal",
+      "topic": "digital",
+      "question": "怎样登记个人e-Banking",
+      "variants": [
+        "恒生个人网银怎么注册"
+      ],
+      "patterns": [
+        "(?:登记|注册|开通).*(?:e.Banking|网银|网上银行)"
+      ],
+      "exclude_patterns": [],
+      "answer": "可在恒生App选择登记e-Banking，或从官网登录入口选择登记个人网银。",
+      "limits": "仅适用所列香港银行及该项官方服务；须在银行正式渠道完成认证，以实际页面及条款为准。",
+      "focus": "channel",
+      "source_ids": [
+        "HASE-DIG"
+      ],
+      "claim_locator": "数码问答2：网银登记",
+      "retrieved_on": "2026-10-03",
+      "review_due_on": "2026-11-02",
+      "bank_reviewed": false
+    },
+    {
+      "id": "HKFAQ-HASE-06",
+      "bank_id": "hase",
+      "jurisdiction": "HK",
+      "customer_type": "personal",
+      "topic": "digital",
+      "question": "忘记个人网银密码怎么办",
+      "variants": [
+        "恒生网银密码忘了"
+      ],
+      "patterns": [
+        "(?:网银|e.Banking).*(?:密码|忘记)|忘记.*网银密码"
+      ],
+      "exclude_patterns": [],
+      "answer": "官方网银可按提款卡认证或保安问题及编码流程重设；手机六位密码另有App重设流程。",
+      "limits": "不同密码类型分开处理，不在本项目提交任何凭证。",
+      "focus": "channel",
+      "source_ids": [
+        "HASE-DIG"
+      ],
+      "claim_locator": "数码问答6：凭证重置",
+      "retrieved_on": "2026-10-03",
+      "review_due_on": "2026-11-02",
+      "bank_reviewed": false
+    },
+    {
+      "id": "HKFAQ-HASE-07",
+      "bank_id": "hase",
+      "jurisdiction": "HK",
+      "customer_type": "personal",
+      "topic": "digital",
+      "question": "换手机怎样转移流动保安编码",
+      "variants": [
+        "恒生换新手机怎么处理"
+      ],
+      "patterns": [
+        "(?:换|新|更换).*(?:手机|设备)|保安编码.*转移"
+      ],
+      "exclude_patterns": [],
+      "answer": "先移除旧设备，再在新机启用编码；部分高风险功能会暂时受限，按官方方式核实身份后恢复。",
+      "limits": "不承诺新机绑定后立即可用全部功能；具体等待及认证按银行指引。",
+      "focus": "channel",
+      "source_ids": [
+        "HASE-DIG"
+      ],
+      "claim_locator": "数码问答5：设备转移及受限功能",
+      "retrieved_on": "2026-10-03",
+      "review_due_on": "2026-11-02",
+      "bank_reviewed": false
+    },
+    {
+      "id": "HKFAQ-HASE-08",
+      "bank_id": "hase",
+      "jurisdiction": "HK",
+      "customer_type": "personal",
+      "topic": "digital",
+      "question": "App为什么不能截屏或录屏",
+      "variants": [
+        "恒生App无法截图怎么办"
+      ],
+      "patterns": [
+        "截屏|截图|录屏|录影|屏幕分享"
+      ],
+      "exclude_patterns": [],
+      "answer": "Android停用截屏、分享及录屏；iOS停用分享及录屏。部分业务可用保存图像功能留存记录。",
+      "limits": "属于恒生App列示的保护措施，不建议绕过；本项目页面不采用相同限制。",
+      "focus": "general",
+      "source_ids": [
+        "HASE-DIG"
+      ],
+      "claim_locator": "数码问答4：屏幕保护",
+      "retrieved_on": "2026-10-03",
+      "review_due_on": "2026-11-02",
+      "bank_reviewed": false
+    },
+    {
+      "id": "HKFAQ-HASE-09",
+      "bank_id": "hase",
+      "jurisdiction": "HK",
+      "customer_type": "enterprise",
+      "topic": "statements",
+      "question": "企业谁能选择电子结单服务",
+      "variants": [
+        "恒生企业谁可以开通电子结单"
+      ],
+      "patterns": [
+        "(?:企业|商业).*(?:谁能|谁可|主要使用人).*(?:电子结单|通知书)|电子结单.*谁.*选择"
+      ],
+      "exclude_patterns": [],
+      "answer": "主要使用人可为支持的账户选择电子结单/通知书服务。",
+      "limits": "仅适用所列香港银行及该项官方服务；须在银行正式渠道完成认证，以实际页面及条款为准。",
+      "focus": "qualification",
+      "source_ids": [
+        "HASE-EST"
+      ],
+      "claim_locator": "商务电子结单：选择服务权限",
+      "retrieved_on": "2026-10-03",
+      "review_due_on": "2026-11-02",
+      "bank_reviewed": false
+    },
+    {
+      "id": "HKFAQ-HASE-10",
+      "bank_id": "hase",
+      "jurisdiction": "HK",
+      "customer_type": "enterprise",
+      "topic": "statements",
+      "question": "企业一般使用人能看电子结单吗",
+      "variants": [
+        "恒生一般使用人查看结单需要什么权限"
+      ],
+      "patterns": [
+        "一般使用人.*(?:电子结单|通知书|权限)|电子结单.*一般使用人"
+      ],
+      "exclude_patterns": [],
+      "answer": "主要使用人须在使用人档案中启用该一般使用人的查阅权限。",
+      "limits": "角色和账户权限由银行管理，本项目自述身份不能授予权限。",
+      "focus": "qualification",
+      "source_ids": [
+        "HASE-EST"
+      ],
+      "claim_locator": "商务电子结单：一般使用人权限",
+      "retrieved_on": "2026-10-03",
+      "review_due_on": "2026-11-02",
+      "bank_reviewed": false
+    },
+    {
+      "id": "HKFAQ-HASE-11",
+      "bank_id": "hase",
+      "jurisdiction": "HK",
+      "customer_type": "enterprise",
+      "topic": "statements",
+      "question": "选用企业电子结单后还寄纸本吗",
+      "variants": [
+        "恒生企业电子结单后还有纸本吗"
+      ],
+      "patterns": [
+        "(?:电子结单|电子通知书).*(?:纸本|纸质|邮寄)|恢复.*纸本结单"
+      ],
+      "exclude_patterns": [],
+      "answer": "相关账户选择电子结单后通常不再收纸本；主要使用人可取消该项选择恢复纸本。",
+      "limits": "仅指该商务电子结单选择；纸本费用需核对最新收费表。",
+      "focus": "general",
+      "source_ids": [
+        "HASE-EST"
+      ],
+      "claim_locator": "商务电子结单：纸本与电子选择",
+      "retrieved_on": "2026-10-03",
+      "review_due_on": "2026-11-02",
+      "bank_reviewed": false
+    },
+    {
+      "id": "HKFAQ-HASE-12",
+      "bank_id": "hase",
+      "jurisdiction": "HK",
+      "customer_type": "enterprise",
+      "topic": "statements",
+      "question": "企业流动电子通知书可以下载PDF吗",
+      "variants": [
+        "恒生企业电子通知书如何下载PDF"
+      ],
+      "patterns": [
+        "(?:流动电子通知书|电子通知书|e.Advice).*(?:下载|PDF|保存)"
+      ],
+      "exclude_patterns": [],
+      "answer": "支持的通知书可用纯文字或PDF显示；iOS/Android支持分享或下载PDF通知书。",
+      "limits": "仅列示该功能支持，本项目没有生成或下载客户文件。",
+      "focus": "download",
+      "source_ids": [
+        "HASE-EST"
+      ],
+      "claim_locator": "商务电子通知书：PDF下载及格式",
+      "retrieved_on": "2026-10-03",
+      "review_due_on": "2026-11-02",
+      "bank_reviewed": false
+    },
+    {
+      "id": "HKFAQ-BOCHK-01",
+      "bank_id": "bochk",
+      "jurisdiction": "HK",
+      "customer_type": "personal",
+      "topic": "payments",
+      "question": "转数快本地转账支持哪些币种",
+      "variants": [
+        "中银香港FPS支持美元吗"
+      ],
+      "patterns": [
+        "(?:转数快|FPS).*(?:币种|货币|美元|港元|人民币)"
+      ],
+      "exclude_patterns": [],
+      "answer": "中银香港列示本地转数快支持港元及人民币。",
+      "limits": "此本地功能不支持美元；其他外币或跨境服务须另查。",
+      "focus": "general",
+      "source_ids": [
+        "BOC-FPS"
+      ],
+      "claim_locator": "转数快服务：本地支付币种",
+      "retrieved_on": "2026-10-03",
+      "review_due_on": "2026-11-02",
+      "bank_reviewed": false
+    },
+    {
+      "id": "HKFAQ-BOCHK-02",
+      "bank_id": "bochk",
+      "jurisdiction": "HK",
+      "customer_type": "personal",
+      "topic": "payments",
+      "question": "手机号转数快收款怎样登记",
+      "variants": [
+        "中银香港手机号收款怎么绑定"
+      ],
+      "patterns": [
+        "(?:手机号|电话|识别码).*(?:收款|登记|绑定)|转数快.*登记"
+      ],
+      "exclude_patterns": [],
+      "answer": "在中银香港手机银行或网银登记并绑定预设收款账户后，可以手机号等识别代号收款。",
+      "limits": "仅适用所列香港银行及该项官方服务；须在银行正式渠道完成认证，以实际页面及条款为准。",
+      "focus": "channel",
+      "source_ids": [
+        "BOC-FPS"
+      ],
+      "claim_locator": "转数快服务：预设收款账户",
+      "retrieved_on": "2026-10-03",
+      "review_due_on": "2026-11-02",
+      "bank_reviewed": false
+    },
+    {
+      "id": "HKFAQ-BOCHK-03",
+      "bank_id": "bochk",
+      "jurisdiction": "HK",
+      "customer_type": "personal",
+      "topic": "payments",
+      "question": "本地转数快转账收费吗",
+      "variants": [
+        "中银香港转数快收手续费吗"
+      ],
+      "patterns": [
+        "(?:转数快|FPS).*(?:收费|费用|手续费|免费)"
+      ],
+      "exclude_patterns": [],
+      "answer": "该行列示港元及人民币本地转数快服务免手续费。",
+      "limits": "仅对应列示的本地转数快，不表示跨境汇款或任何银行均免费。",
+      "focus": "fees",
+      "source_ids": [
+        "BOC-FPS"
+      ],
+      "claim_locator": "转数快服务：本地费用",
+      "retrieved_on": "2026-10-03",
+      "review_due_on": "2026-10-10",
+      "bank_reviewed": false
+    },
+    {
+      "id": "HKFAQ-BOCHK-04",
+      "bank_id": "bochk",
+      "jurisdiction": "HK",
+      "customer_type": "personal",
+      "topic": "payments",
+      "question": "身份证登记转数快可以收哪些款",
+      "variants": [
+        "中银香港身份证FPS能收政府款吗"
+      ],
+      "patterns": [
+        "身份证.*(?:转数快|FPS|收款)|政府.*(?:FPS|转数快)"
+      ],
+      "exclude_patterns": [],
+      "answer": "可用香港身份证登记以收取香港政府、机构或企业发出的款项。",
+      "limits": "不是向所有个人付款人公开身份证；适用银行登记条件。",
+      "focus": "general",
+      "source_ids": [
+        "BOC-FPS"
+      ],
+      "claim_locator": "转数快服务：身份证识别代号",
+      "retrieved_on": "2026-10-03",
+      "review_due_on": "2026-11-02",
+      "bank_reviewed": false
+    },
+    {
+      "id": "HKFAQ-BOCHK-05",
+      "bank_id": "bochk",
+      "jurisdiction": "HK",
+      "customer_type": "personal",
+      "topic": "statements",
+      "question": "综合电子结单在哪里查看",
+      "variants": [
+        "中银香港综合电子结单在哪看"
+      ],
+      "patterns": [
+        "综合.*(?:电子结单|月结单).*(?:查看|哪里|在哪|登记)"
+      ],
+      "exclude_patterns": [],
+      "answer": "选用综合月结单的客户可在中银香港官方网银及手机银行查看电子结单，无须另作该项登记。",
+      "limits": "其他投资或卡类结单可能有不同登记条件；本项目未查客户结单。",
+      "focus": "channel",
+      "source_ids": [
+        "BOC-EST"
+      ],
+      "claim_locator": "电子结单：综合月结单适用条件",
+      "retrieved_on": "2026-10-03",
+      "review_due_on": "2026-11-02",
+      "bank_reviewed": false
+    },
+    {
+      "id": "HKFAQ-BOCHK-06",
+      "bank_id": "bochk",
+      "jurisdiction": "HK",
+      "customer_type": "personal",
+      "topic": "statements",
+      "question": "综合月结单及信用卡月结单保留多久",
+      "variants": [
+        "中银香港综合月结单保存几年"
+      ],
+      "patterns": [
+        "(?:综合|信用卡|电子结单).*(?:保存|保留|多久|几年)"
+      ],
+      "exclude_patterns": [],
+      "answer": "官网保留期限表列示综合及信用卡月结单保存7年；其他产品各有期限。",
+      "limits": "不可把7年套用所有通知书或投资日结单。",
+      "focus": "timing",
+      "source_ids": [
+        "BOC-EST"
+      ],
+      "claim_locator": "电子结单备注4：按产品保留期",
+      "retrieved_on": "2026-10-03",
+      "review_due_on": "2026-10-10",
+      "bank_reviewed": false
+    },
+    {
+      "id": "HKFAQ-BOCHK-07",
+      "bank_id": "bochk",
+      "jurisdiction": "HK",
+      "customer_type": "personal",
+      "topic": "statements",
+      "question": "电子结单有电邮提示吗",
+      "variants": [
+        "中银香港电子结单能收邮件提示吗"
+      ],
+      "patterns": [
+        "(?:电子结单|通知书).*(?:电邮提示|邮件提示|通知上传)"
+      ],
+      "exclude_patterns": [],
+      "answer": "已登记相关服务的客户可选择电邮提示，在最新一期资料上传时获通知。",
+      "limits": "仅适用所列香港银行及该项官方服务；须在银行正式渠道完成认证，以实际页面及条款为准。",
+      "focus": "general",
+      "source_ids": [
+        "BOC-EST"
+      ],
+      "claim_locator": "电子结单：个人化提示及备注7",
+      "retrieved_on": "2026-10-03",
+      "review_due_on": "2026-11-02",
+      "bank_reviewed": false
+    },
+    {
+      "id": "HKFAQ-BOCHK-08",
+      "bank_id": "bochk",
+      "jurisdiction": "HK",
+      "customer_type": "personal",
+      "topic": "statements",
+      "question": "如何更改电子结单设置",
+      "variants": [
+        "中银香港电子结单设置怎么改"
+      ],
+      "patterns": [
+        "(?:更改|修改|调整|登记).*(?:电子结单|通知书).*设置|电子结单设置"
+      ],
+      "exclude_patterns": [],
+      "answer": "从官方网银的电子结单/通知书设置入口登记或调整服务选择。",
+      "limits": "仅适用所列香港银行及该项官方服务；须在银行正式渠道完成认证，以实际页面及条款为准。",
+      "focus": "channel",
+      "source_ids": [
+        "BOC-EST"
+      ],
+      "claim_locator": "电子结单：服务申请与设置",
+      "retrieved_on": "2026-10-03",
+      "review_due_on": "2026-11-02",
+      "bank_reviewed": false
+    },
+    {
+      "id": "HKFAQ-BOCHK-09",
+      "bank_id": "bochk",
+      "jurisdiction": "HK",
+      "customer_type": "personal",
+      "topic": "security",
+      "question": "从哪里安全下载手机银行",
+      "variants": [
+        "中银香港App应该在哪里下载"
+      ],
+      "patterns": [
+        "(?:下载|安装).*(?:手机银行|App)|手机银行.*哪里下载"
+      ],
+      "exclude_patterns": [],
+      "answer": "只从官方应用商店或银行官网取得手机银行及该行付款App。",
+      "limits": "仅适用所列香港银行及该项官方服务；须在银行正式渠道完成认证，以实际页面及条款为准。",
+      "focus": "channel",
+      "source_ids": [
+        "BOC-SAFE"
+      ],
+      "claim_locator": "保安资讯：官方应用下载",
+      "retrieved_on": "2026-10-03",
+      "review_due_on": "2026-10-10",
+      "bank_reviewed": false
+    },
+    {
+      "id": "HKFAQ-BOCHK-10",
+      "bank_id": "bochk",
+      "jurisdiction": "HK",
+      "customer_type": "personal",
+      "topic": "security",
+      "question": "手机号或电邮变更需要通知银行吗",
+      "variants": [
+        "中银香港换手机号要通知银行吗"
+      ],
+      "patterns": [
+        "(?:手机号|电话|电邮|邮箱).*(?:变更|变了|更改|通知银行)"
+      ],
+      "exclude_patterns": [],
+      "answer": "联系方式变更须及时通知银行，避免认证或通知仍发往旧联系方式。",
+      "limits": "仅适用所列香港银行及该项官方服务；须在银行正式渠道完成认证，以实际页面及条款为准。",
+      "focus": "channel",
+      "source_ids": [
+        "BOC-SAFE"
+      ],
+      "claim_locator": "保安资讯：联系方式变更",
+      "retrieved_on": "2026-10-03",
+      "review_due_on": "2026-10-10",
+      "bank_reviewed": false
+    },
+    {
+      "id": "HKFAQ-BOCHK-11",
+      "bank_id": "bochk",
+      "jurisdiction": "HK",
+      "customer_type": "personal",
+      "topic": "security",
+      "question": "确认网上付款前要核对什么",
+      "variants": [
+        "中银香港付款前要检查哪些信息"
+      ],
+      "patterns": [
+        "(?:付款|转账|交易|网购).*(?:前|之前).*(?:核对|注意)|付款前.*确认"
+      ],
+      "exclude_patterns": [],
+      "answer": "输入认证信息前核对商户、交易类型、金额及货币；转数快付款另核对收款人。",
+      "limits": "这是安全检查提示，不代表核对后无风险或本项目已认证。",
+      "focus": "general",
+      "source_ids": [
+        "BOC-SAFE"
+      ],
+      "claim_locator": "保安资讯：交易核对",
+      "retrieved_on": "2026-10-03",
+      "review_due_on": "2026-10-10",
+      "bank_reviewed": false
+    },
+    {
+      "id": "HKFAQ-BOCHK-12",
+      "bank_id": "bochk",
+      "jurisdiction": "HK",
+      "customer_type": "personal",
+      "topic": "security",
+      "question": "网银密码怎样设置较安全",
+      "variants": [
+        "中银香港设置密码有哪些注意事项"
+      ],
+      "patterns": [
+        "密码.*(?:安全|设置注意|怎么设|怎样设)|安全.*密码"
+      ],
+      "exclude_patterns": [],
+      "answer": "避免姓名、生日或证件号码等易猜内容，不与其他网站重复使用，并按银行指引维护密码。",
+      "limits": "不在客服对话中提供实际密码；本条不定义或代填密码格式。",
+      "focus": "general",
+      "source_ids": [
+        "BOC-SAFE"
+      ],
+      "claim_locator": "保安资讯：密码选取及保管",
+      "retrieved_on": "2026-10-03",
+      "review_due_on": "2026-10-10",
+      "bank_reviewed": false
+    },
+    {
+      "id": "HKFAQ-SC-01",
+      "bank_id": "sc",
+      "jurisdiction": "HK",
+      "customer_type": "personal",
+      "topic": "payments",
+      "question": "如何添加本地收款人",
+      "variants": [
+        "渣打如何新增本地收款人"
+      ],
+      "patterns": [
+        "(?:添加|新增|登记).*收款人|收款人.*(?:添加|新增)"
+      ],
+      "exclude_patterns": [],
+      "answer": "在SC Mobile的付款与转账入口进入本地转账，添加收款人，核对正式姓名及资料后用Mobile Key认证。",
+      "limits": "仅适用所列香港银行及该项官方服务；须在银行正式渠道完成认证，以实际页面及条款为准。",
+      "focus": "channel",
+      "source_ids": [
+        "SC-FUND"
+      ],
+      "claim_locator": "本地转账帮助：添加收款人",
+      "retrieved_on": "2026-10-03",
+      "review_due_on": "2026-11-02",
+      "bank_reviewed": false
+    },
+    {
+      "id": "HKFAQ-SC-02",
+      "bank_id": "sc",
+      "jurisdiction": "HK",
+      "customer_type": "personal",
+      "topic": "payments",
+      "question": "删除收款人会影响预约转账吗",
+      "variants": [
+        "渣打删收款人影响预设转账吗"
+      ],
+      "patterns": [
+        "删除.*收款人|收款人.*删除"
+      ],
+      "exclude_patterns": [],
+      "answer": "官方网银删除收款人会一并移除向其发出的预约指示，但不影响常行指示。",
+      "limits": "预约与常行指示不是同一类；本项目没有删除或取消。",
+      "focus": "general",
+      "source_ids": [
+        "SC-FUND"
+      ],
+      "claim_locator": "本地转账帮助：删除与关联指示",
+      "retrieved_on": "2026-10-03",
+      "review_due_on": "2026-11-02",
+      "bank_reviewed": false
+    },
+    {
+      "id": "HKFAQ-SC-03",
+      "bank_id": "sc",
+      "jurisdiction": "HK",
+      "customer_type": "personal",
+      "topic": "payments",
+      "question": "转账每日上限是不是每类都一样",
+      "variants": [
+        "渣打转账总上限与子限额一样吗"
+      ],
+      "patterns": [
+        "转账.*(?:每日上限|总限额|一样|最高额度|最多)|总体.*转账限额"
+      ],
+      "exclude_patterns": [],
+      "answer": "官网列示网上转账总体每日上限港币200万元，另有按已登记、未登记及缴费等分类的子限额。",
+      "limits": "总体上限不表示每笔或每类都可转200万元；实际已设置额度及认证条件仍适用。",
+      "focus": "general",
+      "source_ids": [
+        "SC-FUND"
+      ],
+      "claim_locator": "转账限额表：总体与分类限制",
+      "retrieved_on": "2026-10-03",
+      "review_due_on": "2026-11-02",
+      "bank_reviewed": false
+    },
+    {
+      "id": "HKFAQ-SC-04",
+      "bank_id": "sc",
+      "jurisdiction": "HK",
+      "customer_type": "personal",
+      "topic": "payments",
+      "question": "调整转账限额应使用哪里",
+      "variants": [
+        "渣打转账限额在哪改"
+      ],
+      "patterns": [
+        "(?:调整|设置|提高|降低|更改).*转账.*限额|转账限额.*(?:在哪里|哪里|怎么改)"
+      ],
+      "exclude_patterns": [],
+      "answer": "使用SC Mobile或官方网银的限额调整指引，按对应交易类别设置。",
+      "limits": "须依正式页面认证及适用限制，本项目没有更改限额。",
+      "focus": "channel",
+      "source_ids": [
+        "SC-FUND"
+      ],
+      "claim_locator": "转账限额帮助：App及网银调整",
+      "retrieved_on": "2026-10-03",
+      "review_due_on": "2026-11-02",
+      "bank_reviewed": false
+    },
+    {
+      "id": "HKFAQ-SC-05",
+      "bank_id": "sc",
+      "jurisdiction": "HK",
+      "customer_type": "personal",
+      "topic": "digital",
+      "question": "手机或网上银行账户锁定怎么办",
+      "variants": [
+        "渣打网银锁了怎么办"
+      ],
+      "patterns": [
+        "(?:账户|网银|手机银行).*(?:锁定|被锁)|(?:锁定|被锁).*(?:网银|账户)"
+      ],
+      "exclude_patterns": [],
+      "answer": "按渣打官方登记指引重新登记手机或网上银行服务。",
+      "limits": "这是官方一般指引，不确认本人锁定原因或已经恢复。",
+      "focus": "channel",
+      "source_ids": [
+        "SC-LOGIN"
+      ],
+      "claim_locator": "登录问答：账户锁定",
+      "retrieved_on": "2026-10-03",
+      "review_due_on": "2026-11-02",
+      "bank_reviewed": false
+    },
+    {
+      "id": "HKFAQ-SC-06",
+      "bank_id": "sc",
+      "jurisdiction": "HK",
+      "customer_type": "personal",
+      "topic": "digital",
+      "question": "如何登记SC Mobile Key",
+      "variants": [
+        "渣打SC Mobile Key怎么启用"
+      ],
+      "patterns": [
+        "(?:登记|注册|启用|激活).*SC\\s*Mobile\\s*Key|SC\\s*Mobile\\s*Key.*(?:登记|注册)"
+      ],
+      "exclude_patterns": [],
+      "answer": "下载最新官方App并登录，按提示绑定及登记SC Mobile Key。",
+      "limits": "仅适用所列香港银行及该项官方服务；须在银行正式渠道完成认证，以实际页面及条款为准。",
+      "focus": "channel",
+      "source_ids": [
+        "SC-LOGIN"
+      ],
+      "claim_locator": "保安问答：Mobile Key登记",
+      "retrieved_on": "2026-10-03",
+      "review_due_on": "2026-11-02",
+      "bank_reviewed": false
+    },
+    {
+      "id": "HKFAQ-SC-07",
+      "bank_id": "sc",
+      "jurisdiction": "HK",
+      "customer_type": "personal",
+      "topic": "digital",
+      "question": "换手机后SC Mobile Key怎样处理",
+      "variants": [
+        "渣打换新手机保安认证怎么迁移"
+      ],
+      "patterns": [
+        "(?:新|换|更换).*(?:手机|设备)|Mobile\\s*Key.*迁移"
+      ],
+      "exclude_patterns": [],
+      "answer": "新机安装官方App并按提示绑定Mobile Key，旧机的相关认证及通知功能会自动取消登记。",
+      "limits": "只允许一部设备绑定Mobile Key；本项目不会代用户解除绑定。",
+      "focus": "channel",
+      "source_ids": [
+        "SC-LOGIN"
+      ],
+      "claim_locator": "保安问答：新设备及单设备绑定",
+      "retrieved_on": "2026-10-03",
+      "review_due_on": "2026-11-02",
+      "bank_reviewed": false
+    },
+    {
+      "id": "HKFAQ-SC-08",
+      "bank_id": "sc",
+      "jurisdiction": "HK",
+      "customer_type": "personal",
+      "topic": "digital",
+      "question": "忘记SC Mobile Key PIN怎么办",
+      "variants": [
+        "渣打Mobile Key PIN忘了"
+      ],
+      "patterns": [
+        "(?:忘记|重置|忘了).*Mobile\\s*Key.*PIN|Mobile\\s*Key.*PIN.*(?:忘|重置)"
+      ],
+      "exclude_patterns": [],
+      "answer": "登录App后进入Mobile Key管理中的更改PIN，再选忘记PIN并按短讯认证流程重新登记。",
+      "limits": "仅适用所列香港银行及该项官方服务；须在银行正式渠道完成认证，以实际页面及条款为准。",
+      "focus": "channel",
+      "source_ids": [
+        "SC-LOGIN"
+      ],
+      "claim_locator": "保安问答：Mobile Key PIN恢复",
+      "retrieved_on": "2026-10-03",
+      "review_due_on": "2026-11-02",
+      "bank_reviewed": false
+    },
+    {
+      "id": "HKFAQ-SC-09",
+      "bank_id": "sc",
+      "jurisdiction": "HK",
+      "customer_type": "personal",
+      "topic": "statements",
+      "question": "电子结单及通知书收费吗",
+      "variants": [
+        "渣打电子结单要收费吗"
+      ],
+      "patterns": [
+        "(?:电子结单|电子通知书).*(?:收费|费用|免费)"
+      ],
+      "exclude_patterns": [],
+      "answer": "渣打香港列示电子结单及电子通知书服务免费。",
+      "limits": "不代表纸本、副本或其他银行同样免费。",
+      "focus": "fees",
+      "source_ids": [
+        "SC-EST"
+      ],
+      "claim_locator": "电子结单问答：服务费用",
+      "retrieved_on": "2026-10-03",
+      "review_due_on": "2026-10-10",
+      "bank_reviewed": false
+    },
+    {
+      "id": "HKFAQ-SC-10",
+      "bank_id": "sc",
+      "jurisdiction": "HK",
+      "customer_type": "personal",
+      "topic": "statements",
+      "question": "没有收到电子结单电邮提示怎么办",
+      "variants": [
+        "渣打电子结单提示邮件收不到怎么办"
+      ],
+      "patterns": [
+        "(?:电子结单|结单).*电邮.*(?:没|收不到)|(?:没收到|收不到).*结单.*(?:邮件|电邮)"
+      ],
+      "exclude_patterns": [],
+      "answer": "检查邮箱容量、垃圾邮件过滤及银行登记的电邮是否正确；仍有疑问走银行官方帮助。",
+      "limits": "没收到提示不等于没出结单；本项目没有访问邮箱或客户结单。",
+      "focus": "general",
+      "source_ids": [
+        "SC-EST"
+      ],
+      "claim_locator": "电子结单问答：电邮提示排查",
+      "retrieved_on": "2026-10-03",
+      "review_due_on": "2026-11-02",
+      "bank_reviewed": false
+    },
+    {
+      "id": "HKFAQ-SC-11",
+      "bank_id": "sc",
+      "jurisdiction": "HK",
+      "customer_type": "personal",
+      "topic": "statements",
+      "question": "电子结单可保存到电脑吗",
+      "variants": [
+        "渣打电子结单怎么下载到电脑"
+      ],
+      "patterns": [
+        "电子结单.*(?:保存|下载|电脑|PDF)"
+      ],
+      "exclude_patterns": [],
+      "answer": "可将官方渠道查看的PDF电子结单另存到自己的电脑。",
+      "limits": "只介绍公开保存方式，本项目未下载客户文件。",
+      "focus": "download",
+      "source_ids": [
+        "SC-EST"
+      ],
+      "claim_locator": "电子结单问答：保存副本",
+      "retrieved_on": "2026-10-03",
+      "review_due_on": "2026-11-02",
+      "bank_reviewed": false
+    },
+    {
+      "id": "HKFAQ-SC-12",
+      "bank_id": "sc",
+      "jurisdiction": "HK",
+      "customer_type": "personal",
+      "topic": "statements",
+      "question": "联名双方签署账户怎样申请电子结单",
+      "variants": [
+        "渣打双方签署联名账户能在线开电子结单吗"
+      ],
+      "patterns": [
+        "联名.*(?:双方|共同|签署|电子结单)"
+      ],
+      "exclude_patterns": [],
+      "answer": "须双方共同填写并签署电子结单申请纸本表格，交分行或按银行要求邮寄。",
+      "limits": "任一方签署账户的流程不同；本项目不能代签或确认授权。",
+      "focus": "materials",
+      "source_ids": [
+        "SC-EST"
+      ],
+      "claim_locator": "电子结单问答：联名签署方式",
+      "retrieved_on": "2026-10-03",
+      "review_due_on": "2026-11-02",
+      "bank_reviewed": false
+    },
+    {
+      "id": "HKFAQ-BEA-01",
+      "bank_id": "bea",
+      "jurisdiction": "HK",
+      "customer_type": "personal",
+      "topic": "digital",
+      "question": "i-Token有什么作用",
+      "variants": [
+        "东亚i-Token是什么"
+      ],
+      "patterns": [
+        "i.Token.*(?:作用|是什么|用途)|什么是i.Token"
+      ],
+      "exclude_patterns": [],
+      "answer": "i-Token是东亚App认证工具，用于登录和验证指定交易。",
+      "limits": "仅适用所列香港银行及该项官方服务；须在银行正式渠道完成认证，以实际页面及条款为准。",
+      "focus": "general",
+      "source_ids": [
+        "BEA-NET"
+      ],
+      "claim_locator": "个人网银11.1：i-Token功能",
+      "retrieved_on": "2026-10-03",
+      "review_due_on": "2026-11-02",
+      "bank_reviewed": false
+    },
+    {
+      "id": "HKFAQ-BEA-02",
+      "bank_id": "bea",
+      "jurisdiction": "HK",
+      "customer_type": "personal",
+      "topic": "digital",
+      "question": "启用i-Token前要准备什么",
+      "variants": [
+        "东亚启动i-Token需要什么"
+      ],
+      "patterns": [
+        "(?:启用|激活|启动).*i.Token.*(?:准备|条件|需要)|i.Token.*准备"
+      ],
+      "exclude_patterns": [],
+      "answer": "须有银行登记且可收短讯的手机号、已登记电邮及支持的移动设备。",
+      "limits": "仅适用所列香港银行及该项官方服务；须在银行正式渠道完成认证，以实际页面及条款为准。",
+      "focus": "materials",
+      "source_ids": [
+        "BEA-NET"
+      ],
+      "claim_locator": "个人网银11.3：启用准备",
+      "retrieved_on": "2026-10-03",
+      "review_due_on": "2026-11-02",
+      "bank_reviewed": false
+    },
+    {
+      "id": "HKFAQ-BEA-03",
+      "bank_id": "bea",
+      "jurisdiction": "HK",
+      "customer_type": "personal",
+      "topic": "digital",
+      "question": "i-Token能同时绑定多部设备吗",
+      "variants": [
+        "东亚i-Token能绑定两个手机吗"
+      ],
+      "patterns": [
+        "i.Token.*(?:多部|两部|同时|设备数量)|多部.*i.Token"
+      ],
+      "exclude_patterns": [],
+      "answer": "同一账户只能在一部移动设备启用一个i-Token。",
+      "limits": "仅适用所列香港银行及该项官方服务；须在银行正式渠道完成认证，以实际页面及条款为准。",
+      "focus": "general",
+      "source_ids": [
+        "BEA-NET"
+      ],
+      "claim_locator": "个人网银11.8：设备数量",
+      "retrieved_on": "2026-10-03",
+      "review_due_on": "2026-11-02",
+      "bank_reviewed": false
+    },
+    {
+      "id": "HKFAQ-BEA-04",
+      "bank_id": "bea",
+      "jurisdiction": "HK",
+      "customer_type": "personal",
+      "topic": "digital",
+      "question": "换手机如何转移i-Token",
+      "variants": [
+        "东亚换手机i-Token怎么迁移"
+      ],
+      "patterns": [
+        "(?:换|新|更换).*手机|i.Token.*(?:转移|迁移)"
+      ],
+      "exclude_patterns": [],
+      "answer": "用新设备登录已启用账户，按提示转移并重新登记；旧i-Token会停用。",
+      "limits": "仅适用所列香港银行及该项官方服务；须在银行正式渠道完成认证，以实际页面及条款为准。",
+      "focus": "channel",
+      "source_ids": [
+        "BEA-NET"
+      ],
+      "claim_locator": "个人网银11.9：设备转移",
+      "retrieved_on": "2026-10-03",
+      "review_due_on": "2026-11-02",
+      "bank_reviewed": false
+    },
+    {
+      "id": "HKFAQ-BEA-05",
+      "bank_id": "bea",
+      "jurisdiction": "HK",
+      "customer_type": "personal",
+      "topic": "digital",
+      "question": "重装App后i-Token还能用吗",
+      "variants": [
+        "东亚重新安装App保安认证还能用吗"
+      ],
+      "patterns": [
+        "重装|重新安装.*(?:App|手机银行)|i.Token.*重装"
+      ],
+      "exclude_patterns": [],
+      "answer": "重装东亚App会停用原i-Token，须重新启用。",
+      "limits": "仅适用所列香港银行及该项官方服务；须在银行正式渠道完成认证，以实际页面及条款为准。",
+      "focus": "general",
+      "source_ids": [
+        "BEA-NET"
+      ],
+      "claim_locator": "个人网银11.12：重装影响",
+      "retrieved_on": "2026-10-03",
+      "review_due_on": "2026-11-02",
+      "bank_reviewed": false
+    },
+    {
+      "id": "HKFAQ-BEA-06",
+      "bank_id": "bea",
+      "jurisdiction": "HK",
+      "customer_type": "personal",
+      "topic": "digital",
+      "question": "更换SIM卡影响i-Token吗",
+      "variants": [
+        "东亚换SIM后i-Token还能用吗"
+      ],
+      "patterns": [
+        "SIM|换卡.*i.Token"
+      ],
+      "exclude_patterns": [],
+      "answer": "官网说明更换SIM不影响既有i-Token继续使用。",
+      "limits": "仅指SIM更换，不等于换手机、号码更新或重装App也无影响。",
+      "focus": "general",
+      "source_ids": [
+        "BEA-NET"
+      ],
+      "claim_locator": "个人网银11.7：SIM更换",
+      "retrieved_on": "2026-10-03",
+      "review_due_on": "2026-11-02",
+      "bank_reviewed": false
+    },
+    {
+      "id": "HKFAQ-BEA-07",
+      "bank_id": "bea",
+      "jurisdiction": "HK",
+      "customer_type": "personal",
+      "topic": "payments",
+      "question": "在哪里登记转数快收款识别代号",
+      "variants": [
+        "东亚FPS手机号收款怎么登记"
+      ],
+      "patterns": [
+        "(?:转数快|FPS).*(?:登记|注册|绑定|收款)"
+      ],
+      "exclude_patterns": [],
+      "answer": "登录东亚官方网银，进入设置中的转数快登记并选择账户，按提示完成所需认证。",
+      "limits": "仅适用所列香港银行及该项官方服务；须在银行正式渠道完成认证，以实际页面及条款为准。",
+      "focus": "channel",
+      "source_ids": [
+        "BEA-NET"
+      ],
+      "claim_locator": "个人网银5.36.1—2：识别代号登记",
+      "retrieved_on": "2026-10-03",
+      "review_due_on": "2026-11-02",
+      "bank_reviewed": false
+    },
+    {
+      "id": "HKFAQ-BEA-08",
+      "bank_id": "bea",
+      "jurisdiction": "HK",
+      "customer_type": "personal",
+      "topic": "payments",
+      "question": "怎样查看其他银行的转数快登记",
+      "variants": [
+        "东亚可以看手机号在其他银行的FPS登记吗"
+      ],
+      "patterns": [
+        "(?:其他银行|所有银行).*(?:FPS|转数快)|(?:FPS|转数快).*登记.*摘要"
+      ],
+      "exclude_patterns": [],
+      "answer": "在东亚网银的转数快设置内查看所有机构登记摘要，按提示认证；仅可查已在东亚登记的识别代号。",
+      "limits": "仅介绍客户在银行官方渠道自查，项目未读取任何登记记录。",
+      "focus": "channel",
+      "source_ids": [
+        "BEA-NET"
+      ],
+      "claim_locator": "个人网银5.36.5：跨机构登记摘要",
+      "retrieved_on": "2026-10-03",
+      "review_due_on": "2026-11-02",
+      "bank_reviewed": false
+    },
+    {
+      "id": "HKFAQ-BEA-09",
+      "bank_id": "bea",
+      "jurisdiction": "HK",
+      "customer_type": "both",
+      "topic": "consent",
+      "question": "怎样撤回第三方账户资料分享同意",
+      "variants": [
+        "东亚如何撤回开放API同意"
+      ],
+      "patterns": [
+        "(?:撤销|撤消|取消|撤回|终止).*(?:授权|同意|API)|(?:授权|同意|API).*(?:撤销|撤消|取消|撤回|终止)"
+      ],
+      "exclude_patterns": [],
+      "answer": "可经第三方渠道或东亚官方同意管理入口撤回；事前应了解对第三方服务的影响。",
+      "limits": "仅适用所列香港银行及该项官方服务；须在银行正式渠道完成认证，以实际页面及条款为准。",
+      "focus": "channel",
+      "source_ids": [
+        "BEA-API"
+      ],
+      "claim_locator": "开放API个人问答9、企业问答8：撤回同意",
+      "retrieved_on": "2026-10-03",
+      "review_due_on": "2026-11-02",
+      "bank_reviewed": false
+    },
+    {
+      "id": "HKFAQ-BEA-10",
+      "bank_id": "bea",
+      "jurisdiction": "HK",
+      "customer_type": "both",
+      "topic": "consent",
+      "question": "已经过期的第三方同意可以续期吗",
+      "variants": [
+        "东亚API同意过期后能续期吗"
+      ],
+      "patterns": [
+        "(?:过期|到期).*(?:同意|授权)|同意.*(?:过期|续期)"
+      ],
+      "exclude_patterns": [],
+      "answer": "已经过期的同意不能续期，须重新给予同意。",
+      "limits": "仅适用所列香港银行及该项官方服务；须在银行正式渠道完成认证，以实际页面及条款为准。",
+      "focus": "general",
+      "source_ids": [
+        "BEA-API"
+      ],
+      "claim_locator": "开放API个人及企业问答10：过期同意",
+      "retrieved_on": "2026-10-03",
+      "review_due_on": "2026-11-02",
+      "bank_reviewed": false
+    },
+    {
+      "id": "HKFAQ-BEA-11",
+      "bank_id": "bea",
+      "jurisdiction": "HK",
+      "customer_type": "both",
+      "topic": "consent",
+      "question": "怎样更改分享给第三方的账户",
+      "variants": [
+        "东亚更改API分享账户怎么做"
+      ],
+      "patterns": [
+        "(?:更改|改变|修改).*(?:分享|同意内容)|分享.*账户.*更改"
+      ],
+      "exclude_patterns": [],
+      "answer": "如需更改账户或分享内容，撤回现有同意后重新给予新同意。",
+      "limits": "仅适用所列香港银行及该项官方服务；须在银行正式渠道完成认证，以实际页面及条款为准。",
+      "focus": "channel",
+      "source_ids": [
+        "BEA-API"
+      ],
+      "claim_locator": "开放API个人及企业问答17：分享范围调整",
+      "retrieved_on": "2026-10-03",
+      "review_due_on": "2026-11-02",
+      "bank_reviewed": false
+    },
+    {
+      "id": "HKFAQ-BEA-12",
+      "bank_id": "bea",
+      "jurisdiction": "HK",
+      "customer_type": "both",
+      "topic": "consent",
+      "question": "开放API账户资料分享收费吗",
+      "variants": [
+        "东亚第三方资料分享需要付费吗"
+      ],
+      "patterns": [
+        "(?:API|资料分享|第三方).*(?:收费|费用|免费)"
+      ],
+      "exclude_patterns": [],
+      "answer": "银行的资料分享服务免费，第三方服务商是否另收费须向其核对。",
+      "limits": "银行免费不代表第三方免费，也不等于本项目获得资料访问授权。",
+      "focus": "fees",
+      "source_ids": [
+        "BEA-API"
+      ],
+      "claim_locator": "开放API问答5：银行与第三方费用",
+      "retrieved_on": "2026-10-03",
+      "review_due_on": "2026-10-10",
+      "bank_reviewed": false
+    },
+    {
+      "id": "HKFAQ-HKMA-01",
+      "bank_id": "hkma",
+      "jurisdiction": "HK",
+      "customer_type": "both",
+      "topic": "payments",
+      "question": "手机号收款必须登记转数快吗",
+      "variants": [
+        "香港通用FPS手机号收款要登记吗"
+      ],
+      "patterns": [
+        "手机号收款.*(?:登记|注册)|(?:转数快|FPS).*手机号.*收款|转数快.*收款.*登记"
+      ],
+      "exclude_patterns": [],
+      "answer": "以手机号或电邮收款须先登记账户绑定服务。",
+      "limits": "香港地区通用机制；具体银行登记入口及资格另查。",
+      "focus": "general",
+      "source_ids": [
+        "HKMA-FAQ"
+      ],
+      "claim_locator": "消费者问答：金融基础设施C1",
+      "retrieved_on": "2026-10-03",
+      "review_due_on": "2026-11-02",
+      "bank_reviewed": false
+    },
+    {
+      "id": "HKFAQ-HKMA-02",
+      "bank_id": "hkma",
+      "jurisdiction": "HK",
+      "customer_type": "both",
+      "topic": "payments",
+      "question": "转数快有统一最高转账限额吗",
+      "variants": [
+        "香港FPS限额各银行都一样吗"
+      ],
+      "patterns": [
+        "(?:转数快|FPS).*(?:统一|所有银行|最高).*限额"
+      ],
+      "exclude_patterns": [],
+      "answer": "银行及支付工具可按不同交易类别设不同上限，应向实际服务机构核对。",
+      "limits": "不提供本人可用额度，不把某银行上限当全行业标准。",
+      "focus": "general",
+      "source_ids": [
+        "HKMA-FAQ"
+      ],
+      "claim_locator": "消费者问答：金融基础设施C3",
+      "retrieved_on": "2026-10-03",
+      "review_due_on": "2026-11-02",
+      "bank_reviewed": false
+    },
+    {
+      "id": "HKFAQ-HKMA-03",
+      "bank_id": "hkma",
+      "jurisdiction": "HK",
+      "customer_type": "both",
+      "topic": "payments",
+      "question": "转错账怎样寻求协助",
+      "variants": [
+        "香港转错款应该找谁"
+      ],
+      "patterns": [
+        "转错账|转错款|错误转账|转账.*(?:错了|错账户)"
+      ],
+      "exclude_patterns": [],
+      "answer": "应尽快向付款银行或支付机构求助，由其按资料联系收款机构和收款人。",
+      "limits": "不能保证追回，不建议自行向陌生人提供凭证或重复转款。",
+      "focus": "general",
+      "source_ids": [
+        "HKMA-FAQ"
+      ],
+      "claim_locator": "消费者问答：金融基础设施C4",
+      "retrieved_on": "2026-10-03",
+      "review_due_on": "2026-11-02",
+      "bank_reviewed": false
+    },
+    {
+      "id": "HKFAQ-HKMA-04",
+      "bank_id": "hkma",
+      "jurisdiction": "HK",
+      "customer_type": "both",
+      "topic": "accounts",
+      "question": "香港银行开户材料有统一清单吗",
+      "variants": [
+        "香港各银行开户要求都一样吗"
+      ],
+      "patterns": [
+        "开户.*(?:统一|一样|所有银行|通用清单)|所有银行.*开户材料"
+      ],
+      "exclude_patterns": [],
+      "answer": "各银行按法律、监管和业务策略制定开户程序，不存在所有银行完全相同的清单。",
+      "limits": "不是某银行完整开户清单或本人获批结论。",
+      "focus": "general",
+      "source_ids": [
+        "HKMA-FAQ"
+      ],
+      "claim_locator": "消费者问答：银行A1",
+      "retrieved_on": "2026-10-03",
+      "review_due_on": "2026-11-02",
+      "bank_reviewed": false
+    },
+    {
+      "id": "HKFAQ-HKMA-05",
+      "bank_id": "hkma",
+      "jurisdiction": "HK",
+      "customer_type": "both",
+      "topic": "accounts",
+      "question": "开户被拒后可以申请复核吗",
+      "variants": [
+        "香港银行拒绝开户还能复核吗"
+      ],
+      "patterns": [
+        "开户.*(?:被拒|拒绝|复核|拒批)"
+      ],
+      "exclude_patterns": [],
+      "answer": "可直接请求该银行按其复核机制重新审视申请，并提供补充资料。",
+      "limits": "复核不保证开户；项目未提交申请或联系银行。",
+      "focus": "general",
+      "source_ids": [
+        "HKMA-FAQ"
+      ],
+      "claim_locator": "消费者问答：银行A13",
+      "retrieved_on": "2026-10-03",
+      "review_due_on": "2026-11-02",
+      "bank_reviewed": false
+    },
+    {
+      "id": "HKFAQ-HKMA-06",
+      "bank_id": "hkma",
+      "jurisdiction": "HK",
+      "customer_type": "both",
+      "topic": "accounts",
+      "question": "开户必须购买保险或理财吗",
+      "variants": [
+        "香港开户被要求买保险怎么办"
+      ],
+      "patterns": [
+        "开户.*(?:必须|要求|强制|一定).*(?:保险|理财|大额存款)"
+      ],
+      "exclude_patterns": [],
+      "answer": "金管局不接受银行将购买保险、投资产品或大额初始存款与开户成功或速度挂钩。",
+      "limits": "指所引香港监管立场，不替代特定产品的适当性审查。",
+      "focus": "general",
+      "source_ids": [
+        "HKMA-FAQ"
+      ],
+      "claim_locator": "消费者问答：银行A12",
+      "retrieved_on": "2026-10-03",
+      "review_due_on": "2026-11-02",
+      "bank_reviewed": false
+    },
+    {
+      "id": "HKFAQ-HKMA-07",
+      "bank_id": "hkma",
+      "jurisdiction": "HK",
+      "customer_type": "enterprise",
+      "topic": "accounts",
+      "question": "企业开户为何要说明股权结构",
+      "variants": [
+        "香港企业开户为何要股权资料"
+      ],
+      "patterns": [
+        "企业开户.*(?:股权|结构|拥有人|实际控制人)|为什么.*股权资料"
+      ],
+      "exclude_patterns": [],
+      "answer": "银行须核验企业所有权和实际拥有人，以履行客户尽职审查。",
+      "limits": "不是要求提交到本项目；具体文件按所选银行核对。",
+      "focus": "general",
+      "source_ids": [
+        "HKMA-FAQ"
+      ],
+      "claim_locator": "消费者问答：银行A2",
+      "retrieved_on": "2026-10-03",
+      "review_due_on": "2026-11-02",
+      "bank_reviewed": false
+    },
+    {
+      "id": "HKFAQ-HKMA-08",
+      "bank_id": "hkma",
+      "jurisdiction": "HK",
+      "customer_type": "both",
+      "topic": "accounts",
+      "question": "银行收费变更需要提前通知吗",
+      "variants": [
+        "香港银行提高收费要提前多久通知"
+      ],
+      "patterns": [
+        "收费.*(?:变更|改变|提高|通知)|(?:变更|提高).*费用.*通知"
+      ],
+      "exclude_patterns": [],
+      "answer": "银行营运守则要求通常至少提前30天通知相关收费变更，非银行控制的情况有例外。",
+      "limits": "只说明一般监管要求及例外，不判断个案争议或收费是否合法。",
+      "focus": "timing",
+      "source_ids": [
+        "HKMA-FAQ"
+      ],
+      "claim_locator": "消费者问答：银行A6、A9",
+      "retrieved_on": "2026-10-03",
+      "review_due_on": "2026-10-10",
+      "bank_reviewed": false
+    },
+    {
+      "id": "HKFAQ-BOCOM-25",
+      "bank_id": "bocom",
+      "jurisdiction": "HK",
+      "customer_type": "personal",
+      "topic": "digital",
+      "question": "怎样申请个人网上银行服务",
+      "variants": [
+        "交银香港网银怎样开通"
+      ],
+      "patterns": [
+        "(?:申请|开通|注册|启用).*(?:网银|网上银行)"
+      ],
+      "exclude_patterns": [],
+      "answer": "持存款账户的客户可带身份证明到分行申请；持该行卡片或电话银行的客户有官方在线启用方式。",
+      "limits": "不同客户方式不同，认证在银行官方渠道完成；不在本项目输入卡片或电话银行密码。",
+      "focus": "channel",
+      "source_ids": [
+        "BOCOM-NET"
+      ],
+      "claim_locator": "个人网银问答10：申请及启用",
+      "retrieved_on": "2026-10-03",
+      "review_due_on": "2026-11-02",
+      "bank_reviewed": false
+    },
+    {
+      "id": "HKFAQ-BOCOM-26",
+      "bank_id": "bocom",
+      "jurisdiction": "HK",
+      "customer_type": "personal",
+      "topic": "digital",
+      "question": "网上银行是否全天可用",
+      "variants": [
+        "交银香港网银是二十四小时吗"
+      ],
+      "patterns": [
+        "(?:网银|网上银行).*(?:全天|二十四小时|24小时|服务时间)"
+      ],
+      "exclude_patterns": [],
+      "answer": "网银可全天使用，但部分业务仅在指定服务时间办理。",
+      "limits": "不能保证所有交易全天执行；临时维护及具体服务时间应核对官网。",
+      "focus": "general",
+      "source_ids": [
+        "BOCOM-NET"
+      ],
+      "claim_locator": "个人网银问答11：业务服务时间",
+      "retrieved_on": "2026-10-03",
+      "review_due_on": "2026-11-02",
+      "bank_reviewed": false
+    },
+    {
+      "id": "HKFAQ-BOCOM-27",
+      "bank_id": "bocom",
+      "jurisdiction": "HK",
+      "customer_type": "personal",
+      "topic": "payments",
+      "question": "交易完成后怎样打印记录",
+      "variants": [
+        "交银香港交易记录怎么打印"
+      ],
+      "patterns": [
+        "(?:交易|转账|付款).*记录.*打印|打印.*交易记录"
+      ],
+      "exclude_patterns": [],
+      "answer": "可用浏览器打印功能保存官方页面的交易记录。",
+      "limits": "仅介绍公开操作，不代表银行盖章回单或本项目提供交易凭证。",
+      "focus": "channel",
+      "source_ids": [
+        "BOCOM-NET"
+      ],
+      "claim_locator": "个人网银问答6：打印记录",
+      "retrieved_on": "2026-10-03",
+      "review_due_on": "2026-11-02",
+      "bank_reviewed": false
+    },
+    {
+      "id": "HKFAQ-BOCOM-28",
+      "bank_id": "bocom",
+      "jurisdiction": "HK",
+      "customer_type": "personal",
+      "topic": "payments",
+      "question": "转账失败或结果不确定先查哪里",
+      "variants": [
+        "交银香港转账没反应要怎么核对"
+      ],
+      "patterns": [
+        "(?:转账|付款|交易).*(?:失败|不确定|没反应|没有结果)"
+      ],
+      "exclude_patterns": [],
+      "answer": "按官方网银中断后的核对指引，先查近期操作记录；仍不清楚时联系银行排查。",
+      "limits": "借用官网中断后核对步骤作排查指引，不能判定失败原因、已到账或替用户重复付款。",
+      "focus": "channel",
+      "source_ids": [
+        "BOCOM-NET"
+      ],
+      "claim_locator": "个人网银问答4—5：结果核对及中断排查",
+      "retrieved_on": "2026-10-03",
+      "review_due_on": "2026-11-02",
+      "bank_reviewed": false
+    },
+    {
+      "id": "HKFAQ-HKMA-09",
+      "bank_id": "hkma",
+      "jurisdiction": "HK",
+      "customer_type": "both",
+      "topic": "payments",
+      "question": "转数快是什么",
+      "variants": [
+        "香港通用知识：FPS是什么意思"
+      ],
+      "patterns": [
+        "(?:转数快|FPS).*(?:是什么|意思|有什么用)|什么是转数快"
+      ],
+      "exclude_patterns": [],
+      "answer": "转数快是香港连接参与银行及电子钱包的快速支付系统，可作跨机构收付款。",
+      "limits": "地区通用概念，不代表各银行开户、限额或收费相同。",
+      "focus": "general",
+      "source_ids": [
+        "HKMA-FPS"
+      ],
+      "claim_locator": "金管局快速支付系统：机制概述",
+      "retrieved_on": "2026-10-03",
+      "review_due_on": "2026-11-02",
+      "bank_reviewed": false
+    },
+    {
+      "id": "HKFAQ-HKMA-10",
+      "bank_id": "hkma",
+      "jurisdiction": "HK",
+      "customer_type": "both",
+      "topic": "payments",
+      "question": "转数快是否支持港元和人民币",
+      "variants": [
+        "香港通用知识：转数快支持哪些货币"
+      ],
+      "patterns": [
+        "(?:转数快|FPS).*(?:哪些币种|币种|货币|美元)|转数快.*人民币"
+      ],
+      "exclude_patterns": [],
+      "answer": "该系统支持港元及人民币支付。",
+      "limits": "这是本地系统的币种范围，不推定任何跨境渠道或外币兑换规则。",
+      "focus": "general",
+      "source_ids": [
+        "HKMA-FPS"
+      ],
+      "claim_locator": "金管局快速支付系统：支持币种",
+      "retrieved_on": "2026-10-03",
+      "review_due_on": "2026-11-02",
+      "bank_reviewed": false
+    },
+    {
+      "id": "HKFAQ-HKMA-11",
+      "bank_id": "hkma",
+      "jurisdiction": "HK",
+      "customer_type": "both",
+      "topic": "payments",
+      "question": "转数快晚上或周末能用吗",
+      "variants": [
+        "香港通用知识：周末能用转数快吗"
+      ],
+      "patterns": [
+        "(?:转数快|FPS).*(?:晚上|周末|全天|二十四小时|24小时|假日)"
+      ],
+      "exclude_patterns": [],
+      "answer": "系统全日24小时运作；具体银行操作及到账仍受其服务安排影响。",
+      "limits": "银行及系统维护、检查或账户限制可能影响个别交易；不承诺即时到账。",
+      "focus": "general",
+      "source_ids": [
+        "HKMA-FPS"
+      ],
+      "claim_locator": "金管局快速支付系统：运行时间",
+      "retrieved_on": "2026-10-03",
+      "review_due_on": "2026-11-02",
+      "bank_reviewed": false
+    },
+    {
+      "id": "HKFAQ-HKMA-12",
+      "bank_id": "hkma",
+      "jurisdiction": "HK",
+      "customer_type": "both",
+      "topic": "payments",
+      "question": "转数快能用手机号代替账户号码吗",
+      "variants": [
+        "香港通用知识：FPS不知道收款账号可以付吗"
+      ],
+      "patterns": [
+        "(?:转数快|FPS).*(?:代替账户|代替账号|不知道账号)|手机号.*代替.*账户"
+      ],
+      "exclude_patterns": [],
+      "answer": "已登记的收款人可用手机号或电邮作为跨机构收款识别信息。",
+      "limits": "识别信息须先在对应服务登记，并核对真正收款人，不在本项目输入联系方式。",
+      "focus": "general",
+      "source_ids": [
+        "HKMA-FPS"
+      ],
+      "claim_locator": "金管局快速支付系统：收款识别信息",
+      "retrieved_on": "2026-10-03",
+      "review_due_on": "2026-11-02",
+      "bank_reviewed": false
+    },
+    {
+      "id": "HKFAQ-BOCOM-29",
+      "bank_id": "bocom",
+      "evidence_role": "peer_guidance",
+      "jurisdiction": "HK",
+      "customer_type": "personal",
+      "topic": "digital",
+      "question": "网银密码忘了怎么处理",
+      "variants": [
+        "交银香港网银密码怎样重置"
+      ],
+      "patterns": [
+        "(?:网银|网上银行).*(?:密码|重置|忘)|密码.*(?:忘|重置)"
+      ],
+      "exclude_patterns": [],
+      "answer": "建议：先通过交银香港官方渠道查看适用的密码找回方式，并在银行渠道完成身份核实；无法自行恢复时联系交银官方客服。",
+      "limits": "同业通用参考：以上是交银咨询场景的处理建议，未核实为交银专属流程；不移植其他银行的费率、限额、等待时间、产品条件或菜单名称。具体以交银正式指引为准。",
+      "focus": "channel",
+      "source_ids": [
+        "HSBC-HELP",
+        "BOCOM-SAFE"
+      ],
+      "claim_locator": "通用处理建议：汇丰香港帮助中心；交银香港电子银行保安资讯",
+      "retrieved_on": "2026-10-03",
+      "review_due_on": "2026-10-10",
+      "bank_reviewed": false
+    },
+    {
+      "id": "HKFAQ-BOCOM-30",
+      "bank_id": "bocom",
+      "evidence_role": "peer_guidance",
+      "jurisdiction": "HK",
+      "customer_type": "personal",
+      "topic": "digital",
+      "question": "网银用户名忘了怎么处理",
+      "variants": [
+        "交银香港网银用户名忘了怎么办"
+      ],
+      "patterns": [
+        "(?:网银|网上银行).*(?:用户名|用户名称).*(?:忘|找回)|(?:忘|找回).*用户名"
+      ],
+      "exclude_patterns": [],
+      "answer": "建议：通过交银香港官方登录入口或客服了解找回用户名的方式；身份资料只在银行正式渠道填写。",
+      "limits": "同业通用参考：以上是交银咨询场景的处理建议，未核实为交银专属流程；不移植其他银行的费率、限额、等待时间、产品条件或菜单名称。具体以交银正式指引为准。",
+      "focus": "channel",
+      "source_ids": [
+        "HSBC-HELP"
+      ],
+      "claim_locator": "通用处理建议：汇丰香港帮助中心",
+      "retrieved_on": "2026-10-03",
+      "review_due_on": "2026-10-10",
+      "bank_reviewed": false
+    },
+    {
+      "id": "HKFAQ-BOCOM-31",
+      "bank_id": "bocom",
+      "evidence_role": "peer_guidance",
+      "jurisdiction": "HK",
+      "customer_type": "personal",
+      "topic": "digital",
+      "question": "换新手机之前要注意什么",
+      "variants": [
+        "交银香港换新手机要注意什么"
+      ],
+      "patterns": [
+        "(?:换|更换|新).*(?:手机|设备)|(?:手机|设备).*迁移"
+      ],
+      "exclude_patterns": [],
+      "answer": "建议：更换手机前确认交银官方设备及保安认证安排；先了解旧设备是否可用、怎样停用旧认证及启用新设备，再按交银指引操作。",
+      "limits": "同业通用参考：以上是交银咨询场景的处理建议，未核实为交银专属流程；不移植其他银行的费率、限额、等待时间、产品条件或菜单名称。具体以交银正式指引为准。",
+      "focus": "channel",
+      "source_ids": [
+        "HSBC-KEY",
+        "HASE-DIG"
+      ],
+      "claim_locator": "通用处理建议：汇丰香港手机保安及设备管理；恒生数码银行操作问答",
+      "retrieved_on": "2026-10-03",
+      "review_due_on": "2026-10-10",
+      "bank_reviewed": false
+    },
+    {
+      "id": "HKFAQ-BOCOM-32",
+      "bank_id": "bocom",
+      "evidence_role": "peer_guidance",
+      "jurisdiction": "HK",
+      "customer_type": "personal",
+      "topic": "digital",
+      "question": "更改手机号后收不到认证通知怎么办",
+      "variants": [
+        "交银香港改手机号后收不到认证通知怎么办"
+      ],
+      "patterns": [
+        "(?:换|更改|更新).*手机号.*(?:通知|验证码|收不到)|收不到.*(?:认证通知|验证码)"
+      ],
+      "exclude_patterns": [],
+      "answer": "建议：先在交银正式渠道核对已登记的手机号及通知设置，区分登录、信用卡等不同服务；无法收到时联系交银核实，勿把验证码发给客服聊天窗口。",
+      "limits": "同业通用参考：以上是交银咨询场景的处理建议，未核实为交银专属流程；不移植其他银行的费率、限额、等待时间、产品条件或菜单名称。具体以交银正式指引为准。",
+      "focus": "channel",
+      "source_ids": [
+        "HSBC-CARD",
+        "BOC-SAFE"
+      ],
+      "claim_locator": "通用处理建议：汇丰香港信用卡帮助问答；中银香港电子银行保安资讯",
+      "retrieved_on": "2026-10-03",
+      "review_due_on": "2026-10-10",
+      "bank_reviewed": false
+    },
+    {
+      "id": "HKFAQ-BOCOM-33",
+      "bank_id": "bocom",
+      "evidence_role": "regional_guidance",
+      "jurisdiction": "HK",
+      "customer_type": "both",
+      "topic": "payments",
+      "question": "转数快是什么",
+      "variants": [
+        "交银香港转数快是什么"
+      ],
+      "patterns": [
+        "转数快.*(?:是什么|意思|作用)|什么是.*(?:转数快|FPS)"
+      ],
+      "exclude_patterns": [],
+      "answer": "香港通用知识：转数快是连接香港银行及支付机构的快速支付系统，可用手机号、电邮等识别代号接收本地款项；使用交银服务前仍须核对该行登记与账户条件。",
+      "limits": "地区通用参考：只说明香港支付系统，不代表交银专属开户、限额、费用或到账承诺。",
+      "focus": "general",
+      "source_ids": [
+        "HKMA-FPS"
+      ],
+      "claim_locator": "通用处理建议：香港金管局转数快机制介绍",
+      "retrieved_on": "2026-10-03",
+      "review_due_on": "2026-10-10",
+      "bank_reviewed": false
+    },
+    {
+      "id": "HKFAQ-BOCOM-34",
+      "bank_id": "bocom",
+      "evidence_role": "regional_guidance",
+      "jurisdiction": "HK",
+      "customer_type": "both",
+      "topic": "payments",
+      "question": "转数快能转美元吗",
+      "variants": [
+        "交银香港FPS支持美元吗"
+      ],
+      "patterns": [
+        "(?:转数快|FPS).*(?:美元|USD|币种)"
+      ],
+      "exclude_patterns": [],
+      "answer": "香港通用知识：香港转数快系统处理港元及人民币。若要用交银办理美元汇款，应另向交银官方渠道核对适用服务及费用。",
+      "limits": "地区通用参考：只说明香港支付系统，不代表交银专属开户、限额、费用或到账承诺。",
+      "focus": "general",
+      "source_ids": [
+        "HKMA-FPS"
+      ],
+      "claim_locator": "通用处理建议：香港金管局转数快机制介绍",
+      "retrieved_on": "2026-10-03",
+      "review_due_on": "2026-10-10",
+      "bank_reviewed": false
+    },
+    {
+      "id": "HKFAQ-BOCOM-35",
+      "bank_id": "bocom",
+      "evidence_role": "peer_guidance",
+      "jurisdiction": "HK",
+      "customer_type": "both",
+      "topic": "payments",
+      "question": "转数快填写收款人时怎样避免出错",
+      "variants": [
+        "交银香港转数快收款人姓名不符怎么办"
+      ],
+      "patterns": [
+        "(?:转数快|FPS|转账).*(?:姓名|名字|收款人.*(?:核对|填|出错))|收款人.*(?:姓名|名字).*(?:不符|失败)"
+      ],
+      "exclude_patterns": [],
+      "answer": "建议：使用交银转账前核对收款人的银行登记姓名、账户或识别代号，检查确认页的收款信息；出现名称不符或失败提示时先查原交易状态，再按交银指引处理。",
+      "limits": "同业通用参考：以上是交银咨询场景的处理建议，未核实为交银专属流程；不移植其他银行的费率、限额、等待时间、产品条件或菜单名称。具体以交银正式指引为准。",
+      "focus": "general",
+      "source_ids": [
+        "HSBC-FPS",
+        "BOCOM-NET"
+      ],
+      "claim_locator": "通用处理建议：汇丰香港转数快常见问题；交银香港个人网上银行常见问题",
+      "retrieved_on": "2026-10-03",
+      "review_due_on": "2026-10-10",
+      "bank_reviewed": false
+    },
+    {
+      "id": "HKFAQ-BOCOM-36",
+      "bank_id": "bocom",
+      "evidence_role": "peer_guidance",
+      "jurisdiction": "HK",
+      "customer_type": "personal",
+      "topic": "cards",
+      "question": "网购认证通过就一定付款成功吗",
+      "variants": [
+        "交银香港网购认证通过就一定付款成功吗"
+      ],
+      "patterns": [
+        "(?:网购|网上付款|认证).*(?:通过|批准|成功).*(?:付款|支付|一定|之后|后)|认证通过.*(?:成功|付款)"
+      ],
+      "exclude_patterns": [],
+      "answer": "建议：银行认证完成后返回商户页面核对订单及付款状态；交银账户扣款与商户订单结果需分别确认，不要仅凭认证提示认定付款完成。",
+      "limits": "同业通用参考：以上是交银咨询场景的处理建议，未核实为交银专属流程；不移植其他银行的费率、限额、等待时间、产品条件或菜单名称。具体以交银正式指引为准。",
+      "focus": "general",
+      "source_ids": [
+        "HSBC-CARD"
+      ],
+      "claim_locator": "通用处理建议：汇丰香港信用卡帮助问答",
+      "retrieved_on": "2026-10-03",
+      "review_due_on": "2026-10-10",
+      "bank_reviewed": false
+    },
+    {
+      "id": "HKFAQ-BOCOM-37",
+      "bank_id": "bocom",
+      "evidence_role": "peer_guidance",
+      "jurisdiction": "HK",
+      "customer_type": "personal",
+      "topic": "statements",
+      "question": "没收到电子结单提示电邮怎么办",
+      "variants": [
+        "交银香港没有收到电子结单电邮提醒怎么办"
+      ],
+      "patterns": [
+        "(?:没收到|收不到).*电子结单.*(?:电邮|邮件)|电子结单.*(?:电邮|邮件).*(?:没|收不到)"
+      ],
+      "exclude_patterns": [],
+      "answer": "建议：检查垃圾邮件、邮箱容量和交银登记电邮是否正确，再到已开通的交银电子结单服务核对；未收到提醒不等于没有结单。",
+      "limits": "同业通用参考：以上是交银咨询场景的处理建议，未核实为交银专属流程；不移植其他银行的费率、限额、等待时间、产品条件或菜单名称。具体以交银正式指引为准。",
+      "focus": "channel",
+      "source_ids": [
+        "SC-EST",
+        "BOCOM-MOBILE"
+      ],
+      "claim_locator": "通用处理建议：渣打香港电子结单问答；交银香港手机银行功能说明",
+      "retrieved_on": "2026-10-03",
+      "review_due_on": "2026-10-10",
+      "bank_reviewed": false
+    },
+    {
+      "id": "HKFAQ-BOCOM-38",
+      "bank_id": "bocom",
+      "evidence_role": "peer_guidance",
+      "jurisdiction": "HK",
+      "customer_type": "personal",
+      "topic": "statements",
+      "question": "下载电子结单后如何保存",
+      "variants": [
+        "交银香港下载电子结单后如何保存"
+      ],
+      "patterns": [
+        "(?:保存|保管).*电子结单|电子结单.*(?:如何保存|怎么保存|下载后)"
+      ],
+      "exclude_patterns": [],
+      "answer": "建议：从交银已开通的正式电子结单服务获取文件后，保存到自己信任的设备并妥善保管；需正式证明或盖章文件时向交银核对。",
+      "limits": "同业通用参考：以上是交银咨询场景的处理建议，未核实为交银专属流程；不移植其他银行的费率、限额、等待时间、产品条件或菜单名称。具体以交银正式指引为准。",
+      "focus": "download",
+      "source_ids": [
+        "SC-EST",
+        "BOC-EST"
+      ],
+      "claim_locator": "通用处理建议：渣打香港电子结单问答；中银香港电子结单和通知书",
+      "retrieved_on": "2026-10-03",
+      "review_due_on": "2026-10-10",
+      "bank_reviewed": false
+    },
+    {
+      "id": "HKFAQ-BOCOM-39",
+      "bank_id": "bocom",
+      "evidence_role": "peer_guidance",
+      "jurisdiction": "HK",
+      "customer_type": "enterprise",
+      "topic": "statements",
+      "question": "企业员工看不到结单应先排查什么",
+      "variants": [
+        "交银香港企业员工查看电子结单需要什么权限"
+      ],
+      "patterns": [
+        "企业.*(?:员工|使用者|使用人|管理员).*(?:结单|权限)|企业.*(?:电子结单|对账单).*权限"
+      ],
+      "exclude_patterns": [],
+      "answer": "建议：先核对企业使用者是否获授权查看对应账户及结单，再由企业授权负责人按交银正式权限管理流程处理；负责人身份本身不等于已获全部查阅权限。",
+      "limits": "同业通用参考：以上是交银咨询场景的处理建议，未核实为交银专属流程；不移植其他银行的费率、限额、等待时间、产品条件或菜单名称。具体以交银正式指引为准。",
+      "focus": "qualification",
+      "source_ids": [
+        "HASE-EST"
+      ],
+      "claim_locator": "通用处理建议：恒生商业务电子结单及通知书问答",
+      "retrieved_on": "2026-10-03",
+      "review_due_on": "2026-10-10",
+      "bank_reviewed": false
+    },
+    {
+      "id": "HKFAQ-BOCOM-40",
+      "bank_id": "bocom",
+      "evidence_role": "peer_guidance",
+      "jurisdiction": "HK",
+      "customer_type": "enterprise",
+      "topic": "statements",
+      "question": "企业电子结单和纸本安排如何确认",
+      "variants": [
+        "交银香港企业电子结单还能同时收纸本吗"
+      ],
+      "patterns": [
+        "企业.*(?:电子结单|结单).*(?:纸本|纸质|原件|安排)"
+      ],
+      "exclude_patterns": [],
+      "answer": "建议：向交银确认适用账户及结单种类、电子与纸本选择，以及需要原件时的申请方式；不要默认所有账户都会自动改为电子结单。",
+      "limits": "同业通用参考：以上是交银咨询场景的处理建议，未核实为交银专属流程；不移植其他银行的费率、限额、等待时间、产品条件或菜单名称。具体以交银正式指引为准。",
+      "focus": "general",
+      "source_ids": [
+        "HASE-EST"
+      ],
+      "claim_locator": "通用处理建议：恒生商业务电子结单及通知书问答",
+      "retrieved_on": "2026-10-03",
+      "review_due_on": "2026-10-10",
+      "bank_reviewed": false
+    }
+  ],
+  "exclusions": [
+    {
+      "id": "X-BOCPAY-LEGACY",
+      "url": "https://www.bochk.com/dam/more/bocpay/tc/faq.html",
+      "reason": "网页首层仅问题目录，当前官方保安页已提及BoC Pay+；未核实新版答案，不把旧付款App说明当当前规则。"
+    },
+    {
+      "id": "X-HSBC-SERVICING",
+      "url": "https://servicing.hsbc.com.hk/help/faq/internet-banking/",
+      "reason": "旧式用户名格式等与主站帮助有差异；改用当前主站帮助与设备管理页。"
+    },
+    {
+      "id": "X-BEA-OLD-BROWSER",
+      "url": "https://www.hkbea.com/html/tc/bea-personal-banking-cyberbanking-faqs.html",
+      "reason": "同页保留Internet Explorer等旧技术要求，不纳入当前浏览器兼容建议。"
+    },
+    {
+      "id": "X-BOCOM-OLD-DEVICE",
+      "url": "https://hk.bankcomm.com/hk/shtml/hk/cn/2005276/2600451/list.shtml?channelId=2005276",
+      "reason": "页面旧系统版本清单不作为当前App最低系统版本保证。"
+    },
+    {
+      "id": "X-BOCOM-BRANCH",
+      "url": "https://www.hk.bankcomm.com/hk/shtml/bhk/tw/2012907/2602801/3005398/list.shtml",
+      "reason": "香港分行与香港有限公司不同实体，不能混用。"
+    },
+    {
+      "id": "X-OLD-MAINTENANCE",
+      "url": "https://hk.bankcomm.com/hk/shtml/hk/tw/2004972/2004978/list.shtml?channelId=2004972",
+      "reason": "旧停机时段不是当前可用性或未来安排，不引用。"
+    },
+    {
+      "id": "X-SC-OTHER-REGION",
+      "url": "https://www.sc.com/my/bank-with-us/sc-mobile-app/standard-chartered-mobile-key/",
+      "reason": "马来西亚设备登记等待规则不适用香港。"
+    }
+  ]
+}

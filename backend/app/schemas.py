@@ -33,6 +33,8 @@ class Health(StrictModel):
     consultation_version: Literal["1.4"] = "1.4"
     knowledge_base_status: Literal["disabled", "available", "unavailable"] = "disabled"
     knowledge_base_version: str | None = None
+    knowledge_article_count: int | None = None
+    knowledge_bank_count: int | None = None
 
 
 class CreateSession(StrictModel):
@@ -291,6 +293,11 @@ class Knowledge(StrictModel):
     valid_until: str
     public_facts: list[PublicFact] = Field(default_factory=list)
     public_digest: str | None = None
+    faq_bank_id: str | None = None
+    faq_rules: dict[str, list[str]] = Field(default_factory=dict)
+    faq_exclusions: dict[str, list[str]] = Field(default_factory=dict)
+    faq_variants: dict[str, list[str]] = Field(default_factory=dict)
+    faq_guidance: dict[str, str] = Field(default_factory=dict)
 
 
 class ModelSelection(StrictModel):
