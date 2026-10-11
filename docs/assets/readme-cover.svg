@@ -1,8 +1,8 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="1280" height="360" viewBox="0 0 1280 360" role="img" aria-label="银行智能客服">
+<svg xmlns="http://www.w3.org/2000/svg" width="1280" height="360" viewBox="0 0 1280 360" role="img" aria-label="金融智能客服">
 <rect width="1280" height="360" rx="20" fill="#142333"/>
 <path d="M60 55H1220M60 307H1220" stroke="#d7c59e" opacity=".22"/>
 <text x="60" y="93" font-family="Arial,sans-serif" font-size="15" letter-spacing="4" fill="#d7c59e">FINANCIAL KNOWLEDGE · LOCAL PREVIEW</text>
-<text x="56" y="177" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Microsoft YaHei,sans-serif" font-size="54" font-weight="650" fill="#f7f8f2">银行智能客服</text>
+<text x="56" y="177" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Microsoft YaHei,sans-serif" font-size="54" font-weight="650" fill="#f7f8f2">金融智能客服</text>
 <text x="60" y="230" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Microsoft YaHei,sans-serif" font-size="23" fill="#d9e2da">让每一次咨询，都有依据。</text>
 <text x="60" y="284" font-family="Arial,sans-serif" font-size="12" letter-spacing="2" fill="#d7c59e">HOMETER / LOCAL WORKSPACE / SOURCE + DOCUMENTATION</text>
 <g transform="translate(1055 177)" fill="none" stroke="#d7c59e"><circle r="89" opacity=".17"/><circle r="60" opacity=".4"/><path d="M-112 0H112M0-112V112" opacity=".25"/><rect x="-28" y="-28" width="56" height="56" rx="14" stroke-width="2" transform="rotate(18)"/><path d="M-13 1l10 10 20-24" stroke-width="3"/><circle cx="89" cy="0" r="5" fill="#d7c59e"/></g></svg>

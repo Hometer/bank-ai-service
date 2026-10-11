@@ -105,9 +105,9 @@ def matches_for(text: str, kind: CustomerType, items: list[Knowledge]) -> list[K
     matched = []
     for item in eligible(items, kind):
         if item.faq_bank_id is not None:
-            from app.bank_faq import matching_facts, named_banks
+            from app.bank_faq import matching_facts, named_banks, primary_bank
             banks = named_banks(text)
-            if (item.faq_bank_id in banks or (not banks and item.faq_bank_id in {"bocom", "hkma"})) and matching_facts(item, text):
+            if (item.faq_bank_id in banks or (not banks and item.faq_bank_id in {primary_bank(items), "hkma"})) and matching_facts(item, text):
                 matched.append(item)
             continue
         topic = item.id.split("_", 1)[1]

@@ -1,0 +1,724 @@
+{
+  "schema_version": "1.0",
+  "bundle_version": "bea-hk-20261011-1",
+  "primary_bank_id": "bea",
+  "jurisdiction": "HK",
+  "retrieved_on": "2026-10-11",
+  "review_policy": "安全、资格、费用和认证7日复核，其余30日；到期停用。仅公开官方资料，未获银行审核，不等同上线银行系统。",
+  "sources": [
+    {
+      "id": "BEA-NET",
+      "bank_id": "bea",
+      "entity": "东亚银行有限公司（香港业务）",
+      "title": "东亚香港个人网上银行常见问题",
+      "url": "https://www.hkbea.com/html/tc/bea-personal-banking-cyberbanking-faqs.html",
+      "jurisdiction": "HK",
+      "publisher": "东亚银行有限公司（香港业务）",
+      "verification": "read_browser",
+      "retrieved_on": "2026-10-11",
+      "published_on": null,
+      "valid_until": null,
+      "note": "2026-10-11读取官网正文并核对条目定位；不启用已结束优惠或旧设备版本说明。"
+    },
+    {
+      "id": "BEA-MOBILE",
+      "bank_id": "bea",
+      "entity": "东亚银行有限公司（香港业务）",
+      "title": "东亚香港手机银行常见问题",
+      "url": "https://www.hkbea.com/html/tc/bea-mobile-faqs.html",
+      "jurisdiction": "HK",
+      "publisher": "东亚银行有限公司（香港业务）",
+      "verification": "read_browser",
+      "retrieved_on": "2026-10-11",
+      "published_on": null,
+      "valid_until": null,
+      "note": "2026-10-11读取官网正文并核对条目定位；不启用已结束优惠或旧设备版本说明。"
+    },
+    {
+      "id": "BEA-API",
+      "bank_id": "bea",
+      "entity": "东亚银行有限公司（香港业务）",
+      "title": "东亚香港开放API常见问题",
+      "url": "https://www.hkbea.com/html/tc/bea-open-api-faq.html",
+      "jurisdiction": "HK",
+      "publisher": "东亚银行有限公司（香港业务）",
+      "verification": "read_browser",
+      "retrieved_on": "2026-10-11",
+      "published_on": null,
+      "valid_until": null,
+      "note": "2026-10-11读取官网正文并核对条目定位；不启用已结束优惠或旧设备版本说明。"
+    },
+    {
+      "id": "BEA-OPEN",
+      "bank_id": "bea",
+      "entity": "东亚银行有限公司（香港业务）",
+      "title": "东亚香港遥距开户申请资格",
+      "url": "https://www.hkbea.com/accountopening/tc/faq",
+      "jurisdiction": "HK",
+      "publisher": "东亚银行有限公司（香港业务）",
+      "verification": "read_browser",
+      "retrieved_on": "2026-10-11",
+      "published_on": null,
+      "valid_until": null,
+      "note": "2026-10-11读取官网正文并核对条目定位；不启用已结束优惠或旧设备版本说明。"
+    },
+    {
+      "id": "BEA-DEPOSIT",
+      "bank_id": "bea",
+      "entity": "东亚银行有限公司（香港业务）",
+      "title": "东亚香港港元存款",
+      "url": "https://www.hkbea.com/html/tc/bea-personal-banking-hong-kong-dollars-deposits.html",
+      "jurisdiction": "HK",
+      "publisher": "东亚银行有限公司（香港业务）",
+      "verification": "read_browser",
+      "retrieved_on": "2026-10-11",
+      "published_on": null,
+      "valid_until": null,
+      "note": "2026-10-11读取官网正文并核对条目定位；不启用已结束优惠或旧设备版本说明。"
+    },
+    {
+      "id": "BEA-CORP",
+      "bank_id": "bea",
+      "entity": "东亚银行有限公司（香港业务）",
+      "title": "东亚香港企业综合理财户口",
+      "url": "https://www.hkbea.com/html/tc/bea-corporate-banking-business-account.html",
+      "jurisdiction": "HK",
+      "publisher": "东亚银行有限公司（香港业务）",
+      "verification": "read_browser",
+      "retrieved_on": "2026-10-11",
+      "published_on": null,
+      "valid_until": null,
+      "note": "2026-10-11读取官网正文并核对条目定位；不启用已结束优惠或旧设备版本说明。"
+    },
+    {
+      "id": "BEA-CORPNET",
+      "bank_id": "bea",
+      "entity": "东亚银行有限公司（香港业务）",
+      "title": "东亚香港企业网上银行常见问题",
+      "url": "https://www.hkbea.com/html/tc/bea-corporate-banking-bea-corporate-online-faqs.html",
+      "jurisdiction": "HK",
+      "publisher": "东亚银行有限公司（香港业务）",
+      "verification": "read_browser",
+      "retrieved_on": "2026-10-11",
+      "published_on": null,
+      "valid_until": null,
+      "note": "2026-10-11读取官网正文并核对条目定位；不启用已结束优惠或旧设备版本说明。"
+    },
+    {
+      "id": "BEA-LOAN",
+      "bank_id": "bea",
+      "entity": "东亚银行有限公司（香港业务）",
+      "title": "东亚香港私人贷款常见问题",
+      "url": "https://www.hkbea.com/html/tc/bea-consumer-loans-smart-tips-faq.html",
+      "jurisdiction": "HK",
+      "publisher": "东亚银行有限公司（香港业务）",
+      "verification": "read_browser",
+      "retrieved_on": "2026-10-11",
+      "published_on": null,
+      "valid_until": null,
+      "note": "2026-10-11读取官网正文并核对条目定位；不启用已结束优惠或旧设备版本说明。"
+    },
+    {
+      "id": "BEA-FINANCE",
+      "bank_id": "bea",
+      "entity": "东亚银行有限公司（香港业务）",
+      "title": "东亚香港贷融易中小企贷款",
+      "url": "https://www.hkbea.com/html/tc/bea-corporate-banking-sme-financing-EEF.html",
+      "jurisdiction": "HK",
+      "publisher": "东亚银行有限公司（香港业务）",
+      "verification": "read_browser",
+      "retrieved_on": "2026-10-11",
+      "published_on": null,
+      "valid_until": null,
+      "note": "2026-10-11读取官网正文并核对条目定位；不启用已结束优惠或旧设备版本说明。"
+    },
+    {
+      "id": "BEA-SECURITY",
+      "bank_id": "bea",
+      "entity": "东亚银行有限公司（香港业务）",
+      "title": "东亚香港保安提示",
+      "url": "https://www.hkbea.com/html/tc/bea-security-tips.html",
+      "jurisdiction": "HK",
+      "publisher": "东亚银行有限公司（香港业务）",
+      "verification": "read_browser",
+      "retrieved_on": "2026-10-11",
+      "published_on": null,
+      "valid_until": null,
+      "note": "2026-10-11读取官网正文并核对条目定位；不启用已结束优惠或旧设备版本说明。"
+    }
+  ],
+  "articles": [
+    {
+      "id": "HKFAQ-BEA-01",
+      "bank_id": "bea",
+      "jurisdiction": "HK",
+      "customer_type": "personal",
+      "topic": "digital",
+      "question": "i-Token有什么作用",
+      "variants": [
+        "东亚i-Token是什么"
+      ],
+      "patterns": [
+        "i.Token.*(?:作用|是什么|用途)|什么是i.Token"
+      ],
+      "exclude_patterns": [],
+      "answer": "i-Token是东亚App认证工具，用于登录和验证指定交易。",
+      "limits": "仅适用所列香港银行及该项官方服务；须在银行正式渠道完成认证，以实际页面及条款为准。",
+      "focus": "general",
+      "source_ids": [
+        "BEA-MOBILE"
+      ],
+      "claim_locator": "东亚手机银行常见问题 2.2 i-Token 中对应问答",
+      "retrieved_on": "2026-10-11",
+      "review_due_on": "2026-10-18",
+      "bank_reviewed": false
+    },
+    {
+      "id": "HKFAQ-BEA-02",
+      "bank_id": "bea",
+      "jurisdiction": "HK",
+      "customer_type": "personal",
+      "topic": "digital",
+      "question": "启用i-Token前要准备什么",
+      "variants": [
+        "东亚启动i-Token需要什么"
+      ],
+      "patterns": [
+        "(?:启用|激活|启动).*i.Token.*(?:准备|条件|需要)|i.Token.*准备"
+      ],
+      "exclude_patterns": [],
+      "answer": "须有银行登记且可收短讯的手机号、已登记电邮及支持的移动设备。",
+      "limits": "仅适用所列香港银行及该项官方服务；须在银行正式渠道完成认证，以实际页面及条款为准。",
+      "focus": "materials",
+      "source_ids": [
+        "BEA-MOBILE"
+      ],
+      "claim_locator": "东亚手机银行常见问题 2.2 i-Token 中对应问答",
+      "retrieved_on": "2026-10-11",
+      "review_due_on": "2026-10-18",
+      "bank_reviewed": false
+    },
+    {
+      "id": "HKFAQ-BEA-03",
+      "bank_id": "bea",
+      "jurisdiction": "HK",
+      "customer_type": "personal",
+      "topic": "digital",
+      "question": "i-Token能同时绑定多部设备吗",
+      "variants": [
+        "东亚i-Token能绑定两个手机吗"
+      ],
+      "patterns": [
+        "i.Token.*(?:多部|两部|同时|设备数量)|多部.*i.Token"
+      ],
+      "exclude_patterns": [],
+      "answer": "同一账户只能在一部移动设备启用一个i-Token。",
+      "limits": "仅适用所列香港银行及该项官方服务；须在银行正式渠道完成认证，以实际页面及条款为准。",
+      "focus": "general",
+      "source_ids": [
+        "BEA-MOBILE"
+      ],
+      "claim_locator": "东亚手机银行常见问题 2.2 i-Token 中对应问答",
+      "retrieved_on": "2026-10-11",
+      "review_due_on": "2026-10-18",
+      "bank_reviewed": false
+    },
+    {
+      "id": "HKFAQ-BEA-04",
+      "bank_id": "bea",
+      "jurisdiction": "HK",
+      "customer_type": "personal",
+      "topic": "digital",
+      "question": "换手机如何转移i-Token",
+      "variants": [
+        "东亚换手机i-Token怎么迁移"
+      ],
+      "patterns": [
+        "(?:换|新|更换).*手机|i.Token.*(?:转移|迁移)"
+      ],
+      "exclude_patterns": [],
+      "answer": "用新设备登录已启用账户，按提示转移并重新登记；旧i-Token会停用。",
+      "limits": "仅适用所列香港银行及该项官方服务；须在银行正式渠道完成认证，以实际页面及条款为准。",
+      "focus": "channel",
+      "source_ids": [
+        "BEA-MOBILE"
+      ],
+      "claim_locator": "东亚手机银行常见问题 2.2 i-Token 中对应问答",
+      "retrieved_on": "2026-10-11",
+      "review_due_on": "2026-10-18",
+      "bank_reviewed": false
+    },
+    {
+      "id": "HKFAQ-BEA-05",
+      "bank_id": "bea",
+      "jurisdiction": "HK",
+      "customer_type": "personal",
+      "topic": "digital",
+      "question": "重装App后i-Token还能用吗",
+      "variants": [
+        "东亚重新安装App保安认证还能用吗"
+      ],
+      "patterns": [
+        "重装|重新安装.*(?:App|手机银行)|i.Token.*重装"
+      ],
+      "exclude_patterns": [],
+      "answer": "重装东亚App会停用原i-Token，须重新启用。",
+      "limits": "仅适用所列香港银行及该项官方服务；须在银行正式渠道完成认证，以实际页面及条款为准。",
+      "focus": "general",
+      "source_ids": [
+        "BEA-MOBILE"
+      ],
+      "claim_locator": "东亚手机银行常见问题 2.2 i-Token 中对应问答",
+      "retrieved_on": "2026-10-11",
+      "review_due_on": "2026-10-18",
+      "bank_reviewed": false
+    },
+    {
+      "id": "HKFAQ-BEA-06",
+      "bank_id": "bea",
+      "jurisdiction": "HK",
+      "customer_type": "personal",
+      "topic": "digital",
+      "question": "更换SIM卡影响i-Token吗",
+      "variants": [
+        "东亚换SIM后i-Token还能用吗"
+      ],
+      "patterns": [
+        "SIM|换卡.*i.Token"
+      ],
+      "exclude_patterns": [],
+      "answer": "官网说明更换SIM不影响既有i-Token继续使用。",
+      "limits": "仅指SIM更换，不等于换手机、号码更新或重装App也无影响。",
+      "focus": "general",
+      "source_ids": [
+        "BEA-MOBILE"
+      ],
+      "claim_locator": "东亚手机银行常见问题 2.2 i-Token 中对应问答",
+      "retrieved_on": "2026-10-11",
+      "review_due_on": "2026-10-18",
+      "bank_reviewed": false
+    },
+    {
+      "id": "HKFAQ-BEA-07",
+      "bank_id": "bea",
+      "jurisdiction": "HK",
+      "customer_type": "personal",
+      "topic": "payments",
+      "question": "在哪里登记转数快收款识别代号",
+      "variants": [
+        "东亚FPS手机号收款怎么登记"
+      ],
+      "patterns": [
+        "(?:转数快|FPS).*(?:登记|注册|绑定|收款)"
+      ],
+      "exclude_patterns": [
+        "摘要|查看|所有银行|其他银行"
+      ],
+      "answer": "登录东亚官方网银，进入设置中的转数快登记并选择账户，按提示完成所需认证。",
+      "limits": "仅适用所列香港银行及该项官方服务；须在银行正式渠道完成认证，以实际页面及条款为准。",
+      "focus": "channel",
+      "source_ids": [
+        "BEA-NET"
+      ],
+      "claim_locator": "个人网银5.36.1—2：识别代号登记",
+      "retrieved_on": "2026-10-11",
+      "review_due_on": "2026-11-10",
+      "bank_reviewed": false
+    },
+    {
+      "id": "HKFAQ-BEA-08",
+      "bank_id": "bea",
+      "jurisdiction": "HK",
+      "customer_type": "personal",
+      "topic": "payments",
+      "question": "怎样查看其他银行的转数快登记",
+      "variants": [
+        "东亚可以看手机号在其他银行的FPS登记吗"
+      ],
+      "patterns": [
+        "(?:其他银行|所有银行).*(?:FPS|转数快)|(?:FPS|转数快).*登记.*摘要"
+      ],
+      "exclude_patterns": [
+        "(?:怎么|在哪里|如何).*(?:登记|注册|绑定)"
+      ],
+      "answer": "在东亚网银的转数快设置内查看所有机构登记摘要，按提示认证；仅可查已在东亚登记的识别代号。",
+      "limits": "仅介绍客户在银行官方渠道自查，项目未读取任何登记记录。",
+      "focus": "channel",
+      "source_ids": [
+        "BEA-NET"
+      ],
+      "claim_locator": "个人网银5.36.5：跨机构登记摘要",
+      "retrieved_on": "2026-10-11",
+      "review_due_on": "2026-11-10",
+      "bank_reviewed": false
+    },
+    {
+      "id": "HKFAQ-BEA-09",
+      "bank_id": "bea",
+      "jurisdiction": "HK",
+      "customer_type": "both",
+      "topic": "consent",
+      "question": "怎样撤回第三方账户资料分享同意",
+      "variants": [
+        "东亚如何撤回开放API同意"
+      ],
+      "patterns": [
+        "(?:撤销|撤消|取消|撤回|终止).*(?:授权|同意|API)|(?:授权|同意|API).*(?:撤销|撤消|取消|撤回|终止)"
+      ],
+      "exclude_patterns": [],
+      "answer": "可经第三方渠道或东亚官方同意管理入口撤回；事前应了解对第三方服务的影响。",
+      "limits": "仅适用所列香港银行及该项官方服务；须在银行正式渠道完成认证，以实际页面及条款为准。",
+      "focus": "channel",
+      "source_ids": [
+        "BEA-API"
+      ],
+      "claim_locator": "开放API个人问答9、企业问答8：撤回同意",
+      "retrieved_on": "2026-10-11",
+      "review_due_on": "2026-11-10",
+      "bank_reviewed": false
+    },
+    {
+      "id": "HKFAQ-BEA-10",
+      "bank_id": "bea",
+      "jurisdiction": "HK",
+      "customer_type": "both",
+      "topic": "consent",
+      "question": "已经过期的第三方同意可以续期吗",
+      "variants": [
+        "东亚API同意过期后能续期吗"
+      ],
+      "patterns": [
+        "(?:过期|到期).*(?:同意|授权)|同意.*(?:过期|续期)"
+      ],
+      "exclude_patterns": [],
+      "answer": "已经过期的同意不能续期，须重新给予同意。",
+      "limits": "仅适用所列香港银行及该项官方服务；须在银行正式渠道完成认证，以实际页面及条款为准。",
+      "focus": "general",
+      "source_ids": [
+        "BEA-API"
+      ],
+      "claim_locator": "开放API个人及企业问答10：过期同意",
+      "retrieved_on": "2026-10-11",
+      "review_due_on": "2026-11-10",
+      "bank_reviewed": false
+    },
+    {
+      "id": "HKFAQ-BEA-11",
+      "bank_id": "bea",
+      "jurisdiction": "HK",
+      "customer_type": "both",
+      "topic": "consent",
+      "question": "怎样更改分享给第三方的账户",
+      "variants": [
+        "东亚更改API分享账户怎么做"
+      ],
+      "patterns": [
+        "(?:更改|改变|修改).*(?:分享|同意内容)|分享.*账户.*更改"
+      ],
+      "exclude_patterns": [],
+      "answer": "如需更改账户或分享内容，撤回现有同意后重新给予新同意。",
+      "limits": "仅适用所列香港银行及该项官方服务；须在银行正式渠道完成认证，以实际页面及条款为准。",
+      "focus": "channel",
+      "source_ids": [
+        "BEA-API"
+      ],
+      "claim_locator": "开放API个人及企业问答17：分享范围调整",
+      "retrieved_on": "2026-10-11",
+      "review_due_on": "2026-11-10",
+      "bank_reviewed": false
+    },
+    {
+      "id": "HKFAQ-BEA-12",
+      "bank_id": "bea",
+      "jurisdiction": "HK",
+      "customer_type": "both",
+      "topic": "consent",
+      "question": "开放API账户资料分享收费吗",
+      "variants": [
+        "东亚第三方资料分享需要付费吗"
+      ],
+      "patterns": [
+        "(?:API|资料分享|第三方).*(?:收费|费用|免费)"
+      ],
+      "exclude_patterns": [],
+      "answer": "银行的资料分享服务免费，第三方服务商是否另收费须向其核对。",
+      "limits": "银行免费不代表第三方免费，也不等于本项目获得资料访问授权。",
+      "focus": "fees",
+      "source_ids": [
+        "BEA-API"
+      ],
+      "claim_locator": "开放API问答5：银行与第三方费用",
+      "retrieved_on": "2026-10-11",
+      "review_due_on": "2026-10-18",
+      "bank_reviewed": false
+    },
+    {
+      "id": "HKFAQ-BEA-13",
+      "bank_id": "bea",
+      "jurisdiction": "HK",
+      "customer_type": "personal",
+      "topic": "accounts",
+      "question": "手机遥距开户有什么资格要求",
+      "variants": [
+        "只有护照可以在App开户吗"
+      ],
+      "patterns": [
+        "(?:开户|开立账户).*(?:资格|条件|要求|护照|身份证)|(?:护照|身份证).*开户"
+      ],
+      "exclude_patterns": [],
+      "answer": "遥距开户须年满18岁、持香港居民身份证、国籍地区为中国香港/内地/澳门、居于香港且仅为香港税务居民、没有双重国籍且非美国公民或美国外籍居民；投资账户另有雇主资格限制。不符合者应通过官网预约分行。",
+      "limits": "仅适用东亚银行香港业务及所列产品。完整条件和实际处理以银行官方渠道为准；本项目只提供公开咨询，未开户、交易或查询真实账户。",
+      "focus": "qualification",
+      "source_ids": [
+        "BEA-OPEN"
+      ],
+      "claim_locator": "综合户口 遥距开户资格",
+      "retrieved_on": "2026-10-11",
+      "review_due_on": "2026-10-18",
+      "bank_reviewed": false
+    },
+    {
+      "id": "HKFAQ-BEA-14",
+      "bank_id": "bea",
+      "jurisdiction": "HK",
+      "customer_type": "personal",
+      "topic": "accounts",
+      "question": "怎样通过手机银行提交开户申请",
+      "variants": [
+        "个人开户怎么申请"
+      ],
+      "patterns": [
+        "(?:个人|手机|App)?.*开户.*(?:怎么|如何|流程|申请)|(?:怎么|如何).*(?:开户|开立账户)"
+      ],
+      "exclude_patterns": [
+        "资格|条件|护照|材料|证件"
+      ],
+      "answer": "在东亚手机银行选择“开立账户”，依次选择“开始申请”“综合户口”“遥距开户”，按官方流程申请。",
+      "limits": "仅适用东亚银行香港业务及所列产品。完整条件和实际处理以银行官方渠道为准；本项目只提供公开咨询，未开户、交易或查询真实账户。",
+      "focus": "channel",
+      "source_ids": [
+        "BEA-OPEN"
+      ],
+      "claim_locator": "综合户口 如何提交遥距开户申请",
+      "retrieved_on": "2026-10-11",
+      "review_due_on": "2026-11-10",
+      "bank_reviewed": false
+    },
+    {
+      "id": "HKFAQ-BEA-15",
+      "bank_id": "bea",
+      "jurisdiction": "HK",
+      "customer_type": "personal",
+      "topic": "accounts",
+      "question": "港元普通定期存款最低金额是多少",
+      "variants": [
+        "港元定存起存金额是多少"
+      ],
+      "patterns": [
+        "(?:定期|定存).*(?:起存|最低|最少|金额)|(?:最低|最少).*(?:定期|定存)"
+      ],
+      "exclude_patterns": [
+        "美元|人民币|外币|大额|优惠|最新|今天"
+      ],
+      "answer": "东亚香港官网港元普通定期存款页列明开立定期账户金额为港币1,000元，存期由1星期至5年；实际利率按币种、金额及存期向银行核对。",
+      "limits": "仅适用东亚银行香港业务及所列产品。完整条件和实际处理以银行官方渠道为准；本项目只提供公开咨询，未开户、交易或查询真实账户。",
+      "focus": "fees",
+      "source_ids": [
+        "BEA-DEPOSIT"
+      ],
+      "claim_locator": "港元存款 定期存款",
+      "retrieved_on": "2026-10-11",
+      "review_due_on": "2026-10-18",
+      "bank_reviewed": false
+    },
+    {
+      "id": "HKFAQ-BEA-16",
+      "bank_id": "bea",
+      "jurisdiction": "HK",
+      "customer_type": "personal",
+      "topic": "accounts",
+      "question": "普通定期存款有什么说明",
+      "variants": [
+        "定期存款有哪些特点"
+      ],
+      "patterns": [
+        "(?:定期|定存).*(?:说明|特点|是什么|期限|存期)|(?:开立|申请|办理|怎么).*定期"
+      ],
+      "exclude_patterns": [],
+      "answer": "港元普通定期存款采用固定利息并提供不同存期；当日适用利率与优惠须向东亚银行核对，不能从页面说明推算报价。",
+      "limits": "仅适用东亚银行香港业务及所列产品。完整条件和实际处理以银行官方渠道为准；本项目只提供公开咨询，未开户、交易或查询真实账户。",
+      "focus": "general",
+      "source_ids": [
+        "BEA-DEPOSIT"
+      ],
+      "claim_locator": "港元存款 定期存款",
+      "retrieved_on": "2026-10-11",
+      "review_due_on": "2026-11-10",
+      "bank_reviewed": false
+    },
+    {
+      "id": "HKFAQ-BEA-17",
+      "bank_id": "bea",
+      "jurisdiction": "HK",
+      "customer_type": "personal",
+      "topic": "accounts",
+      "question": "提前偿还私人贷款需要注意什么",
+      "variants": [
+        "提前还款一定能省利息吗"
+      ],
+      "patterns": [
+        "(?:提前|提早).*(?:还款|偿还|清还|清偿|结清|利息)"
+      ],
+      "exclude_patterns": [
+        "按揭|房贷|信用卡"
+      ],
+      "answer": "提前清还分期贷款可能涉及手续费。应向东亚银行核对提前还款费用、未偿利息及总成本后再决定，不能保证提前还款一定更省钱。",
+      "limits": "仅适用东亚银行香港业务及所列产品。完整条件和实际处理以银行官方渠道为准；本项目只提供公开咨询，未开户、交易或查询真实账户。",
+      "focus": "fees",
+      "source_ids": [
+        "BEA-LOAN"
+      ],
+      "claim_locator": "私人贷款常见问题 提前清还私人分期贷款",
+      "retrieved_on": "2026-10-11",
+      "review_due_on": "2026-10-18",
+      "bank_reviewed": false
+    },
+    {
+      "id": "HKFAQ-BEA-18",
+      "bank_id": "bea",
+      "jurisdiction": "HK",
+      "customer_type": "enterprise",
+      "topic": "accounts",
+      "question": "企业开户如何提交申请",
+      "variants": [
+        "公司开户流程是什么"
+      ],
+      "patterns": [
+        "(?:企业|公司|对公|商业|营商).*开户|开户.*(?:申请|流程|材料|文件)"
+      ],
+      "exclude_patterns": [],
+      "answer": "企业可在东亚香港官网提交公司资料及开户文件，由银行联络了解公司背景、安排会面核实身份并签署文件；也可通过东亚营商快线预约。",
+      "limits": "仅适用东亚银行香港业务及所列产品。完整条件和实际处理以银行官方渠道为准；本项目只提供公开咨询，未开户、交易或查询真实账户。",
+      "focus": "channel",
+      "source_ids": [
+        "BEA-CORP"
+      ],
+      "claim_locator": "企业综合理财户口 如何开立企业账户",
+      "retrieved_on": "2026-10-11",
+      "review_due_on": "2026-11-10",
+      "bank_reviewed": false
+    },
+    {
+      "id": "HKFAQ-BEA-19",
+      "bank_id": "bea",
+      "jurisdiction": "HK",
+      "customer_type": "enterprise",
+      "topic": "statements",
+      "question": "企业电子结单在哪里查看下载",
+      "variants": [
+        "企业对账单怎么查看"
+      ],
+      "patterns": [
+        "(?:企业|公司|对公)?.*(?:结单|对账|回单|交易通知).*(?:查看|下载|哪里|怎么|多久|保留|期限)|电子结单"
+      ],
+      "exclude_patterns": [],
+      "answer": "东亚企业网上银行可搜索、查看和下载已注册账户最长7年的电子结单；电子交易通知可用历史范围为过去2年，并受账户和产品类型限制。",
+      "limits": "这是银行官方平台能力。本项目未连接账户查询或下载服务，没有生成真实结单或回单；当前账户与产品限制须在官方平台核对。",
+      "focus": "download",
+      "source_ids": [
+        "BEA-CORPNET"
+      ],
+      "claim_locator": "企业网上银行常见问题 2.2.9及2.2.11",
+      "retrieved_on": "2026-10-11",
+      "review_due_on": "2026-11-10",
+      "bank_reviewed": false
+    },
+    {
+      "id": "HKFAQ-BEA-20",
+      "bank_id": "bea",
+      "jurisdiction": "HK",
+      "customer_type": "enterprise",
+      "topic": "accounts",
+      "question": "中小企融资如何咨询",
+      "variants": [
+        "企业融资怎么申请"
+      ],
+      "patterns": [
+        "(?:中小企|企业|公司|对公).*(?:融资|贷款)|贷融易"
+      ],
+      "exclude_patterns": [],
+      "answer": "东亚“贷融易”系列提供中小企贷款咨询及网上联系入口。选择产品前应核对官方申请资格、文件清单和具体条款，由银行审核；不能承诺审批、额度或放款时限。",
+      "limits": "官网列出的2026年9月30日申请截止优惠已结束，不作为当前报价；利率、额度、资料及审批条件应逐项向银行核实。",
+      "focus": "general",
+      "source_ids": [
+        "BEA-FINANCE"
+      ],
+      "claim_locator": "贷融易系列 产品介绍和申请资格",
+      "retrieved_on": "2026-10-11",
+      "review_due_on": "2026-11-10",
+      "bank_reviewed": false
+    },
+    {
+      "id": "HKFAQ-BEA-21",
+      "bank_id": "bea",
+      "jurisdiction": "HK",
+      "customer_type": "personal",
+      "topic": "digital",
+      "question": "忘记网上银行密码怎么办",
+      "variants": [
+        "网银密码忘了怎么重置"
+      ],
+      "patterns": [
+        "(?:忘记|重置|重设).*(?:网银|网上银行|密码)|(?:网银|网上银行|密码).*(?:忘记|重置|重设)"
+      ],
+      "exclude_patterns": [],
+      "answer": "可在东亚手机银行官方登录页使用“忘记密码”，或经“密码中心”进入“重设东亚网上银行密码”，按银行渠道完成认证。请勿在本项目输入任何密码、验证码或卡号。",
+      "limits": "仅适用东亚银行香港业务及所列产品。完整条件和实际处理以银行官方渠道为准；本项目只提供公开咨询，未开户、交易或查询真实账户。",
+      "focus": "channel",
+      "source_ids": [
+        "BEA-NET"
+      ],
+      "claim_locator": "个人网上银行常见问题 1.3.1",
+      "retrieved_on": "2026-10-11",
+      "review_due_on": "2026-11-10",
+      "bank_reviewed": false
+    },
+    {
+      "id": "HKFAQ-BEA-22",
+      "bank_id": "bea",
+      "jurisdiction": "HK",
+      "customer_type": "both",
+      "topic": "security",
+      "question": "如何核实可疑来电及保护凭证",
+      "variants": [
+        "有人索要验证码该怎么办"
+      ],
+      "patterns": [
+        "可疑.*(?:来电|短信|短讯)|(?:索要|索取|要求).*(?:验证码|密码)|防骗|保安提示"
+      ],
+      "exclude_patterns": [],
+      "answer": "不要向来电者或讯息发送者披露密码、一次性密码或完整身份证/账户资料。应直接访问东亚香港官网或官方App，并通过既有官方渠道核实。",
+      "limits": "仅适用东亚银行香港业务及所列产品。完整条件和实际处理以银行官方渠道为准；本项目只提供公开咨询，未开户、交易或查询真实账户。",
+      "focus": "general",
+      "source_ids": [
+        "BEA-SECURITY"
+      ],
+      "claim_locator": "保安提示要点",
+      "retrieved_on": "2026-10-11",
+      "review_due_on": "2026-10-18",
+      "bank_reviewed": false
+    }
+  ],
+  "exclusions": [
+    {
+      "id": "BEA-EXPIRED-OFFER",
+      "url": "https://www.hkbea.com/html/tc/bea-corporate-banking-sme-financing-EEF.html",
+      "reason": "2026-09-30申请截止优惠已结束，不启用利率折扣。"
+    },
+    {
+      "id": "BEA-REGIONS",
+      "url": "https://www.hkbea.com/",
+      "reason": "香港资料不适用于东亚中国、澳门、台湾或海外实体。"
+    }
+  ]
+}

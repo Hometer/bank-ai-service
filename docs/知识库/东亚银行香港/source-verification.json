@@ -1,0 +1,66 @@
+{
+  "checked_on": "2026-10-11",
+  "method": "ego-browser读取官方正文及隐藏FAQ内容，开户页等待资格正文加载",
+  "sources": [
+    {
+      "id": "BEA-NET",
+      "url": "https://www.hkbea.com/html/tc/bea-personal-banking-cyberbanking-faqs.html",
+      "snapshot_sha256": "41b220df8e6eee7db7a03f5c2b6c6512e8a9d3bea4514704dfa3d2aae5627cbb",
+      "checked": true
+    },
+    {
+      "id": "BEA-MOBILE",
+      "url": "https://www.hkbea.com/html/tc/bea-mobile-faqs.html",
+      "snapshot_sha256": "831244ea3fe391db21621e8fddb6ae3d368454df98d12098de23df69b67075a2",
+      "checked": true
+    },
+    {
+      "id": "BEA-API",
+      "url": "https://www.hkbea.com/html/tc/bea-open-api-faq.html",
+      "snapshot_sha256": "9a171b280ab644fa71cde9980ca6212e8088d73ec8c17dfaa19ac2fdb3ca9732",
+      "checked": true
+    },
+    {
+      "id": "BEA-OPEN",
+      "url": "https://www.hkbea.com/accountopening/tc/faq",
+      "snapshot_sha256": "a51f9a6c6f6bf0d5ca251f8c725f2bcc54009c3ed9dd3866582858a23a7f15ed",
+      "checked": true
+    },
+    {
+      "id": "BEA-DEPOSIT",
+      "url": "https://www.hkbea.com/html/tc/bea-personal-banking-hong-kong-dollars-deposits.html",
+      "snapshot_sha256": "37b966b71c4735aa1592a60635599006a14409c1c6d81e583531e4a295fd3c45",
+      "checked": true
+    },
+    {
+      "id": "BEA-CORP",
+      "url": "https://www.hkbea.com/html/tc/bea-corporate-banking-business-account.html",
+      "snapshot_sha256": "08a040c45c201ec72c78aa170a153558d13e4f6df9ef08659c7476e10738613d",
+      "checked": true
+    },
+    {
+      "id": "BEA-CORPNET",
+      "url": "https://www.hkbea.com/html/tc/bea-corporate-banking-bea-corporate-online-faqs.html",
+      "snapshot_sha256": "757e03e99d864620c81671a635ddd856964519b454116f1dc7530a56ad833f16",
+      "checked": true
+    },
+    {
+      "id": "BEA-LOAN",
+      "url": "https://www.hkbea.com/html/tc/bea-consumer-loans-smart-tips-faq.html",
+      "snapshot_sha256": "71ce94a40aebcd4d85947a138df4dd4b0a508525cc4ec67b08a35a93859d9c98",
+      "checked": true
+    },
+    {
+      "id": "BEA-FINANCE",
+      "url": "https://www.hkbea.com/html/tc/bea-corporate-banking-sme-financing-EEF.html",
+      "snapshot_sha256": "aec4d4c1c19eefde5c288741ec4af6ce3215a0e25050a4da5ce42f9dd6e6d0fc",
+      "checked": true
+    },
+    {
+      "id": "BEA-SECURITY",
+      "url": "https://www.hkbea.com/html/tc/bea-security-tips.html",
+      "snapshot_sha256": "afac587a28b4a85cf2a3ad3ba28f75397ea964fa521fad3de1776bae71f4f60d",
+      "checked": true
+    }
+  ]
+}

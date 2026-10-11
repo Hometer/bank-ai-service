@@ -3,11 +3,10 @@ import logging
 import re
 import time
 import unicodedata
-from datetime import date, datetime
+from datetime import date
 from pathlib import Path
 from typing import Callable, Literal
 from urllib.parse import urlsplit
-from zoneinfo import ZoneInfo
 
 import httpx
 from pydantic import ValidationError
@@ -82,7 +81,8 @@ def load_knowledge(path: Path | None = None) -> list[Knowledge]:
 
 
 def eligible(items: list[Knowledge], customer_type: CustomerType, today: str | None = None) -> list[Knowledge]:
-    current = today or datetime.now(ZoneInfo("Asia/Shanghai")).date().isoformat()
+    from app.knowledge_base import business_date
+    current = today or business_date()
     return [item for item in items if item.customer_type == customer_type
             and item.status in ("demo_unreviewed", "public_unreviewed") and item.valid_from <= current < item.valid_until]
 

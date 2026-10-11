@@ -86,6 +86,11 @@ def normalized(text: str) -> str:
     return text
 
 
+def primary_bank(items: list[Knowledge]) -> str:
+    """The activated bundle owns the consultation subject; archived bundles keep their identity."""
+    return next((item.primary_bank_id for item in items if item.primary_bank_id), "bocom")
+
+
 def named_banks(question: str) -> list[str]:
     text = normalized(question)
     matches = [
@@ -102,7 +107,7 @@ def wrong_region(question: str) -> bool:
     if named_banks(text) and "香港" in text and re.search(r"收.{0,20}汇款", text):
         text = re.sub(r"(?:内地|大陆|台湾|澳门|澳門|新加坡|马来西亚|英国|美国)银行", "汇出银行", text)
     regions = (
-        r"内地|大陆|台湾|澳门|澳門|新加坡|马来西亚|英国|美国|"
+        r"内地|大陆|中国|台湾|澳门|澳門|新加坡|马来西亚|英国|美国|"
         r"Singapore\b|Mainland\b|China\b|Taiwan\b|Macau\b|Malaysia\b|United\s*Kingdom\b|UK\b|USA\b"
     )
     banks = r"交通银行|交行|汇丰|渣打|恒生|东亚|中国银行|银行|HSBC|Standard\s*Chartered"
@@ -188,6 +193,7 @@ class FaqArticle(StrictModel):
 class FaqBundle(StrictModel):
     schema_version: Literal["1.0"]
     bundle_version: str = Field(max_length=40)
+    primary_bank_id: BankId = "bocom"
     jurisdiction: Literal["HK"]
     retrieved_on: str
     review_policy: str
@@ -243,11 +249,11 @@ def faq_configuration(
             valid_provenance = (
                 reference_banks == {article.bank_id}
                 if role == "bank_rule"
-                else article.bank_id == "bocom"
+                else article.bank_id == bundle.primary_bank_id
                 and (
                     (
                         role == "peer_guidance"
-                        and bool(reference_banks - {"bocom", "hkma"})
+                        and bool(reference_banks - {bundle.primary_bank_id, "hkma"})
                         and article.answer.startswith("建议：")
                         and article.limits.startswith("同业通用参考")
                         and not re.search(r"\d|SWIFT|Mobile Key|HSBCHK|免费|不收费|零收费", article.answer)
@@ -335,6 +341,7 @@ def faq_configuration(
                     valid_until=min(record.review_due_on for record in records),
                     public_facts=facts,
                     public_digest=digest,
+                    primary_bank_id=bundle.primary_bank_id,
                     faq_bank_id=bank,
                     faq_rules={record.id: record.patterns for record in records},
                     faq_exclusions={record.id: record.exclude_patterns for record in records},
@@ -463,6 +470,7 @@ def faq_part(item: Knowledge, question: str, prior_ids: list[str] | None = None)
 def faq_consultation(
     question: str, kind: CustomerType, items: list[Knowledge], context: ConsultationContext, mode: str
 ) -> tuple[Answer, ConsultationContext] | None:
+    primary = primary_bank(items)
     named = named_banks(question)
     if wrong_region(question) and (named or re.search(r"银行|开户|转账|网银", normalized(question))):
         return Answer(
@@ -470,7 +478,7 @@ def faq_consultation(
             mode="model" if mode == "model" else "demo",
             processing="knowledge",
             coverage="none",
-            text="本轮补充资料适用香港银行；所问其他地区或交通银行香港分行的规则尚未覆盖，不能套用香港有限公司或其他银行条件。",
+            text="本轮补充资料适用香港银行；所问其他地区或不同法人机构的规则尚未覆盖，不能套用香港业务或其他银行条件。",
         ), ConsultationContext()
     if re.search(
         r"工商银行|建设银行|农业银行|招商银行|中国银行(?!.{0,3}香港)|花旗|星展|大新银行|"
@@ -484,7 +492,7 @@ def faq_consultation(
             mode="model" if mode == "model" else "demo",
             processing="knowledge",
             coverage="none",
-            text="所问银行或地区尚未纳入本轮有效资料，请明确银行与地区；不会改用交银香港的条件。",
+            text="所问银行或地区尚未纳入本轮有效资料，请明确银行与地区；不会改用当前咨询银行的条件。",
         ), ConsultationContext()
     candidates = [item for item in eligible(items, kind) if item.faq_bank_id]
     scope = re.search(r"个人|企业|对公", normalized(question))
@@ -504,7 +512,7 @@ def faq_consultation(
     if named:
         selected = [item for bank in named for item in candidates if item.faq_bank_id == bank]
         # The original BOCOM product facts still answer opening/deposit/loan topics.
-        if named == ["bocom"] and not any(matching_facts(item, question) for item in selected):
+        if named == [primary] and not any(matching_facts(item, question) for item in selected):
             return None
     elif prior:
         selected = [item for item in prior if matching_facts(item, question)]
@@ -513,13 +521,13 @@ def faq_consultation(
                 r"^(?:那|那么|这些|这个|它|还|需要|费用|多久|怎么|如何)", normalized(question)
             ):
                 selected = prior
-            elif len(prior) == 1 and prior[0].faq_bank_id not in ("bocom", "hkma"):
+            elif len(prior) == 1 and prior[0].faq_bank_id not in (primary, "hkma"):
                 selected = prior
             else:
                 return None
     else:
         selected = [
-            item for item in candidates if item.faq_bank_id == "bocom" and matching_facts(item, question)
+            item for item in candidates if item.faq_bank_id == primary and matching_facts(item, question)
         ]
         if not selected:
             selected = [

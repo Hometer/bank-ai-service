@@ -148,7 +148,7 @@ def create_app(settings: Settings | None = None) -> FastAPI:
                 await asyncio.gather(*list(application.state.asr_tasks), return_exceptions=True)
             engine.dispose()
 
-    app = FastAPI(title="银行客服 · 本机演示", lifespan=lifespan, docs_url=None, redoc_url=None)
+    app = FastAPI(title="东亚银行香港金融智能客服 · 本机演示", lifespan=lifespan, docs_url=None, redoc_url=None)
     app.add_middleware(TrustedHostMiddleware, allowed_hosts=["127.0.0.1", "localhost", "testserver"])
 
     def configuration() -> tuple[list[CatalogConfig], list[Knowledge]]:

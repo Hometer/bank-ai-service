@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="theme-color" content="#101f30">
-  <title>银行智能客服 · 金融知识咨询</title>
+  <title>金融智能客服项目 · 东亚银行（香港）</title>
   <link rel="stylesheet" href="/app.css">
   <script src="/app.js" defer></script>
   <script src="/v15.js" defer></script>
@@ -14,7 +14,7 @@
   <a class="skip-link" href="#question">跳转到咨询输入</a>
   <div class="app-shell">
     <aside class="sidebar" aria-label="服务与历史">
-      <div class="brand"><span class="brand-mark" aria-hidden="true">F<span>+</span></span><div><strong>银行智能客服</strong><span>FINANCIAL ASSISTANT</span></div></div>
+      <div class="brand"><span class="brand-mark" aria-hidden="true">F<span>+</span></span><div><strong>金融智能客服</strong><span>FINANCIAL ASSISTANT</span></div></div>
       <div class="sidebar-intro"><span class="eyebrow">让每一次咨询，都有依据</span><p>您的金融知识助手</p></div>
       <section class="controls" aria-label="会话管理">
         <label>咨询对象<select id="customer"><option value="">请选择服务对象</option><option value="personal">个人服务</option><option value="enterprise">企业服务</option></select></label>
@@ -30,9 +30,9 @@
       </details>
       <div class="sidebar-bottom"><span class="sidebar-label">服务支持</span><button type="button" data-question="转人工" class="sidebar-support">人工服务说明 <span aria-hidden="true">↗</span></button><button type="button" data-question="银行卡被盗刷了" class="sidebar-support">紧急问题指引 <span aria-hidden="true">↗</span></button><p>本机公开咨询演示<br>不替代银行认证或正式办理</p></div>
     </aside>
-    <header class="topbar"><div class="breadcrumb"><span class="mobile-brand">银行智能客服</span><span class="desktop-breadcrumb">金融服务 <span aria-hidden="true">/</span> 智能咨询</span></div><div class="connection"><span class="connection-dot" id="connection-dot" data-state="connecting" aria-hidden="true"></span><span id="connection-status" role="status">正在连接</span><span class="preview-tag">本机体验</span></div></header>
+    <header class="topbar"><div class="breadcrumb"><span class="mobile-brand">金融智能客服</span><span class="desktop-breadcrumb">金融服务 <span aria-hidden="true">/</span> 智能咨询</span></div><div class="connection"><span class="connection-dot" id="connection-dot" data-state="connecting" aria-hidden="true"></span><span id="connection-status" role="status">正在连接</span><span class="preview-tag">本机体验</span></div></header>
     <main class="workspace">
-      <div class="page-heading"><div><span class="eyebrow">A CLEARER FINANCIAL CONVERSATION</span><h1>让金融咨询，更清晰。</h1><p>交通银行（香港）公开知识咨询 · 个人与企业服务</p>
+      <div class="page-heading"><div><span class="eyebrow">A CLEARER FINANCIAL CONVERSATION</span><h1>让金融咨询，更清晰。</h1><p>东亚银行（香港）金融智能客服项目 · 本地公开资料演示</p><p>知识来源为东亚银行香港官网，答复附引用及复核日期。</p>
       <p id="bank-knowledge-hint" class="workspace-subtitle"></p></div><span id="knowledge-status" class="knowledge-badge">正在核对知识资料</span></div>
       <aside id="safety" class="safety" aria-label="持续紧急提示" role="alert" hidden><strong>公开紧急求助提示</strong><p id="safety-text"></p><p>普通咨询、刷新或切换服务类型不会关闭此提示。关闭只停止显示，不代表风险解除或业务已办理。</p><button id="dismiss-safety" type="button">关闭此提示</button></aside>
       <p id="safety-status" class="muted" role="status"></p>
@@ -43,7 +43,7 @@
           <section id="messages" class="messages" aria-label="咨询记录" aria-live="polite"><p class="empty">正在核对会话…</p></section>
           <section class="examples" aria-label="示例问题"><span>快捷咨询</span><button type="button" data-question="开户需要什么材料">开户材料</button><button type="button" data-question="查余额">查询说明</button><button type="button" data-question="银行卡被盗刷了">紧急问题</button><button type="button" data-question="转人工">人工说明</button></section>
           <section id="voice-panel" class="voice-panel" aria-label="语音与人工辅助" hidden><div class="voice-toolbar"><button id="local-voice-start" type="button" disabled>本机语音提问</button><button id="local-voice-finish" type="button" hidden>结束录音并转写</button><button id="voice-start" type="button">浏览器语音提问</button><button id="voice-stop" type="button">停止当前回复</button><button id="voice-replay" type="button" disabled>朗读上一条</button><button id="agent-assist" type="button">准备人工参考</button><label><input id="voice-auto" type="checkbox">自动播报</label></div><p id="voice-status" role="status">普通话轮流交流 · 转写可修改后发送</p><div id="voice-consent" hidden><p>浏览器可能将音频发送到其语音识别服务。仅用非敏感演示问题，本项目不保存原始音频；请勿说出姓名、账号、密码或验证码。</p><button id="voice-accept" type="button">同意并开始识别</button><button id="voice-decline" type="button">继续文字咨询</button></div><div id="local-mic-feedback" hidden><label for="local-mic-level">麦克风音量</label> <progress id="local-mic-level" max="100" value="0"></progress><p id="local-mic-hint" role="status">请用自然语速说完整句子。</p></div><div id="local-voice-review" hidden><p>本机转写（发送前请核对）</p><p id="local-voice-transcript"></p><button id="local-voice-use" type="button">使用这段转写</button></div><div id="local-voice-consent" hidden><p>录音最长20秒，只传到这台Mac的本机后端进行离线识别，不交给语音云服务或DeepSeek。音频临时处理后清理；脱敏转写本地保留7天，确认发送后才用于AI答复。仅用非敏感演示问题，请勿说出姓名、账号、密码或验证码。</p><button id="local-voice-accept" type="button">同意并开始本机录音</button><button id="local-voice-decline" type="button">继续文字咨询</button></div><p class="muted">人工参考是 AI 草稿，未连接或发送给银行坐席。官网检索范围为已登记官方页面。</p></section>
-          <form id="form" class="composer"><label for="question" class="sr-only">你的公开咨询问题</label><textarea id="question" rows="3" maxlength="2000" placeholder="输入交银香港公开咨询，例如网银密码帮助、换手机提醒…请勿输入姓名、账户、密码或验证码。" required></textarea><div class="form-bottom"><span id="status" role="status">正在连接…</span><button id="send" type="submit" disabled>发送咨询 <span aria-hidden="true">↑</span></button></div></form>
+          <form id="form" class="composer"><label for="question" class="sr-only">你的公开咨询问题</label><textarea id="question" rows="3" maxlength="2000" placeholder="输入东亚香港公开咨询，例如网银密码帮助、换手机提醒…请勿输入姓名、账户、密码或验证码。" required></textarea><div class="form-bottom"><span id="status" role="status">正在连接…</span><button id="send" type="submit" disabled>发送咨询 <span aria-hidden="true">↑</span></button></div></form>
           <div class="conversation-footnote"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3l7 3v5c0 5-7 10-7 10S5 16 5 11V6l7-3zM9 12l2 2 4-4"/></svg><span>仅使用非敏感公开问题 · 会话本地保留 7 天</span></div>
         </section>
         <aside class="advisor-rail" aria-label="AI形象与公开说明">

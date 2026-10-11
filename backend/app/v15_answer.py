@@ -199,7 +199,8 @@ def run_answer(
         web_status = "unavailable"
         # Source URLs come only from validated, active knowledge. Explicit bank context wins.
         banks = named_banks(question)
-        bank = banks[0] if banks else "bocom"
+        from app.bank_faq import BANKS, primary_bank
+        bank = banks[0] if banks else primary_bank(items)
         terms = [
             x
             for x in (
@@ -219,6 +220,7 @@ def run_answer(
                 "開戶",
                 "account opening",
                 "定期",
+                "定存",
                 "deposit",
                 "贷款",
                 "貸款",
@@ -235,6 +237,7 @@ def run_answer(
             if x in question
         ]
         aliases = {
+            "定存": ["定期", "deposit"],
             "退款": ["refund", "refunds"],
             "重置": ["reset", "forgot", "忘記", "重設"],
             "转数快": ["轉數快", "FPS"],
@@ -248,7 +251,7 @@ def run_answer(
         candidates: list[Source] = list(local.sources)
         if not candidates:
             for item in items:
-                if item.customer_type != kind or (item.faq_bank_id or "bocom") not in (bank, "hkma"):
+                if item.customer_type != kind or (item.faq_bank_id or primary_bank(items)) not in (bank, "hkma"):
                     continue
                 if any(term.lower() in (item.title + " ".join(item.keywords)).lower() for term in terms):
                     for fact in item.public_facts:
@@ -274,8 +277,8 @@ def run_answer(
                     continue
                 # Peer recommendations are not a current BOCOM policy source.
                 host = urlsplit(ref.url).hostname or ""
-                if bank == "bocom" and not (
-                    "bankcomm" in host
+                if not (
+                    host in BANKS[bank][2]
                     or host
                     in (
                         "www.hkma.gov.hk",
@@ -327,7 +330,7 @@ def run_answer(
             reply = asyncio.run(generate(question, kind, evidence, settings, cancelled))
             by_id = {e.id: e for e in evidence}
             quotes = [
-                ("同业通用参考，非交银专属规定：\n" if "同业通用参考" in by_id[claim.source_id].text else "")
+                ("同业通用参考，非当前咨询银行专属规定：\n" if "同业通用参考" in by_id[claim.source_id].text else "")
                 + claim.quote
                 for claim in reply.claims
             ]
@@ -345,7 +348,7 @@ def run_answer(
                 else "目前的公开资料不足以回答这个问题。"
             )
             if reply.unanswered:
-                text += "\n所问细节仍有资料缺口，具体条件请向交银香港官方渠道核对。"
+                text += "\n所问细节仍有资料缺口，具体条件请向所问银行香港官方渠道核对。"
             text += "\n本答复由 DeepSeek 根据资料摘录整理，未获银行审核，未办理业务。"
             answer = Answer(
                 kind="answered" if quotes else "unknown",
@@ -370,7 +373,7 @@ def run_answer(
                     mode="demo",
                     processing="fallback",
                     coverage="none",
-                    text="本轮官网或模型未取得有效结果，不能确认最新条件。请通过交银香港官方渠道核对。",
+                    text="本轮官网或模型未取得有效结果，不能确认最新条件。请通过所问银行香港官方渠道核对。",
                 )
     elif needs_web:
         answer = Answer(
@@ -378,7 +381,7 @@ def run_answer(
             mode="demo",
             processing="knowledge",
             coverage="none",
-            text="官网定向检索没有取得足够的有效依据，暂时无法确认所问事项。请通过交银香港官方渠道核对。",
+            text="官网定向检索没有取得足够的有效依据，暂时无法确认所问事项。请通过所问银行香港官方渠道核对。",
         )
     if intent == "agent_assist":
         answer = answer.model_copy(

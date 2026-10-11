@@ -1,0 +1,13 @@
+{
+  "schema_version": "1.0",
+  "bundle_version": "bea-base-20261011-1",
+  "title": "东亚香港公开咨询主知识配置",
+  "retrieved_on": "2026-10-11",
+  "primary_entity": "东亚银行有限公司（香港业务）",
+  "jurisdiction": "HK",
+  "publication_status": "staged_not_integrated",
+  "review_policy": "安全、资格、费用和认证7日复核，其余30日；到期停用。仅公开官方资料，未获银行审核，不等同上线银行系统。",
+  "sources": [],
+  "articles": [],
+  "exclusions": []
+}

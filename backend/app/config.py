@@ -53,13 +53,12 @@ class Settings:
             catalog_path=Path(os.environ["DEMO_CATALOG_PATH"]) if os.getenv("DEMO_CATALOG_PATH") else None,
             knowledge_path=Path(os.environ["DEMO_KNOWLEDGE_PATH"]) if os.getenv("DEMO_KNOWLEDGE_PATH") else None,
             public_knowledge_path=(Path(os.getenv("PUBLIC_KNOWLEDGE_PATH", str(
-                ROOT / "docs/知识库/交通银行香港/knowledge-base.json")))
+                ROOT / "docs/知识库/东亚银行香港/public-base.json")))
                 if os.getenv("PUBLIC_KNOWLEDGE_ENABLED", "1") == "1" else None),
-            bank_faq_path=(Path(os.getenv("BANK_FAQ_PATH", str(ROOT / "docs/知识库/香港银行客服/knowledge-base.json")))
+            bank_faq_path=(Path(os.getenv("BANK_FAQ_PATH", str(ROOT / "docs/知识库/东亚银行香港/knowledge-base.json")))
                            if os.getenv("PUBLIC_KNOWLEDGE_ENABLED", "1") == "1"
                            and os.getenv("BANK_FAQ_ENABLED", "1") == "1" else None),
             bank_faq_activation_path=(Path(os.environ["BANK_FAQ_ACTIVATION_PATH"])
-                                      if os.getenv("BANK_FAQ_ACTIVATION_PATH") else None),
-            public_activation_path=(Path(os.environ["PUBLIC_ACTIVATION_PATH"])
-                                    if os.getenv("PUBLIC_ACTIVATION_PATH") else None),
+                                      if os.getenv("BANK_FAQ_ACTIVATION_PATH") else ROOT / "docs/知识库/东亚银行香港/activation.json"),
+            public_activation_path=Path(os.getenv("PUBLIC_ACTIVATION_PATH", str(ROOT / "docs/知识库/东亚银行香港/public-activation.json"))),
         )

@@ -113,6 +113,8 @@ def reading_steps(knowledge: Knowledge) -> list[str]:
 def knowledge_fingerprint(knowledge: Knowledge) -> str:
     # Keep fingerprints of unchanged legacy records stable when optional schema fields are added.
     faq_fields = {"faq_bank_id", "faq_rules", "faq_exclusions", "faq_variants", "faq_guidance"} if knowledge.faq_bank_id is None else set()
+    if knowledge.primary_bank_id is None:
+        faq_fields.add("primary_bank_id")
     raw = (knowledge.model_dump_json(exclude={"public_facts", "public_digest"} | faq_fields)
            if knowledge.public_digest is None else knowledge.model_dump_json(exclude=faq_fields))
     return hashlib.sha256(raw.encode("utf-8")).hexdigest()

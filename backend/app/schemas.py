@@ -293,6 +293,7 @@ class Knowledge(StrictModel):
     valid_until: str
     public_facts: list[PublicFact] = Field(default_factory=list)
     public_digest: str | None = None
+    primary_bank_id: str | None = None
     faq_bank_id: str | None = None
     faq_rules: dict[str, list[str]] = Field(default_factory=dict)
     faq_exclusions: dict[str, list[str]] = Field(default_factory=dict)

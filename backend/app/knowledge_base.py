@@ -4,6 +4,7 @@ import hashlib
 from datetime import date, datetime
 from pathlib import Path
 from typing import Literal
+from urllib.parse import urlsplit
 from zoneinfo import ZoneInfo
 
 from pydantic import Field, field_validator
@@ -12,7 +13,7 @@ from app.schemas import CustomerType, Focus, Knowledge, PublicFact, PublicRefere
 from app.services_catalog import CatalogConfig, ServiceConfigUnavailable
 
 HOSTS = {"hk.bankcomm.com", "www.hk.bankcomm.com", "eb.hk.bankcomm.com", "www.bankcomm.com.hk",
-         "www.ifec.org.hk", "www.dps.org.hk", "www.info.gov.hk", "www.news.gov.hk"}
+         "www.hkbea.com", "www.ifec.org.hk", "www.dps.org.hk", "www.info.gov.hk", "www.news.gov.hk"}
 
 
 def business_date() -> str:
@@ -87,7 +88,7 @@ class ResearchBundle(StrictModel):
     bundle_version: str
     title: str
     retrieved_on: str
-    primary_entity: Literal["交通银行（香港）有限公司"]
+    primary_entity: Literal["交通银行（香港）有限公司", "东亚银行有限公司（香港业务）"]
     jurisdiction: Literal["HK"]
     publication_status: Literal["staged_not_integrated"]
     review_policy: str
@@ -151,6 +152,11 @@ def public_configuration(path: Path, activation_path: Path | None, entries: list
         current = business_date()
         if activation.activated_on > current:
             raise ValueError("Not active yet")
+        primary = "bea" if bundle.primary_entity == "东亚银行有限公司（香港业务）" else "bocom"
+        if primary == "bea" and any(source.entity == "bank_hk_ltd" and (
+                source.publisher != bundle.primary_entity or urlsplit(source.url).hostname != "www.hkbea.com")
+                for source in bundle.sources):
+            raise ValueError("BEA corpus contains another bank's source")
         sources = {source.id: source for source in bundle.sources}
         articles = {article.id: article for article in bundle.articles}
         if (len(sources) != len(bundle.sources) or len(articles) != len(bundle.articles)
@@ -198,7 +204,7 @@ def public_configuration(path: Path, activation_path: Path | None, entries: list
             until = min((fact.review_due_on for fact in facts), default=current)
             result[key] = Knowledge(id=key, customer_type=kind, title=title, version=version, keywords=keywords,
                 text=text or "资料已停用或需复核，暂不能引用。", status="public_unreviewed" if facts else "disabled",
-                valid_from=activation.activated_on, valid_until=until, public_facts=facts, public_digest=digest)
+                valid_from=activation.activated_on, valid_until=until, public_facts=facts, public_digest=digest, primary_bank_id=primary)
             catalog[key] = CatalogConfig(capability_id=key, customer_type=kind, title=title, knowledge_id=key,
                 knowledge_version=version, enabled=bool(facts), question=f"{title}有哪些说明",
                 related_questions=[article.questions[0] for article in bundle.articles

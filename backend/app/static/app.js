@@ -73,10 +73,10 @@ function emptyMessages() {
     element("p", "从开户准备到金融基础知识，\n为您梳理公开信息，并附上可核对的来源。"));
   const options = element("div", undefined, "welcome-options");
   const questions = $("customer").value === "enterprise" ? [
-    ["企业开户准备", "企业开户需要什么材料"], ["网银与电子结单", "企业对账单在哪里下载"],
-    ["企业融资说明", "企业融资有哪些用途"], ["外汇风险管理", "远期外汇是否稳赚"],
-  ] : [["个人开户准备", "开户需要什么材料"], ["定期存款知识", "普通港元定存最低金额"],
-    ["私人贷款材料", "自雇申请DreamCash需要什么材料"], ["了解存款保障", "每开一个账户都有80万元保障吗"]];
+    ["企业开户准备", "企业开户如何提交申请"], ["网银与电子结单", "企业电子结单在哪里查看下载"],
+    ["企业融资说明", "中小企融资如何咨询"], ["企业 API 授权", "怎样撤回第三方账户资料分享同意"],
+  ] : [["个人开户准备", "手机遥距开户有什么资格要求"], ["定期存款知识", "普通港元定存最低金额"],
+    ["贷款提前还款", "提前偿还私人贷款需要注意什么"], ["网银安全帮助", "忘记网上银行密码怎么办"]];
   for (const [label, question] of questions) {
     const button = element("button", label);
     button.type = "button"; button.append(element("span", "↗"));
@@ -177,7 +177,7 @@ function renderServices(next) {
   if (active) active.revision = Math.max(active.revision || 0, next.session_revision);
   $("catalog").replaceChildren();
   for (const item of next.catalog) {
-    if (item.capability_id.includes("_faq_") && !/(?:_bocom|_hkma)$/.test(item.capability_id)) continue;
+    if (item.capability_id.includes("_faq_") && !/(?:_bea|_hkma)$/.test(item.capability_id)) continue;
     const button = element("button");
     const paths = {opening:"M4 20h16M6 20V8m12 12V8M3 8l9-5 9 5H3M10 20V11m4 9V11",deposit:"M4 7h16v13H4V7M8 7V4h8v3M4 11h16M9 16h6",repayment:"M4 6h16v13H4V6M4 10h16M8 15h3",financing:"M4 20V10h5v10M9 20V6h5v14M14 20V3h5v17",reconciliation:"M6 3h12v18H6V3M9 8h6M9 12h6M9 16h4",borrowing:"M4 18L18 4M7 4a3 3 0 1 0 0 6 3 3 0 0 0 0-6M17 14a3 3 0 1 0 0 6 3 3 0 0 0 0-6",protection:"M12 3l7 3v5c0 5-7 10-7 10S5 16 5 11V6l7-3zM9 12l2 2 4-4",exchange:"M4 7h15l-4-4M20 17H5l4 4M19 7l-4 4M5 17l4-4"};
     const icon = document.createElementNS("http://www.w3.org/2000/svg", "svg");
@@ -453,11 +453,11 @@ $("advisor-portrait").addEventListener("error", () => {
     const version = data.consultation_version === "1.4" ? "V1.4" : "既有版本";
     $("mode").textContent = data.mode === "demo" ? `${version} 规则演示 · 非真实模型` : `${version} 模型适配模式 · 每条答复标明实际处理方式`;
     if (data.knowledge_base_status === "available") {
-      $("mode").textContent = "交通银行（香港）知识库优先 · 本地检索，无模型调用";
+      $("mode").textContent = "东亚银行（香港）知识库优先 · 本地检索，无模型调用";
       if (Number.isInteger(data.knowledge_article_count) && Number.isInteger(data.knowledge_bank_count)) {
         $("knowledge-status").textContent = `知识库优先 · ${data.knowledge_article_count} 条`;
-        $("mode").textContent = `交银香港客服 · ${data.knowledge_article_count} 条公开知识及参考建议 · 本地检索，无模型调用`;
-        $("bank-knowledge-hint").textContent = "以交通银行（香港）为咨询主体；同业资料仅作通用参考，具体条件以交银指引为准。";
+        $("mode").textContent = `东亚香港客服 · ${data.knowledge_article_count} 条公开知识及参考建议 · 本地检索，无模型调用`;
+        $("bank-knowledge-hint").textContent = "以东亚银行（香港）为咨询主体；同业资料仅作通用参考，具体条件以东亚香港官方资料为准。";
       }
     }
     if (data.knowledge_base_status === "unavailable") {
